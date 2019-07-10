@@ -1,4 +1,4 @@
-# landvilleFrontend
+# LandvilleFrontend [![CircleCI](https://circleci.com/gh/landvilleng/landville-frontend.svg?style=svg)](https://circleci.com/gh/landvilleng/landville-frontend) [![Coverage Status](https://coveralls.io/repos/github/landvilleng/landville-frontend/badge.svg)](https://coveralls.io/github/landvilleng/landville-frontend)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
