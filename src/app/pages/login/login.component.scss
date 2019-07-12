@@ -1,9 +1,41 @@
-.profile {
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10em;
+  border-radius: 16px;
+  background: white;
+  height: 33.7em;
+  width: 56em;
+  box-shadow: -5px 5px 20px 3px #bdbaba;
+}
+.login-slider {
+  border-radius: 16px 0 0 16px
+}
 
-  &-bar {
+.login-section {
+  border-radius: 0 16px 16px 0;
+  background-image:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../../../assets/img/House Architecture 4.jpg");
+  background-size: 50em;
+  background-position: center;
+  background-clip: border-box;
+  width: 110%;
 
-    &-content {
+}
+img.bg {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  opacity: 0.3;
+ 
+}
 
-    }
-  }
+@media screen and (max-width: 1024px){
+  img.bg {
+  left: 50%;
+  margin-left: -512px; }
 }
