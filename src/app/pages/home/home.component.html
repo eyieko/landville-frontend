@@ -1,0 +1,65 @@
+<h1>Sample Form</h1>
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+  <div class="form-group">
+    <label>First Name</label>
+    <input
+      #userFirstName="ngModel"
+      [(ngModel)]="user.firstName"
+      [ngClass]="{'is-invalid': userFirstName.errors && userFirstName.touched}"
+      class="form-control"
+      minlength="2"
+      name="firstName"
+      required
+      type="text"
+    >
+    <div [hidden]="!userFirstName.errors?.required" class="invalid-feedback">
+      First Name required.
+    </div>
+    <div [hidden]="!userFirstName.errors?.minlength" class="invalid-feedback">
+      Must be at least 2 characters
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Last Name</label>
+    <input
+      #userLastName="ngModel"
+      [(ngModel)]="user.lastName"
+      [ngClass]="{'is-invalid': userLastName.errors && userLastName.touched}"
+      class="form-control"
+      minlength="2"
+      name="lastName"
+      required
+      type="text"
+    >
+    <div [hidden]="!userLastName.errors?.required" class="invalid-feedback">
+      Last Name required.
+    </div>
+    <div [hidden]="!userLastName.errors?.minlength" class="invalid-feedback">
+      Must be at least 2 characters
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input
+      #userEmail="ngModel"
+      [(ngModel)]="user.email"
+      [ngClass]="{'is-invalid': userEmail.errors && userEmail.touched}"
+      class="form-control"
+      name="email"
+      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      required
+      type="email"
+    >
+    <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">
+      Email required.
+    </div>
+    <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">
+      Email is not valid.
+    </div>
+  </div>
+  <button [disabled]="userForm.form.valid" class="btn-form btn-form-gold">Sign In</button>
+  <button [disabled]="userForm.form.valid" class="btn-social btn-social-facebook">facebook</button>
+  <button [disabled]="userForm.form.valid" class="btn-social btn-social-google">google</button>
+  <button [disabled]="userForm.form.valid" class="btn-social btn-social-twitter">twitter</button>
+  <button [disabled]="userForm.form.valid" class="btn-form btn-form-blue">Pay Now</button>
+</form>
