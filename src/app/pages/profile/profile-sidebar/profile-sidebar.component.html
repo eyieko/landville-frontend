@@ -1,0 +1,21 @@
+<div class="card profile-sidebar-upper">
+  <div class="profile-image-container">
+    <img
+      [src]="profileImage"
+      class="card-img-top img-fluid rounded-circle profile-sidebar-image"
+      alt="Profile Image"
+    />
+  </div>
+  <div class="card-body">
+    <h5 class="card-title text-center">{{ firstName }} {{ lastName }}</h5>
+    <h6 class="card-text text-center">{{ userRole }}</h6>
+    <br />
+    <hr />
+    <p *ngIf="!addressSet" class="card-text text-center">
+      Please provide your address information...
+    </p>
+    <p *ngIf="addressSet" class="card-text text-center">
+      {{ address.City }}, Nigeria
+    </p>
+  </div>
+</div>

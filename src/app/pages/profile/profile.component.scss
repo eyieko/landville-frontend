@@ -1,0 +1,34 @@
+.profile-band.active {
+  background: yellow;
+}
+
+.profile-tab.active {
+  z-index: 2;
+  color: black;
+  background-color: white;
+  border-bottom-color: orange !important;
+  border-bottom-style: solid !important;
+  border-bottom-right-radius: inherit;
+  border-bottom-width: thick !important;
+  border-bottom-left-radius: unset !important;
+}
+
+.profile-band-content {
+  width: 100%;
+}
+
+.no-border {
+  border: none !important;
+}
+.profile-tab-content {
+  font-size: x-small;
+}
+.profile-tab-content.form-control {
+  font-size: x-small;
+  float: right;
+  width: 90%;
+}
+.form-control {
+  width: 90% !important;
+  float: right !important;
+}
