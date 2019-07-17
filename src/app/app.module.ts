@@ -11,15 +11,14 @@ import {RouterModule} from '@angular/router';
 import {AuthLayoutComponent} from './layouts/auth-layout/auth-layout.component';
 import {CommonLayoutComponent} from './layouts/common-layout/common-layout.component';
 import {ComponentsModule} from './components/components.module';
-import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    ToastrModule.forRoot(),
     ComponentsModule,
     HttpClientModule,
     ToastrModule.forRoot(),

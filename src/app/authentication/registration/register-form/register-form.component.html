@@ -1,84 +1,148 @@
-   <div class="container">
-     <div class="details">
-      <div class="information">
-        <div class="left-section">
-          <h4>Create a free account today!</h4>
-          <form (ngSubmit)="onSubmit()">
+<div class="container">
+  <div class="details">
+    <div class="information">
+      <div class="left-section">
+        <h4>Create a free account today!</h4>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
           <div class="input-wrap">
-            <img src="../../../assets/images/ICON/Email.png" />
-            <input type="text" [(ngModel)]="email" name="email" placeholder="Email address" required/>
-          </div>  
-          <div class="input-wrap">
-              <input name="first_name" placeholder="First Name" type='text' [(ngModel)]="first_name" required /> 
-            </div>  
+              <div class="input-icons"> 
+                  <i class="fa fa-envelope icon"> 
+                </i> 
+            <input 
+            formControlName="email"
+            type="text" class="email"
+              placeholder="Email address" />
+              <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched && registerForm.controls['email'].dirty" class="alert alert-danger">
+                  <small class="text-danger" *ngIf="!registerForm.controls['email'].errors.required">Email is required.</small>
+              </div>
+              </div>
+          </div>
+    
             <div class="input-wrap">
-                <input name="last_name" placeholder="Last Name" type='text' [(ngModel)]="last_name" required/> 
-              </div>        
-
-      <div class="input-wrap">
-              <select class="input-wrap" name="role" [(ngModel)]="role">
-                  <option [ngValue]="undefined" disabled selected>Select a role</option>
-                   <option value="CA">Client Admin</option>
-                  <option value="BY">Buyer</option> 
-              </select> 
+                <div class="input-icons"> 
+                    <i class="fa fa-user icon"> 
+                  </i> 
+              <input 
+                class="name"
+                formControlName="first_name"
+                placeholder="First Name" 
+                type='text'
+              />
+              <div *ngIf="registerForm.controls.first_name.invalid && registerForm.controls.first_name.touched" class="alert alert-danger">
+                  <small class="text-danger" *ngIf="registerForm.controls.first_name.errors.required">First Name is required.</small>
+              </div>
+                </div>
+            
+            </div>
+            <div class="input-wrap">
+                <div class="input-icons"> 
+                    <i class="fa fa-user icon"> 
+                  </i> 
+              <input 
+                class="name"
+                formControlName="last_name"
+                placeholder="Last Name" 
+                type='text'
+              />
+              <div *ngIf="registerForm.controls.last_name.invalid && registerForm.controls.last_name.touched" class="alert alert-danger">
+                  <small class="text-danger" *ngIf="registerForm.controls.last_name.errors.required">Last Name is required.</small>
+              </div>
+                </div>
             </div>
 
-          <div class="input-wrap">
-            <img src="../../../assets/images/ICON/Login.png" />
-            <input type="password" [(ngModel)]="password" name="password" placeholder="Create a password" />
-          </div>
+            <div class="input-wrap">
+              <select class="role" formControlName="role"  placeholder=" Select a role">
+                <!-- <option [ngValue]="undefined" disabled selected>Select a role</option> -->
+                <option value="CA">Client Admin</option>
+                <option value="BY">Buyer</option>
+              </select>
+              <div *ngIf="!registerForm.get('role').valid && registerForm.get('role').touched" class="alert alert-danger">
+                Please select a role
+              </div>
+            
+            </div>
 
-          <div class="input-wrap">
-            <img src="../../../assets/images/ICON/Login.png" />
-            <input type="password" [(ngModel)]="confirmed_password" name="confirmed_password" placeholder="Confirm password" />
-          </div>
+            <div class="input-wrap">
+              
+                <div class="input-icons"> 
+                    <i class="fa fa-lock icon"> 
+                  </i> 
+              <input 
+              class="password"
+              formControlName="password"
+              placeholder="Create Password" 
+              type='password'/>
 
-          <button type='Submit'>Create Account</button>
+              <div *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="alert alert-danger">
+                  <small class="text-danger" *ngIf="registerForm.controls.password.errors.required">password is required.</small>
+              </div>
+                </div>
+            </div>
+
+
+            <div class="input-wrap">
+                <div class="input-icons"> 
+                    <i class="fa fa-lock icon"> 
+                  </i> 
+              <input
+              class="password"
+              formControlName="confirmed_password"
+              placeholder="Confirm password" 
+              type='password' 
+                 />
+                 <div *ngIf="registerForm.controls.confirmed_password.invalid && registerForm.controls.confirmed_password.touched" class="alert alert-danger">
+                    <small class="text-danger" *ngIf="registerForm.controls.confirmed_password.errors.required">password is required.</small>
+                </div>
+                </div>
+            </div>
+
+            <button type='submit' [disabled]="!registerForm.valid">Create Account</button>
         </form>
-          <p class="connect">Or Connect with</p>
+        <p class="connect">Or Connect with</p>
 
-          <p class="social-media">
-            <span>
-              <img src="../../../assets/images/ICON/Facebook.png" />
-            </span>
-            <span>
-              <img src="../../../assets/images/ICON/LinkedIn.png" />
-            </span>
-          </p>
-          <p class="login-para">Already have your account? <a class="sign-link" href="#">Sign in here</a></p>
+        <p class="social-media">
+          <span>
+            <img src="../../../assets/images/ICON/Facebook.png" />
+          </span>
+          <span>
+            <img src="../../../assets/images/ICON/LinkedIn.png" />
+          </span>
+        </p>
+        <p class="login-para">Already have your account? <a class="sign-link" href="#">Sign in here</a></p>
+      </div>
+      <div class="right-section">
+        <div class="right-details">
+          <img src="../../../assets/images/ICON/AuthenticProperty.png" />
+          <div class="more-info">
+            <h4>Authentic Properties</h4>
+            <p>Only verified properties are available on Landville</p>
+          </div>
         </div>
-        <div class="right-section">
-          <div class="right-details">
-            <img src="../../../assets/images/ICON/AuthenticProperty.png" />
-            <div class="more-info">
-              <h4>Authentic Properties</h4>
-              <p>Only verified properties are available on Landville</p>
-            </div>
+
+        <div class="right-details">
+          <img src="../../../assets/images/ICON/FinancialPlans.png" />
+          <div class="more-info">
+            <h4>Great financial plan</h4>
+            <p>Landville offers a flexible payment plan to help you acquire your desired property.</p>
           </div>
-
-          <div class="right-details">
-            <img src="../../../assets/images/ICON/FinancialPlans.png" />
-            <div class="more-info">
-              <h4>Great financial plan</h4>
-              <p>Landville offers a flexible payment plan to help you acquire your desired property.</p>
-            </div>
-          </div>
-
-          <div class="right-details">
-            <img src="../../../assets/images/ICON/CustomerRelations.png" />
-            <div class="more-info">
-              <h4>Excellent Customer Relation</h4>
-              <p>Landville ensures you get the best by providing personnel that would meaningfully engage you till you acquire your dream property. </p>
-            </div>
-          </div>
-
-          <hr />
-
-          <p class="qoute">
-            "The wise young man or wage earner of today invests is money in real estate." - 
-            <span>Andrew Carnegie</span>
-          </p>
         </div>
+
+        <div class="right-details">
+          <img src="../../../assets/images/ICON/CustomerRelations.png" />
+          <div class="more-info">
+            <h4>Excellent Customer Relation</h4>
+            <p>Landville ensures you get the best by providing personnel that would meaningfully engage you till you
+              acquire your dream property. </p>
+          </div>
+        </div>
+
+        <hr />
+
+        <p class="qoute">
+          "The wise young man or wage earner of today invests is money in real estate." -
+          <span>Andrew Carnegie</span>
+        </p>
       </div>
     </div>
   </div>
+</div>

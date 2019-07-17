@@ -1,3 +1,4 @@
+
 .image-container{
   display: flex;
   justify-content: center;
@@ -31,8 +32,7 @@
   display: block;
   width: 100%;
   padding: 15px;
-  border: 1px solid #dcdcdd;
-  margin-bottom: 15px;
+ 
 }
 .left-section .input-wrap img{
   width: 27px;
@@ -55,10 +55,29 @@
   text-align: center;
 }
 .left-section .input-wrap input{
-  width: 93%;
-  padding: 0px 20px;
-  border: none;
-  box-shadow: none;
+  height: 3rem;
+  // margin: 0 2rem 1rem 2rem;
+  border-radius: 4px;
+  background-color: white;
+  width: 400px;
+}
+.email, .password,.name {
+  height: inherit;
+  font-size: 20px;
+  // text-align: center; 
+  padding: 30px;
+  padding-top: 15px;
+  margin-right: 20px;
+  margin-left: 9px;
+}
+.role {
+  height: inherit;
+  font-size: 20px;
+}
+
+
+.email:focus, .password:focus {
+  outline: none;
 }
 .social-media{
   overflow: auto;
@@ -89,6 +108,7 @@ p a.sign-link{
   float: left;
   width: 60%;
   padding-left: 70px;
+  padding-top: 50px;
 }
 .right-details{
   overflow: auto;
@@ -124,3 +144,18 @@ p a.sign-link{
   font-weight: bold;
   color: black;
 }
+.input-icons i { 
+  position: absolute; 
+} 
+
+.input-icons { 
+  width: 100%; 
+  margin-bottom: 10px; 
+} 
+
+.icon { 
+  padding: 10px; 
+  color: black; 
+  min-width: 50px; 
+  text-align: center; 
+} 

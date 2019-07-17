@@ -5,6 +5,7 @@ export class Registerdetails {
     password: string;
     confrimed_password: string;
     role: string;
+  data: any;
 
 
 }

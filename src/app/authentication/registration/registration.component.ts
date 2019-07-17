@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterServiceService } from './services/register-service.service';
 import { Registerdetails } from '../registration/models/register-details';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-registration',
@@ -10,22 +11,27 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegistrationComponent implements OnInit {
   registeruser: Registerdetails[];
+
+  // public errorMsg;
   constructor(private registerServiceService: RegisterServiceService,
-              private toastrService: ToastrService) { }
+              private toastrService: ToastrService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-    // this.registeruser = this.registerServiceService;
   }
   registerUser(register: Registerdetails) {
+    this.spinner.show();
     this.registerServiceService.registerUser(register). subscribe(
       response => {
-      this.toastrService.success('Check your email to verify', 'Successfully created an account' );
+      this.toastrService.success(response.data.message);
       console.log(response);
+      this.spinner.hide();
       this.registeruser.push(register);
     },
-    err => {
-      this.toastrService.error('Invalid request', 'Check your inputs');
-      console.log(err.error);
+    error => {
+      // this.errorMsg = error;
+      this.toastrService.error(error.error.errors.email[0]);
+      console.log(error.error);
+      this.spinner.hide();
     }
     );
 
