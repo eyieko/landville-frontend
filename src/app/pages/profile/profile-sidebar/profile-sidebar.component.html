@@ -1,10 +1,20 @@
 <div class="card profile-sidebar-upper">
   <div class="profile-image-container">
     <img
+      class="card-img-top img-fluid rounded-circle"
       [src]="profileImage"
-      class="card-img-top img-fluid rounded-circle profile-sidebar-image"
       alt="Profile Image"
     />
+    <div class="overlay">
+      <input
+        type="file"
+        name="profileImageInput"
+        class="image-input"
+        #imageInput
+        (change)="updateImage($event)"
+      />
+      <a class="info" href="#" (click)="imageInput.click()">Update Image</a>
+    </div>
   </div>
   <div class="card-body">
     <h5 class="card-title text-center">{{ firstName }} {{ lastName }}</h5>

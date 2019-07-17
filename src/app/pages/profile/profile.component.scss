@@ -28,7 +28,8 @@
   float: right;
   width: 90%;
 }
-.form-control {
-  width: 90% !important;
-  float: right !important;
+
+profile-content {
+  display: flex;
+  flex-direction: row;
 }
