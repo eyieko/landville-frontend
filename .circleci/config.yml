@@ -34,4 +34,11 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm test -- --no-watch --no-progress
+      - run:
+          name: run tests
+          command: |
+            npm test -- --no-watch --no-progress --code-coverage
+      - run:
+          name: coveralls report
+          command: |
+            cat ./coverage/landville-frontend/lcov.info  | ./node_modules/coveralls/bin/coveralls.js
