@@ -11,6 +11,11 @@ import { LoginFormComponent } from '../../pages/login/login-form/login-form.comp
 import { LoginHeaderComponent } from '../../pages/login/login-header/login-header.component';
 import { LoginSliderComponent } from '../../pages/login/login-slider/login-slider.component';
 import { SocialLoginComponent } from '../../pages/login/social-login/social-login.component';
+import { RegistrationComponent } from '../../pages/registration/registration.component';
+import { RegisterFormComponent } from '../../pages/registration/register-form/register-form.component';
+import { RegisterHeaderComponent } from '../../pages/registration/register-header/register-header.component';
+
+
 
 @NgModule({
   imports: [
@@ -26,7 +31,13 @@ import { SocialLoginComponent } from '../../pages/login/social-login/social-logi
     LoginFormComponent,
     LoginHeaderComponent,
     LoginSliderComponent,
-    SocialLoginComponent
+    SocialLoginComponent,
+    NgxSpinnerModule,
+    LoginComponent,
+    RegistrationComponent,
+    RegisterFormComponent,
+    RegisterHeaderComponent,
+
   ],
 })
 export class AuthLayoutModule {

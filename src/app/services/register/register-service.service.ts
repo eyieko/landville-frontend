@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, observable } from 'rxjs';
-import { Registerdetails } from '../models/register-details';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Registerdetails } from '../../models/register/register-details';
 // import 'rxjs/add/operator/catch';
 // import 'rxjs/add/observable/throw';
 const httpOptions = {
