@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { PasswordResetService } from './services/password-reset.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,10 @@ import { PasswordResetComponent } from './components/password-reset/password-res
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [PasswordResetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
