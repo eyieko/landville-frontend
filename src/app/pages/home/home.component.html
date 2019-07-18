@@ -1,65 +1,193 @@
-<h1>Sample Form</h1>
-<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-  <div class="form-group">
-    <label>First Name</label>
-    <input
-      #userFirstName="ngModel"
-      [(ngModel)]="user.firstName"
-      [ngClass]="{'is-invalid': userFirstName.errors && userFirstName.touched}"
-      class="form-control"
-      minlength="2"
-      name="firstName"
-      required
-      type="text"
-    >
-    <div [hidden]="!userFirstName.errors?.required" class="invalid-feedback">
-      First Name required.
-    </div>
-    <div [hidden]="!userFirstName.errors?.minlength" class="invalid-feedback">
-      Must be at least 2 characters
-    </div>
-  </div>
-  <div class="form-group">
-    <label>Last Name</label>
-    <input
-      #userLastName="ngModel"
-      [(ngModel)]="user.lastName"
-      [ngClass]="{'is-invalid': userLastName.errors && userLastName.touched}"
-      class="form-control"
-      minlength="2"
-      name="lastName"
-      required
-      type="text"
-    >
-    <div [hidden]="!userLastName.errors?.required" class="invalid-feedback">
-      Last Name required.
-    </div>
-    <div [hidden]="!userLastName.errors?.minlength" class="invalid-feedback">
-      Must be at least 2 characters
+<div class="page-header" data-parallax="true" style="background-image: url('./assets/img/House Architecture 4.jpg');
+height: -webkit-fill-available;">
+  <div class="filter"></div>
+  <div class="container">
+    <div class="motto text-center">
+      <br />
+      <br />
+      <br />
+      <h1 style="font-weight: lighter">Hello!</h1>
+      <h3>Welcome to LandVille.</h3>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <h3>We are here to make property investing easy for all</h3>
+      <button class="btn btn-warning">Get Started</button> &nbsp;
+      <button class="btn btn-warning">Login</button>
+      <br />
+      <br />
+      <br />
     </div>
   </div>
-  <div class="form-group">
-    <label>Email</label>
-    <input
-      #userEmail="ngModel"
-      [(ngModel)]="user.email"
-      [ngClass]="{'is-invalid': userEmail.errors && userEmail.touched}"
-      class="form-control"
-      name="email"
-      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
-      required
-      type="email"
-    >
-    <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">
-      Email required.
+</div>
+
+<div class="main">
+  <div class="section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mr-auto ml-auto">
+          <br>
+          <br>
+          <h1 class="title" style="color: black;font-weight: lighter">What We Offer</h1>
+        </div>
+      </div>
+      <br /><br />
+      <div class="row">
+        <div class="col-md-4">
+          <div class="info">
+            <div class="icon icon-danger">
+              <i class="nc-icon nc-album-2"></i>
+            </div>
+            <div class="description">
+              <h4 class="info-title">Authentic Propeties</h4>
+              <p class="description">Spend your time generating new ideas. You don't have to think of implementing.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info">
+            <div class="icon icon-danger">
+              <i class="nc-icon nc-bulb-63"></i>
+            </div>
+            <div class="description">
+              <h4 class="info-title">New Ideas</h4>
+              <p>Larger, yet dramatically thinner. More powerful, but remarkably power efficient.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info">
+            <div class="icon icon-danger">
+              <i class="nc-icon nc-chart-bar-32"></i>
+            </div>
+            <div class="description">
+              <h4 class="info-title">Statistics</h4>
+              <p>Choose from a veriety of many colors resembling sugar paper pastels.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 mr-auto ml-auto">
+          <br>
+          <button class="btn btn-warning">More Details</button>
+        </div>
+        <br>
+        <br>
+      </div>
     </div>
-    <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">
-      Email is not valid.
+
+    <br>
+    <br>
+
+    <div class="section section-dark text-center" style="background-color: #171039">
+      <div class="container">
+        <br>
+        <br>
+        <h1 class="title" style="font-weight: lighter">Meet The Team</h1>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card card-profile card-plain">
+              <div class="card-avatar">
+                <a href="#avatar"><img src="./assets/img/profile.png" alt="profile"></a>
+              </div>
+              <div class="card-block">
+                <a href="#paper-kit">
+                  <div class="author">
+                    <h4 class="card-title">Henry Ford</h4>
+                    <h6 class="card-category">Product Manager</h6>
+                  </div>
+                </a>
+                <p class="card-description text-center">
+                  Teamwork is so important that it is virtually impossible for you to reach the heights of your
+                  capabilities or make the money that you want without becoming very good at it.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-profile card-plain">
+              <div class="card-avatar">
+                <a href="#avatar"><img src="./assets/img/profile.png" alt="..."></a>
+              </div>
+              <div class="card-block">
+                <a href="#paper-kit">
+                  <div class="author">
+                    <h4 class="card-title">Sophie West</h4>
+                    <h6 class="card-category">Designer</h6>
+                  </div>
+                </a>
+                <p class="card-description text-center">
+                  A group becomes a team when each member is sure enough of himself and his contribution to praise the
+                  skill of the others. No one can whistle a symphony. It takes an orchestra to play it.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-profile card-plain">
+              <div class="card-avatar">
+                <a href="#avatar"><img src="./assets/img/profile.png" alt="..."></a>
+              </div>
+              <div class="card-block">
+                <a href="#paper-kit">
+                  <div class="author">
+                    <h4 class="card-title">Robert Orben</h4>
+                    <h6 class="card-category">Developer</h6>
+                  </div>
+                </a>
+                <p class="card-description text-center">
+                  The strength of the team is each individual member. The strength of each member is the team. If you
+                  can laugh together, you can work together, silence isn’t golden, it’s deadly.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+      </div>
     </div>
+
+    <br>
+    <br>
+
+    <div class="section landing-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mr-auto ml-auto">
+            <h1 class="text-center" style="color: black;font-weight: lighter">Talk To Us</h1>
+            <form class="contact-form">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                    <input type="text" class="form-control" placeholder="Name" (focus)="focus=true"
+                      (blur)="focus=false">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+                    <input type="text" class="form-control" placeholder="Email" (focus)="focus1=true"
+                      (blur)="focus1=false">
+                  </div>
+                </div>
+                <br>
+                <br>
+              </div>
+              <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
+              <div class="row">
+                <div class="col-md-4 mr-auto ml-auto">
+                  <button class="btn btn-warning">Send</button>
+                </div>
+              </div>
+            </form>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <button [disabled]="userForm.form.valid" class="btn-form btn-form-gold">Sign In</button>
-  <button [disabled]="userForm.form.valid" class="btn-social btn-social-facebook">facebook</button>
-  <button [disabled]="userForm.form.valid" class="btn-social btn-social-google">google</button>
-  <button [disabled]="userForm.form.valid" class="btn-social btn-social-twitter">twitter</button>
-  <button [disabled]="userForm.form.valid" class="btn-form btn-form-blue">Pay Now</button>
-</form>
