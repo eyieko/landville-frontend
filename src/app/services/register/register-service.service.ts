@@ -14,11 +14,11 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class RegisterServiceService {
-  registerUrl = 'http://127.0.0.1:8000/api/v1/auth/register/';
+  registerUrl = 'http://127.0.0.1:8000/api/v1/auth/';
   constructor(private http: HttpClient) {
    }
    registerUser(register: Registerdetails): Observable<Registerdetails> {
-    return this.http.post<Registerdetails>(this.registerUrl, register);
+    return this.http.post<Registerdetails>(`${this.registerUrl}/register`, register);
                     // .catch(this.errorHandler);
    }
   //  errorHandler(error: HttpErrorResponse) {
