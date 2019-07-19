@@ -10,8 +10,8 @@ import { RegisterServiceService } from 'src/app/services/register/register-servi
 import { Registerdetails } from 'src/app/models/register/register-details';
 import { HttpTestingController } from '@angular/common/http/testing';
 import { RegistersuccessComponent } from './registersuccess/registersuccess.component';
-import { registerServiceSpy, resetSpies } from '../../helpers/spies';
-import { of } from 'rxjs';
+import { registerServiceSpy, resetSpies, toastServiceSpy } from '../../helpers/spies';
+import { of, throwError } from 'rxjs';
 
 
 describe('RegistrationComponent', () => {
@@ -22,7 +22,6 @@ describe('RegistrationComponent', () => {
   // let httpMock: HttpTestingController;
   beforeAll(() => resetSpies([registerServiceSpy]));
   afterEach(() => resetSpies([registerServiceSpy]));
-  afterAll(() => resetSpies([registerServiceSpy]));
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ RegistrationComponent,
@@ -36,7 +35,10 @@ describe('RegistrationComponent', () => {
     ],
     providers: [
       {
-        provide: RegisterServiceService, userValue: registerServiceSpy
+        provide: RegisterServiceService, useValue: registerServiceSpy
+      },
+      {
+        provide: ToastrService, useValue: toastServiceSpy
       }
     ]
     })
@@ -74,7 +76,28 @@ describe('RegistrationComponent', () => {
 
     registerServiceSpy.registerUser.and.returnValue(of(response));
     component.registerUser(registerData);
+    expect(toastServiceSpy.success).toHaveBeenCalledWith(response.data.message);
 
+  });
+
+  it('should throw error', () => {
+    const registerData = {
+      email: 'akram@andela.com',
+      first_name: 'akram', last_name: 'mukasa', role: 'CA',
+      password: 'akram100', confirmed_password: 'akram100', data: ''
+    };
+    const errorMessage = {
+      error: {
+        errors: {
+          email: ['Email is undefined']
+        }
+      }
+    };
+    registerServiceSpy.registerUser.and.returnValue(throwError(
+      errorMessage
+    ));
+    component.registerUser(registerData);
+    expect(toastServiceSpy.error).toHaveBeenCalledWith(errorMessage.error.errors.email[0]);
   });
 
 });
