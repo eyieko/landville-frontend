@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 
 import {CommonLayoutRoutes} from './common-layout.routing';
 import {HomeComponent} from '../../pages/home/home.component';
+import { RegistersuccessComponent } from '../../pages/registration/registersuccess/registersuccess.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,8 @@ import {HomeComponent} from '../../pages/home/home.component';
   ],
   declarations: [
     HomeComponent,
+    RegistersuccessComponent
+
   ],
 })
 export class CommonLayoutModule {

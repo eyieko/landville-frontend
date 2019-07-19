@@ -39,12 +39,12 @@ describe('RegisterFormComponent', () => {
 
   it('trigger onsubmit method', async(() => {
     const registerForm = { value: { email: 'akram@gmail.com',
-    first_name: 'Francis', last_name: 'Kiryowa', role: 'CA', password: 'akram@100', confirmed_password: 'akram@100'}} as NgForm;
+    first_name: 'akram', last_name: 'muakssa', role: 'CA', password: 'akram@100', confirmed_password: 'akram@100'}} as NgForm;
     component.onSubmit(registerForm);
     expect(component.onSubmit).toBeTruthy();
 })
   );
-  it('should call the onSubmit method', async(() => {
+  it('should call the onSubmit method when button is clicked', async(() => {
     fixture.detectChanges();
     spyOn(component, 'onSubmit');
     el = fixture.debugElement.query(By.css('button')).nativeElement;
