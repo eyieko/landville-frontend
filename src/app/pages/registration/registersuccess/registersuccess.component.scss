@@ -1,0 +1,28 @@
+.container {
+    background-color: rgb(241, 211, 154);
+}
+.left-section{
+    float: left;
+    width: 40%;
+  }
+  .left-section  h2{
+    color: #FFA500;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 80%;
+  }
+  .left-section  h4{
+    color:black;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: normal;
+  }
+
+  .right-details{
+    overflow: auto;
+    margin: 10px 10px 30px 10px;
+  }
+//   .right-details img{
+//     width: 50px;
+//     float: left;
+//   }

@@ -23,14 +23,14 @@ export class RegistrationComponent implements OnInit {
     this.registerServiceService.registerUser(register). subscribe(
       response => {
       this.toastrService.success(response.data.message);
-      console.log(response);
+      // console.log(response);
       this.spinner.hide();
       this.registeruser.push(register);
     },
     error => {
       // this.errorMsg = error;
       this.toastrService.error(error.error.errors.email[0]);
-      console.log(error.error);
+      // console.log(error.error);
       this.spinner.hide();
     }
     );

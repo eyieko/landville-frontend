@@ -1,3 +1,4 @@
+
 export const resetSpies = (spies: any[]) => {
     spies.forEach(spyObj => {
       Object.keys(spyObj).forEach(prop => {
@@ -19,3 +20,7 @@ export const  toastServiceSpy = createSpyObj('ToastrService', [
     'success',
     'error'
 ]);
+export const  registerServiceSpy = createSpyObj('RegisterServiceService', [
+    'registerUser'
+]);
+

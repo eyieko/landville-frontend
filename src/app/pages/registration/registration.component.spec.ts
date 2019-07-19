@@ -10,22 +10,35 @@ import { RegisterServiceService } from 'src/app/services/register/register-servi
 import { Registerdetails } from 'src/app/models/register/register-details';
 import { HttpTestingController } from '@angular/common/http/testing';
 import { RegistersuccessComponent } from './registersuccess/registersuccess.component';
+import { registerServiceSpy, resetSpies } from '../../helpers/spies';
+import { of } from 'rxjs';
 
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
   let fixture: ComponentFixture<RegistrationComponent>;
+
   // let toastr = () => ({ success: ''});
   // let httpMock: HttpTestingController;
-
+  beforeAll(() => resetSpies([registerServiceSpy]));
+  afterEach(() => resetSpies([registerServiceSpy]));
+  afterAll(() => resetSpies([registerServiceSpy]));
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ RegistrationComponent,
-        RegisterFormComponent, RegisterHeaderComponent, RegistersuccessComponent],
-      imports: [NgxSpinnerModule,
-        ReactiveFormsModule, HttpClientModule ,
-      ToastrModule.forRoot()],
-        //  providers: [{provide: ToastrService, useValue: toastr}, {provide: NgxSpinnerService}]
+        RegisterFormComponent, RegisterHeaderComponent, RegistersuccessComponent
+      ],
+      imports: [
+        NgxSpinnerModule,
+        ReactiveFormsModule,
+        HttpClientModule ,
+        ToastrModule.forRoot(),
+    ],
+    providers: [
+      {
+        provide: RegisterServiceService, userValue: registerServiceSpy
+      }
+    ]
     })
     .compileComponents();
   }));
@@ -39,16 +52,29 @@ describe('RegistrationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-//   it('should return right response', () => {
-//     const service: RegisterServiceService = TestBed.get(RegisterServiceService);
-//     const someObject = spyOn(toastr, 'success').and.returnValue();
-//     const mockData: Registerdetails = {
-//       email: 'akram@andela.com',
-//       first_name: 'akram', last_name: 'mukasa', role: 'CA',
-//       password: 'akram100', confirmed_password: 'akram100', data: ''
-//     };
-//     service.registerUser(mockData).subscribe();
-//     expect(someObject.success).toHaveBeenCalled();
-//     const req = httpMock.expectOne(`${service.registerUrl}/register`);
-//   });
+
+  it('test register user function', () => {
+    const registerData = {
+      email: 'akram@andela.com',
+      first_name: 'akram', last_name: 'mukasa', role: 'CA',
+      password: 'akram100', confirmed_password: 'akram100', data: ''
+    };
+    const response = {
+      data: {
+          user: {
+              email: 'akram@nator.com',
+              first_name: 'akram',
+              last_name: 'mukasa',
+              role: 'CA'
+          },
+          message: 'Account created successfully,please check your mailbox to activate your account ',
+          status: 'success'
+      }
+  };
+
+    registerServiceSpy.registerUser.and.returnValue(of(response));
+    component.registerUser(registerData);
+
+  });
+
 });
