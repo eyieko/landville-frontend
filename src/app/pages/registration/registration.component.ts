@@ -25,7 +25,7 @@ export class RegistrationComponent implements OnInit {
       this.toastrService.success(response.data.message);
       // console.log(response);
       this.spinner.hide();
-      this.registeruser.push(register);
+      // this.registeruser.push(register);
     },
     error => {
       // this.errorMsg = error;
