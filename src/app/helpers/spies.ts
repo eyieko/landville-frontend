@@ -9,7 +9,7 @@ export const resetSpies = (spies: any[]) => {
     });
    };
 const createSpyObj = (name: string, methods: string[]) => {
-    return jasmine.createSpyObj(name, methods);
+    return createSpyObj(name, methods);
 };
 
 export const  loginServiceSpy = createSpyObj('LoginService', [
