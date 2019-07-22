@@ -7,20 +7,7 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  items;
-  loginForm;
-  constructor(private formBuilder: FormBuilder) {
-    this.loginForm = this.formBuilder.group({
-      email: '',
-      password: ''
-    });
-  }
-
-  onSubmit(loginData) {
-    console.warn(`your data has been used to login`, loginData);
-    this.loginForm.reset();
-  }
-
+  
   ngOnInit() {
   }
 

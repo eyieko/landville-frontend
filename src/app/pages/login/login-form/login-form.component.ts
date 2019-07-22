@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { LoginService } from '../../../services/login/login.service';
+import { LoginData } from '../../../models/login/loginData';
 
 @Component({
   selector: 'app-login-form',
@@ -14,41 +15,37 @@ export class LoginFormComponent implements OnInit {
   success: boolean = false;
   inputError: boolean = false;
   
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private router: Router
+    ){}
 
 
   notification: string ='Provide your username and password';
   email: boolean = true
   password: boolean = true;
-  onLogin(loginData) {
+  
+  onLogin(loginData: LoginData) {
     this.submitted = true;
-    console.log(this.loginForm)
     if(this.loginForm.invalid){
       this.notification = 'Error, the fields must not  empty';
-      this.setClass()
+      this.inputError = false;
       return;
     }
     this.success = true;
 
-    console.log(loginData);
     this.loginService.login(loginData).subscribe(login => {
-      console.log(login)
       this.notification = 'Login was succesful';
+      localStorage.setItem('token', login.data.user.token)
       this.router.navigate([''])
     }, error => {
       this.notification = 'Error, no user with such username and password found';
-      this.setClass()
+      this.inputError = false;
     })
     
   }
-  setClass() {
-    this.inputError = true;
-    setTimeout(function(){
-      this.inputError = false;
-    }, 10000);
-  }
-  
-  
+ 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
