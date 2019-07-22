@@ -30,11 +30,17 @@
   }
   .container-border {
     padding-left: 400px;
-
-
+ 
   }
-  // .first-text{ 
-  // }
+  .container-border h4{
+    font-size: 17px;
+    color: grey;
+  }
+  .container-border p{
+    font-size: 17px;
+    font-weight: bold;
+  }
+ 
   .first-text > div{
     background: rgba(0,0,0,0.2);
     width:30%;
@@ -52,11 +58,12 @@
     margin:0 0 0 14px;
   }
   .text{
+   
     margin-top: 1.5em;
     font-size: large;
     width: 60%;
     
   }
   .text, .number{
-    color: rgba(0,0,0,0.5)
+    color: rgba(0,0,0,0.5);
   }
