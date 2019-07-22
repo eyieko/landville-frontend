@@ -3,6 +3,7 @@ import { RegisterServiceService } from '../../services/register/register-service
 import { Registerdetails } from '../../models/register/register-details';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -14,7 +15,9 @@ export class RegistrationComponent implements OnInit {
 
 
   constructor(private registerServiceService: RegisterServiceService,
-              private toastrService: ToastrService, private spinner: NgxSpinnerService) { }
+              private toastrService: ToastrService,
+              private spinner: NgxSpinnerService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,6 +26,7 @@ export class RegistrationComponent implements OnInit {
     this.registerServiceService.registerUser(register). subscribe(
       response => {
       this.toastrService.success(response.data.message);
+      this.router.navigate(['/registersuccess']);
       this.spinner.hide();
       // this.registeruser.push(register);
     },
