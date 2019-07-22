@@ -11,15 +11,13 @@ import { RouterModule } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { CommonLayoutComponent } from './layouts/common-layout/common-layout.component';
 import { ComponentsModule } from './components/components.module';
-import { ProfileService } from 'src/app/shared/services/profile/profile.service';
-import { ProfileModule } from 'src/app/pages/profile/profile.module';
+import { LocalStorageService } from './shared/services/local-storage.service';
 
 @NgModule({
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    ProfileModule,
     RouterModule,
     ComponentsModule,
     HttpClientModule,
@@ -27,7 +25,7 @@ import { ProfileModule } from 'src/app/pages/profile/profile.module';
     BrowserAnimationsModule
   ],
   declarations: [AppComponent, AuthLayoutComponent, CommonLayoutComponent],
-  providers: [ProfileService],
+  providers: [LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

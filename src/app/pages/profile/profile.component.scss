@@ -1,11 +1,7 @@
-.profile-band.active {
-  background: yellow;
-}
-
 .profile-tab.active {
   z-index: 2;
   color: black;
-  background-color: white;
+  background-color: #fff9cc;
   border-bottom-color: orange !important;
   border-bottom-style: solid !important;
   border-bottom-right-radius: inherit;
@@ -13,23 +9,43 @@
   border-bottom-left-radius: unset !important;
 }
 
-.profile-band-content {
-  width: 100%;
-}
-
 .no-border {
   border: none !important;
 }
-.profile-tab-content {
-  font-size: x-small;
-}
-.profile-tab-content.form-control {
-  font-size: x-small;
-  float: right;
-  width: 90%;
+
+#profileBand {
+  margin-bottom: 50px;
+  margin-top: 30px;
+  text-align: center;
 }
 
-profile-content {
-  display: flex;
-  flex-direction: row;
+.profile {
+  &-container {
+    position: relative;
+    top: -100px;
+  }
+  &-band {
+    height: 100px;
+    background-color: #fff9cc;
+    &-content {
+      width: 100%;
+    }
+  }
+  &-tab {
+    background-color: #fff9cc;
+    &-active {
+      z-index: 2;
+      color: black;
+      background-color: #fff9cc;
+      border-bottom-color: orange !important;
+      border-bottom-style: solid !important;
+      border-bottom-right-radius: inherit;
+      border-bottom-width: thick !important;
+      border-bottom-left-radius: unset !important;
+    }
+    &-content {
+      font-size: x-small;
+      margin-left: 10%;
+    }
+  }
 }

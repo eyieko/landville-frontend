@@ -3,11 +3,13 @@
   (ngSubmit)="saveProfile(profileForm)"
   *ngIf="!loading"
 >
-  <div class="form-group">
-    <label for="firstName" class="col-form-label">FIRST NAME</label>
+  <div class="profile-form-group">
+    <div>
+      <label for="firstName" class="col-form-label">FIRST NAME</label>
+    </div>
     <input
       type="text"
-      class="form-control form-input"
+      class="form-control"
       [ngClass]="{
         'is-invalid': profileFirstName.errors && profileFirstName.touched
       }"
@@ -16,114 +18,54 @@
       #profileFirstName="ngModel"
       placeholder="First Name"
       required
+      disabled
     />
-    <div class="invalid-feedback" [hidden]="!profileFirstName.errors?.required">
-      First name is required
-    </div>
   </div>
-  <div class="form-group row">
-    <label for="lastName" class="col-sm-4 col-form-label">LAST NAME</label>
-    <div class="col-sm-8">
-      <input
-        type="text"
-        class="form-control"
-        [ngClass]="{
-          'is-invalid': profileLastName.errors && profileLastName.touched
-        }"
-        [(ngModel)]="profile.user.last_name"
-        name="lastName"
-        #profileLastName="ngModel"
-        placeholder="Last Name"
-        required
-      />
-      <div
-        class="invalid-feedback"
-        [hidden]="!profileLastName.errors?.required"
-      >
-        Last name is required
-      </div>
-    </div>
+  <div class="profile-form-group">
+    <label for="lastName" class="col-form-label">LAST NAME</label>
+    <input
+      type="text"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid': profileLastName.errors && profileLastName.touched
+      }"
+      [(ngModel)]="profile.user.last_name"
+      name="lastName"
+      #profileLastName="ngModel"
+      placeholder="Last Name"
+      required
+      disabled
+    />
   </div>
-  <div class="form-group row">
-    <label for="email" class="col-sm-4 col-form-label">EMAIL ADDRESS</label>
-    <div class="col-sm-8">
-      <input
-        type="email"
-        class="form-control"
-        [ngClass]="{
-          'is-invalid': userEmail.errors && userEmail.touched
-        }"
-        [(ngModel)]="profile.user.email"
-        name="email"
-        #userEmail="ngModel"
-        placeholder="Email"
-        required
-        pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
-      />
-      <div class="invalid-feedback" [hidden]="!userEmail.errors?.required">
-        Email address is required
-      </div>
-      <div class="invalid-feedback" [hidden]="!userEmail.errors?.pattern">
-        Email address is invalid
-      </div>
-    </div>
+
+  <div class="profile-form-group">
+    <label for="email" class="col-form-label">EMAIL ADDRESS</label>
+    <input
+      type="email"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid': userEmail.errors && (userEmail.touched || userEmail.dirty)
+      }"
+      [(ngModel)]="profile.user.email"
+      name="email"
+      #userEmail="ngModel"
+      placeholder="Email"
+      required
+      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+      disabled
+    />
   </div>
-  <div class="form-group row address-input">
-    <label for="homeAddress" class="col-sm-4 col-form-label"
-      >HOME ADDRESS</label
-    >
-    <div class="col-sm-8">
-      <span
-        class="address-display"
-        *ngIf="
-          profile.address.Street &&
-          profile.address.City &&
-          profile.address.State
-        "
-        tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-        >{{ profile.address.Street }}, {{ profile.address.City }},
-        {{ profile.address.State }}</span
-      >
-    </div>
-    <div class="col-sm-8 float-right form-row">
-      <label for="state">State</label>
+  <div class="profile-form-group row">
+    <label for="homeAddress" class="col-form-label">HOME ADDRESS</label>
+
+    <div class="address-form-group">
       <input
         type="text"
-        class="form-control"
+        class="form-control address-input"
         [ngClass]="{
-          'is-invalid': profileState.errors && profileState.touched
-        }"
-        [(ngModel)]="profile.address.State"
-        name="state"
-        #profileState="ngModel"
-        placeholder="State"
-        required
-      />
-      <div class="invalid-feedback" [hidden]="!profileState.errors?.required">
-        Please provide a state
-      </div>
-      <label for="city">City</label>
-      <input
-        type="text"
-        class="form-control"
-        [ngClass]="{
-          'is-invalid': profileCity.errors && profileCity.touched
-        }"
-        [(ngModel)]="profile.address.City"
-        name="city"
-        #profileCity="ngModel"
-        placeholder="City"
-        required
-      />
-      <div class="invalid-feedback" [hidden]="!profileCity.errors?.required">
-        Please provide a city
-      </div>
-      <label for="street">Street</label>
-      <input
-        type="text"
-        class="form-control"
-        [ngClass]="{
-          'is-invalid': profileStreet.errors && profileStreet.touched
+          'is-invalid':
+            profileStreet.errors &&
+            (profileStreet.touched || profileStreet.dirty)
         }"
         [(ngModel)]="profile.address.Street"
         name="street"
@@ -131,91 +73,111 @@
         placeholder="Street"
         required
       />
-      <div class="invalid-feedback" [hidden]="!profileStreet.errors?.required">
-        Please provide a street
-      </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="phoneNumber" class="col-sm-4 col-form-label"
-      >PHONE NUMBER</label
-    >
-    <div class="col-sm-8">
       <input
         type="text"
-        class="form-control"
+        class="form-control address-input"
         [ngClass]="{
-          'is-invalid': profilePhone.errors && profilePhone.touched
+          'is-invalid':
+            profileCity.errors && (profileCity.touched || profileCity.dirty)
         }"
-        [(ngModel)]="profile.phone"
-        name="phoneNumber"
-        placeholder="Phone Number"
-        #profilePhone="ngModel"
+        [(ngModel)]="profile.address.City"
+        name="city"
+        #profileCity="ngModel"
+        placeholder="City"
         required
-        pattern
       />
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="employer" class="col-sm-4 col-form-label">EMPLOYER</label>
-    <div class="col-sm-8">
       <input
         type="text"
-        class="form-control"
-        [(ngModel)]="profile.employer"
-        name="employer"
-        placeholder="Employer"
+        class="form-control address-input mr-0"
+        [ngClass]="{
+          'is-invalid':
+            profileState.errors && (profileState.touched || profileState.dirty)
+        }"
+        [(ngModel)]="profile.address.State"
+        name="state"
+        #profileState="ngModel"
+        placeholder="State"
+        required
       />
     </div>
   </div>
-  <div class="form-group row">
-    <label for="designation" class="col-sm-4 col-form-label">DESIGNATION</label>
-    <div class="col-sm-8">
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="profile.designation"
-        name="designation"
-        placeholder="Designation"
-      />
-    </div>
+  <div class="profile-form-group">
+    <label for="phoneNumber" class="col-form-label">PHONE NUMBER</label>
+    <input
+      type="text"
+      class="form-control"
+      [ngClass]="{
+        'is-invalid': phone.errors && (phone.touched || phone.dirty)
+      }"
+      [(ngModel)]="profile.phone"
+      name="phoneNumber"
+      placeholder="Phone Number"
+      #phone="ngModel"
+      required
+      phone
+      minlength="14"
+    />
   </div>
-  <div class="form-group row">
-    <label for="nextKin" class="col-sm-4 col-form-label">NEXT OF KIN</label>
-    <div class="col-sm-8">
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="profile.next_of_kin"
-        name="nextKin"
-        placeholder="Next of Kin"
-      />
-    </div>
+  <div class="profile-form-group">
+    <label for="employer" class="col-form-label">EMPLOYER</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="profile.employer"
+      name="employer"
+      placeholder="Employer"
+      #userEmployer="ngModel"
+    />
   </div>
-  <div class="form-group row">
-    <label for="nextKinContact" class="col-sm-4 col-form-label"
+  <div class="profile-form-group">
+    <label for="designation" class="col-form-label">DESIGNATION</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="profile.designation"
+      name="designation"
+      placeholder="Designation"
+    />
+  </div>
+  <div class="profile-form-group">
+    <label for="nextKin" class="col-form-label">NEXT OF KIN</label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="profile.next_of_kin"
+      name="nextKin"
+      placeholder="Next of Kin"
+    />
+  </div>
+  <div class="profile-form-group">
+    <label for="nextKinContact" class="col-form-label"
       >NEXT OF KIN CONTACT</label
     >
-    <div class="col-sm-8">
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="profile.next_of_kin_contact"
-        name="nextKinContact"
-        placeholder="Next of Kin Contact"
-      />
-    </div>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="profile.next_of_kin_contact"
+      name="nextKinContact"
+      placeholder="Next of Kin Contact"
+    />
   </div>
-  <div class="form-group row">
-    <label for="bio" class="col-sm-4 col-form-label">SHORT BIO</label>
-    <div class="col-sm-8">
-      <textarea
-        class="form-control"
-        [(ngModel)]="profile.bio"
-        name="bio"
-        placeholder="Short Bio"
-      ></textarea>
-    </div>
+  <div class="profile-form-group">
+    <label for="bio" class="col-form-label">SHORT BIO</label>
+    <textarea
+      class="form-control"
+      [(ngModel)]="profile.bio"
+      name="bio"
+      placeholder="Short Bio"
+      rows="10"
+    ></textarea>
   </div>
-  <button class="btn btn-save-purple" type="submit">Save</button>
+  <div class="profile-submit">
+    <button
+      class="btn-form-blue"
+      type="submit"
+      [disabled]="!profileForm.form.valid"
+    >
+      Save
+    </button>
+  </div>
 </form>

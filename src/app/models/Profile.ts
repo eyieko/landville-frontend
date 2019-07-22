@@ -1,7 +1,7 @@
 import { User } from './User';
 import { Address } from './Address';
 
-export interface UserProfile extends User {
+export interface UserProfile {
   user: User;
   address: Address;
   phone?: string;
@@ -29,7 +29,7 @@ export interface UserProfileForm {
   nextOfKinContact?: string;
   bio?: string;
 }
-export interface UserProfileResponse extends UserProfile {
+export interface UserProfileResponse {
   data: {
     profile: UserProfile;
   };

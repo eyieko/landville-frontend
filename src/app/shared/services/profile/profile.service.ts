@@ -6,15 +6,15 @@ import {
   UserProfileResponse,
   UserProfileUpdatedResponse
 } from 'src/app/models/Profile';
+import { LocalStorageService } from '../local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-  profileUrl: string = 'http://127.0.0.1:8000/api/v1/auth/profile/';
+  profileUrl = 'http://127.0.0.1:8000/api/v1/auth/profile/';
   profile: Observable<UserProfile>;
-  userToken =
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTMsImVtYWlsIjoia2VpdGgubWFuZGVsYUBhbmRlbGEuY29tIiwiZXhwIjoxNTYzNDcyMTM5fQ.c0u-E6OhYlg5wkoO6TKRSznuPu0jrQwe_QbBPXaF1Lw';
+  userToken = this.localStorageService.get('token', '');
   httpOptions = {
     headers: new HttpHeaders({
       Authorization: `Bearer ${this.userToken}`
@@ -27,7 +27,11 @@ export class ProfileService {
     })
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private localStorageService: LocalStorageService
+  ) {}
+
   getProfile(): Observable<UserProfileResponse> {
     return this.http.get<UserProfileResponse>(
       this.profileUrl,
