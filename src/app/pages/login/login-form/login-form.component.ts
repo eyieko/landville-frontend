@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { LoginService } from '../../../services/login/login.service';
 import { LoginData } from '../../../models/login/loginData';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-form',
@@ -18,7 +19,8 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService,
     ){}
 
 
@@ -35,11 +37,14 @@ export class LoginFormComponent implements OnInit {
     }
     this.success = true;
 
-    this.loginService.login(loginData).subscribe(login => {
+    this.loginService.login(loginData).subscribe(response => {
+      this.toastrService.success(response.data.message);
       this.notification = 'Login was succesful';
-      localStorage.setItem('token', login.data.user.token)
+      localStorage.setItem('token', response.data.user.token)
+
       this.router.navigate([''])
     }, error => {
+      this.toastrService.error('Invalid email and password combination');
       this.notification = 'Error, no user with such username and password found';
       this.inputError = false;
     })

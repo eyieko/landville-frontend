@@ -2,11 +2,13 @@ import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 import { Observable, Observer } from 'rxjs';
 import { LoginFormComponent } from '../../pages/login/login-form/login-form.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 import { LoginService } from './login.service';
 import { AppModule } from 'src/app/app.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { APPCONFIG } from '../../config';
+import { toastServiceSpy } from '../../helpers/spies';
 
 describe('LoginService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -14,10 +16,11 @@ describe('LoginService', () => {
       HttpClientTestingModule,
       AppModule,
       ReactiveFormsModule,
-      FormsModule
+      FormsModule,
+      ToastrModule.forRoot()
     ],
     declarations: [LoginFormComponent],
-    providers: [ LoginService ]
+    providers: [ LoginService, {provide: ToastrService, useValue: toastServiceSpy} ]
   }));
 
   function setup() {
@@ -31,7 +34,7 @@ describe('LoginService', () => {
 
   it('should use the service', () => {
     const { fixture, userService } = setup();
-    const mockUser = { name: 'Mannie' };
+    const mockUser = { name: 'Serem' };
     spyOn(userService, 'login').and.returnValue(
       Observable.create((observer: Observer<{ name: string}>) => {
         observer.next(mockUser);
