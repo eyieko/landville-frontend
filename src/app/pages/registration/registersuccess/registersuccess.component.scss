@@ -33,3 +33,30 @@
 
 
   }
+  // .first-text{ 
+  // }
+  .first-text > div{
+    background: rgba(0,0,0,0.2);
+    width:30%;
+    float: left;
+    margin-right:3%;
+    
+  }
+  .first-text > div > div{
+    float:left;
+    // margin: 2em;
+  } 
+  .number{
+    width: 30%;
+    font-size: 3em;
+    margin:0 0 0 14px;
+  }
+  .text{
+    margin-top: 1.5em;
+    font-size: large;
+    width: 60%;
+    
+  }
+  .text, .number{
+    color: rgba(0,0,0,0.5)
+  }
