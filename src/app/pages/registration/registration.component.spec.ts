@@ -18,8 +18,7 @@ describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
   let fixture: ComponentFixture<RegistrationComponent>;
 
-  // let toastr = () => ({ success: ''});
-  // let httpMock: HttpTestingController;
+
   beforeAll(() => resetSpies([registerServiceSpy]));
   afterEach(() => resetSpies([registerServiceSpy]));
   beforeEach(async(() => {

@@ -1,5 +1,5 @@
 .container {
-    // background-color: rgb(241, 211, 154);
+    background-color: rgb(241, 233, 203);
 }
 .left-section{
     float: left;
@@ -43,7 +43,7 @@
  
   .first-text > div{
     background: rgba(0,0,0,0.2);
-    width:30%;
+    width:20%;
     float: left;
     margin-right:3%;
     
@@ -60,10 +60,13 @@
   .text{
    
     margin-top: 1.5em;
-    font-size: large;
-    width: 60%;
+    font-size: 15px;
+    width: 50%;
     
   }
   .text, .number{
     color: rgba(0,0,0,0.5);
   }
+  // .info {
+  //   float:left;
+  // }
