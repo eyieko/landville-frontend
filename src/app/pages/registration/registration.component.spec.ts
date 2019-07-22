@@ -9,6 +9,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { RegisterServiceService } from 'src/app/services/register/register-service.service';
 import { Registerdetails } from 'src/app/models/register/register-details';
 import { HttpTestingController } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { RegistersuccessComponent } from './registersuccess/registersuccess.component';
 import { registerServiceSpy, resetSpies, toastServiceSpy } from '../../helpers/spies';
 import { of, throwError } from 'rxjs';
@@ -31,6 +32,7 @@ describe('RegistrationComponent', () => {
         ReactiveFormsModule,
         HttpClientModule ,
         ToastrModule.forRoot(),
+        RouterTestingModule
     ],
     providers: [
       {

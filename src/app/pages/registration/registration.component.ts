@@ -17,7 +17,8 @@ export class RegistrationComponent implements OnInit {
   constructor(private registerServiceService: RegisterServiceService,
               private toastrService: ToastrService,
               private spinner: NgxSpinnerService,
-              private router: Router) { }
+              private router: Router
+              ) { }
 
   ngOnInit() {
   }

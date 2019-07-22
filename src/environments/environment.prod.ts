@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  authUrl: 'https://landville-backend-web-api.herokuapp.com/'
 };

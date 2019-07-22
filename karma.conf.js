@@ -18,13 +18,7 @@ module.exports = function (config) {
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/landville-frontend'),
       reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true,
-      thresholds: {
-        statements: 90,
-        lines: 90,
-        branches: 50,
-        functions: 90
-      }
+      fixWebpackSourcePaths: true
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
