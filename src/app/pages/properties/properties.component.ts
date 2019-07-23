@@ -1,0 +1,52 @@
+import { Component, OnInit } from "@angular/core";
+import { PropertiesService } from "../../services/properties/properties.service";
+import { Property } from "../../models/Property";
+
+@Component({
+  selector: "app-properties",
+  templateUrl: "./properties.component.html",
+  styleUrls: ["./properties.component.scss"]
+})
+export class PropertiesComponent implements OnInit {
+  properties: Property[];
+  propertiesUrl = "http://127.0.0.1:8000/api/v1/properties/";
+  next: string;
+  previous: string;
+  toggle: boolean = true;
+
+  constructor(private propertiesServices: PropertiesService) {}
+
+  ngOnInit(): void {
+    this.getProperties(this.propertiesUrl);
+  }
+
+  getProperties(url: string) {
+    this.propertiesServices.getProperties(url).subscribe(
+      response => {
+        this.properties = response.data.properties.results;
+        if (response.data.properties.next) {
+          this.next = response.data.properties.next;
+        }
+
+        if (response.data.properties.previous) {
+          this.previous = response.data.properties.previous;
+        }
+      },
+      error => {
+        console.log(error.error);
+      }
+    );
+  }
+
+  fetchNext() {
+    this.getProperties(this.next);
+  }
+
+  fetchPrevious() {
+    this.getProperties(this.previous);
+  }
+
+  toggleView() {
+    this.toggle = !this.toggle;
+  }
+}
