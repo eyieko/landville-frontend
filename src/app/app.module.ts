@@ -17,7 +17,7 @@ import { PasswordResetService } from './services/password-reset.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [PasswordResetService],
   bootstrap: [AppComponent]

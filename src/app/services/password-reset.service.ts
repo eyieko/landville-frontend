@@ -5,15 +5,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PasswordResetService {
-  email = {
-    email: 'joelethan2@gmail.com'
-  }
+  data;
   url = 'http://127.0.0.1:8000/api/v1/auth/password-reset/';
   // url = 'http://127.0.0.1:8000/api/v1/properties/';
 
   constructor(private http: HttpClient) { }
 
-  getUsers() {
-    return this.http.post(this.url, this.email);
+  getResetLink(_email) {
+    this.data = {
+      email: _email
+    }
+    return this.http.post(this.url, this.data);
   }
 }

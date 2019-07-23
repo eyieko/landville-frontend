@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { PasswordResetService } from 'src/app/services/password-reset.service';
 
 @Component({
@@ -7,20 +7,18 @@ import { PasswordResetService } from 'src/app/services/password-reset.service';
   styleUrls: ['./password-reset.component.scss']
 })
 export class PasswordResetComponent implements OnInit {
-  users$;
-  k;
-  constructor(private resetService: PasswordResetService) {
 
+  email: string;
+
+  constructor(private resetService: PasswordResetService) {
   }
 
   ngOnInit() {
   }
 
   onSubmit() {
-     this.k = this.resetService.getUsers().subscribe(data => {
-       this.users$ = (data);
-       console.log(JSON.stringify(this.users$));
-      });
+    this.resetService.getResetLink(this.email).subscribe(data => {
+      console.log(JSON.stringify(data));
+    });
   }
-
 }
