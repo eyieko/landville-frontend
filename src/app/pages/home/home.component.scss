@@ -20,9 +20,18 @@ img {
 }
 
 .page-header {
-    background-image: './assets/img/HouseBG.jpg';
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
+
+hr.header-line {
+    background: linear-gradient(to right, var(--color-primary) 25%, var(--color-primary-dark) 75%);
+    padding: 0.50px;
+    margin-left: 35%;
+    margin-right:35%;
+    width: 30%;
+  
+  }
+  
