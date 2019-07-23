@@ -1,11 +1,24 @@
-.container {
+.bigger-container {
     background-color: rgb(241, 233, 203);
+    width:100%;
+}
+.lower-container{
+  width:100%
+}
+.inner-container{
+  background: inherit;
+  width: 80%;
+  margin:auto;
 }
 .left-section{
     float: left;
     width: 40%;
-    // padding-right: 200px;
- 
+  }
+  .left-section img{
+    margin-top: 50px;
+    // padding-top: 100px;
+    height: 50px;
+    width:50px;
   }
   .left-section  h2{
     color: #FFA500;
@@ -18,6 +31,7 @@
     margin-bottom: 30px;
     text-align: center;
     font-weight: normal;
+    color:grey;
   }
 
   .right-details{
@@ -32,18 +46,15 @@
     padding-left: 400px;
  
   }
-  .container-border h4{
-    font-size: 17px;
-    color: grey;
-  }
-  .container-border p{
-    font-size: 17px;
-    font-weight: bold;
-  }
  
+  first-text{
+    width: 100%;
+    
+  }
+
   .first-text > div{
     background: rgba(0,0,0,0.2);
-    width:20%;
+    width:30%;
     float: left;
     margin-right:3%;
     
@@ -67,6 +78,4 @@
   .text, .number{
     color: rgba(0,0,0,0.5);
   }
-  // .info {
-  //   float:left;
-  // }
+ 

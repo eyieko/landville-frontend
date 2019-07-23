@@ -29,7 +29,7 @@ describe('RegisterServiceService', () => {
       password: 'akram100', confirmed_password: 'akram100', data: ''
     };
     service.registerUser(mockData).subscribe();
-    const req = httpMock.expectOne(`${service.registerUrl}/register`);
+    const req = httpMock.expectOne(`${service.registerUrl}/register/`);
     req.flush(mockData);
     });
   it('should use the right url', () => {
@@ -40,8 +40,8 @@ describe('RegisterServiceService', () => {
       password: 'akram100', confirmed_password: 'akram100', data: ''
     };
     service.registerUser(mockData).subscribe();
-    const req = httpMock.expectOne(`${service.registerUrl}/register`);
-    expect(req.request.url).toBe(`${service.registerUrl}/register`);
+    const req = httpMock.expectOne(`${service.registerUrl}/register/`);
+    expect(req.request.url).toBe(`${service.registerUrl}/register/`);
   });
   it('should use POST method', () => {
     const service: RegisterServiceService = TestBed.get(RegisterServiceService);
@@ -51,7 +51,7 @@ describe('RegisterServiceService', () => {
       password: 'akram100', confirmed_password: 'akram100', data: ''
     };
     service.registerUser(mockData).subscribe();
-    const req = httpMock.expectOne(`${service.registerUrl}/register`);
+    const req = httpMock.expectOne(`${service.registerUrl}/register/`);
     expect(req.request.method).toBe('POST');
   });
 
