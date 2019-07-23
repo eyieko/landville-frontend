@@ -15,7 +15,8 @@
     width: 40%;
   }
   .left-section img{
-    margin-top: 50px;
+    margin-bottom: -60px;
+    margin-left: -20px;
     // padding-top: 100px;
     height: 50px;
     width:50px;
@@ -47,9 +48,9 @@
  
   }
  
-  first-text{
+  .first-text{
     width: 100%;
-    
+    overflow: auto; 
   }
 
   .first-text > div{
@@ -78,4 +79,23 @@
   .text, .number{
     color: rgba(0,0,0,0.5);
   }
- 
+  .h4-class{
+    font-size: 1.1em;
+    color: gray;
+  }
+  .container p.confirm{
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  .info{
+    margin-top: 50px;
+  }
+  .info p{
+    margin: 0px;
+    font-weight: bold;
+  }
+  .info h4{
+    font-size: 1.1em;
+    width: 25%;
+    color: gray;
+  }
