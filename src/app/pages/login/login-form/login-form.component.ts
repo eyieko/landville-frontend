@@ -24,15 +24,15 @@ export class LoginFormComponent implements OnInit {
     ){}
 
 
-  notification: string ='Provide your username and password';
+  notification: string ='Provide your email and password';
   email: boolean = true
   password: boolean = true;
   
   onLogin(loginData: LoginData) {
     this.submitted = true;
     if(this.loginForm.invalid){
-      this.notification = 'Error, the fields must not  empty';
-      this.inputError = false;
+      this.notification = 'Error, ensure you provide valid details';
+      this.setErrorTimeout()
       return;
     }
     this.success = true;
@@ -46,14 +46,22 @@ export class LoginFormComponent implements OnInit {
     }, error => {
       this.toastrService.error('Invalid email and password combination');
       this.notification = 'Error, no user with such username and password found';
-      this.inputError = false;
+      this.setErrorTimeout()
+      
     })
     
   }
- 
+  setErrorTimeout(){
+    this.inputError = true;
+      setTimeout(() => {
+        this.inputError = false;
+        this.notification = 'Provide your username and password';
+        this.loginForm.reset()
+      }, 3000)
+  }
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', Validators.email],
       password: ['', Validators.required],
     });
   }

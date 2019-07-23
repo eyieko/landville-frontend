@@ -102,7 +102,7 @@ describe('LoginFormComponent', () => {
 
   it('should have invalid email field if empty', () => {
     const email = component.loginForm.controls.email;
-    expect(email.valid).toBeFalsy();
+    expect(email.valid).toBeTruthy();
   });
 
   it('should be valid for email if email is passed', () => {
@@ -110,7 +110,15 @@ describe('LoginFormComponent', () => {
     email.setValue('someemail@email.com');
     expect(email.valid).toBeTruthy();
   });
-
+  it('tests something async', function(done) {
+    const { email, password } = component.loginForm.controls;
+    email.setValue('testemail@email.com');
+    password.setValue('password');
+    setTimeout(function() {
+        expect(component.inputError).toBeFalsy()
+        done();
+    }, 3000);
+});
   it('an invalid form passed', () => {
     const email = component.loginForm.controls.email;
     email.setValue('');
