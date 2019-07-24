@@ -7,7 +7,7 @@ import { ReactiveFormsModule, NgForm } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { RegisterServiceService } from 'src/app/services/register/register-service.service';
-import { Registerdetails } from 'src/app/models/register/register-details';
+import { RegisterData } from 'src/app/models/register/register-details';
 import { HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RegistersuccessComponent } from './registersuccess/registersuccess.component';

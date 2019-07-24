@@ -1,4 +1,4 @@
-export class Registerdetails {
+export class RegisterData {
     email: string;
     first_name: string;
     last_name: string;

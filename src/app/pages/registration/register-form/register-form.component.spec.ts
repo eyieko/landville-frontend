@@ -33,11 +33,11 @@ describe('RegisterFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component successfully', () => {
     expect(component).toBeTruthy();
   });
 
-  it('trigger onsubmit method', async(() => {
+  it('should trigger onsubmit method', async(() => {
     const registerForm = { value: { email: 'akram@gmail.com',
     first_name: 'akram', last_name: 'muakssa', role: 'CA', password: 'akram@100', confirmed_password: 'akram@100'}} as NgForm;
     component.onSubmit(registerForm);
@@ -50,7 +50,7 @@ describe('RegisterFormComponent', () => {
     el = fixture.debugElement.query(By.css('button')).nativeElement;
     expect(component.onSubmit).toHaveBeenCalledTimes(0);
   }));
-  it('form should be invalid', async(() => {
+  it('should be invalid', async(() => {
     component.registerForm.controls[`email`].setValue('');
     component.registerForm.controls[`first_name`].setValue('');
     component.registerForm.controls[`last_name`].setValue('');

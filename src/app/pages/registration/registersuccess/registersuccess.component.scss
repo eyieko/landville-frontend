@@ -99,3 +99,56 @@
     width: 25%;
     color: gray;
   }
+  @media screen and (max-width: 380px){
+    .container{
+      padding: 15px;
+    }
+    .information{
+      overflow: auto;
+    }
+    .left-section{
+      width: 100%;
+    }
+    .left-section img{
+      display: none;
+    }
+    .left-section h2{
+      font-size: 0.8em;
+      margin-bottom: 8px;
+      text-align: unset;
+    }
+    .left-section h4{
+      font-size: 0.8em;
+      margin-bottom: 5px;
+      text-align: unset;
+    }
+    .right-details{
+      z-index: 3;
+      width: 95%;
+      position: absolute;
+      overflow: auto;
+      margin: 0px;
+    }
+    .right-details img{
+      width: 100px;
+      float: right;
+    }
+    .h4-class, .info p, .info h4{
+      font-size: 0.8em;
+    }
+    .container p.confirm{
+      font-size: 0.8em;
+      margin: 10px 0px;
+
+    }
+    .first-text > div{
+      width: 100%;
+      margin-bottom: 13px;
+    }
+    .info{
+      margin-top: 0px;
+    }
+    .info h4{
+      width: 100%;
+    }
+  }
