@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterServiceService } from '../../services/register/register-service.service';
-import { RegisterData } from '../../models/register/register-details';
+import { User } from '../../models/register/register-details';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  registeruser: RegisterData[];
+  registeruser: User[];
 
 
   constructor(private registerServiceService: RegisterServiceService,
@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
   }
-  registerUser(register: RegisterData) {
+  registerUser(register: User) {
     this.spinner.show();
     this.registerServiceService.registerUser(register). subscribe(
       response => {
