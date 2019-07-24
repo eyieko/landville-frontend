@@ -4,13 +4,12 @@
     "outDir": "./out-tsc/app",
     "types": []
   },
-  "include": [
-    "src/**/*.ts"
-  ],
+  "include": ["src/**/*.ts"],
   "exclude": [
     "src/test.ts",
     "src/**/*.spec.ts",
     "**/*.stories.ts",
-    "src/app/helpers/spies.ts"
+    "src/app/helpers/spies.ts",
+    "src/app/shared/utils/helpers/spies.ts"
   ]
 }

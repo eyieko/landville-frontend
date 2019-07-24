@@ -22,7 +22,7 @@
 .profile {
   &-container {
     position: relative;
-    top: -100px;
+    top: -110px;
   }
   &-band {
     height: 100px;
@@ -46,6 +46,7 @@
     &-content {
       font-size: x-small;
       margin-left: 10%;
+      margin-top: 15%;
     }
   }
 }

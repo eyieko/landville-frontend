@@ -1,37 +1,90 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, NgForm } from '@angular/forms';
 
 import { PersonalInformationComponent } from './personal-information.component';
 import { AppModule } from 'src/app/app.module';
-import { mockProfileForm } from 'src/app/shared/utils/mocks/mocks';
+import {
+  mockProfileForm,
+  mockProfileResponse,
+  mockProfileFormErrorResponse
+} from 'src/app/shared/utils/mocks/mocks';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ProfileService } from 'src/app/shared/services/profile/profile.service';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+import {
+  profileServiceSpy,
+  resetSpies,
+  toastServiceSpy
+} from 'src/app/shared/utils/helpers/spies';
+import { ToastrService } from 'ngx-toastr';
+import { of, throwError } from 'rxjs';
 
 describe('PersonalInformationComponent', () => {
   let component: PersonalInformationComponent;
   let fixture: ComponentFixture<PersonalInformationComponent>;
+  let de: DebugElement;
+
+  beforeAll(() => resetSpies([profileServiceSpy, toastServiceSpy]));
+  afterEach(() => resetSpies([profileServiceSpy, toastServiceSpy]));
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule, FormsModule, HttpClientTestingModule],
+      imports: [AppModule, ReactiveFormsModule, HttpClientTestingModule],
       declarations: [PersonalInformationComponent],
-      providers: [ProfileService]
+      providers: [
+        {
+          provide: ProfileService,
+          useValue: profileServiceSpy
+        },
+        {
+          provide: ToastrService,
+          useValue: toastServiceSpy
+        }
+      ]
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PersonalInformationComponent);
     component = fixture.componentInstance;
+    de = fixture.debugElement.query(By.css('form'));
+    profileServiceSpy.getProfile.and.returnValue(of(mockProfileResponse));
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('Profile should only be submitted if the form is valid', () => {
-    const service = TestBed.get(ProfileService);
-    let spy: any = spyOn(service, 'saveProfile').and.returnValue(null);
-    component.saveProfile({ value: mockProfileForm, valid: false });
-    expect(component.saveProfile).toHaveBeenCalled();
+  it('Should get the user profile', () => {
+    profileServiceSpy.getProfile.and.returnValue(of(mockProfileResponse));
+    component.setProfile();
+
+    expect(profileServiceSpy.getProfile).toHaveBeenCalled();
   });
+  it('should submit form', async(() => {
+    const profileForm = mockProfileForm as NgForm;
+    profileServiceSpy.updateProfile.and.returnValue(of(mockProfileResponse));
+    component.saveProfile();
+    expect(component.saveProfile).toBeTruthy();
+  }));
+  it('should trigger form submission if button is clicked', () => {
+    fixture.detectChanges();
+    spyOn(component, 'saveProfile');
+    const el = fixture.debugElement.query(By.css('.btn-form-blue'))
+      .nativeElement;
+    el.click();
+    expect(component.saveProfile).toHaveBeenCalledTimes(1);
+  });
+
+  it('Should show a toast message when the response from server returns form validation error', async(() => {
+    const profileForm = mockProfileForm as NgForm;
+    profileServiceSpy.updateProfile.and.returnValue(
+      throwError(mockProfileFormErrorResponse)
+    );
+    component.saveProfile();
+    const errorMessage = `Could not update your profile.
+              phone: Phone number must be of the format +234 123 4567890`;
+    expect(toastServiceSpy.error).toHaveBeenCalledWith(errorMessage);
+  }));
 });

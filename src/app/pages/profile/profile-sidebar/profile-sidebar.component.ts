@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { ProfileService } from 'src/app/shared/services/profile/profile.service';
 import { Address } from 'src/app/models/Address';
-import { removeSubscription } from 'src/app/shared/utils/helpers';
+import { removeSubscription } from 'src/app/shared/utils/helpers/unsubscribe';
 
 @Component({
   selector: 'app-profile-sidebar',
@@ -19,7 +19,6 @@ export class ProfileSidebarComponent implements OnInit, OnDestroy {
   // check if the user has set the address, defaults to false
   addressSet: boolean = false;
   address: Address;
-  imageLoading: boolean = true;
   subscribe: Subscription[] = [];
 
   constructor(
@@ -28,12 +27,15 @@ export class ProfileSidebarComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.fetchProfile();
+  }
+  fetchProfile() {
     this.profileService.getProfile().subscribe(response => {
       this.profileImage = response.data.profile.image;
       this.firstName = response.data.profile.user.first_name;
       this.lastName = response.data.profile.user.last_name;
       this.userRole = this.setRole(response.data.profile.user.role);
-      if (Object.keys(response.data.profile.address).length === 0) {
+      if (Object.keys(response.data.profile.address) === null) {
         this.addressSet = false;
       } else {
         this.address = response.data.profile.address;
@@ -41,22 +43,12 @@ export class ProfileSidebarComponent implements OnInit, OnDestroy {
       }
     });
   }
-  showSuccess() {
-    this.toastService.success('Your image was successfully updated.');
-  }
-  showError(error: string) {
-    this.toastService.error(error);
-  }
   setRole(role: string): string {
-    if (role === 'CA') {
-      return 'Client Admin';
-    } else if (role === 'BY') {
-      return 'Buyer';
-    } else if (role === 'LA') {
-      return 'LandVille Admin';
-    }
+    const roles = { CA: 'Client Admin', BY: 'Buyer', LA: 'LandVille Admin' };
+    const value = roles[role];
+    return value;
   }
-  updateImage(event: any) {
+  updateImage(event) {
     if (event.target.files.length > 0) {
       const image = event.target.files[0];
       const uploadData = new FormData();
@@ -65,12 +57,13 @@ export class ProfileSidebarComponent implements OnInit, OnDestroy {
         this.profileService.updateProfile(uploadData).subscribe(
           response => {
             this.profileImage = response.data.profile.image;
-            this.imageLoading = false;
-            this.showSuccess();
+            this.toastService.success('Your image was successfully updated.');
           },
           error => {
             const err = error.error.errors.image;
-            this.showError(`Could not update your profile image. ${err}`);
+            this.toastService.error(
+              `Could not update your profile image. ${err}`
+            );
           }
         )
       );

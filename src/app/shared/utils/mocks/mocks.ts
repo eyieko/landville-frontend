@@ -1,35 +1,4 @@
-import {
-  UserProfileResponse,
-  UserProfileUpdatedResponse,
-  UserProfileForm
-} from 'src/app/models/Profile';
-
-export const mockProfileResponse: UserProfileResponse = {
-  data: {
-    profile: {
-      user: {
-        first_name: 'Mock',
-        last_name: 'User',
-        email: 'mock@user.com',
-        id: 3,
-        role: 'Buyer'
-      },
-      address: {
-        City: 'Nairobi',
-        Street: 'Wall St',
-        State: 'Nairobi'
-      },
-      phone: '34555435354345',
-      employer: 'LandVille',
-      designation: 'Boss',
-      next_of_kin: 'Kin',
-      next_of_kin_contact: '32425435345',
-      bio: 'I make it rain!',
-      level: 'Level?',
-      image: 'http://www.image.com/'
-    }
-  }
-};
+import { UserProfileUpdatedResponse } from 'src/app/models/Profile';
 
 export const mockUpdatedProfileResponse: UserProfileUpdatedResponse = {
   data: {
@@ -53,24 +22,86 @@ export const mockUpdatedProfileResponse: UserProfileUpdatedResponse = {
       next_of_kin_contact: '32425435345',
       bio: 'I make it rain!',
       level: 'Level?',
-      image: 'http://www.image.com/'
+      image: ''
     },
     message: 'Successfully updated your profile'
   }
 };
 
-export const mockProfileForm: UserProfileForm = {
-  firstName: 'Mock',
-  lastName: 'Again',
-  email: 'another@mock.user',
-  City: 'Lagos',
-  State: 'Obo',
-  Street: 'Lagobo',
-  image: 'http://www.lagos.com/flats',
-  phone: '2435235345234532',
-  employer: 'Lander',
-  designation: 'Pointman',
-  nextOfKin: 'Sibling',
-  nextOfKinContact: '243525345234523',
-  bio: 'Exceptionally bad'
+export const mockProfileForm = {
+  value: {
+    firstName: 'Mock',
+    lastName: 'Again',
+    email: 'another@mock.user',
+    City: 'Lagos',
+    State: 'Obo',
+    Street: 'Lagobo',
+    image: '',
+    phone: '2435235345234532',
+    employer: 'Lander',
+    designation: 'Pointman',
+    nextOfKin: 'Sibling',
+    nextOfKinContact: '243525345234523',
+    bio: 'Exceptionally bad'
+  }
+};
+
+export const mockProfileResponse = {
+  data: {
+    profile: {
+      user: {
+        id: 13,
+        first_name: 'Client',
+        last_name: 'Forever',
+        email: 'forever@young.forever',
+        role: 'CA'
+      },
+      phone: '+234 123 4435500',
+      address: {
+        City: 'Kigali',
+        State: 'Rwanda',
+        Street: 'Burn'
+      },
+      level: 'STARTER',
+      image: '',
+      employer: 'Fast Foods',
+      designation: 'Waiter',
+      next_of_kin: 'Masha',
+      next_of_kin_contact: '235235423523452',
+      bio: 'I am simply amazing'
+    },
+    message: 'Profile retreived successfully'
+  }
+};
+
+export const mockProfileResponseNoAddress = {
+  data: {
+    profile: {
+      user: {
+        id: 13,
+        first_name: 'Client',
+        last_name: 'Forever',
+        email: 'forever@young.forever',
+        role: 'CA'
+      },
+      phone: '+234 123 4435500',
+      address: null,
+      level: 'STARTER',
+      image: '',
+      employer: 'Fast Foods',
+      designation: 'Waiter',
+      next_of_kin: 'Masha',
+      next_of_kin_contact: '235235423523452',
+      bio: 'I am simply amazing'
+    },
+    message: 'Profile retreived successfully'
+  }
+};
+
+export const mockProfileFormErrorResponse = {
+  error: {
+    errors: {
+      phone: ['Phone number must be of the format +234 123 4567890']
+    }
+  }
 };

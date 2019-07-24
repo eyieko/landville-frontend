@@ -1,8 +1,4 @@
-<form
-  #profileForm="ngForm"
-  (ngSubmit)="saveProfile(profileForm)"
-  *ngIf="!loading"
->
+<form [formGroup]="profileForm" (ngSubmit)="saveProfile()" *ngIf="!loading">
   <div class="profile-form-group">
     <div>
       <label for="firstName" class="col-form-label">FIRST NAME</label>
@@ -11,14 +7,13 @@
       type="text"
       class="form-control"
       [ngClass]="{
-        'is-invalid': profileFirstName.errors && profileFirstName.touched
+        'is-invalid':
+          profileForm.get('firstName').touched &&
+          profileForm.get('firstName').invalid
       }"
-      [(ngModel)]="profile.user.first_name"
       name="firstName"
-      #profileFirstName="ngModel"
       placeholder="First Name"
-      required
-      disabled
+      formControlName="firstName"
     />
   </div>
   <div class="profile-form-group">
@@ -27,14 +22,13 @@
       type="text"
       class="form-control"
       [ngClass]="{
-        'is-invalid': profileLastName.errors && profileLastName.touched
+        'is-invalid':
+          profileForm.get('lastName').touched &&
+          profileForm.get('lastName').invalid
       }"
-      [(ngModel)]="profile.user.last_name"
       name="lastName"
-      #profileLastName="ngModel"
       placeholder="Last Name"
-      required
-      disabled
+      formControlName="lastName"
     />
   </div>
 
@@ -44,15 +38,13 @@
       type="email"
       class="form-control"
       [ngClass]="{
-        'is-invalid': userEmail.errors && (userEmail.touched || userEmail.dirty)
+        'is-invalid':
+          profileForm.get('emailAddress').touched &&
+          profileForm.get('emailAddress').invalid
       }"
-      [(ngModel)]="profile.user.email"
       name="email"
-      #userEmail="ngModel"
       placeholder="Email"
-      required
-      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
-      disabled
+      formControlName="emailAddress"
     />
   </div>
   <div class="profile-form-group row">
@@ -64,40 +56,37 @@
         class="form-control address-input"
         [ngClass]="{
           'is-invalid':
-            profileStreet.errors &&
-            (profileStreet.touched || profileStreet.dirty)
+            profileForm.get('street').invalid &&
+            (profileForm.get('street').touched ||
+              profileForm.get('street').dirty)
         }"
-        [(ngModel)]="profile.address.Street"
         name="street"
-        #profileStreet="ngModel"
+        formControlName="street"
         placeholder="Street"
-        required
       />
       <input
         type="text"
         class="form-control address-input"
         [ngClass]="{
           'is-invalid':
-            profileCity.errors && (profileCity.touched || profileCity.dirty)
+            profileForm.get('city').invalid &&
+            (profileForm.get('city').touched || profileForm.get('city').dirty)
         }"
-        [(ngModel)]="profile.address.City"
         name="city"
-        #profileCity="ngModel"
+        formControlName="city"
         placeholder="City"
-        required
       />
       <input
         type="text"
         class="form-control address-input mr-0"
         [ngClass]="{
           'is-invalid':
-            profileState.errors && (profileState.touched || profileState.dirty)
+            profileForm.get('state').invalid &&
+            (profileForm.get('state').touched || profileForm.get('state').dirty)
         }"
-        [(ngModel)]="profile.address.State"
         name="state"
-        #profileState="ngModel"
+        formControlName="state"
         placeholder="State"
-        required
       />
     </div>
   </div>
@@ -107,15 +96,22 @@
       type="text"
       class="form-control"
       [ngClass]="{
-        'is-invalid': phone.errors && (phone.touched || phone.dirty)
+        'is-invalid':
+          profileForm.get('phone').invalid &&
+          (profileForm.get('phone').touched || profileForm.get('phone').dirty)
       }"
-      [(ngModel)]="profile.phone"
+      [ngStyle]="{
+        border: formErrors.errors.phone
+          ? '1px solid #dc3545'
+          : '1px solid #ced4da',
+        'box-shadow': formErrors.errors.phone
+          ? '0 0 0 0.2rem rgba(220,53,69,.25)'
+          : 'none'
+      }"
       name="phoneNumber"
+      formControlName="phone"
       placeholder="Phone Number"
-      #phone="ngModel"
-      required
       phone
-      minlength="14"
     />
   </div>
   <div class="profile-form-group">
@@ -123,10 +119,9 @@
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="profile.employer"
       name="employer"
+      formControlName="employer"
       placeholder="Employer"
-      #userEmployer="ngModel"
     />
   </div>
   <div class="profile-form-group">
@@ -134,7 +129,7 @@
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="profile.designation"
+      formControlName="designation"
       name="designation"
       placeholder="Designation"
     />
@@ -144,7 +139,7 @@
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="profile.next_of_kin"
+      formControlName="nextOfKin"
       name="nextKin"
       placeholder="Next of Kin"
     />
@@ -156,7 +151,13 @@
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="profile.next_of_kin_contact"
+      [ngClass]="{
+        'is-invalid':
+          profileForm.get('nextOfKinContact').invalid &&
+          (profileForm.get('nextOfKinContact').touched ||
+            profileForm.get('nextOfKinContact').dirty)
+      }"
+      formControlName="nextOfKinContact"
       name="nextKinContact"
       placeholder="Next of Kin Contact"
     />
@@ -165,18 +166,14 @@
     <label for="bio" class="col-form-label">SHORT BIO</label>
     <textarea
       class="form-control"
-      [(ngModel)]="profile.bio"
+      formControlName="bio"
       name="bio"
       placeholder="Short Bio"
       rows="10"
     ></textarea>
   </div>
   <div class="profile-submit">
-    <button
-      class="btn-form-blue"
-      type="submit"
-      [disabled]="!profileForm.form.valid"
-    >
+    <button class="btn-form-blue" type="submit" [disabled]="!profileForm.valid">
       Save
     </button>
   </div>

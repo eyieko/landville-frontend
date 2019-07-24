@@ -32,6 +32,7 @@ export interface UserProfileForm {
 export interface UserProfileResponse {
   data: {
     profile: UserProfile;
+    message: string;
   };
 }
 
@@ -39,5 +40,16 @@ export interface UserProfileUpdatedResponse {
   data: {
     profile: UserProfile;
     message: string;
+  };
+}
+
+export interface UserProfileUpdateErrorResponse {
+  errors: {
+    address?: any;
+    phone?: any;
+    employer?: any;
+    designation?: any;
+    next_of_kin?: any;
+    next_of_kin_contact?: any;
   };
 }
