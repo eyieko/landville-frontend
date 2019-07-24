@@ -39,3 +39,27 @@ img.bg {
   left: 50%;
   margin-left: -512px; }
 }
+
+
+@media (min-width: 600px){
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    background-image: none;
+    width: 30em;
+    margin: 0em;
+    height: 55em;
+    padding-left: -6px;
+    background-repeat: no-repeat;
+  }
+  img.bg {
+    display: none;
+  }
+  .login-section {
+    width: 100%;
+  }
+  }

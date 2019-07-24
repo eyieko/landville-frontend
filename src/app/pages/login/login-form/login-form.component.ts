@@ -45,7 +45,7 @@ export class LoginFormComponent implements OnInit {
       this.router.navigate([''])
     }, error => {
       this.toastrService.error('Invalid email and password combination');
-      this.notification = 'Error, no user with such username and password found';
+      this.notification = 'Error, no user with such email and password found';
       this.setErrorTimeout()
       
     })
@@ -55,8 +55,7 @@ export class LoginFormComponent implements OnInit {
     this.inputError = true;
       setTimeout(() => {
         this.inputError = false;
-        this.notification = 'Provide your username and password';
-        this.loginForm.reset()
+        this.notification = 'Provide your email and password';
       }, 3000)
   }
   ngOnInit() {

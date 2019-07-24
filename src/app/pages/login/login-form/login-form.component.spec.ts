@@ -110,7 +110,7 @@ describe('LoginFormComponent', () => {
     email.setValue('someemail@email.com');
     expect(email.valid).toBeTruthy();
   });
-  it('tests something async', function(done) {
+  it('should tests error timeout', function(done) {
     const { email, password } = component.loginForm.controls;
     email.setValue('testemail@email.com');
     password.setValue('password');
@@ -119,7 +119,7 @@ describe('LoginFormComponent', () => {
         done();
     }, 3000);
 });
-  it('an invalid form passed', () => {
+  it('should error if an invalid form passed', () => {
     const email = component.loginForm.controls.email;
     email.setValue('');
     expect(component.loginForm.invalid).toBeTruthy();

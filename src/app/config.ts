@@ -1,7 +1,7 @@
 function appConfig () {
    
     return {
-        base_url: 'https://landville-backend-web-api.herokuapp.com/api/v1/'
+        base_url: 'http://127.0.0.1:8000/api/v1/'
     };
 }
 
