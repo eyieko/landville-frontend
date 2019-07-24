@@ -13,7 +13,7 @@
             type="text" class="email"
               placeholder="Email address" />
               <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched && registerForm.controls['email'].dirty" class="alert alert-danger">
-                  <small class="text-danger" *ngIf="!registerForm.controls['email'].errors.required">Email is required.</small>
+                  <small class="text-danger"  *ngIf="registerForm.controls['email'].errors.email">Email must be a valid email address</small>
               </div>
               </div>
           </div>
@@ -75,6 +75,7 @@
 
               <div *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="alert alert-danger">
                   <small class="text-danger" *ngIf="registerForm.controls.password.errors.required">password is required.</small>
+                  <small class="text-danger" *ngIf="registerForm.controls.password.errors.minlength">Password must contain an uppercase, number and a character</small>
               </div>
                 </div>
             </div>
@@ -91,7 +92,8 @@
               type='password' 
                  />
                  <div *ngIf="registerForm.controls.confirmed_password.invalid && registerForm.controls.confirmed_password.touched" class="alert alert-danger">
-                    <small class="text-danger" *ngIf="registerForm.controls.confirmed_password.errors.required">password is required.</small>
+                    <small class="text-danger" *ngIf="registerForm.controls.confirmed_password.errors.required">Confirm Password is required.</small>
+                    <div class ="text-danger" *ngIf="registerForm.controls.confirmed_password.errors.mustMatch">Passwords must match</div>
                 </div>
                 </div>
             </div>
