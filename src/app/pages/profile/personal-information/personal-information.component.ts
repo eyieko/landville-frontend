@@ -75,7 +75,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
     this.subscribe.push(
       this.profileService.getProfile().subscribe(profile => {
         const profileData = profile.data.profile;
-        this.profileForm.setValue({
+        // we use `patchValue` because the response from the server might not have prefilled address information
+        this.profileForm.patchValue({
           firstName: profileData.user.first_name,
           lastName: profileData.user.last_name,
           emailAddress: profileData.user.email,
@@ -101,11 +102,22 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
     };
   }
   saveProfile() {
+    const addressData = {
+      Street: this.profileForm.controls.street.value,
+      City: this.profileForm.controls.city.value,
+      State: this.profileForm.controls.state.value
+    };
+    // the backend expects to pick address from an `address` dictionary that
+    // does not exist on the form yet. Add the dictionary and pass it with input values
+    this.profileForm.addControl('address', new FormControl({}));
+    this.profileForm.patchValue({
+      address: addressData
+    });
     this.subscribe.push(
       this.profileService.updateProfile(this.profileForm.value).subscribe(
         profile => {
           const profileData = profile.data.profile;
-          this.profileForm.setValue({
+          this.profileForm.patchValue({
             firstName: profileData.user.first_name,
             lastName: profileData.user.last_name,
             emailAddress: profileData.user.email,

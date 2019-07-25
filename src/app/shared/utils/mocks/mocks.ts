@@ -85,7 +85,7 @@ export const mockProfileResponseNoAddress = {
         role: 'CA'
       },
       phone: '+234 123 4435500',
-      address: null,
+      address: {},
       level: 'STARTER',
       image: '',
       employer: 'Fast Foods',

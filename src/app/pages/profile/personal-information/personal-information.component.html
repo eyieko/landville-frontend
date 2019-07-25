@@ -58,7 +58,8 @@
           'is-invalid':
             profileForm.get('street').invalid &&
             (profileForm.get('street').touched ||
-              profileForm.get('street').dirty)
+              profileForm.get('street').dirty ||
+              profileForm.get('street').pristine)
         }"
         name="street"
         formControlName="street"
@@ -70,7 +71,9 @@
         [ngClass]="{
           'is-invalid':
             profileForm.get('city').invalid &&
-            (profileForm.get('city').touched || profileForm.get('city').dirty)
+            (profileForm.get('city').touched ||
+              profileForm.get('city').dirty ||
+              profileForm.get('city').pristine)
         }"
         name="city"
         formControlName="city"
@@ -82,7 +85,9 @@
         [ngClass]="{
           'is-invalid':
             profileForm.get('state').invalid &&
-            (profileForm.get('state').touched || profileForm.get('state').dirty)
+            (profileForm.get('state').touched ||
+              profileForm.get('state').dirty ||
+              profileForm.get('state').pristine)
         }"
         name="state"
         formControlName="state"
@@ -98,7 +103,9 @@
       [ngClass]="{
         'is-invalid':
           profileForm.get('phone').invalid &&
-          (profileForm.get('phone').touched || profileForm.get('phone').dirty)
+          (profileForm.get('phone').touched ||
+            profileForm.get('phone').dirty ||
+            profileForm.get('phone').pristine)
       }"
       [ngStyle]="{
         border: formErrors.errors.phone

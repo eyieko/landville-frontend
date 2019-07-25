@@ -30,23 +30,24 @@ export class ProfileSidebarComponent implements OnInit, OnDestroy {
     this.fetchProfile();
   }
   fetchProfile() {
-    this.profileService.getProfile().subscribe(response => {
-      this.profileImage = response.data.profile.image;
-      this.firstName = response.data.profile.user.first_name;
-      this.lastName = response.data.profile.user.last_name;
-      this.userRole = this.setRole(response.data.profile.user.role);
-      if (Object.keys(response.data.profile.address) === null) {
-        this.addressSet = false;
-      } else {
-        this.address = response.data.profile.address;
-        this.addressSet = true;
-      }
-    });
+    this.subscribe.push(
+      this.profileService.getProfile().subscribe(response => {
+        this.profileImage = response.data.profile.image;
+        this.firstName = response.data.profile.user.first_name;
+        this.lastName = response.data.profile.user.last_name;
+        this.userRole = this.setRole(response.data.profile.user.role);
+        if (Object.entries(response.data.profile.address).length < 3) {
+          this.addressSet = false;
+        } else {
+          this.address = response.data.profile.address;
+          this.addressSet = true;
+        }
+      })
+    );
   }
   setRole(role: string): string {
     const roles = { CA: 'Client Admin', BY: 'Buyer', LA: 'LandVille Admin' };
-    const value = roles[role];
-    return value;
+    return roles[role];
   }
   updateImage(event) {
     if (event.target.files.length > 0) {

@@ -15,7 +15,6 @@ import { of, throwError } from 'rxjs';
 import {
   mockProfileResponse,
   mockProfileResponseNoAddress,
-  mockProfileFormErrorResponse,
   mockProfileForm
 } from 'src/app/shared/utils/mocks/mocks';
 import { By } from '@angular/platform-browser';
@@ -53,7 +52,6 @@ describe('ProfileSidebarComponent', () => {
   });
 
   it('should create', () => {
-    // profileServiceSpy.getProfile.and.returnValue(of(mockProfileResponse));
     expect(component).toBeTruthy();
   });
   it('should load user image and information when the component mounts', () => {
@@ -67,7 +65,7 @@ describe('ProfileSidebarComponent', () => {
     );
     component.fetchProfile();
     expect(profileServiceSpy.getProfile).toHaveBeenCalled();
-    expect(component.addressSet).toBeTruthy();
+    expect(component.addressSet).toBeFalsy();
   });
   it('should update the image', () => {
     const event = {
