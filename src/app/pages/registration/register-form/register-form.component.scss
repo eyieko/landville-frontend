@@ -27,6 +27,7 @@
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
+  padding-right: 50px;
 }
 .left-section .input-wrap{
   display: block;
@@ -56,15 +57,18 @@
 }
 .left-section .input-wrap input{
   height: 3rem;
-  // margin: 0 2rem 1rem 2rem;
   border-radius: 4px;
   background-color: white;
   width: 400px;
+  padding-bottom: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 22px;
+
 }
-.email, .password,.name {
+
+.form-control{
   height: inherit;
   font-size: 20px;
-  // text-align: center; 
   padding: 30px;
   padding-top: 15px;
   margin-right: 20px;
@@ -74,6 +78,19 @@
   height: inherit;
   font-size: 20px;
 }
+.custom-select{
+    height: 3rem;
+    border-radius: 4px;
+    background-color: white;
+    width: 400px;
+    margin-left: 9px;
+    padding-left: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+    color: grey;
+    font-weight: normal;
+}
+
 
 
 .email:focus, .password:focus {
@@ -158,8 +175,20 @@ p a.sign-link{
   color: black; 
   min-width: 50px; 
   text-align: center; 
+  padding-top: 15px;
 } 
 .alert-danger {
 margin-left:10px;
 width: 100%;
+}
+@media screen and (max-width: 768px){
+  .information{
+    overflow: auto;
+  }
+  .left-section, .right-section{
+    width: 100%;
+  }
+  .left-section .input-wrap input{
+    width: 100%;
+  }
 }

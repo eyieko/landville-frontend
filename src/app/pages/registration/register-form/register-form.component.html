@@ -10,7 +10,7 @@
                 </i> 
             <input 
             formControlName="email"
-            type="text" class="email"
+            type="text" class="form-control"
               placeholder="Email address" />
               <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched && registerForm.controls['email'].dirty" class="alert alert-danger">
                   <small class="text-danger"  *ngIf="registerForm.controls['email'].errors.email">Email must be a valid email address</small>
@@ -23,7 +23,7 @@
                     <i class="fa fa-user icon"> 
                   </i> 
               <input 
-                class="name"
+                class="form-control"
                 formControlName="first_name"
                 placeholder="First Name" 
                 type='text'
@@ -39,26 +39,33 @@
                     <i class="fa fa-user icon"> 
                   </i> 
               <input 
-                class="name"
+                class="form-control"
                 formControlName="last_name"
                 placeholder="Last Name" 
                 type='text'
               />
-              <div *ngIf="registerForm.controls.last_name.invalid && registerForm.controls.last_name.touched" class="alert alert-danger">
+              
+              <div *ngIf="registerForm.controls.last_name.invalid && registerForm.controls.last_name.touched" class="invalid-feedback">
                   <small class="text-danger" *ngIf="registerForm.controls.last_name.errors.required">Last Name is required.</small>
               </div>
                 </div>
             </div>
 
             <div class="input-wrap">
-              <select class="role" formControlName="role"  placeholder=" Select a role">
+                <div class="input-icons"> 
+                    <i class="fa fa-user icon"> 
+                  </i> 
+               
+              <select class="custom-select" formControlName="role"  placeholder=" Select a role">
                 <option value=""  value="null" disabled="true" [selected]="true">Select a role</option>
                 <option value="CA">Client Admin</option>
                 <option value="BY">Buyer</option>
               </select>
-              <div *ngIf="!registerForm.get('role').valid && registerForm.get('role').touched" class="alert alert-danger">
+              <div *ngIf="!registerForm.get('role').valid && registerForm.get('role').touched" class="invalid-feedback">
                 Please select a role
               </div>
+             </div>
+
             
             </div>
 
@@ -68,7 +75,7 @@
                     <i class="fa fa-lock icon"> 
                   </i> 
               <input 
-              class="password"
+              class="form-control"
               formControlName="password"
               placeholder="Create Password" 
               type='password'/>
@@ -86,7 +93,7 @@
                     <i class="fa fa-lock icon"> 
                   </i> 
               <input
-              class="password"
+              class="form-control"
               formControlName="confirmed_password"
               placeholder="Confirm password" 
               type='password' 
@@ -98,7 +105,8 @@
                 </div>
             </div>
 
-            <button type='submit' [disabled]="!registerForm.valid">Create Account</button>
+            <button type='submit' [disabled]="!registerForm.valid" 
+            [ngStyle]="registerForm.invalid && {'color':'white','backgroundColor': '#171039'} ">Create Account</button>
         </form>
         <p class="connect">Or Connect with</p>
 
