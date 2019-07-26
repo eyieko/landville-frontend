@@ -19,6 +19,7 @@ import {
 } from 'src/app/shared/utils/helpers/spies';
 import { ToastrService } from 'ngx-toastr';
 import { of, throwError } from 'rxjs';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('PersonalInformationComponent', () => {
   let component: PersonalInformationComponent;
@@ -30,7 +31,12 @@ describe('PersonalInformationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule, ReactiveFormsModule, HttpClientTestingModule],
+      imports: [
+        AppModule,
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        NgxSpinnerModule
+      ],
       declarations: [PersonalInformationComponent],
       providers: [
         {
@@ -46,6 +52,7 @@ describe('PersonalInformationComponent', () => {
   }));
 
   beforeEach(() => {
+    localStorage.clear();
     fixture = TestBed.createComponent(PersonalInformationComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('form'));
@@ -71,7 +78,7 @@ describe('PersonalInformationComponent', () => {
   it('should trigger form submission if button is clicked', () => {
     fixture.detectChanges();
     spyOn(component, 'saveProfile');
-    const el = fixture.debugElement.query(By.css('.btn-form-blue'))
+    const el = fixture.debugElement.query(By.css('.btn-form-blue-profile'))
       .nativeElement;
     el.click();
     expect(component.saveProfile).toHaveBeenCalledTimes(1);

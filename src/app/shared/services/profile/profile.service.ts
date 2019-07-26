@@ -12,7 +12,8 @@ import { LocalStorageService } from '../local-storage.service';
   providedIn: 'root'
 })
 export class ProfileService {
-  profileUrl = 'http://127.0.0.1:8000/api/v1/auth/profile/';
+  profileUrl =
+    'https://landville-backend-web-api.herokuapp.com/api/v1/auth/profile/';
   profile: Observable<UserProfile>;
   userToken = this.localStorageService.get('token', '');
   httpOptions = {

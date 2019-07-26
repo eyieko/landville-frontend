@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { UserProfileUpdateErrorResponse } from 'src/app/models/Profile';
 import { ProfileService } from 'src/app/shared/services/profile/profile.service';
@@ -18,7 +19,6 @@ import { removeSubscription } from 'src/app/shared/utils/helpers/unsubscribe';
   styleUrls: ['./personal-information.component.scss']
 })
 export class PersonalInformationComponent implements OnInit, OnDestroy {
-  loading: boolean = true;
   subscribe: Subscription[] = [];
   formErrors: UserProfileUpdateErrorResponse = {
     errors: {
@@ -50,7 +50,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
-    private toasterService: ToastrService
+    private toasterService: ToastrService,
+    private spinner: NgxSpinnerService
   ) {
     this.profileForm = fb.group({
       firstName: this.firstName,
@@ -72,27 +73,34 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
     this.setProfile();
   }
   setProfile() {
+    this.spinner.show();
     this.subscribe.push(
-      this.profileService.getProfile().subscribe(profile => {
-        const profileData = profile.data.profile;
-        // we use `patchValue` because the response from the server might not have prefilled address information
-        this.profileForm.patchValue({
-          firstName: profileData.user.first_name,
-          lastName: profileData.user.last_name,
-          emailAddress: profileData.user.email,
-          street: profileData.address.Street,
-          city: profileData.address.City,
-          state: profileData.address.State,
-          phone: profileData.phone,
-          employer: profileData.employer,
-          designation: profileData.designation,
-          nextOfKin: profileData.next_of_kin,
-          nextOfKinContact: profileData.next_of_kin_contact,
-          bio: profileData.bio
-        });
-      })
+      this.profileService.getProfile().subscribe(
+        profile => {
+          const profileData = profile.data.profile;
+          // we use `patchValue` because the response from the server might not have prefilled address information
+          this.profileForm.patchValue({
+            firstName: profileData.user.first_name,
+            lastName: profileData.user.last_name,
+            emailAddress: profileData.user.email,
+            street: profileData.address.Street,
+            city: profileData.address.City,
+            state: profileData.address.State,
+            phone: profileData.phone,
+            employer: profileData.employer,
+            designation: profileData.designation,
+            nextOfKin: profileData.next_of_kin,
+            nextOfKinContact: profileData.next_of_kin_contact,
+            bio: profileData.bio
+          });
+          this.spinner.hide();
+        },
+        error => {
+          this.spinner.hide();
+          this.toasterService.error(error.error.errors);
+        }
+      )
     );
-    this.loading = false;
   }
   resetFormErrors() {
     this.formErrors = {
@@ -102,6 +110,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
     };
   }
   saveProfile() {
+    this.spinner.show();
     const addressData = {
       Street: this.profileForm.controls.street.value,
       City: this.profileForm.controls.city.value,
@@ -132,9 +141,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
             bio: profileData.bio
           });
           this.resetFormErrors();
+          this.spinner.hide();
           this.toasterService.success(profile.data.message);
         },
         error => {
+          this.spinner.hide();
           this.formErrors = error.error;
           for (const [key, value] of Object.entries(this.formErrors.errors)) {
             this.toasterService.error(

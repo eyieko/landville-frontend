@@ -25,4 +25,10 @@ describe('LocalStorageService', () => {
     const token = service.get('anothertoken', '');
     expect(token).toBe('anothertesttoken');
   });
+  it('should clear keys from localStorage', () => {
+    const service: LocalStorageService = TestBed.get(LocalStorageService);
+    service.set('anothertoken', 'anothertesttoken');
+    service.clear();
+    expect(localStorage.length).toEqual(0);
+  });
 });

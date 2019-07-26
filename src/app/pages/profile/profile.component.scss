@@ -33,6 +33,7 @@
   }
   &-tab {
     background-color: #fff9cc;
+    margin-top: 20px;
     &-active {
       z-index: 2;
       color: black;
@@ -42,6 +43,7 @@
       border-bottom-right-radius: inherit;
       border-bottom-width: thick !important;
       border-bottom-left-radius: unset !important;
+      padding-bottom: inherit;
     }
     &-content {
       font-size: x-small;

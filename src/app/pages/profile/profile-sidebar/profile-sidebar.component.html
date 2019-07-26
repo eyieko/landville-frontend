@@ -1,10 +1,13 @@
 <div class="card profile-sidebar-upper">
   <div class="profile-image-container">
+    <ngx-spinner></ngx-spinner>
+
     <img
-      class="card-img-top img-fluid rounded-circle"
+      class="card-img-top img-fluid rounded-circle profile-image"
       [src]="profileImage"
       alt="Profile Image"
     />
+
     <div class="overlay">
       <input
         type="file"
@@ -13,9 +16,12 @@
         #imageInput
         (change)="updateImage($event)"
       />
-      <p class="info" (click)="imageInput.click()">Update Image</p>
     </div>
   </div>
+  <p class="info" (click)="imageInput.click()">
+    <i class="fas fa-pen"></i> Update Image
+  </p>
+
   <div class="card-body">
     <h5 class="card-title text-center">{{ firstName }} {{ lastName }}</h5>
     <h6 class="card-text text-center">{{ userRole }}</h6>

@@ -8,7 +8,8 @@ import { AppModule } from 'src/app/app.module';
 import {
   profileServiceSpy,
   resetSpies,
-  toastServiceSpy
+  toastServiceSpy,
+  localStorageSpy
 } from 'src/app/shared/utils/helpers/spies';
 import { ToastrService } from 'ngx-toastr';
 import { of, throwError } from 'rxjs';
@@ -19,19 +20,25 @@ import {
 } from 'src/app/shared/utils/mocks/mocks';
 import { By } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('ProfileSidebarComponent', () => {
   let component: ProfileSidebarComponent;
   let fixture: ComponentFixture<ProfileSidebarComponent>;
 
   beforeAll(() => resetSpies([profileServiceSpy, toastServiceSpy]));
-  afterEach(() => resetSpies([profileServiceSpy, toastServiceSpy]));
+  afterEach(() => {
+    resetSpies([profileServiceSpy, toastServiceSpy]);
+  });
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule, HttpClientTestingModule],
+      imports: [AppModule, HttpClientTestingModule, NgxSpinnerModule],
       declarations: [ProfileSidebarComponent],
       providers: [
-        LocalStorageService,
+        {
+          provide: LocalStorageService,
+          useValue: localStorageSpy
+        },
         {
           provide: ProfileService,
           useValue: profileServiceSpy
@@ -59,7 +66,7 @@ describe('ProfileSidebarComponent', () => {
     component.fetchProfile();
     expect(profileServiceSpy.getProfile).toHaveBeenCalled();
   });
-  it('should set custom message if the user has not set their profile', () => {
+  it('should set custom message if the user has not set their address', () => {
     profileServiceSpy.getProfile.and.returnValue(
       of(mockProfileResponseNoAddress)
     );
@@ -100,4 +107,25 @@ describe('ProfileSidebarComponent', () => {
       'Could not update your profile image. Please provide a valid image format'
     );
   }));
+  it('should store image in localStorage if the user has an image', () => {
+    component.setImage(mockProfileResponse.data.profile);
+    expect(localStorage.getItem('profileImage')).toEqual(
+      mockProfileResponse.data.profile.image
+    );
+  });
+  it('should first check the localStorage to get the profile image', () => {
+    localStorageSpy.get.and.returnValue('https:dummyimage.com/300');
+    component.setImage(mockProfileResponse.data.profile);
+    expect(localStorage.getItem('profileImage')).toBe(
+      mockProfileResponse.data.profile.image
+    );
+  });
+  it('should generate random image for users who have no profile image', () => {
+    profileServiceSpy.getProfile.and.returnValue(
+      of(mockProfileResponseNoAddress)
+    );
+    localStorage.clear();
+    spyOn(component, 'generateRandomAvatar');
+    expect(component.generateRandomAvatar).toHaveBeenCalledTimes(0);
+  });
 });

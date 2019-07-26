@@ -16,7 +16,14 @@ export const profileServiceSpy = createSpyObj('ProfileService', [
   'updateProfile'
 ]);
 
+export const localStorageSpy = createSpyObj('LocalStorage', [
+  'get',
+  'set',
+  'clear'
+]);
+
 export const toastServiceSpy = createSpyObj('ToastrService', [
   'success',
-  'error'
+  'error',
+  'info'
 ]);

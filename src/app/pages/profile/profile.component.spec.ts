@@ -34,6 +34,7 @@ describe('ProfileComponent', () => {
   }));
 
   beforeEach(() => {
+    localStorage.clear();
     fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
     profileServiceSpy.getProfile.and.returnValue(of(mockProfileResponse));

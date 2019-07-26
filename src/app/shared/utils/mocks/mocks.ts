@@ -63,7 +63,7 @@ export const mockProfileResponse = {
         Street: 'Burn'
       },
       level: 'STARTER',
-      image: '',
+      image: 'https://dummyimage.com/300',
       employer: 'Fast Foods',
       designation: 'Waiter',
       next_of_kin: 'Masha',
@@ -87,7 +87,7 @@ export const mockProfileResponseNoAddress = {
       phone: '+234 123 4435500',
       address: {},
       level: 'STARTER',
-      image: '',
+      image: null,
       employer: 'Fast Foods',
       designation: 'Waiter',
       next_of_kin: 'Masha',
