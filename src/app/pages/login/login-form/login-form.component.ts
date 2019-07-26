@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { LoginService } from '../../../services/login/login.service';
 import { LoginData } from '../../../models/login/loginData';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login-form',
@@ -21,6 +22,7 @@ export class LoginFormComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private toastrService: ToastrService,
+    private spinner: NgxSpinnerService,
     ){}
 
 
@@ -31,23 +33,28 @@ export class LoginFormComponent implements OnInit {
   onLogin(loginData: LoginData) {
     this.submitted = true;
     if(this.loginForm.invalid){
-      this.notification = 'Error, ensure you provide valid details';
+      this.toastrService.error('Error, ensure you provide valid details in the fields before sign in');
       this.setErrorTimeout()
       return;
     }
+    if(this.loginForm.value.email === ''){
+      this.toastrService.error('Please fill all details before sign in');
+      return;
+    }
     this.success = true;
+    this.spinner.show()
 
     this.loginService.login(loginData).subscribe(response => {
+      this.spinner.hide()
       this.toastrService.success(response.data.message);
       this.notification = 'Login was succesful';
       localStorage.setItem('token', response.data.user.token)
 
       this.router.navigate([''])
     }, error => {
+      this.spinner.hide()
       this.toastrService.error('Invalid email and password combination');
-      this.notification = 'Error, no user with such email and password found';
       this.setErrorTimeout()
-      
     })
     
   }

@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from '@angular/forms';
+import {ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +8,14 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  constructor(private router:ActivatedRoute) { }
   
   ngOnInit() {
+
+    this.router.data.subscribe(data => {
+      document.title = data['title']
+    })
   }
 
 }
