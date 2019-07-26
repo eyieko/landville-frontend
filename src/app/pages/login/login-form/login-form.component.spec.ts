@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import {FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { of, throwError } from 'rxjs';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { LoginFormComponent } from './login-form.component';
 import { LoginHeaderComponent } from '../login-header/login-header.component';
@@ -48,7 +49,8 @@ describe('LoginFormComponent', () => {
         FormsModule,
         HttpClientTestingModule,
         RouterTestingModule,
-        ToastrModule.forRoot()
+        ToastrModule.forRoot(),
+        NgxSpinnerModule
       ],
       declarations: [
         LoginFormComponent,

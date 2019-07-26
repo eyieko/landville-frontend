@@ -1,5 +1,10 @@
+.big-container{
+  display: flex;
+  justify-content: center;
+}
+
 .container{
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 1fr;
   margin: 10em;
   border-radius: 16px;
@@ -53,7 +58,7 @@ img.bg {
     width: 30em;
     margin: 0em;
     height: 55em;
-    padding-left: -6px;
+    padding-left: 2px;
     background-repeat: no-repeat;
   }
   img.bg {
@@ -61,5 +66,6 @@ img.bg {
   }
   .login-section {
     width: 100%;
+    border-radius: 0 4px 2px 0;
   }
   }

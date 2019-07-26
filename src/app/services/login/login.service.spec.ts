@@ -3,6 +3,7 @@ import { Observable, Observer } from 'rxjs';
 import { LoginFormComponent } from '../../pages/login/login-form/login-form.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { LoginService } from './login.service';
 import { AppModule } from 'src/app/app.module';
@@ -17,7 +18,8 @@ describe('LoginService', () => {
       AppModule,
       ReactiveFormsModule,
       FormsModule,
-      ToastrModule.forRoot()
+      ToastrModule.forRoot(),
+      NgxSpinnerModule
     ],
     declarations: [LoginFormComponent],
     providers: [ LoginService, {provide: ToastrService, useValue: toastServiceSpy} ]

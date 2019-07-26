@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {HttpClientModule } from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 import {AuthLayoutRoutes} from './auth-layout.routing';
 import {LoginComponent} from '../../pages/login/login.component';
@@ -17,7 +18,8 @@ import { SocialLoginComponent } from '../../pages/login/social-login/social-logi
     RouterModule.forChild(AuthLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   declarations: [
     LoginComponent,
