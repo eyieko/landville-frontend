@@ -9,6 +9,8 @@ import { PasswordResetService } from 'src/app/services/password-reset.service';
 export class PasswordResetComponent implements OnInit {
 
   email: string;
+  successMessage: string;
+  errMessage: string;
 
   constructor(private resetService: PasswordResetService) {
   }
@@ -17,8 +19,16 @@ export class PasswordResetComponent implements OnInit {
   }
 
   onSubmit() {
-    this.resetService.getResetLink(this.email).subscribe(data => {
-      console.log(JSON.stringify(data));
-    });
+    this.resetService.getResetLink(this.email).subscribe(res => {
+      const { data: { message } } = res;
+      this.successMessage = message;
+      this.errMessage = '';
+
+    }, err => {
+      this.errMessage = err;
+      this.successMessage = '';
+
+    }
+    );
   }
 }
