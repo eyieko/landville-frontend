@@ -50,6 +50,7 @@ describe('RegisterFormComponent', () => {
     el = fixture.debugElement.query(By.css('button')).nativeElement;
     expect(component.onSubmit).toHaveBeenCalledTimes(0);
   }));
+
   it('should be invalid', async(() => {
     component.registerForm.controls[`email`].setValue('');
     component.registerForm.controls[`first_name`].setValue('');

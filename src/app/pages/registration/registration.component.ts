@@ -29,7 +29,6 @@ export class RegistrationComponent implements OnInit {
       this.toastrService.success(response.data.message);
       this.router.navigate(['/registersuccess']);
       this.spinner.hide();
-      // this.registeruser.push(register);
     },
     error => {
       this.toastrService.error(error.error.errors.email[0]);

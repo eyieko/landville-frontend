@@ -33,7 +33,6 @@ import { RegisterHeaderComponent } from '../../pages/registration/register-heade
     LoginHeaderComponent,
     LoginSliderComponent,
     SocialLoginComponent,
-    NgxSpinnerModule,
     LoginComponent,
     RegistrationComponent,
     RegisterFormComponent,

@@ -18,7 +18,6 @@ import {ComponentsModule} from './components/components.module';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    ToastrModule.forRoot(),
     ComponentsModule,
     HttpClientModule,
     ToastrModule.forRoot(),

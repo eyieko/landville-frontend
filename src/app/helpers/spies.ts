@@ -16,10 +16,6 @@ export const  loginServiceSpy = createSpyObj('LoginService', [
     'login'
 ]);
 
-export const  toastServiceSpy = createSpyObj('ToastrService', [
-    'success',
-    'error'
-]);
 export const  registerServiceSpy = createSpyObj('RegisterServiceService', [
     'registerUser'
 ]);
