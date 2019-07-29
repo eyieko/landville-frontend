@@ -12,16 +12,12 @@ export class EnterResetPasswordService {
 
   constructor(private http: HttpClient) { }
 
-  changePassword(token, newPassword) : Observable<any> {
+  changePassword(token, newPassword): Observable<any> {
     this.data = {
       password: newPassword,
       confirm_password: newPassword
-    }
-    
-    return this.http.patch(this.url+token, this.data)
-                  .pipe(catchError(this.errorHandler));
-  }
-  errorHandler(error: HttpErrorResponse) {
-    return throwError(error);
+    };
+
+    return this.http.patch(this.url + token, this.data);
   }
 }

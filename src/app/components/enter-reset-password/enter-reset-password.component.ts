@@ -10,13 +10,14 @@ import { EnterResetPasswordService } from 'src/app/services/enter-reset-password
   styleUrls: ['./enter-reset-password.component.scss']
 })
 export class EnterResetPasswordComponent implements OnInit {
-  formGroup: FormGroup;
+  enterPasswordForm: FormGroup;
   token: string;
   password: string;
   successMessage: string;
   tokenError: string;
   passwordError: boolean;
   disabled: boolean = true;
+  loading: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,42 +28,39 @@ export class EnterResetPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.token = params.token
+      this.token = params.token;
     });
 
-    this.formGroup = this.fb.group({
+    this.enterPasswordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
-    })
+    });
 
-    this.formGroup.valueChanges.subscribe( value => {
+    this.enterPasswordForm.valueChanges.subscribe( value => {
 
-      if(value.newPassword === value.confirmPassword){
+      if (value.newPassword === value.confirmPassword) {
         this.passwordError = false;
         this.disabled = false;
-      } else{
+      } else {
         this.passwordError = true;
       }
-      this.disabled = this.passwordError || this.formGroup.invalid;
+      this.disabled = this.passwordError || this.enterPasswordForm.invalid;
 
-      console.log(this.passwordError);
-    })
+
+    });
   }
   onSubmit() {
-    console.log(this.formGroup.valid);
-    
-    this.password = this.formGroup.get('newPassword').value
+    this.password = this.enterPasswordForm.get('newPassword').value;
 
-    this.changePasswordService.changePassword(this.token, this.password).subscribe(res =>{
+    this.changePasswordService.changePassword(this.token, this.password).subscribe(res => {
       const { data: { message } } = res;
       this.successMessage = message;
-    }, err =>{
-      
-      console.log(err);
-      if (err.error.errors.token) {
-        this.tokenError = 'Your session has expired, please restart the process';
-      }
-    })
+      this.loading = true;
+
+    }, err => {
+      this.loading = false;
+      this.tokenError = 'Your session has expired, please restart the process';
+    });
   }
 
 }

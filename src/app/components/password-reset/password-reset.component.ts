@@ -8,10 +8,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./password-reset.component.scss']
 })
 export class PasswordResetComponent implements OnInit {
-  formGroup: FormGroup;
+  resetForm: FormGroup;
   email: string;
   successMessage: string;
   errMessage: string;
+  loading: boolean;
 
   constructor(
     private resetService: PasswordResetService,
@@ -19,25 +20,20 @@ export class PasswordResetComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    this.formGroup = this.fb.group({
+    this.resetForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
-    })
+    });
   }
 
   onSubmit() {
-    this.email = this.formGroup.get('email').value;
-    console.log(this.formGroup.get('email').valid);
-    
-    
-    this.resetService.getResetLink(this.email).subscribe(res => {
-      const { data: { message } } = res;
-      this.successMessage = message;
-      this.errMessage = '';
+    this.email = this.resetForm.get('email').value;
 
+    this.resetService.getResetLink(this.email).subscribe(res => {
+      this.successMessage = 'success';
+      this.loading = true;
     }, err => {
       this.errMessage = err;
-      this.successMessage = '';
-
+      this.loading = false;
     }
     );
   }

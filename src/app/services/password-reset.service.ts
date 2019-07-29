@@ -13,14 +13,10 @@ export class PasswordResetService {
 
   constructor(private http: HttpClient) { }
 
-  getResetLink(resetEmail) : Observable<any> {
+  getResetLink(resetEmail): Observable<any> {
     this.emailData = {
       email: resetEmail
     };
-    return this.http.post(this.url, this.emailData)
-                    .pipe(catchError(this.errorHandler));
-  }
-  errorHandler(error: HttpErrorResponse) {
-    return throwError(error);
+    return this.http.post(this.url, this.emailData);
   }
 }
