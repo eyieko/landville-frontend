@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class PasswordResetService {
 
   constructor(private http: HttpClient) { }
 
-  getResetLink(resetEmail) {
+  getResetLink(resetEmail) : Observable<any> {
     this.emailData = {
       email: resetEmail
     };

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class EnterResetPasswordService {
 
   constructor(private http: HttpClient) { }
 
-  changePassword(token, newPassword){
+  changePassword(token, newPassword) : Observable<any> {
     this.data = {
       password: newPassword,
       confirm_password: newPassword
