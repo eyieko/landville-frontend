@@ -11,10 +11,22 @@
             <input 
             formControlName="email"
             type="text" class="form-control"
-              placeholder="Email address" />
-              <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched && registerForm.controls['email'].dirty" class="alert alert-danger">
-                  <small class="text-danger"  *ngIf="registerForm.controls['email'].errors.email">Email must be a valid email address</small>
-              </div>
+              placeholder="Email address"
+              [ngClass]="{
+                'is-invalid':
+                  (registerForm.get('email').touched ||
+                    registerForm.get('email').dirty) &&
+                  !registerForm.get('email').valid
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="registerForm.get('email').errors?.required">
+                Email is required
+              </span>
+              <span *ngIf= "registerForm.get('email').errors?.email">
+                  Email must be avalid email
+                </span>
+            </span>
               </div>
           </div>
     
@@ -27,10 +39,18 @@
                 formControlName="first_name"
                 placeholder="First Name" 
                 type='text'
+                [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('first_name').touched ||
+                      registerForm.get('first_name').dirty) &&
+                    !registerForm.get('first_name').valid
+                }"
               />
-              <div *ngIf="registerForm.controls.first_name.invalid && registerForm.controls.first_name.touched" class="alert alert-danger">
-                  <small class="text-danger" *ngIf="registerForm.controls.first_name.errors.required">First Name is required.</small>
-              </div>
+              <span class="invalid-feedback">
+                <span *ngIf="registerForm.get('first_name').errors?.required">
+                  first name is required
+                </span>
+              </span>
                 </div>
             
             </div>
@@ -43,11 +63,18 @@
                 formControlName="last_name"
                 placeholder="Last Name" 
                 type='text'
+                [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('last_name').touched ||
+                      registerForm.get('last_name').dirty) &&
+                    !registerForm.get('last_name').valid
+                }"
               />
-              
-              <div *ngIf="registerForm.controls.last_name.invalid && registerForm.controls.last_name.touched" class="invalid-feedback">
-                  <small class="text-danger" *ngIf="registerForm.controls.last_name.errors.required">Last Name is required.</small>
-              </div>
+              <span class="invalid-feedback">
+                <span *ngIf="registerForm.get('last_name').errors?.required">
+                  Last name name is required
+                </span>
+              </span>
                 </div>
             </div>
 
@@ -56,14 +83,22 @@
                     <i class="fa fa-user icon"> 
                   </i> 
                
-              <select class="custom-select" formControlName="role"  placeholder=" Select a role">
+              <select class="custom-select" formControlName="role"  placeholder=" Select a role"
+              [ngClass]="{
+                'is-invalid':
+                  (registerForm.get('role').touched ||
+                    registerForm.get('role').dirty) &&
+                  !registerForm.get('role').valid
+              }">
                 <option value=""  value="null" disabled="true" [selected]="true">Select a role</option>
                 <option value="CA">Client Admin</option>
                 <option value="BY">Buyer</option>
               </select>
-              <div *ngIf="!registerForm.get('role').valid && registerForm.get('role').touched" class="invalid-feedback">
-                Please select a role
-              </div>
+              <span class="invalid-feedback">
+                  <span *ngIf="registerForm.get('role').errors?.required">
+                    Role is required
+                  </span>
+              </span>
              </div>
 
             
@@ -78,12 +113,22 @@
               class="form-control"
               formControlName="password"
               placeholder="Create Password" 
-              type='password'/>
-
-              <div *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched" class="alert alert-danger">
-                  <small class="text-danger" *ngIf="registerForm.controls.password.errors.required">password is required.</small>
-                  <small class="text-danger" *ngIf="registerForm.controls.password.errors.minlength">Password must contain an uppercase, number and a character</small>
-              </div>
+              type='password'
+              [ngClass]="{
+                'is-invalid':
+                  (registerForm.get('password').touched ||
+                    registerForm.get('password').dirty) &&
+                  !registerForm.get('password').valid
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="registerForm.get('password').errors?.required">
+                Password is required
+              </span>
+              <span *ngIf="registerForm.get('password').errors?.minlength">
+                  Password must contain an uppercase, number and a character
+                </span>
+            </span>
                 </div>
             </div>
 
@@ -97,11 +142,21 @@
               formControlName="confirmed_password"
               placeholder="Confirm password" 
               type='password' 
-                 />
-                 <div *ngIf="registerForm.controls.confirmed_password.invalid && registerForm.controls.confirmed_password.touched" class="alert alert-danger">
-                    <small class="text-danger" *ngIf="registerForm.controls.confirmed_password.errors.required">Confirm Password is required.</small>
-                    <div class ="text-danger" *ngIf="registerForm.controls.confirmed_password.errors.mustMatch">Passwords must match</div>
-                </div>
+              [ngClass]="{
+                'is-invalid':
+                  (registerForm.get('confirmed_password').touched ||
+                    registerForm.get('confirmed_password').dirty) &&
+                  !registerForm.get('confirmed_password').valid
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="registerForm.get('confirmed_password').errors?.required">
+                confirmed Password is required
+              </span>
+              <span *ngIf="registerForm.get('confirmed_password').errors?.mustMatch">
+                Passwords Must Match
+              </span>
+            </span>
                 </div>
             </div>
 
