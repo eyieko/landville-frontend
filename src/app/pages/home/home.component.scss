@@ -20,10 +20,22 @@ img {
 }
 
 .page-header {
-    height: 100%;
+    // height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+a {
+    color: whitesmoke;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    opacity: 0.7;
+    text-decoration: none;
+    background-color: transparent;
 }
 
 hr.br-line {
@@ -35,3 +47,88 @@ hr.br-line {
   
   }
   
+  .footer {
+    bottom: 0;
+    left: 0;
+    &-big {
+      padding: 3rem;
+    }
+  
+    &--light {
+      background: #e7e8ed
+    }
+  
+    &-widget img {
+      width: 10rem;
+      height: 10rem;
+      max-width: 100%;
+      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%) invert(100%) opacity(50%) contrast(50%);
+    }
+  
+    &-menu {
+      display: flex;
+      flex-direction: column;
+  
+      &--1 {
+        display: flex;
+        align-items: center;
+  
+        & ul {
+          display: flex;
+          flex-direction: row;
+          list-style: none;
+          margin-top: 1rem;
+  
+          & li {
+  
+            & a i {
+              padding: 1.5rem;
+              font-size: 20px;
+              width: 4rem;
+              text-align: center;
+              text-decoration: none;
+              margin: 5px 5px;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .fa {
+  
+    &:hover {
+      opacity: 0.7;
+    }
+  
+    &-facebook-f {
+      background: #3B5998;
+      color: white;
+    }
+  
+    &-twitter {
+      background: #55ACEE;
+      color: white;
+    }
+  
+    &-google {
+      background: #dd4b39;
+      color: white;
+    }
+  
+    &-linkedin {
+      background: #007bb5;
+      color: white;
+    }
+  }
+
+.card {
+    background-color: whitesmoke;
+}
+
+.col-md-4 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
