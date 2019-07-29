@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators , NgForm} from '@angular/forms';
-import { MustMatch } from '../../../helpers/passwordvalidator';
+import { mustMatch } from '../../../helpers/passwordvalidator';
 
 
 @Component({
@@ -31,7 +31,7 @@ export class RegisterFormComponent implements OnInit {
       password : [null, Validators.compose([Validators.required])],
       confirmed_password : [null, Validators.compose([Validators.required])],
     }, {
-      validator:  MustMatch('password', 'confirmed_password')
+      validator:  mustMatch('password', 'confirmed_password')
 
     });
   }

@@ -56,7 +56,7 @@ describe('RegistrationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('test register user function', () => {
+  it('should test registering a user and return right response ', () => {
     const User = {
       email: 'akram@andela.com',
       first_name: 'akram', last_name: 'mukasa', role: 'CA',

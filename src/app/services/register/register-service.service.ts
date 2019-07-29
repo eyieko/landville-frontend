@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../models/register/register-details';
 import { environment } from 'src/environments/environment.prod';
+import { HttpService } from '../http.service';
+import { HttpMethods } from '../../config';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,10 +17,9 @@ const httpOptions = {
 })
 export class RegisterServiceService {
   registerUrl = environment.authUrl;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpService) {
    }
    registerUser(register: User): Observable<User> {
-    return this.http.post<User>(`${this.registerUrl}auth/register/`, register);
-   }
-
+    return this.http.makeRequestWithData(this.registerUrl, register, HttpMethods.POST);
+}
 }

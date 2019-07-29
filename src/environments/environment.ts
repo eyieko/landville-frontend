@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  authUrl: 'https://landville-backend-web-api.herokuapp.com/api/v1/'
+  authUrl: 'auth/register/'
 };
 
 /*
