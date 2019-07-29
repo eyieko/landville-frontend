@@ -7,22 +7,20 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PasswordResetService {
-  data;
-  _ERROR;
+  emailData;
   url = 'http://127.0.0.1:8000/api/v1/auth/password-reset/';
 
 
   constructor(private http: HttpClient) { }
 
-  getResetLink(_EMAIL) {
-    this.data = {
-      email: _EMAIL
+  getResetLink(resetEmail) {
+    this.emailData = {
+      email: resetEmail
     };
-    return this.http.post(this.url, this.data)
+    return this.http.post(this.url, this.emailData)
                     .pipe(catchError(this.errorHandler));
   }
   errorHandler(error: HttpErrorResponse) {
-    this._ERROR = error.error.errors.email[0];
-    return throwError(this._ERROR);
+    return throwError(error);
   }
 }
