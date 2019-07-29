@@ -4,3 +4,9 @@ hr.header-line {
   margin: 0;
 
 }
+
+@media only screen and (max-width: 480px) {
+  hr.header-line {
+    width: 140%;
+  }
+}
