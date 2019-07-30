@@ -53,19 +53,28 @@ img.bg {
 }
 
 @media only screen and (max-width: 480px) {
+  .big-container{
+    display: flex;
+    width: 104%;
+    height: 32em;
+
+  }
   .container {
     background-image: none;
-    width: 30em;
     margin: 0em;
-    height: 55em;
+    height: 38em;
+    position: fixed;
     padding-left: 2px;
     background-repeat: no-repeat;
   }
+
   img.bg {
     display: none;
   }
   .login-section {
     width: 100%;
     border-radius: 0 4px 2px 0;
+    height: 865px;
+    background-size: cover;
   }
   }

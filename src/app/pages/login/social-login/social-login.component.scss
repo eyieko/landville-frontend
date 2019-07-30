@@ -1,0 +1,62 @@
+
+.social-section p {
+  margin: -0.5rem 5rem 0.5rem 10.7rem;
+  color: white;
+}
+
+.social-section {
+  margin: 1rem 2rem 1rem 2rem;
+  align-content: center;
+  border-radius: 16px;
+}
+
+.social-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 4rem;
+}
+.social-facebook {
+    width: 10rem;
+    float: left;
+}
+
+.social-linkedin {
+    width: 10rem;
+}
+.social-facebook img {
+  width: 10rem;
+  height: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.social-linkedin img {
+  width: 10rem;
+  height: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+h2 {
+  width: 100%; 
+  text-align: center; 
+  border-bottom: 0px solid #000; 
+  line-height: 0.1em;
+  margin: 10px 0 20px; 
+} 
+
+h2 span { 
+   background:#fff; 
+   padding:0 10px; 
+}
+
+
+@media only screen and (max-width: 480px) {
+  .social-section{
+    transform: scale(0.82);
+    margin: 1rem 9rem 1rem 10rem;
+   }
+  .social-section p {
+    margin: -0.5rem 17rem 0.5rem 10.7rem;
+    
+  }
+
+  }
