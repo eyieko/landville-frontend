@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EnterResetPasswordService } from 'src/app/services/password/enter-reset-password.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,7 +15,6 @@ export class EnterResetPasswordComponent implements OnInit {
   token: string;
   password: string;
   successMessage: string;
-  tokenError: string;
   passwordError: boolean;
   disabled: boolean = true;
   loading: boolean;
@@ -23,7 +23,8 @@ export class EnterResetPasswordComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private changePasswordService: EnterResetPasswordService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastrService: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -59,7 +60,7 @@ export class EnterResetPasswordComponent implements OnInit {
 
     }, err => {
       this.loading = false;
-      this.tokenError = 'Your session has expired, please restart the process';
+      this.toastrService.success('Your password resert token has expired','', {timeOut: 3000});
     });
   }
 

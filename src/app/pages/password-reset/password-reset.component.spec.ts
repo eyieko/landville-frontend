@@ -7,7 +7,7 @@ import { AppRoutingModule } from 'src/app/app.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PasswordResetService } from 'src/app/services/password/password-reset.service';
-import { resetLinkService } from 'src/app/helpers/spies';
+import { resetLinkService, toastServiceSpy } from 'src/app/helpers/spies';
 import { AuthLayoutComponent } from 'src/app/layouts/auth-layout/auth-layout.component';
 import { CommonLayoutComponent } from 'src/app/layouts/common-layout/common-layout.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -15,6 +15,7 @@ import { AppComponent } from 'src/app/app.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { DebugElement } from '@angular/core';
 import { throwError, of } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 describe('PasswordResetComponent', () => {
   let component: PasswordResetComponent;
@@ -41,9 +42,8 @@ describe('PasswordResetComponent', () => {
 
       ],
       providers: [
-        {
-          provide: PasswordResetService, useValue: resetLinkService
-        }
+        { provide: PasswordResetService, useValue: resetLinkService },
+        { provide: ToastrService, useValue: toastServiceSpy }
       ]
     })
     .compileComponents();

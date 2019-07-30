@@ -38,4 +38,3 @@ import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-
 })
 export class AppModule {
 }
-  

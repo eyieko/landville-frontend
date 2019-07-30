@@ -9,11 +9,12 @@ import { DebugElement } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppRoutingModule } from 'src/app/app.routing';
 import { EnterResetPasswordService } from 'src/app/services/password/enter-reset-password.service';
-import { resetPassordService } from 'src/app/helpers/spies';
+import { resetPassordService, toastServiceSpy } from 'src/app/helpers/spies';
 import { of, throwError } from 'rxjs';
 import { AuthLayoutComponent } from 'src/app/layouts/auth-layout/auth-layout.component';
 import { CommonLayoutComponent } from 'src/app/layouts/common-layout/common-layout.component';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { ToastrService } from 'ngx-toastr';
 
 describe('EnterResetPasswordComponent', () => {
   let component: EnterResetPasswordComponent;
@@ -42,7 +43,8 @@ describe('EnterResetPasswordComponent', () => {
       providers: [
         {
           provide: EnterResetPasswordService, useValue: resetPassordService
-        }
+        },
+        { provide: ToastrService, useValue: toastServiceSpy }
       ]
     })
     .compileComponents();

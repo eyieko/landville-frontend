@@ -24,7 +24,6 @@ describe('EnterResetPasswordService', () => {
       newPassword: 'akram100',
       confirmPassword: 'akram100'
     };
-    // const
     service.changePassword('token', mockData).subscribe();
     const req = httpMock.expectOne(`http://127.0.0.1:8000/api/v1/auth/password-reset/?token=token`);
     req.flush(mockData);

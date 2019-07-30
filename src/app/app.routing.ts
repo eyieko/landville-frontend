@@ -32,8 +32,15 @@ const routes: Routes = [
         loadChildren: './layouts/common-layout/common-layout.module#CommonLayoutModule'
       }
     ]
-  },  { path: 'auth/reset-link', component: PasswordResetComponent },
-  { path: 'auth/password-reset', component: EnterResetPasswordComponent },
+  },
+  {
+    path: 'auth/reset-link',
+    component: PasswordResetComponent
+  },
+  {
+    path: 'auth/password-reset',
+    component: EnterResetPasswordComponent
+  },
   {
     path: '**',
     redirectTo: 'home'

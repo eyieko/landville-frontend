@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { PasswordResetService } from 'src/app/services/password/password-reset.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-password-reset',
@@ -13,15 +14,20 @@ export class PasswordResetComponent implements OnInit {
   successMessage: string;
   errMessage: string;
   loading: boolean;
+  disabled: boolean = true;
 
   constructor(
     private resetService: PasswordResetService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastrService: ToastrService,
     ) {}
 
   ngOnInit() {
     this.resetForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
+    });
+    this.resetForm.valueChanges.subscribe( value => {
+      this.disabled = this.resetForm.invalid;
     });
   }
 
@@ -31,10 +37,14 @@ export class PasswordResetComponent implements OnInit {
     this.resetService.getResetLink(this.email).subscribe(res => {
       this.successMessage = 'success';
       this.loading = true;
+      this.toastrService.success(res.data.message,'', {timeOut: 3000});
+
     }, err => {
       this.errMessage = err;
       this.loading = false;
+      if (err.error) this.toastrService.error(err.error.errors.email,'', {timeOut: 3000});
     }
     );
+    this.disabled = true;
   }
 }

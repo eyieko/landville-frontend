@@ -20,7 +20,6 @@ export const  toastServiceSpy = createSpyObj('ToastrService', [
     'error'
 ]);
 
-
 export const  resetLinkService = createSpyObj('PasswordResetService', [
     'getResetLink'
 ]);

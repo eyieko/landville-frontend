@@ -21,16 +21,14 @@ import { EnterResetPasswordComponent } from 'src/app/pages/enter-reset-password/
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSpinnerModule,
-
-
+    NgxSpinnerModule
   ],
   declarations: [
     LoginComponent,
     LoginFormComponent,
     LoginHeaderComponent,
     LoginSliderComponent,
-    SocialLoginComponent,
+    SocialLoginComponent
   ],
 })
 export class AuthLayoutModule {
