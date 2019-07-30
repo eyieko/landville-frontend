@@ -11,6 +11,6 @@
     "src/test.ts",
     "src/**/*.spec.ts",
     "**/*.stories.ts",
-    "src/helpers/spies.ts"
+    "src/app/helpers/spies.ts"
   ]
 }

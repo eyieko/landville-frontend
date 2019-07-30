@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+// abstracts
+@import 'assets/scss/abstracts/variables';
+// base
+@import 'assets/scss/base/base';
+// layouts
+@import 'assets/scss/layout/footer';
+@import 'assets/scss/layout/forms';
+@import 'assets/scss/layout/headers';
+@import '~ngx-toastr/toastr';

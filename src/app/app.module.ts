@@ -1,28 +1,41 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { PasswordResetComponent } from './components/password-reset/password-reset.component';
-import { PasswordResetService } from './services/password-reset.service';
-import { EnterResetPasswordComponent } from './components/enter-reset-password/enter-reset-password.component';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app.routing';
+import {RouterModule} from '@angular/router';
+import {AuthLayoutComponent} from './layouts/auth-layout/auth-layout.component';
+import {CommonLayoutComponent} from './layouts/common-layout/common-layout.component';
+import {ComponentsModule} from './components/components.module';
+import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
+import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PasswordResetComponent,
-    EnterResetPasswordComponent
-  ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    ComponentsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
-  providers: [PasswordResetService],
+  declarations: [
+    AppComponent,
+    AuthLayoutComponent,
+    CommonLayoutComponent,
+    PasswordResetComponent,
+    EnterResetPasswordComponent,
+  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
+  
