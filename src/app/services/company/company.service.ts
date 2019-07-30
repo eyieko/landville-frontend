@@ -24,4 +24,8 @@ export class CompanyService {
       return data;
     }));
   }
+
+  getCompanyDetails() {
+    return this.http.get<Company>(`${environment.api_url}/auth/client/`);
+  }
 }

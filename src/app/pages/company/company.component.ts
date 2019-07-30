@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CompanyService} from '../../services/company/company.service';
 import {Company} from '../../models';
 import {first} from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-company',
@@ -15,6 +16,7 @@ export class CompanyComponent implements OnInit {
   companyDetailForm: FormGroup;
   submitted = false;
   loading = false;
+  // Validation messages.
   validationMessages = {
     companyName: [
       {type: 'required', message: 'Company Name required.'}
@@ -45,8 +47,8 @@ export class CompanyComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
-              private companyService: CompanyService) {
-    // TODO: redirect to home if company is already created.
+              private companyService: CompanyService,
+              private toastrService: ToastrService) {
   }
 
   // Convenience getter for easy access to form fields
@@ -56,6 +58,7 @@ export class CompanyComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.loadClientCompany();
   }
 
   createForm() {
@@ -104,12 +107,22 @@ export class CompanyComponent implements OnInit {
     this.companyService.createCompany(this.payload as Company)
       .pipe(first())
       .subscribe(data => {
-        console.log(data);
         this.loading = false;
+        this.toastrService.success('Company registered successfully.');
       }, error => {
 
-        console.log(error);
+        this.toastrService.error(JSON.stringify(error));
         this.loading = false;
       });
+  }
+
+  private loadClientCompany() {
+    this.companyService.getCompanyDetails().pipe(first()).subscribe(data => {
+      this.toastrService.warning('You already have a company registered to this account.');
+      this.router.navigate(['/']);
+    }, error => {
+      console.log(error);
+      this.toastrService.error(JSON.stringify(error));
+    });
   }
 }
