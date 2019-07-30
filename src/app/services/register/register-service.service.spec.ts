@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { RegisterServiceService } from './register-service.service';
 import {HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
-import { User } from '../../models/register/register-details';
+import { User } from '../../models/register/user';
 import { APPCONFIG } from '../../config';
 
 

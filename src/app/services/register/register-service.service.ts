@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../../models/register/register-details';
+import { User } from '../../models/register/user';
 import { environment } from 'src/environments/environment.prod';
 import { HttpService } from '../http.service';
 import { HttpMethods } from '../../config';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Headers': '*'
-  })
-};
+
 @Injectable({
   providedIn: 'root'
 })
