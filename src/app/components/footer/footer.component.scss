@@ -10,8 +10,6 @@
   }
 
   &-widget img {
-    width: 10rem;
-    height: 10rem;
     max-width: 100%;
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%) invert(100%) opacity(50%) contrast(50%);

@@ -6,14 +6,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-// Properties
-  user: any = {
-    firstName: '',
-    lastName: '',
-    email: '',
-  };
   // @ts-ignore
-  @ViewChild('userForm') form: any;
+  @ViewChild('searchForm') form: any;
 
   constructor() {
   }
@@ -21,8 +15,4 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit({value, valid}: { value: any, valid: boolean }) {
-    this.user = value;
-    console.log({value, valid});
-  }
 }

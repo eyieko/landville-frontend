@@ -1,12 +1,74 @@
+.container1 {
+  margin-top: 10%;
+  color: white;
+}
+
+.section1 {
+  background-color: #e7e8ed
+}
+
+.team {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.title1 {
+  color: black;
+  font-weight: lighter; 
+  font-size: 2.8rem;
+}
+
+.title2 {
+  font-weight: bold;
+  color: black;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.lighter {
+  font-weight: lighter;
+}
+
+.text1 {
+  font-weight: lighter;
+  color: black;
+}
+
+.card1 {
+  width: 100%;
+}
+
+.p1 {
+  color: black;
+}
+
+.image1 {
+  width: 100%;
+}
+
 .btn {
     width: 8rem;
     border-radius: 0;
+    margin-top: 1rem;
+}
+
+.card-text {
+  margin: 0 !important;
+  margin-bottom: 0rem !important;
 }
 
 img {
     width: 10rem;
     height: 10rem;
-    padding-top: 5px;
+    padding: 0.5rem;
+}
+
+.navbar {
+  padding-top: 2rem;
+  padding-left: 11%;
+  padding-right: 11%;
 }
 
 .h1, h1 {
@@ -15,15 +77,29 @@ img {
 }
 
 .logo {
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-top: 1rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.h1-font {
+  font-weight: lighter;
+}
+
+.h2-font {
+  font-weight: lighter;
+  color: white;
+  font-size: 2rem;
+}
+
+.btn-search {
+  font-weight: 500;
 }
 
 .page-header {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url('src/assets/img/HouseBG.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 a {
@@ -46,92 +122,15 @@ hr.br-line {
     width: 30%;
   
   }
-  
-  .footer {
-    bottom: 0;
-    left: 0;
-    &-big {
-      padding: 3rem;
-    }
-  
-    &--light {
-      background: #e7e8ed
-    }
-  
-    &-widget img {
-      width: 10rem;
-      height: 10rem;
-      max-width: 100%;
-      -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-      filter: grayscale(100%) invert(100%) opacity(50%) contrast(50%);
-    }
-  
-    &-menu {
-      display: flex;
-      flex-direction: column;
-  
-      &--1 {
-        display: flex;
-        align-items: center;
-  
-        & ul {
-          display: flex;
-          flex-direction: row;
-          list-style: none;
-          margin-top: 1rem;
-  
-          & li {
-  
-            & a i {
-              padding: 1.5rem;
-              font-size: 20px;
-              width: 4rem;
-              text-align: center;
-              text-decoration: none;
-              margin: 5px 5px;
-              border-radius: 50%;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  .fa {
-  
-    &:hover {
-      opacity: 0.7;
-    }
-  
-    &-facebook-f {
-      background: #3B5998;
-      color: white;
-    }
-  
-    &-twitter {
-      background: #55ACEE;
-      color: white;
-    }
-  
-    &-google {
-      background: #dd4b39;
-      color: white;
-    }
-  
-    &-linkedin {
-      background: #007bb5;
-      color: white;
-    }
-  }
 
 .card {
     background-color: whitesmoke;
 }
 
 .col-md-4 {
-    padding-right: 0.50rem;
-    padding-left: 0.50rem;
-    padding-bottom: 0.50rem;
+  padding-right: 0.50rem;
+  padding-left: 0.50rem;
+  padding-bottom: 0.50rem;
 }
 
 .col-md-5 {
@@ -141,13 +140,12 @@ hr.br-line {
 }
 
 .col-md-6 {
-  padding-right: 0.50rem;
-  padding-left: 0.50rem;
   padding-bottom: 0.50rem;
 }
 
-// .row {
-//   padding-right: 0.50rem;
-//   padding-left: 0.50rem;
-//   padding-bottom: 0.50rem;
-// }
+.col-md-7 {
+  padding-right: 3rem;
+  padding-left: 3rem;
+  margin: auto;
+
+}
