@@ -1,6 +1,6 @@
 export const resetSpies = (spies: any[]) => {
-  spies.forEach(spyObj => {
-    Object.keys(spyObj).forEach(prop => {
+  spies.forEach((spyObj) => {
+    Object.keys(spyObj).forEach((prop) => {
       if (typeof spyObj[prop] === 'function') {
         spyObj[prop].calls.reset();
       }
@@ -53,6 +53,7 @@ export const httpRequestSpy = jasmine.createSpyObj('HttpRequest', [
 
 export const resetLinkService = createSpyObj('PasswordResetService', [
   'getResetLink'
+<<<<<<< HEAD
 ]);
 
 export const resetPassordService = createSpyObj('EnterResetPasswordService', [
@@ -61,6 +62,12 @@ export const resetPassordService = createSpyObj('EnterResetPasswordService', [
 
 export const propertiesServiceSpy = createSpyObj('PropertiesService', [
   'getProperties'
+=======
+]);
+
+export const resetPassordService = createSpyObj('EnterResetPasswordService', [
+  'changePassword'
+>>>>>>> ft(authGuards): Implement Auth Guards for Access control
 ]);
 
 export const httpHandlerSpy = jasmine.createSpyObj('HttpHandler', ['handle']);

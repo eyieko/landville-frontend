@@ -39,7 +39,7 @@ import { CardComponent } from './../../components/card/card.component';
     NoPropertiesComponent,
     CardComponent
   ],
-  providers: [ ProfileService, LocalStorageService ],
+  providers: [ProfileService, LocalStorageService],
 })
 export class CommonLayoutModule {
 }
