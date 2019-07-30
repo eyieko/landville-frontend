@@ -1,26 +1,30 @@
-<div class="view">
-  <i class="fa fa-list-ul" (click)="toggleView()"></i>
-  <i class="fa fa-th" (click)="toggleView()"></i>
+<div class="container">
+  <div class="view">
+    <i class="fa fa-list-ul" (click)="toggleView()"></i>
+    <i class="fa fa-th" (click)="toggleView()"></i>
+  </div>
 </div>
 
 <div *ngIf="!toggle">
-  <div *ngFor="let property of properties">
-    <div class="card bg-light listview">
-      <div class="row no-gutters">
-        <div class="col-auto">
-          <img [src]="property.image_main" class="img-fluid2" alt="" />
-        </div>
-        <div class="col">
-          <div class="card-block px-2">
-            <h4 class="card-title">
-              <b>{{ property.title }}</b>
-            </h4>
-            <p class="card-text list-card">
-              <img alt="" src="assets/img/marker.svg" [style.width.px]="10" />
-              {{ property.address.Street }}, {{ property.address.City }}
-            </p>
-            <div class="price">
-              <b>N{{ property.price }}</b>
+  <div class="container">
+    <div *ngFor="let property of properties">
+      <div class="card bg-light listview">
+        <div class="row no-gutters">
+          <div class="col-auto">
+            <img [src]="property.image_main" class="img-fluid2" alt="" />
+          </div>
+          <div class="col">
+            <div class="card-block px-2">
+              <h4 class="card-title">
+                <b>{{ property.title }}</b>
+              </h4>
+              <p class="card-text list-card">
+                <img alt="" src="assets/img/marker.svg" [style.width.px]="10" />
+                {{ property.address.Street }}, {{ property.address.City }}
+              </p>
+              <div class="priceL">
+                <b>N{{ property.price }}</b>
+              </div>
             </div>
           </div>
         </div>
@@ -55,16 +59,18 @@
   </div>
 </div>
 
-<div class="page-buttons">
-  <button class="btn prev" (click)="fetchPrevious()">
-    <small
-      ><img alt="" src="assets/img/arrowL.svg" [style.width.px]="7" />
-      Previous</small
-    >
-  </button>
-  <button class="btn next" (click)="fetchNext()">
-    <small
-      >Next <img alt="" src="assets/img/arrowR.svg" [style.width.px]="7"
-    /></small>
-  </button>
+<div class="container">
+  <div class="page-buttons">
+    <button class="btn prev" (click)="fetchPrevious()">
+      <small
+        ><img alt="" src="assets/img/arrowL.svg" [style.width.px]="7" />
+        Previous</small
+      >
+    </button>
+    <button class="btn next" (click)="fetchNext()">
+      <small
+        >Next <img alt="" src="assets/img/arrowR.svg" [style.width.px]="7"
+      /></small>
+    </button>
+  </div>
 </div>

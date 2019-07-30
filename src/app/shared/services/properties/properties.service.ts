@@ -7,7 +7,8 @@ import { PropertiesResponse, Property } from "src/app/models/Property";
   providedIn: "root"
 })
 export class PropertiesService {
-  userToken = "token";
+  userToken =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJidXllckBnbWFpbC5jb20iLCJleHAiOjE1NjQ1NjMzOTR9.7pSnU4S0CZJ1es7aSWc5i8735zXXWszjTmOQHTib4W0";
 
   httpOptions = {
     headers: new HttpHeaders({
