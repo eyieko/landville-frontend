@@ -2,13 +2,13 @@ import { Injectable } from "@angular/core";
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { PropertiesResponse, Property } from "src/app/models/Property";
+import { LocalStorageService } from "../local-storage.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class PropertiesService {
-  userToken =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJidXllckBnbWFpbC5jb20iLCJleHAiOjE1NjQ1NjMzOTR9.7pSnU4S0CZJ1es7aSWc5i8735zXXWszjTmOQHTib4W0";
+  userToken = this.localStorageService.get("token", "");
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -16,7 +16,10 @@ export class PropertiesService {
     })
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private localStorageService: LocalStorageService
+  ) {}
 
   getProperties(propertiesUrl: string): Observable<any> {
     return this.http.get<PropertiesResponse>(propertiesUrl, this.httpOptions);

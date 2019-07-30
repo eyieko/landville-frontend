@@ -1,4 +1,4 @@
-import { PropertiesResponse } from "../../../models/Property";
+import { LocalStorageService } from "./../local-storage.service";
 import { TestBed } from "@angular/core/testing";
 import {
   HttpTestingController,
@@ -12,7 +12,8 @@ describe("PropertiesService", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      providers: [LocalStorageService]
     });
     httpMock = TestBed.get(HttpTestingController);
   });

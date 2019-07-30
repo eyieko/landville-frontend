@@ -9,7 +9,8 @@ import { Property } from '../../models/Property';
 })
 export class PropertiesComponent implements OnInit {
   properties: Property[];
-  propertiesUrl = 'http://127.0.0.1:8000/api/v1/properties/';
+  propertiesUrl =
+    'https://landville-backend-web-api.herokuapp.com/api/v1/properties/';
   next: string;
   previous: string;
   toggle: boolean = true;
