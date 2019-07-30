@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CompanyService} from '../../services/company/company.service';
+import {Company} from '../../models';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-company',
@@ -12,7 +15,6 @@ export class CompanyComponent implements OnInit {
   companyDetailForm: FormGroup;
   submitted = false;
   loading = false;
-
   validationMessages = {
     companyName: [
       {type: 'required', message: 'Company Name required.'}
@@ -38,9 +40,13 @@ export class CompanyComponent implements OnInit {
       {type: 'minlength', message: 'Street must be at least 2 characters long.'},
     ],
   };
+  private payload: Company;
 
   constructor(private fb: FormBuilder,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router,
+              private companyService: CompanyService) {
+    // TODO: redirect to home if company is already created.
   }
 
   // Convenience getter for easy access to form fields
@@ -84,6 +90,26 @@ export class CompanyComponent implements OnInit {
     if (invalid) {
       return;
     }
-    console.log(value);
+    this.loading = true;
+    this.payload = {
+      client_name: value.companyName,
+      phone: value.phone,
+      email: value.email,
+      address: {
+        Street: value.street,
+        City: value.city,
+        State: value.state,
+      }
+    };
+    this.companyService.createCompany(this.payload as Company)
+      .pipe(first())
+      .subscribe(data => {
+        console.log(data);
+        this.loading = false;
+      }, error => {
+
+        console.log(error);
+        this.loading = false;
+      });
   }
 }
