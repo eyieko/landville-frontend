@@ -58,7 +58,6 @@
                   formControlName="phone"
                   id="phone"
                   placeholder="Phone"
-                  required
                   type="tel"
                 >
                 <div *ngIf="f.phone.errors" class="invalid-feedback">
@@ -143,9 +142,14 @@
                 </div>
               </div>
             </div>
-            <button [disabled]="!companyDetailForm.valid" class="btn btn-form btn-form-blue float-right m-3"
-                    type="submit">Proceed
-            </button>
+            <div class="form-group">
+              <button [disabled]="companyDetailForm.invalid && loading"
+                      class="btn btn-primary btn-form btn-form-blue float-right"
+                      type="submit">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Proceed
+              </button>
+            </div>
           </form>
         </div>
       </div>

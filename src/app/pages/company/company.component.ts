@@ -110,8 +110,7 @@ export class CompanyComponent implements OnInit {
         this.loading = false;
         this.toastrService.success('Company registered successfully.');
       }, error => {
-
-        this.toastrService.error(JSON.stringify(error));
+        this.toastrService.error(error.errors);
         this.loading = false;
       });
   }
@@ -121,8 +120,7 @@ export class CompanyComponent implements OnInit {
       this.toastrService.warning('You already have a company registered to this account.');
       this.router.navigate(['/']);
     }, error => {
-      console.log(error);
-      this.toastrService.error(JSON.stringify(error));
+      this.toastrService.error(error.errors);
     });
   }
 }
