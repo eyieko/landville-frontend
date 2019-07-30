@@ -6,6 +6,7 @@
 img {
     width: 10rem;
     height: 10rem;
+    padding-top: 5px;
 }
 
 .h1, h1 {
@@ -20,7 +21,6 @@ img {
 }
 
 .page-header {
-    // height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -129,6 +129,25 @@ hr.br-line {
 }
 
 .col-md-4 {
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 0.50rem;
+    padding-left: 0.50rem;
+    padding-bottom: 0.50rem;
 }
+
+.col-md-5 {
+  padding-right: 0.50rem;
+  padding-left: 0.50rem;
+  padding-bottom: 0.50rem;
+}
+
+.col-md-6 {
+  padding-right: 0.50rem;
+  padding-left: 0.50rem;
+  padding-bottom: 0.50rem;
+}
+
+// .row {
+//   padding-right: 0.50rem;
+//   padding-left: 0.50rem;
+//   padding-bottom: 0.50rem;
+// }
