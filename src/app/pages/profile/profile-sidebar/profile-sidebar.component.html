@@ -24,7 +24,7 @@
 
   <div class="card-body">
     <h5 class="card-title text-center">{{ firstName }} {{ lastName }}</h5>
-    <h6 class="card-text text-center">{{ userRole }}</h6>
+    <h6 class="card-text text-center">{{ userRole | roleTransform }}</h6>
     <br />
     <hr />
     <p *ngIf="!addressSet" class="card-text text-center">

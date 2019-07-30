@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import {
-  UserProfile,
   UserProfileResponse,
   UserProfileUpdatedResponse
 } from 'src/app/models/Profile';
 import { LocalStorageService } from '../local-storage.service';
+import { APPCONFIG } from 'src/app/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-  profileUrl =
-    'https://landville-backend-web-api.herokuapp.com/api/v1/auth/profile/';
-  profile: Observable<UserProfile>;
+  profileUrl = 'auth/profile/';
+  userProfile$: Subject<any> = new Subject<any>();
   userToken = this.localStorageService.get('token', '');
   httpOptions = {
     headers: new HttpHeaders({
@@ -35,13 +34,23 @@ export class ProfileService {
 
   getProfile(): Observable<UserProfileResponse> {
     return this.http.get<UserProfileResponse>(
-      this.profileUrl,
+      `${APPCONFIG.base_url}${this.profileUrl}`,
       this.httpOptions
+    );
+  }
+  pushProfile() {
+    this.getProfile().subscribe(
+      response => {
+        this.userProfile$.next(response);
+      },
+      error => {
+        this.userProfile$.error(error);
+      }
     );
   }
   updateProfile(profileData: any): Observable<UserProfileUpdatedResponse> {
     return this.http.patch<UserProfileUpdatedResponse>(
-      this.profileUrl,
+      `${APPCONFIG.base_url}${this.profileUrl}`,
       profileData,
       this.httpOptions
     );

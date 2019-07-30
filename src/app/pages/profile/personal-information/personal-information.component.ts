@@ -9,9 +9,12 @@ import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 
-import { UserProfileUpdateErrorResponse } from 'src/app/models/Profile';
-import { ProfileService } from 'src/app/shared/services/profile/profile.service';
-import { removeSubscription } from 'src/app/shared/utils/helpers/unsubscribe';
+import {
+  UserProfileUpdateErrorResponse,
+  UserProfileUpdatedResponse
+} from 'src/app/models/Profile';
+import { ProfileService } from 'src/app/services/profile/profile.service';
+import { removeSubscription } from 'src/app/helpers/unsubscribe';
 
 @Component({
   selector: 'app-personal-information',
@@ -44,9 +47,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
   phone = new FormControl('', [Validators.required, Validators.minLength(14)]);
   employer = new FormControl('');
   designation = new FormControl('');
-  nextOfKin = new FormControl('');
-  nextOfKinContact = new FormControl('', Validators.minLength(14));
+  // tslint:disable-next-line: variable-name
+  next_of_kin = new FormControl('');
+  // tslint:disable-next-line: variable-name
+  next_of_kin_contact = new FormControl('');
   bio = new FormControl('');
+
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
@@ -63,8 +69,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
       phone: this.phone,
       employer: this.employer,
       designation: this.designation,
-      nextOfKin: this.nextOfKin,
-      nextOfKinContact: this.nextOfKinContact,
+      next_of_kin: this.next_of_kin,
+      next_of_kin_contact: this.next_of_kin_contact,
       bio: this.bio
     });
   }
@@ -75,23 +81,23 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
   setProfile() {
     this.spinner.show();
     this.subscribe.push(
-      this.profileService.getProfile().subscribe(
-        profile => {
-          const profileData = profile.data.profile;
+      this.profileService.userProfile$.subscribe(
+        response => {
+          const { profile } = response.data;
           // we use `patchValue` because the response from the server might not have prefilled address information
           this.profileForm.patchValue({
-            firstName: profileData.user.first_name,
-            lastName: profileData.user.last_name,
-            emailAddress: profileData.user.email,
-            street: profileData.address.Street,
-            city: profileData.address.City,
-            state: profileData.address.State,
-            phone: profileData.phone,
-            employer: profileData.employer,
-            designation: profileData.designation,
-            nextOfKin: profileData.next_of_kin,
-            nextOfKinContact: profileData.next_of_kin_contact,
-            bio: profileData.bio
+            firstName: profile.user.first_name,
+            lastName: profile.user.last_name,
+            emailAddress: profile.user.email,
+            street: profile.address.Street,
+            city: profile.address.City,
+            state: profile.address.State,
+            phone: profile.phone,
+            employer: profile.employer,
+            designation: profile.designation,
+            next_of_kin: profile.next_of_kin,
+            next_of_kin_contact: profile.next_of_kin_contact,
+            bio: profile.bio
           });
           this.spinner.hide();
         },
@@ -136,13 +142,14 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
             phone: profileData.phone,
             employer: profileData.employer,
             designation: profileData.designation,
-            nextOfKin: profileData.next_of_kin,
-            nextOfKinContact: profileData.next_of_kin_contact,
+            next_of_kin: profileData.next_of_kin,
+            next_of_kin_contact: profileData.next_of_kin_contact,
             bio: profileData.bio
           });
           this.resetFormErrors();
           this.spinner.hide();
           this.toasterService.success(profile.data.message);
+          this.profileService.pushProfile();
         },
         error => {
           this.spinner.hide();
@@ -157,6 +164,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
       )
     );
   }
+  onProfileChange(profile: UserProfileUpdatedResponse) {}
   ngOnDestroy(): void {
     removeSubscription(this.subscribe);
   }

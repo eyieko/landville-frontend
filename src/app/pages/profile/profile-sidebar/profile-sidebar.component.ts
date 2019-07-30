@@ -3,10 +3,10 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 
-import { ProfileService } from 'src/app/shared/services/profile/profile.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 import { Address } from 'src/app/models/Address';
-import { removeSubscription } from 'src/app/shared/utils/helpers/unsubscribe';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { removeSubscription } from 'src/app/helpers/unsubscribe';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-profile-sidebar',
@@ -36,13 +36,13 @@ export class ProfileSidebarComponent implements OnInit, OnDestroy {
   fetchProfile() {
     this.spinner.show();
     this.subscribe.push(
-      this.profileService.getProfile().subscribe(response => {
+      this.profileService.userProfile$.subscribe(response => {
         const profileData = response.data.profile;
         this.setImage(profileData);
         this.profileImage = this.storage.get('profileImage', '');
         this.firstName = profileData.user.first_name;
         this.lastName = profileData.user.last_name;
-        this.userRole = this.setRole(profileData.user.role);
+        this.userRole = profileData.user.role;
         if (Object.entries(profileData.address).length < 3) {
           this.addressSet = false;
         } else {
@@ -53,29 +53,20 @@ export class ProfileSidebarComponent implements OnInit, OnDestroy {
       })
     );
   }
-  setRole(role: string): string {
-    const roles = { CA: 'Client Admin', BY: 'Buyer', LA: 'LandVille Admin' };
-    return roles[role];
-  }
   setImage(profileData) {
-    /*
-    ...function setImage(profileData)::
-    This function will return the image url to be used for the current session.
-    The first argument it takes is an object that contains the actual image, in
-    most cases, this will be the observable returned from the server.
-    First, we check whether there is any image stored in localStorage. If none is
-    set, we check the response returned from the server and store that in localStorage.
-    If still the user does not have an image, we generate one random one to be used
-    during the session and store it in localStorage.
-
-    */
+    // always store updated image in localStorage
     const storedImage = this.storage.get('profileImage', '');
-    if (storedImage) {
-      return storedImage;
-    } else if (profileData.image) {
+    if (profileData.image) {
       localStorage.setItem('profileImage', profileData.image);
-      return profileData.image;
+      return storedImage;
+    } else if (storedImage) {
+      // before requesting for new random avatar, we check if the user
+      // has an image in localStorage ... This is so as to reduce the
+      // number of calls sent to the external API
+      return storedImage;
     } else {
+      // only make request to external API if the user has no profile
+      // image set in local storage
       const image = this.generateRandomAvatar();
       this.storage.set('profileImage', image);
       return image;

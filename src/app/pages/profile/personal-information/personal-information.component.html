@@ -147,7 +147,7 @@
       <input
         type="text"
         class="form-control"
-        formControlName="nextOfKin"
+        formControlName="next_of_kin"
         name="nextKin"
         placeholder="Next of Kin"
       />
@@ -161,11 +161,19 @@
         class="form-control"
         [ngClass]="{
           'is-invalid':
-            profileForm.get('nextOfKinContact').invalid &&
-            (profileForm.get('nextOfKinContact').touched ||
-              profileForm.get('nextOfKinContact').dirty)
+            profileForm.get('next_of_kin_contact').invalid &&
+            (profileForm.get('next_of_kin_contact').touched ||
+              profileForm.get('next_of_kin_contact').dirty)
         }"
-        formControlName="nextOfKinContact"
+        [ngStyle]="{
+          border: formErrors.errors.next_of_kin_contact
+            ? '1px solid #dc3545'
+            : '1px solid #ced4da',
+          'box-shadow': formErrors.errors.next_of_kin_contact
+            ? '0 0 0 0.2rem rgba(220,53,69,.25)'
+            : 'none'
+        }"
+        formControlName="next_of_kin_contact"
         name="nextKinContact"
         placeholder="Next of Kin Contact"
       />

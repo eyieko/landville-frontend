@@ -7,13 +7,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ProfileSidebarComponent } from 'src/app/pages/profile/profile-sidebar/profile-sidebar.component';
 import { ProfileComponent } from 'src/app/pages/profile/profile.component';
 import { PersonalInformationComponent } from 'src/app/pages/profile/personal-information/personal-information.component';
-import { ProfileService } from 'src/app/shared/services/profile/profile.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
+import { RoleTransformPipe } from 'src/app/shared/pipes/role.pipe';
 
 @NgModule({
   declarations: [
     ProfileSidebarComponent,
     ProfileComponent,
-    PersonalInformationComponent
+    PersonalInformationComponent,
+    RoleTransformPipe
   ],
   exports: [ProfileComponent],
   imports: [

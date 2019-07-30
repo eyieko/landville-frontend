@@ -8,8 +8,9 @@ import { ProfileService } from './profile.service';
 import {
   mockProfileResponse,
   mockUpdatedProfileResponse
-} from '../../utils/mocks/mocks';
+} from '../../shared/mocks';
 import { LocalStorageService } from '../local-storage.service';
+import { APPCONFIG } from 'src/app/config';
 
 describe('ProfileService', () => {
   let httpMock: HttpTestingController;
@@ -36,12 +37,16 @@ describe('ProfileService', () => {
       expect(profile).toBe(mockProfileResponse);
       done();
     });
-    const request = httpMock.expectOne(`${service.profileUrl}`);
+    const request = httpMock.expectOne(
+      `${APPCONFIG.base_url}${service.profileUrl}`
+    );
     request.flush(mockProfileResponse);
   });
   it('Should use the GET method', () => {
     service.getProfile().subscribe();
-    const req = httpMock.expectOne(`${service.profileUrl}`);
+    const req = httpMock.expectOne(
+      `${APPCONFIG.base_url}${service.profileUrl}`
+    );
     expect(req.request.method).toBe('GET');
   });
   it('updateProfile should successfully update user profile', () => {
@@ -51,7 +56,17 @@ describe('ProfileService', () => {
       );
     });
     storage.set('token', 'dummyAuthenticationToken');
-    const request = httpMock.expectOne(`${service.profileUrl}`);
+    const request = httpMock.expectOne(
+      `${APPCONFIG.base_url}${service.profileUrl}`
+    );
     request.flush(mockUpdatedProfileResponse);
+  });
+  it('pushProfile should push the most recent profile to the userProfile$ subject', () => {
+    service.pushProfile();
+    const req = httpMock.expectOne(
+      `${APPCONFIG.base_url}${service.profileUrl}`
+    );
+    expect(req.request.method).toBe('GET');
+    expect(service.userProfile$).toBeDefined();
   });
 });

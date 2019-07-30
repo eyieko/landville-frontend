@@ -2,38 +2,42 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ProfileSidebarComponent } from './profile-sidebar.component';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
-import { ProfileService } from 'src/app/shared/services/profile/profile.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 import { AppModule } from 'src/app/app.module';
 import {
   profileServiceSpy,
   resetSpies,
   toastServiceSpy,
   localStorageSpy
-} from 'src/app/shared/utils/helpers/spies';
+} from 'src/app/helpers/spies';
 import { ToastrService } from 'ngx-toastr';
 import { of, throwError } from 'rxjs';
 import {
   mockProfileResponse,
   mockProfileResponseNoAddress,
   mockProfileForm
-} from 'src/app/shared/utils/mocks/mocks';
+} from 'src/app/shared/mocks';
 import { By } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { RoleTransformPipe } from 'src/app/shared/pipes/role.pipe';
 
 describe('ProfileSidebarComponent', () => {
   let component: ProfileSidebarComponent;
   let fixture: ComponentFixture<ProfileSidebarComponent>;
 
-  beforeAll(() => resetSpies([profileServiceSpy, toastServiceSpy]));
+  beforeAll(() => {
+    resetSpies([profileServiceSpy, toastServiceSpy]);
+    profileServiceSpy.userProfile$ = of(mockProfileResponse);
+  });
   afterEach(() => {
     resetSpies([profileServiceSpy, toastServiceSpy]);
   });
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [AppModule, HttpClientTestingModule, NgxSpinnerModule],
-      declarations: [ProfileSidebarComponent],
+      declarations: [ProfileSidebarComponent, RoleTransformPipe],
       providers: [
         {
           provide: LocalStorageService,
@@ -60,19 +64,7 @@ describe('ProfileSidebarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-  it('should load user image and information when the component mounts', () => {
-    profileServiceSpy.getProfile.and.returnValue(of(mockProfileResponse));
-    component.fetchProfile();
-    expect(profileServiceSpy.getProfile).toHaveBeenCalled();
-  });
-  it('should set custom message if the user has not set their address', () => {
-    profileServiceSpy.getProfile.and.returnValue(
-      of(mockProfileResponseNoAddress)
-    );
-    component.fetchProfile();
-    expect(profileServiceSpy.getProfile).toHaveBeenCalled();
-    expect(component.addressSet).toBeFalsy();
+    expect(component.addressSet).toBeTruthy();
   });
   it('should update the image', () => {
     const event = {
@@ -127,5 +119,55 @@ describe('ProfileSidebarComponent', () => {
     localStorage.clear();
     spyOn(component, 'generateRandomAvatar');
     expect(component.generateRandomAvatar).toHaveBeenCalledTimes(0);
+  });
+});
+
+describe('ProfileSidebarComponent', () => {
+  let component: ProfileSidebarComponent;
+  let fixture: ComponentFixture<ProfileSidebarComponent>;
+
+  beforeAll(() => {
+    resetSpies([profileServiceSpy, toastServiceSpy]);
+    profileServiceSpy.userProfile$ = of(mockProfileResponseNoAddress);
+  });
+  afterEach(() => {
+    resetSpies([profileServiceSpy, toastServiceSpy]);
+  });
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [AppModule, HttpClientTestingModule, NgxSpinnerModule],
+      declarations: [ProfileSidebarComponent, RoleTransformPipe],
+      providers: [
+        {
+          provide: LocalStorageService,
+          useValue: localStorageSpy
+        },
+        {
+          provide: ProfileService,
+          useValue: profileServiceSpy
+        },
+        {
+          provide: ToastrService,
+          useValue: toastServiceSpy
+        }
+      ]
+    }).compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ProfileSidebarComponent);
+    component = fixture.componentInstance;
+    profileServiceSpy.getProfile.and.returnValue(
+      of(mockProfileResponseNoAddress)
+    );
+    fixture.detectChanges();
+  });
+  it('should set custom message if the user has not set their address', () => {
+    profileServiceSpy.getProfile.and.returnValue(
+      of(mockProfileResponseNoAddress)
+    );
+    profileServiceSpy.userProfile$ = of(mockProfileResponseNoAddress);
+    component.fetchProfile();
+    expect(component.addressSet).toBeFalsy();
   });
 });

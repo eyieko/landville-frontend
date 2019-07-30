@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { CommonLayoutComponent } from './layouts/common-layout/common-layout.component';
 import { ComponentsModule } from './components/components.module';
-import { LocalStorageService } from './shared/services/local-storage.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
   imports: [

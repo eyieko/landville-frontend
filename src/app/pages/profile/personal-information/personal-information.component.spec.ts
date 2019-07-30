@@ -7,16 +7,16 @@ import {
   mockProfileForm,
   mockProfileResponse,
   mockProfileFormErrorResponse
-} from 'src/app/shared/utils/mocks/mocks';
+} from 'src/app/shared/mocks';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ProfileService } from 'src/app/shared/services/profile/profile.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import {
   profileServiceSpy,
   resetSpies,
   toastServiceSpy
-} from 'src/app/shared/utils/helpers/spies';
+} from 'src/app/helpers/spies';
 import { ToastrService } from 'ngx-toastr';
 import { of, throwError } from 'rxjs';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -26,7 +26,10 @@ describe('PersonalInformationComponent', () => {
   let fixture: ComponentFixture<PersonalInformationComponent>;
   let de: DebugElement;
 
-  beforeAll(() => resetSpies([profileServiceSpy, toastServiceSpy]));
+  beforeAll(() => {
+    resetSpies([profileServiceSpy, toastServiceSpy]);
+    profileServiceSpy.userProfile$ = of(mockProfileResponse);
+  });
   afterEach(() => resetSpies([profileServiceSpy, toastServiceSpy]));
 
   beforeEach(async(() => {
@@ -56,7 +59,6 @@ describe('PersonalInformationComponent', () => {
     fixture = TestBed.createComponent(PersonalInformationComponent);
     component = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('form'));
-    profileServiceSpy.getProfile.and.returnValue(of(mockProfileResponse));
     fixture.detectChanges();
   });
 
@@ -67,7 +69,7 @@ describe('PersonalInformationComponent', () => {
     profileServiceSpy.getProfile.and.returnValue(of(mockProfileResponse));
     component.setProfile();
 
-    expect(profileServiceSpy.getProfile).toHaveBeenCalled();
+    expect(profileServiceSpy.userProfile$).toBeDefined();
   });
   it('should submit form', async(() => {
     const profileForm = mockProfileForm as NgForm;
