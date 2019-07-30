@@ -1,12 +1,15 @@
 <div class="page-header" data-parallax="true" style="background-image: url('./assets/img/HouseBG.jpg');">
   <div class="filter"></div>
-  <nav class="navbar navbar-expand-lg navbar-transparent">
-    <div class="container">
-      <a class="navbar-brand" href="home">
-        <img class="logo" alt="logo" src="./assets/img/icons/logo.png">
-      </a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbar-transparent">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="home">
+      <img class="logo" alt="logo" src="./assets/img/icons/logo.png">
+    </a>
+
+    <button class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">Properties</a>
@@ -20,48 +23,65 @@
       </ul>
     </div>
   </nav>
+
   <div class="container">
     <div class="motto text-center">
       <h1 style="font-weight: lighter">Hello!</h1>
-      <h2 style="font-weight: lighter; color: white; font-size: 3rem">Welcome to LandVille.</h2>
+      <h2 style="font-weight: lighter; color: white; font-size: 2rem">Welcome to LandVille.</h2>
     </div>
-    <div class="search">
-      <form>
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label class="sr-only">Keywords</label>
-            <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)" />
+    <div class="row">
+      <div class="col-md-12 mr-auto ml-auto">
+        <form class="search-form">
+          <div class="row">
+            <div class="col-md-4">
+              <label class="sr-only">Keyword</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="keywords"
+                  placeholder="Keyword ( Street Name, Address, ... )">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="sr-only">City</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="City" placeholder="City">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="sr-only">State</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="State" placeholder="State">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="sr-only">Manimum Price</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="Manimum Price" placeholder="Manimum Price">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="sr-only">Maximum Price</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="Maximum Price" placeholder="Maximum Price">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="sr-only">Bedrooms</label>
+              <select name="bedrooms" class="form-control">
+                <option selected="true" disabled="disabled">Number of Bedrooms</option>
+                <option>1 Bedroom</option>
+                <option>2 Bedrooms</option>
+                <option>3 Bedrooms</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-warning" style="font-weight: 500" type="submit">Search</button>
+            </div>
           </div>
-          <div class="col-md-4 mb-3">
-            <label class="sr-only">City</label>
-            <input type="text" name="city" class="form-control" placeholder="City" />
-          </div>
-          <div class="col-md-4 mb-3">
-            <label class="sr-only">State</label>
-            <input type="text" name="city" class="form-control" placeholder="State" />
-          </div>
-        </div>
+        </form>
+        <br>
+      </div>
+    </div>
 
-        <div class="form-row">
-          <div class="col-md-6 mb-3">
-            <label class="sr-only">Bedrooms</label>
-            <select name="bedrooms" class="form-control">
-              <option selected="true" disabled="disabled">Number of Bedrooms</option>
-              <option>1 Bedroom</option>
-              <option>2 Bedrooms</option>
-              <option>3 Bedrooms</option>
-            </select>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label class="sr-only">Maximum Price</label>
-            <input type="text" name="city" class="form-control" placeholder="Maximum Price" />
-          </div>
-        </div>
-        <div class="col-md-2 mb-6 ml-auto">
-          <button class="btn btn-warning" style="font-weight: 500" type="submit">Search</button>
-        </div>
-      </form>
-    </div>
   </div>
   <div class="container" style="margin-top: 10%; color: white;">
     <div class="motto text-center">
@@ -73,7 +93,6 @@
 <div class="section section-dark text-center">
   <div class="section section-dark text-center" style="background-color: #e7e8ed">
     <div class="container">
-      <br>
       <br>
       <h1 class="title" style="color: black; font-weight: lighter; font-size: 2.8rem">Trending Properties</h1>
       <hr class="br-line">
@@ -121,8 +140,6 @@
           </div>
         </div>
       </div>
-
-      <br>
 
       <div class="row">
         <div class="col-md-4">
@@ -176,7 +193,6 @@
   <div class="section text-center">
     <div class="container">
       <br>
-      <br>
       <h1 class="title" style="color: black; font-weight: lighter; font-size: 2.8rem">What We Offer</h1>
       <hr class="br-line">
       <br>
@@ -228,7 +244,6 @@
     <div class="section section-dark text-center" style="background-color: #e7e8ed">
       <div class="container">
         <br>
-        <br>
         <h1 class="title" style="font-weight: lighter; font-size: 2.8rem; color: black;">Meet The Team</h1>
         <hr class="br-line">
         <br>
@@ -247,11 +262,11 @@
                       <h5 class="card-category" style="font-weight: bold">CEO</h5>
                     </div>
                   </a>
-                  <br>
                   <div class="card-body">
                     <p class="card-description text-justify" style="font-weight: lighter; color: black;">
                       Teamwork is so important that it is virtually impossible for you to reach the heights of your
-                      capabilities or make the money that you want without becoming very good at it. silence isn’t golden, it’s deadly.
+                      capabilities or make the money that you want without becoming very good at it. silence isn’t
+                      golden, it’s deadly.
                     </p>
                   </div>
                 </div>
@@ -272,7 +287,6 @@
                       <h5 class="card-category" style="font-weight: bold">CEO</h5>
                     </div>
                   </a>
-                  <br>
                   <div class="card-body">
                     <p class="card-description text-justify" style="font-weight: lighter; color: black;">
                       A group becomes a team when each member is sure enough of himself and his contribution to praise
@@ -297,7 +311,6 @@
                       <h5 class="card-category" style="font-weight: bold">CEO</h5>
                     </div>
                   </a>
-                  <br>
                   <div class="card-body">
                     <p class="card-description text-justify" style="font-weight: lighter; color: black;">
                       The strength of the team is each individual member. The strength of each member is the team. If
@@ -315,7 +328,6 @@
     </div>
 
     <br>
-    <br>
 
     <div class="section landing-section">
       <div class="section section-dark text-center">
@@ -323,10 +335,38 @@
           <h1 class="text-center" style="color: black; font-weight: lighter; font-size: 2.8rem">Talk To Us</h1>
           <hr class="br-line">
           <br>
+          <div class="row">
+            <div class="col-md-12 mr-auto ml-auto">
+              <form class="search-form">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="sr-only">Keyword</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="keywords"
+                        placeholder="Keyword ( Street Name, Address, ... )">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="sr-only">City</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="City" placeholder="City">
+                    </div>
+                  </div>
+                  <textarea class="form-control" rows="4"
+                    placeholder="Tell us your thoughts and feelings..."></textarea>
+                  <div class="col-md-4">
+                    <button class="btn btn-warning" style="font-weight: 500" type="submit">Send</button>
+                  </div>
+                </div>
+              </form>
+              <br>
+            </div>
+          </div>
 
           <div class="row">
             <div class="col-md-8 mr-auto ml-auto">
-              <form class="contact-form" action="#" method="POST">
+              <form class="contact-form" action="mailto:sample@email.com?subject=Website Feedback" method="POST"
+                enctype="text/plain">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
@@ -345,9 +385,9 @@
                 </div>
                 <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
                 <div class="row">
-                  <div class="col-md-4 ml-auto">
+                  <div class="col-md-3 ml-auto">
                     <br>
-                    <button class="btn btn-warning" style="font-weight: 500">Send</button>
+                    <button class="btn btn-warning" style="font-weight: 500" type="submit">Send</button>
                   </div>
                 </div>
               </form>
