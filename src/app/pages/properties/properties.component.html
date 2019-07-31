@@ -6,8 +6,8 @@
 </div>
 
 <div *ngIf="!toggle">
-  <div class="container">
-    <div *ngFor="let property of properties">
+  <div class="row">
+    <div class="col-md-8" *ngFor="let property of properties">
       <div class="card bg-light listview">
         <div class="row no-gutters">
           <div class="col-auto">
@@ -30,31 +30,39 @@
         </div>
       </div>
     </div>
+    <div class="col-md-4"></div>
   </div>
 </div>
 
 <div *ngIf="toggle">
-  <div class="container">
-    <div class="card-columns">
-      <div class="card bg-light" *ngFor="let property of properties">
-        <img
-          class="card-img-top img-fluid"
-          [src]="property.image_main"
-          alt="Card image cap"
-        />
-        <div class="card-body">
-          <h4 class="card-title">
-            <b>{{ property.title }}</b>
-          </h4>
-          <p class="card-text grid-card">
-            <img alt="" src="assets/img/marker.svg" [style.width.px]="10" />
-            {{ property.address.Street }}, {{ property.address.City }}
-          </p>
-          <div class="price">
-            <b>N{{ property.price }}</b>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let property of properties">
+          <div class="card bg-light">
+            <img
+              class="card-img-top img-fluid"
+              [src]="property.image_main"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h4 class="card-title">
+                <b>{{ property.title }}</b>
+              </h4>
+              <p class="card-text grid-card">
+                <img alt="" src="assets/img/marker.svg" [style.width.px]="10" />
+                {{ property.address.Street }}, {{ property.address.City }}
+              </p>
+              <div class="price">
+                <b>N{{ property.price }}</b>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-md-4">
+      <!-- search component html goes here -->
     </div>
   </div>
 </div>
