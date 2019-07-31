@@ -4,6 +4,7 @@ import {CompanyComponent} from './company.component';
 import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ActivatedRoute, Router} from '@angular/router';
 
 describe('CompanyComponent', () => {
   let component: CompanyComponent;
@@ -17,7 +18,11 @@ describe('CompanyComponent', () => {
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule
-      ]
+      ],
+      providers: [
+        ActivatedRoute,
+        Router,
+      ],
     })
       .compileComponents();
   }));

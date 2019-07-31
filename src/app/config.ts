@@ -1,6 +1,9 @@
+import {environment} from '../environments/environment';
+
 function appConfig() {
+
   return {
-    base_url: 'https://landville-backend-web-api.herokuapp.com/api/v1/'
+    base_url: environment.api_url,
   };
 }
 
