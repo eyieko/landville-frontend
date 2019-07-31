@@ -8,9 +8,9 @@ import { Property } from '../../models/Property';
   styleUrls: ['./properties.component.scss']
 })
 export class PropertiesComponent implements OnInit {
-  properties: Property[];
+  properties: Property[] = [];
   propertiesUrl =
-    'https://landville-backend-web-api.herokuapp.com/api/v1/properties/';
+    'https://landville-backend-web-api.herokuapp.com/api/v1/properties';
   next: string;
   previous: string;
   toggle: boolean = true;

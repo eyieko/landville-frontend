@@ -5,7 +5,7 @@ import { Address } from "./Address";
 export interface Property {
   id?: number;
   price?: number;
-  lost_size?: number;
+  lot_size?: number;
   image_others?: string[];
   address?: Address;
   coordinates?: Coordinates;

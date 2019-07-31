@@ -27,7 +27,7 @@ import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-
     ComponentsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   declarations: [
     AppComponent,

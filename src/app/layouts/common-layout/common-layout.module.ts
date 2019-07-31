@@ -1,3 +1,4 @@
+import { LocalStorageService } from "src/app/shared/services/local-storage.service";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
@@ -6,7 +7,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgxPaginationModule } from "ngx-pagination";
 
 import { CompanyComponent } from "../../pages/company/company.component";
-import { HomeComponent } from "../../pages/home/home.component";
 import { PropertiesComponent } from "../../pages/properties/properties.component";
 import { CommonLayoutRoutes } from "./common-layout.routing";
 import { ProfileModule } from "src/app/pages/profile/profile.module";
@@ -25,8 +25,8 @@ import { RegistersuccessComponent } from "../../pages/registration/registersucce
   declarations: [
     RegistersuccessComponent,
     CompanyComponent,
-    HomeComponent,
     PropertiesComponent
-  ]
+  ],
+  providers: [LocalStorageService]
 })
 export class CommonLayoutModule {}

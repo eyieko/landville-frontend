@@ -20,7 +20,56 @@ describe("PropertiesComponent", () => {
         count: 1,
         next: "",
         previous: "",
-        results: []
+        results: [
+          {
+            id: 3,
+            price: 10000000.0,
+            lot_size: 99.99,
+            image_others: [
+              "http://res.cloudinary.com/landville/image/upload/v1564567653/au4vtztnpklnmerfsq3m.png",
+              "http://res.cloudinary.com/landville/image/upload/v1564567654/qp9hubcjzdfscrmguaxw.jpg"
+            ],
+            address: {
+              City: "kampala",
+              State: "Kololo",
+              Street: "Brooklyn"
+            },
+            coordinates: {
+              lat: 2345345345.4535,
+              lon: 98978.09
+            },
+            created_at: "2019-07-31T10:09:56.235176Z",
+            updated_at: "2019-07-31T10:10:37.174246Z",
+            title: "Kololo Flats",
+            property_type: "Empty Lot",
+            description: "Exquisite flats in the world",
+            list_date: null,
+            is_published: false,
+            is_sold: false,
+            sold_at: null,
+            bedrooms: null,
+            bathrooms: null,
+            garages: null,
+            image_main:
+              "http://res.cloudinary.com/landville/image/upload/v1564567652/ncaviduqbwfrvqmiunsf.png",
+            video:
+              "http://res.cloudinary.com/landville/video/upload/v1564567795/xket6aopnbbjjpscxb0i.mp4",
+            view_count: 1,
+            last_viewed: "2019-07-31T10:10:37.174094Z",
+            purchase_plan: "Installments",
+            slug: "brooklyn-kololo-flats",
+            client: {
+              client_name: "clients Company",
+              phone: "+254 7002780187",
+              email: "clients.company@andela.com",
+              address: {
+                City: "kampala",
+                State: "kamwokya",
+                Street: "mulago"
+              }
+            }
+          }
+        ]
       }
     }
   };
@@ -52,7 +101,7 @@ describe("PropertiesComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  it("test getProperties function", () => {
+  it("should call getProperties function", () => {
     const url = "http://api/v1/properties";
     const response = {
       data: {
@@ -70,7 +119,7 @@ describe("PropertiesComponent", () => {
     expect(component.properties).toEqual(response.data.properties.results);
   });
 
-  it("test component next property ", () => {
+  it("should use component next property ", () => {
     const url = "http://127.0.0.1:8000/api/v1/properties/";
     const response = {
       data: {
@@ -88,7 +137,7 @@ describe("PropertiesComponent", () => {
     expect(component.next).toEqual(response.data.properties.next);
   });
 
-  it("test component previous property ", () => {
+  it("should use component previous property ", () => {
     const response = {
       data: {
         properties: {
@@ -121,7 +170,7 @@ describe("PropertiesComponent", () => {
   it("should toggle view on button click", () => {
     debugElement = fixture.debugElement;
     spyOn(component, "toggleView");
-    debugElement.query(By.css(".fa")).triggerEventHandler("click", null);
+    debugElement.query(By.css(".fas")).triggerEventHandler("click", null);
 
     fixture.whenStable().then(() => {
       expect(component.toggleView()).toHaveBeenCalled();

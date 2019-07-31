@@ -4,7 +4,6 @@ import {AuthGuard} from '../../helpers/auth.guard';
 import { RegistersuccessComponent } from '../../pages/registration/registersuccess/registersuccess.component';
 import { ProfileComponent } from 'src/app/pages/profile/profile.component';
 import { HomeComponent } from "../../pages/home/home.component";
-import { RegistersuccessComponent } from "../../pages/registration/registersuccess/registersuccess.component";
 import { PropertiesComponent } from "../../pages/properties/properties.component";
 
 

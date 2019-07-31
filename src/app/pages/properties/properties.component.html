@@ -1,84 +1,111 @@
-<div class="container">
-  <div class="view">
-    <i class="fa fa-list-ul" (click)="toggleView()"></i>
-    <i class="fa fa-th" (click)="toggleView()"></i>
+<div *ngIf="properties.length > 0; else notShow">
+  <div class="container">
+    <div class="view">
+      <i class="fas fa-list-ul" (click)="toggleView()"></i>
+      <i class="fas fa-th" (click)="toggleView()"></i>
+    </div>
   </div>
-</div>
 
-<div *ngIf="!toggle">
-  <div class="row">
-    <div class="col-md-8" *ngFor="let property of properties">
-      <div class="card bg-light listview">
-        <div class="row no-gutters">
-          <div class="col-auto">
-            <img [src]="property.image_main" class="img-fluid2" alt="" />
-          </div>
-          <div class="col">
-            <div class="card-block px-2">
-              <h4 class="card-title">
-                <b>{{ property.title }}</b>
-              </h4>
-              <p class="card-text list-card">
-                <img alt="" src="assets/img/marker.svg" [style.width.px]="10" />
-                {{ property.address.Street }}, {{ property.address.City }}
-              </p>
-              <div class="priceL">
-                <b>N{{ property.price }}</b>
+  <div *ngIf="!toggle">
+    <div class="row">
+      <div class="col-md-8" *ngFor="let property of properties">
+        <div class="card bg-light listview">
+          <div class="row no-gutters">
+            <div class="col-auto">
+              <img [src]="property.image_main" class="img-fluid2" alt="" />
+            </div>
+            <div class="col">
+              <div class="card-block px-2">
+                <h4 class="card-title">
+                  <b>{{ property.title }}</b>
+                </h4>
+                <p class="card-text list-card">
+                  <img
+                    alt=""
+                    src="assets/img/marker.svg"
+                    [style.width.px]="10"
+                  />
+                  {{ property.address.Street }}, {{ property.address.City }}
+                </p>
+                <div class="priceL">
+                  <b>N{{ property.price }}</b>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-md-4">
+        <img
+          alt="Card image"
+          class="card-img"
+          src="assets/img/designs/Design.jpg"
+        />
+      </div>
     </div>
-    <div class="col-md-4"></div>
   </div>
-</div>
 
-<div *ngIf="toggle">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-4" *ngFor="let property of properties">
-          <div class="card bg-light">
-            <img
-              class="card-img-top img-fluid"
-              [src]="property.image_main"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h4 class="card-title">
-                <b>{{ property.title }}</b>
-              </h4>
-              <p class="card-text grid-card">
-                <img alt="" src="assets/img/marker.svg" [style.width.px]="10" />
-                {{ property.address.Street }}, {{ property.address.City }}
-              </p>
-              <div class="price">
-                <b>N{{ property.price }}</b>
+  <div *ngIf="toggle">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let property of properties">
+            <div class="card bg-light">
+              <img
+                class="card-img-top img-fluid"
+                [src]="property.image_main"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h4 class="card-title">
+                  <b>{{ property.title }}</b>
+                </h4>
+                <p class="card-text grid-card">
+                  <img
+                    alt=""
+                    src="assets/img/marker.svg"
+                    [style.width.px]="10"
+                  />
+                  {{ property.address.Street }}, {{ property.address.City }}
+                </p>
+                <div class="price">
+                  <b>N{{ property.price }}</b>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-md-4">
+        <!-- search component html goes here -->
+        <img
+          alt="Card image"
+          class="card-img"
+          src="assets/img/designs/Design.jpg"
+        />
+      </div>
     </div>
-    <div class="col-md-4">
-      <!-- search component html goes here -->
+  </div>
+
+  <div class="container">
+    <div class="page-buttons">
+      <button class="btn prev" (click)="fetchPrevious()">
+        <small
+          ><img alt="" src="assets/img/arrowL.svg" [style.width.px]="7" />
+          Previous</small
+        >
+      </button>
+      <button class="btn next" (click)="fetchNext()">
+        <small
+          >Next <img alt="" src="assets/img/arrowR.svg" [style.width.px]="7"
+        /></small>
+      </button>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="page-buttons">
-    <button class="btn prev" (click)="fetchPrevious()">
-      <small
-        ><img alt="" src="assets/img/arrowL.svg" [style.width.px]="7" />
-        Previous</small
-      >
-    </button>
-    <button class="btn next" (click)="fetchNext()">
-      <small
-        >Next <img alt="" src="assets/img/arrowR.svg" [style.width.px]="7"
-      /></small>
-    </button>
-  </div>
-</div>
+<ng-template #notShow>
+  <p class="center">
+    Sorry, No properties available now. Kindly Come back later
+  </p>
+</ng-template>
