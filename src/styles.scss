@@ -7,3 +7,5 @@
 @import 'assets/scss/layout/forms';
 @import 'assets/scss/layout/headers';
 @import '~ngx-toastr/toastr';
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/ngx-toastr/toastr.css';
