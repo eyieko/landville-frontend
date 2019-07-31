@@ -1,15 +1,15 @@
 import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 import { Observable, Observer } from 'rxjs';
-import { LoginFormComponent } from '../../pages/login/login-form/login-form.component';
+import { LoginFormComponent } from 'src/app/pages/login/login-form/login-form.component';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
-import { LoginService } from './login.service';
+import { LoginService } from 'src/app/services/login/login.service';
 import { AppModule } from 'src/app/app.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { APPCONFIG } from '../../config';
-import { toastServiceSpy } from '../../helpers/spies';
+import { APPCONFIG } from 'src/app/config';
+import { toastServiceSpy } from 'src/app/helpers/spies';
 
 describe('LoginService', () => {
   beforeEach(() => TestBed.configureTestingModule({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { APPCONFIG } from '../config';
+import { APPCONFIG } from 'src/app/config';
 
 
 
@@ -20,18 +20,6 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
   
-  // get request without any params
-  // commented out for testing purposes
-  // getRequest(endpoint, baseUrl = this.base_url) {
-  //   return this.http.get(baseUrl + endpoint);
-  // }
-
-  // // use this when making get requests with params
-  // getRequestWithParams(endpoint, params = {}) {
-  //   return this.http.get(this.base_url + endpoint, { params });
-  // }
-  
-  // use this for POST,PUT or PATCH.
   makeRequestWithData<T>(
     endpoint: any,
     data: any,
