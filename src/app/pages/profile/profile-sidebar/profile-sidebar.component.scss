@@ -23,6 +23,7 @@
       margin: auto;
       margin-top: 5%;
       width: 75%;
+      height: 15rem;
       display: flex;
       overflow: hidden;
       position: relative;
@@ -84,4 +85,30 @@ p.info {
   background-color: #f2f3f5;
   color: black;
   font-weight: 500;
+}
+
+@media only screen and (max-width: 480px) {
+  .profile-image-container {
+    position: relative;
+    object-fit: cover;
+    width: 75vw;
+    height: 75vw;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .profile-image-container {
+    position: relative;
+    object-fit: cover;
+    width: 25vh;
+    height: 25vh;
+  }
+  .profile-sidebar-upper {
+    width: 75vw;
+    margin: auto;
+  }
+  .profile-sidebar-lower {
+    width: 75vw;
+    margin: 1rem auto auto auto;
+  }
 }

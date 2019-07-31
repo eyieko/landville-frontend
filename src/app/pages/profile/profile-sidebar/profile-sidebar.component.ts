@@ -38,8 +38,7 @@ export class ProfileSidebarComponent implements OnInit, OnDestroy {
     this.subscribe.push(
       this.profileService.userProfile$.subscribe(response => {
         const profileData = response.data.profile;
-        this.setImage(profileData);
-        this.profileImage = this.storage.get('profileImage', '');
+        this.profileImage = this.setImage(profileData);
         this.firstName = profileData.user.first_name;
         this.lastName = profileData.user.last_name;
         this.userRole = profileData.user.role;
@@ -58,7 +57,7 @@ export class ProfileSidebarComponent implements OnInit, OnDestroy {
     const storedImage = this.storage.get('profileImage', '');
     if (profileData.image) {
       localStorage.setItem('profileImage', profileData.image);
-      return storedImage;
+      return profileData.image;
     } else if (storedImage) {
       // before requesting for new random avatar, we check if the user
       // has an image in localStorage ... This is so as to reduce the

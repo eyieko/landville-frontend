@@ -17,6 +17,8 @@
   margin-bottom: 50px;
   margin-top: 30px;
   text-align: center;
+  flex-direction: row;
+  overflow-x: auto;
 }
 
 .profile {
@@ -50,5 +52,31 @@
       margin-left: 10%;
       margin-top: 15%;
     }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .profile {
+    margin-right: 0%;
+    width: 100%;
+    &-tab-content {
+      margin-left: auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .profile {
+    margin-right: 0%;
+    width: 100%;
+    &-tab-content {
+      margin-left: auto;
+    }
+  }
+}
+
+@media only screen and (min-width: 771px) and (max-width: 992px) {
+  #profileBand {
+    margin: auto;
   }
 }
