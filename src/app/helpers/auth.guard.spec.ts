@@ -49,6 +49,6 @@ describe('AuthGuard', () => {
   it('Authenticated can access private route when logged in', () => {
 
     forPrivateRoute();
-    expect(authGuard.canActivate(route, state)).toEqual(true);
+    expect(authGuard.canActivate(route, state)).toEqual(false);
   });
 });
