@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegisterFormComponent } from './register-form.component';
-import { DebugElement } from '@angular/core';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -21,7 +21,8 @@ describe('RegisterFormComponent', () => {
         FormsModule,
         HttpClientModule,
         BrowserAnimationsModule
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
