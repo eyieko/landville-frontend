@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {companyServiceSpy, resetSpies, routerSpy, toastServiceSpy} from '../../helpers/spies';
-import {of} from 'rxjs';
+import {of, throwError} from 'rxjs';
 import {CompanyService} from '../../services/company/company.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
@@ -39,6 +39,7 @@ describe('CompanyComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CompanyComponent);
     component = fixture.componentInstance;
+    companyServiceSpy.getCompanyDetails.and.returnValue(of({message: 'success'}));
     fixture.detectChanges();
   });
 
@@ -54,15 +55,15 @@ describe('CompanyComponent', () => {
     companyServiceSpy.getCompanyDetails.and.returnValue(of({message: 'success'}));
     component.loadClientCompany();
 
-    expect(companyServiceSpy.getCompanyDetails$).toBeTruthy();
+    expect(companyServiceSpy.getCompanyDetails).toBeTruthy();
   });
 
   it('should be able to get value field in company form if empty', () => {
     const controls = component.f;
-    expect(controls.email).toEqual('');
+    expect(controls.email.value).toEqual('');
   });
 
-  it('should trigger onSubmitCompanyDetails method', async(() => {
+  it('should trigger onSubmitCompanyDetails method to be successfull', async(() => {
     const companyDetailForm = {
       value: {
         companyName: 'saf',
@@ -75,10 +76,34 @@ describe('CompanyComponent', () => {
       invalid: false,
     } as NgForm;
     companyServiceSpy.createCompany.and.returnValue(of({message: 'success'}));
-    companyServiceSpy.getCompanyDetails.and.returnValue(of({message: 'success'}));
     component.onSubmitCompanyDetails(companyDetailForm);
     expect(toastServiceSpy.success).toHaveBeenCalledWith('Company registered successfully.');
-    expect(toastServiceSpy.error).toHaveBeenCalledWith('Company registered successfully.');
+  }));
+
+  it('should trigger onSubmitCompanyDetails method to fail', async(() => {
+    const companyDetailForm = {
+      value: {
+        companyName: 'saf',
+        phone: '0712345678',
+        email: 'test@gmail.com',
+        street: 'test',
+        city: 'test',
+        state: 'test',
+      },
+      invalid: false,
+    } as NgForm;
+    companyServiceSpy.createCompany.and.returnValue(throwError({errors: {details: 'success'}}));
+    component.onSubmitCompanyDetails(companyDetailForm);
+    expect(toastServiceSpy.error).toHaveBeenCalledWith('{"details":"success"}');
+  }));
+
+  it('should trigger onSubmitCompanyDetails method with invalid form', async(() => {
+    const companyDetailForm = {
+      value: {},
+      invalid: true,
+    } as NgForm;
+    component.onSubmitCompanyDetails(companyDetailForm);
+    expect(component.companyDetailForm.invalid).toBeTruthy();
   }));
 
   it('should error if an invalid form passed', () => {

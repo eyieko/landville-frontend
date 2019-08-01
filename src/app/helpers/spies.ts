@@ -15,15 +15,16 @@ export const loginServiceSpy = createSpyObj('LoginService', [
   'login'
 ]);
 
-export const  registerServiceSpy = createSpyObj('RegisterServiceService', [
-    'registerUser'
+export const registerServiceSpy = createSpyObj('RegisterServiceService', [
+  'registerUser'
 ]);
 export const loginServiceSpy = createSpyObj('LoginService', ['login']);
 
 export const toastServiceSpy = createSpyObj('ToastrService', [
   'success',
   'error',
-  'info'
+  'info',
+  'warning',
 ]);
 export const profileServiceSpy = createSpyObj('ProfileService', [
   'getProfile',
@@ -35,6 +36,10 @@ export const registerServiceSpy = createSpyObj('RegisterServiceService', [
   'registerUser'
 ]);
 
+export const routerSpy = jasmine.createSpyObj('Router', [
+  'navigateByUrl',
+  'navigate',
+]);
 export const localStorageSpy = createSpyObj('LocalStorage', [
   'get',
   'set',
