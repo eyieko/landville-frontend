@@ -8,6 +8,7 @@ import { CommonLayoutComponent } from './layouts/common-layout/common-layout.com
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
 import { NoAuthGuard } from './guards/no-auth.guard';
+import { PaymentsComponent } from "./pages/payments/payments.component";
 
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '',
+    path: "",
     component: AuthLayoutComponent,
     children: [
       {
@@ -29,7 +30,7 @@ const routes: Routes = [
     canActivate: [NoAuthGuard]
   },
   {
-    path: '',
+    path: "",
     component: CommonLayoutComponent,
     children: [
       {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'auth/password-reset',
     component: EnterResetPasswordComponent
+  },
+  {
+    path: "payments",
+    component: PaymentsComponent
   },
   {
     path: '**',

@@ -41,7 +41,9 @@ import { TermsService } from './services/terms/terms.service';
     AuthLayoutComponent,
     CommonLayoutComponent,
     PasswordResetComponent,
-    EnterResetPasswordComponent
+    EnterResetPasswordComponent,
+    PaymentsComponent,
+    
   ],
   providers: [
     LocalStorageService, AuthGuard, NoAuthGuard, TermsService,
