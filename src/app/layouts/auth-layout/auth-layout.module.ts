@@ -62,7 +62,6 @@ export function provideConfig() {
     RegisterFormComponent,
     RegisterHeaderComponent,
     HomeComponent,
-
     SocialLoginComponentt
   ],
   providers: [
