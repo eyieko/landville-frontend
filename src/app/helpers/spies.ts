@@ -7,6 +7,7 @@ export const resetSpies = (spies: any[]) => {
     });
   });
 };
+
 const createSpyObj = (name: string, methods: string[]) => {
   return jasmine.createSpyObj(name, methods);
 };
@@ -19,6 +20,7 @@ export const toastServiceSpy = createSpyObj('ToastrService', [
   'info',
   'warning',
 ]);
+
 export const profileServiceSpy = createSpyObj('ProfileService', [
   'getProfile',
   'updateProfile',
@@ -40,7 +42,6 @@ export const localStorageSpy = createSpyObj('LocalStorage', [
   'clear'
 ]);
 
-
 export const companyServiceSpy = createSpyObj('CompanyService', [
   'createCompany',
   'getCompanyDetails',
@@ -50,6 +51,7 @@ export const httpRequestSpy = jasmine.createSpyObj('HttpRequest', [
   'doesNotMatter',
   'clone',
 ]);
+
 export const httpHandlerSpy = jasmine.createSpyObj('HttpHandler', [
   'handle'
 ]);
