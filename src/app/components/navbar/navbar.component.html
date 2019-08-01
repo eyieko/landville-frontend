@@ -8,8 +8,43 @@
     />
   </a>
   <ul class="navbar-nav ml-auto">
-    <li class="nav-item active">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/">Home</a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" routerLink="/login">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/profile">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/property">Properties</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdownMenuLink"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <img
+          src="./assets/img/profile.png"
+          width="40"
+          height="40"
+          class="rounded-circle"
+        />
+      </a>
+      <div
+        class="dropdown-menu dropdown-menu-right"
+        aria-labelledby="navbarDropdownMenuLink"
+      >
+        <a class="dropdown-item" href="profile">Profile</a>
+        <a class="dropdown-item" href="#">Settings</a>
+        <a class="dropdown-item" href="#">Log Out</a>
+      </div>
     </li>
   </ul>
 </nav>
