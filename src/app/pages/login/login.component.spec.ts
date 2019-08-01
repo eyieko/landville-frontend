@@ -11,10 +11,7 @@ import { LoginHeaderComponent } from './login-header/login-header.component';
 import { LoginSliderComponent } from './login-slider/login-slider.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { toastServiceSpy } from '../../helpers/spies';
-<<<<<<< HEAD
-=======
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
->>>>>>> 167123375-ft(authentication):Users be able to login via social auth
 
 describe('LoginComponent', () => {
   let component: LoginComponent;

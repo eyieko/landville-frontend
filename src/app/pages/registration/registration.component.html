@@ -1,8 +1,10 @@
 <div class="container-border">
-    <app-register-header></app-register-header>
-    <div class='login-section-border'>
-        <app-register-form
-        (registerUser)="registerUser($event)"></app-register-form>
-        <ngx-spinner></ngx-spinner>
-    </div>
+  <app-register-header></app-register-header>
+  <div class="login-section-border">
+    <app-register-form
+      (registerUser)="registerUser($event)"
+    ></app-register-form>
+    <app-social-login></app-social-login>
+    <ngx-spinner></ngx-spinner>
+  </div>
 </div>

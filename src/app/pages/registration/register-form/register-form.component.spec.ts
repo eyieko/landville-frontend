@@ -15,14 +15,14 @@ describe('RegisterFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterFormComponent ],
+      declarations: [RegisterFormComponent],
       imports: [
         ReactiveFormsModule,
         FormsModule,
         HttpClientModule,
-        BrowserAnimationsModule]
-    })
-    .compileComponents();
+        BrowserAnimationsModule
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -38,12 +38,19 @@ describe('RegisterFormComponent', () => {
   });
 
   it('should trigger onsubmit method', async(() => {
-    const registerForm = { value: { email: 'akram@gmail.com',
-    first_name: 'akram', last_name: 'muakssa', role: 'CA', password: 'akram@100', confirmed_password: 'akram@100'}} as NgForm;
+    const registerForm = {
+      value: {
+        email: 'akram@gmail.com',
+        first_name: 'akram',
+        last_name: 'muakssa',
+        role: 'CA',
+        password: 'akram@100',
+        confirmed_password: 'akram@100'
+      }
+    } as NgForm;
     component.onSubmit(registerForm);
     expect(component.onSubmit).toBeTruthy();
-})
-  );
+  }));
   it('should call the onSubmit method when button is clicked', async(() => {
     fixture.detectChanges();
     spyOn(component, 'onSubmit');
@@ -66,9 +73,9 @@ describe('RegisterFormComponent', () => {
     component.registerForm.controls[`last_name`].setValue('mukasa');
     component.registerForm.controls[`role`].setValue('CA');
     component.registerForm.controls[`password`].setValue('natasha@100');
-    component.registerForm.controls[`confirmed_password`].setValue('natasha@100');
+    component.registerForm.controls[`confirmed_password`].setValue(
+      'natasha@100'
+    );
     expect(component.registerForm.valid).toBeTruthy();
   }));
-
-
 });
