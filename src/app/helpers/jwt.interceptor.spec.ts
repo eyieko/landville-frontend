@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {httpHandlerSpy, httpRequestSpy, loginServiceSpy} from './spies';
+import {httpHandlerSpy, httpRequestSpy} from './spies';
 import {HttpHandler, HttpRequest} from '@angular/common/http';
 import {of} from 'rxjs';
 import {JwtInterceptor} from './jwt.interceptor';
@@ -10,7 +10,7 @@ describe('JWTInterceptor', () => {
   let jwtInterceptor: JwtInterceptor;
 
   beforeEach(() => {
-    jwtInterceptor = new JwtInterceptor(loginServiceSpy);
+    jwtInterceptor = new JwtInterceptor();
 
     TestBed.configureTestingModule({
       providers: [

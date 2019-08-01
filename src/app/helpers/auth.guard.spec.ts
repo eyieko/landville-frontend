@@ -4,7 +4,6 @@ import {AuthGuard} from './auth.guard';
 import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
 import {routerSpy} from './spies';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {LoginService} from '../services/login/login.service';
 
 class MockActivatedRouteSnapshot {
   private _data: any;
@@ -13,19 +12,8 @@ class MockActivatedRouteSnapshot {
   }
 }
 
-class MockRouter {
-  navigate(path) {
-  }
-}
-
 class MockRouterStateSnapshot {
   url = '/';
-}
-
-class MockLoginService {
-  get currentUserValue(): string {
-    return 'skdhasjkdhsajhd';
-  }
 }
 
 describe('AuthGuard', () => {
@@ -41,7 +29,6 @@ describe('AuthGuard', () => {
         {provide: Router, useValue: routerSpy},
         {provide: ActivatedRouteSnapshot, useClass: MockActivatedRouteSnapshot},
         {provide: RouterStateSnapshot, useClass: MockRouterStateSnapshot},
-        {provide: LoginService, useClass: MockLoginService},
       ],
       imports: [HttpClientTestingModule]
     });

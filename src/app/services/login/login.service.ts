@@ -14,10 +14,6 @@ export class LoginService {
   constructor(private http: HttpService) {
   }
 
-  currentUserValue(): string {
-    return localStorage.getItem('token');
-  }
-
   static logout() {
     // removes user from local storage to log user out
     localStorage.removeItem('token');
