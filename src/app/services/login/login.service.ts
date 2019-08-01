@@ -9,7 +9,7 @@ import {HttpMethods} from '../../config';
 })
 export class LoginService {
 
-  loginUrl: string = '/auth/login/';
+  loginUrl = '/auth/login/';
 
   constructor(private http: HttpService) {
   }

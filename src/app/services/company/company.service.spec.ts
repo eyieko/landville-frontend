@@ -1,12 +1,79 @@
-import {TestBed} from '@angular/core/testing';
+import {fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
 
 import {CompanyService} from './company.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {environment} from '../../../environments/environment';
 
 describe('CompanyService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  const payload = {
+    client_name: 'saf',
+    phone: '+234 123 4567890',
+    email: 'alpha@mailinator.com',
+    address: {
+      Street: 'Street',
+      City: 'City',
+      State: 'State'
+    }
+  };
+
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [
+      HttpClientTestingModule,
+    ],
+    declarations: [],
+    providers: [],
+  }));
 
   it('should be created', () => {
     const service: CompanyService = TestBed.get(CompanyService);
     expect(service).toBeTruthy();
   });
+
+  it('should should perform create company correctly', fakeAsync(
+    inject([CompanyService, HttpTestingController],
+      (service: CompanyService, backend: HttpTestingController) => {
+        // Set up
+        const url = `${environment.api_url}/auth/client/`;
+        const responseObject = {
+          success: true,
+          message: 'created was successful'
+        };
+        let response = null;
+
+        service.createCompany(payload).subscribe((receivedResponse: any) => {
+          response = receivedResponse;
+        });
+        const requestWrapper = backend.expectOne({url});
+        requestWrapper.flush(responseObject);
+
+        tick();
+
+        expect(requestWrapper.request.method).toEqual('POST');
+
+      })
+  ));
+
+  it('should should perform get company details correctly', fakeAsync(
+    inject([CompanyService, HttpTestingController],
+      (service: CompanyService, backend: HttpTestingController) => {
+        // Set up
+        const url = `${environment.api_url}/auth/client/`;
+        const responseObject = {
+          success: true,
+          message: 'here is your payload.'
+        };
+        let response = null;
+
+        service.getCompanyDetails().subscribe((receivedResponse: any) => {
+          response = receivedResponse;
+        });
+        const requestWrapper = backend.expectOne({url});
+        requestWrapper.flush(responseObject);
+
+        tick();
+
+        expect(requestWrapper.request.method).toEqual('GET');
+
+      })
+  ));
 });

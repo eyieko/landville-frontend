@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {CompanyService} from '../../services/company/company.service';
 import {Company} from '../../models';
 import {first} from 'rxjs/operators';
@@ -45,7 +45,6 @@ export class CompanyComponent implements OnInit {
   private payload: Company;
 
   constructor(private fb: FormBuilder,
-              private route: ActivatedRoute,
               private router: Router,
               private companyService: CompanyService,
               private toastrService: ToastrService) {

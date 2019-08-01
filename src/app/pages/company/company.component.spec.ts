@@ -4,7 +4,8 @@ import {CompanyComponent} from './company.component';
 import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('CompanyComponent', () => {
   let component: CompanyComponent;
@@ -17,11 +18,11 @@ describe('CompanyComponent', () => {
         ReactiveFormsModule,
         FormsModule,
         HttpClientModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
       ],
       providers: [
-        ActivatedRoute,
         Router,
+        RouterTestingModule,
       ],
     })
       .compileComponents();
