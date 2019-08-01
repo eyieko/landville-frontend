@@ -11,6 +11,13 @@ const createSpyObj = (name: string, methods: string[]) => {
   return jasmine.createSpyObj(name, methods);
 };
 
+export const loginServiceSpy = createSpyObj('LoginService', [
+  'login'
+]);
+
+export const  registerServiceSpy = createSpyObj('RegisterServiceService', [
+    'registerUser'
+]);
 export const loginServiceSpy = createSpyObj('LoginService', ['login']);
 
 export const toastServiceSpy = createSpyObj('ToastrService', [
@@ -32,4 +39,11 @@ export const localStorageSpy = createSpyObj('LocalStorage', [
   'get',
   'set',
   'clear'
+]);
+export const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
+
+
+export const companyServiceSpy = createSpyObj('CompanyService', [
+  'createCompany',
+  'getCompanyDetails',
 ]);

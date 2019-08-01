@@ -108,18 +108,17 @@ export class CompanyComponent implements OnInit {
       .subscribe(data => {
         this.loading = false;
         this.toastrService.success('Company registered successfully.');
+        this.router.navigate(['/']);
       }, error => {
-        this.toastrService.error(error.errors);
+        this.toastrService.error(JSON.stringify(error.errors));
         this.loading = false;
       });
   }
 
-  private loadClientCompany() {
+  loadClientCompany() {
     this.companyService.getCompanyDetails().pipe(first()).subscribe(data => {
       this.toastrService.warning('You already have a company registered to this account.');
       this.router.navigate(['/']);
-    }, error => {
-      this.toastrService.error(error.errors);
     });
   }
 }
