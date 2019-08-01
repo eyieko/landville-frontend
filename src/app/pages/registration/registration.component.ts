@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { RegisterServiceService } from '../../services/register/register-service.service';
-import { User } from '../../models/register/user';
-import { ToastrService } from 'ngx-toastr';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {RegisterServiceService} from '../../services/register/register-service.service';
+import {User} from '../../models/register/user';
+import {ToastrService} from 'ngx-toastr';
+import {NgxSpinnerService} from 'ngx-spinner';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -12,28 +12,39 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
   registeruser: User[];
+  returnUrl: string;
 
 
   constructor(private registerServiceService: RegisterServiceService,
               private toastrService: ToastrService,
               private spinner: NgxSpinnerService,
-              private router: Router
-              ) { }
+              private router: Router,
+              private route: ActivatedRoute,
+  ) {
+    // redirect to home if already logged in
+    const currentUser = localStorage.getItem('token');
+    if (currentUser) {
+      this.router.navigate(['/']);
+    }
+  }
 
   ngOnInit() {
+    // get return url from route parameters  or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
+
   registerUser(register: User) {
     this.spinner.show();
-    this.registerServiceService.registerUser(register). subscribe(
+    this.registerServiceService.registerUser(register).subscribe(
       response => {
-      this.toastrService.success(response.data.message);
-      this.router.navigate(['/registersuccess']);
-      this.spinner.hide();
-    },
-    error => {
-      this.toastrService.error(error.error.errors.email[0]);
-      this.spinner.hide();
-    }
+        this.toastrService.success(response.data.message);
+        this.spinner.hide();
+        this.router.navigate([this.returnUrl]);
+      },
+      error => {
+        this.toastrService.error(error.error.errors.email[0]);
+        this.spinner.hide();
+      }
     );
 
   }

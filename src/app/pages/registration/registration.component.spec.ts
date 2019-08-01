@@ -1,18 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RegistrationComponent } from './registration.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
-import { RegisterHeaderComponent } from './register-header/register-header.component';
-import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
-import { ReactiveFormsModule, NgForm } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { RegisterServiceService } from 'src/app/services/register/register-service.service';
-import { User } from 'src/app/models/register/user';
-import { HttpTestingController } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { RegistersuccessComponent } from './registersuccess/registersuccess.component';
-import { registerServiceSpy, resetSpies, toastServiceSpy } from '../../helpers/spies';
-import { of, throwError } from 'rxjs';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {RegistrationComponent} from './registration.component';
+import {RegisterFormComponent} from './register-form/register-form.component';
+import {RegisterHeaderComponent} from './register-header/register-header.component';
+import {NgxSpinnerModule} from 'ngx-spinner';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
+import {RegisterServiceService} from 'src/app/services/register/register-service.service';
+import {RouterTestingModule} from '@angular/router/testing';
+import {RegistersuccessComponent} from './registersuccess/registersuccess.component';
+import {registerServiceSpy, resetSpies, toastServiceSpy} from '../../helpers/spies';
+import {of, throwError} from 'rxjs';
 
 
 describe('RegistrationComponent', () => {
@@ -24,26 +22,27 @@ describe('RegistrationComponent', () => {
   afterEach(() => resetSpies([registerServiceSpy]));
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistrationComponent,
+      declarations: [RegistrationComponent,
         RegisterFormComponent, RegisterHeaderComponent, RegistersuccessComponent
       ],
       imports: [
         NgxSpinnerModule,
         ReactiveFormsModule,
-        HttpClientModule ,
+        HttpClientModule,
         ToastrModule.forRoot(),
         RouterTestingModule
-    ],
-    providers: [
-      {
-        provide: RegisterServiceService, useValue: registerServiceSpy
-      },
-      {
-        provide: ToastrService, useValue: toastServiceSpy
-      }
-    ]
+      ],
+      providers: [
+        // {provide: Router, useValue: routerSpy},
+        {
+          provide: RegisterServiceService, useValue: registerServiceSpy
+        },
+        {
+          provide: ToastrService, useValue: toastServiceSpy
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -64,16 +63,16 @@ describe('RegistrationComponent', () => {
     };
     const response = {
       data: {
-          user: {
-              email: 'akram@nator.com',
-              first_name: 'akram',
-              last_name: 'mukasa',
-              role: 'CA'
-          },
-          message: 'Account created successfully,please check your mailbox to activate your account ',
-          status: 'success'
+        user: {
+          email: 'akram@nator.com',
+          first_name: 'akram',
+          last_name: 'mukasa',
+          role: 'CA'
+        },
+        message: 'Account created successfully,please check your mailbox to activate your account ',
+        status: 'success'
       }
-  };
+    };
 
     registerServiceSpy.registerUser.and.returnValue(of(response));
     component.registerUser(User);
