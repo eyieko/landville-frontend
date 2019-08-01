@@ -1,4 +1,4 @@
-<div class="card profile-sidebar-upper">
+<div class="card profile-sidebar-upper profile-card">
   <div class="profile-image-container">
     <ngx-spinner></ngx-spinner>
 
@@ -37,25 +37,23 @@
   </div>
 </div>
 
-<div class="card profile-sidebar-lower">
-  <div class="dropdown">
-    <button
-      class="btn btn-secondary dropdown-toggle"
-      type="button"
-      id="levelDropdownButton"
-      data-toggle="dropdown"
-      aria-haspopup="true"
-      aria-expanded="false"
-    >
-      LEVEL
-    </button>
-    <div class="dropdown-menu" aria-labelledby="levelDropdownButton">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-    </div>
-    <div class="card-text">
-      <p class="text-rotate">Placeholder</p>
+<div class="card mt-4 profile-sidebar-lower profile-card">
+  <button
+    class="btn btn-profile-level"
+    type="button"
+    data-toggle="collapse"
+    data-target="#collapseExample"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    LEVEL
+    <i class="fa fa-caret-down custom-caret-down"></i>
+  </button>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <div class="card-text">
+        <p>Placeholder</p>
+      </div>
     </div>
   </div>
 </div>

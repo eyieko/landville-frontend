@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CommonLayoutRoutes } from './common-layout.routing';
 import { RegistersuccessComponent } from 'src/app/pages/registration/registersuccess/registersuccess.component';
-import { HomeComponent } from 'src/app/pages/home/home.component';
 import { ProfileModule } from 'src/app/pages/profile/profile.module';
 
 @NgModule({
@@ -17,6 +16,6 @@ import { ProfileModule } from 'src/app/pages/profile/profile.module';
     ProfileModule,
     HttpClientModule
   ],
-  declarations: [HomeComponent, RegistersuccessComponent]
+  declarations: [RegistersuccessComponent]
 })
 export class CommonLayoutModule {}

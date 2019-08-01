@@ -11,7 +11,6 @@
       text-align: center;
     }
     &-lower {
-      height: 35rem;
       background-color: #f2f3f5;
       margin-top: 15%;
       text-align: center;
@@ -23,11 +22,10 @@
       margin: auto;
       margin-top: 5%;
       width: 75%;
-      height: 15rem;
+      height: 25vw;
       display: flex;
       overflow: hidden;
       position: relative;
-      text-align: center;
     }
   }
 }
@@ -73,11 +71,6 @@ p.info {
 .profile-sidebar-lower h3 {
   padding-top: 20px;
 }
-.text-rotate {
-  transform: rotate(45deg);
-  font-size: xx-large;
-  margin-top: 10rem;
-}
 #levelDropdownButton {
   width: 100%;
   text-align: left;
@@ -87,21 +80,30 @@ p.info {
   font-weight: 500;
 }
 
+.profile-card {
+  width: 25vw;
+  border: none;
+}
+
 @media only screen and (max-width: 480px) {
   .profile-image-container {
     position: relative;
     object-fit: cover;
     width: 75vw;
     height: 75vw;
+    padding: 0.2rem;
+  }
+  .profile-card {
+    width: 100%;
+    border: none;
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 481px) and (max-width: 767px) {
   .profile-image-container {
     position: relative;
     object-fit: cover;
-    width: 25vh;
-    height: 25vh;
+    height: 50vw;
   }
   .profile-sidebar-upper {
     width: 75vw;
@@ -111,4 +113,18 @@ p.info {
     width: 75vw;
     margin: 1rem auto auto auto;
   }
+}
+
+@media only screen and (min-width: 1600px) {
+  .profile-image-container {
+    width: 75%;
+    height: 25vh;
+  }
+  .profile-card {
+    width: 75%;
+  }
+}
+
+.custom-caret-down {
+  color: #aba9a8;
 }

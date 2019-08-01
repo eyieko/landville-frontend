@@ -90,4 +90,10 @@
       color: white;
     }
   }
+  &-profile-level {
+    display: flex;
+    justify-content: space-between;
+    background: #f2f3f5;
+    text-align: left;
+  }
 }

@@ -9,6 +9,7 @@ import { ProfileComponent } from 'src/app/pages/profile/profile.component';
 import { PersonalInformationComponent } from 'src/app/pages/profile/personal-information/personal-information.component';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 import { RoleTransformPipe } from 'src/app/shared/pipes/role.pipe';
+import { AuthLayoutModule } from 'src/app/layouts/auth-layout/auth-layout.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RoleTransformPipe } from 'src/app/shared/pipes/role.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    AuthLayoutModule
   ],
   providers: [ProfileService],
   bootstrap: [ProfileComponent]

@@ -13,7 +13,7 @@ import { SocialLoginComponent } from 'src/app/pages/login/social-login/social-lo
 import { RegistrationComponent } from 'src/app/pages/registration/registration.component';
 import { RegisterFormComponent } from 'src/app/pages/registration/register-form/register-form.component';
 import { RegisterHeaderComponent } from 'src/app/pages/registration/register-header/register-header.component';
-import { HomeComponent } from 'src/app/pages/home/home.component'
+import { HomeComponent } from 'src/app/pages/home/home.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ComponentsModule,
+    ComponentsModule
   ],
   declarations: [
     LoginComponent,
@@ -36,8 +36,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
     RegistrationComponent,
     RegisterFormComponent,
     RegisterHeaderComponent,
-    HomeComponent,
-  ],
+    HomeComponent
+  ]
 })
-export class AuthLayoutModule {
-}
+export class AuthLayoutModule {}
