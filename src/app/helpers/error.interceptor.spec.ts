@@ -26,7 +26,6 @@ describe('ErrorInterceptor', () => {
     expect(errorInterceptor).toBeTruthy();
   });
 
-
   it('should auto logout if 401 response returned from api', () => {
     // arrange
     httpHandlerSpy.handle.and.returnValue(throwError({
