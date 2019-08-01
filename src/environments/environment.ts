@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   profileUrl:
-    'https://landville-backend-web-api.herokuapp.com/api/v1/auth/profile/'
+    'https://landville-backend-web-api.herokuapp.com/api/v1/auth/profile/',
   authUrl: '/auth/register/',
   api_url: 'https://landville-backend-web-api.herokuapp.com/api/v1',
 };
