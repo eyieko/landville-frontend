@@ -24,6 +24,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { RegistrationComponent } from '../registration/registration.component';
+import { HomeComponent } from '../home/home.component';
 
 const userData: SocialUser = {
   id: '123',
@@ -53,7 +54,8 @@ describe('SocialLoginComponentt', () => {
       declarations: [
         SocialLoginComponentt,
         LoginComponent,
-        RegistrationComponent
+        RegistrationComponent,
+        HomeComponent
       ],
       imports: [
         HttpClientTestingModule,
