@@ -1,7 +1,7 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
-import {HomeComponent} from './home.component';
-import {FormsModule} from '@angular/forms';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HomeComponent } from './home.component';
+import { ComponentsModule } from '../../components/components.module';
+import { FormsModule } from '@angular/forms';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -9,10 +9,10 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
-      declarations: [ HomeComponent ]
+      imports: [FormsModule, ComponentsModule],
+      declarations: [HomeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,26 +21,8 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-
-  it('testing form the wrong way', () => {
-    component.onSubmit({value: {}, valid: false});
-    expect(component.form.submitted).toEqual(false);
-  });
-
-  it('testing form the right way', () => {
-    const testForm = {
-      value: {
-        firstName: 'alpha',
-        lastName: 'landville',
-        email: 'alpha@gmail.com',
-      },
-      valid: true,
-    };
-    component.onSubmit(testForm);
-    expect(component.user.email).toEqual(testForm.value.email);
-  });
-
-  it('should create', () => {
+  it('should create the component successfully', () => {
     expect(component).toBeTruthy();
   });
+
 });

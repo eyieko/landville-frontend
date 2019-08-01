@@ -1,65 +1,360 @@
-<h1>Sample Form</h1>
-<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-  <div class="form-group">
-    <label>First Name</label>
-    <input
-      #userFirstName="ngModel"
-      [(ngModel)]="user.firstName"
-      [ngClass]="{'is-invalid': userFirstName.errors && userFirstName.touched}"
-      class="form-control"
-      minlength="2"
-      name="firstName"
-      required
-      type="text"
-    >
-    <div [hidden]="!userFirstName.errors?.required" class="invalid-feedback">
-      First Name required.
+<div class="page-header" data-parallax="true">
+  <div class="filter"></div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="home">
+      <img class="logo" alt="logo" src="./assets/images/ICON/Logo Icon.png">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Properties</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register">Register</a>
+        </li>
+      </ul>
+
     </div>
-    <div [hidden]="!userFirstName.errors?.minlength" class="invalid-feedback">
-      Must be at least 2 characters
+  </nav>
+
+  <div class="container">
+    <div class="motto text-center">
+      <h1 class="h1-font">Hello!</h1>
+      <h2 class="h2-font">Welcome to LandVille.</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mr-auto ml-auto">
+        <form class="search-form">
+          <div class="row">
+            <div class="col-md-4">
+              <label class="sr-only">Keyword</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="keywords"
+                  placeholder="Keyword ( Street Name, Address, ... )">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="sr-only">City</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="City" placeholder="City">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="sr-only">State</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="State" placeholder="State">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="sr-only">Minimum Price</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="Minimum Price" placeholder="Minimum Price">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="sr-only">Maximum Price</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="Maximum Price" placeholder="Maximum Price">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="sr-only">Bedrooms</label>
+              <select name="bedrooms" class="form-control">
+                <option selected="true" disabled="disabled">Number of Bedrooms</option>
+                <option>1 Bedroom</option>
+                <option>2 Bedrooms</option>
+                <option>3 Bedrooms</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-warning btn-search" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+        <br>
+      </div>
+    </div>
+
+  </div>
+  <div class="container1">
+    <div class="motto text-center">
+      <i class="fa fa-arrow" aria-hidden="true"></i>
     </div>
   </div>
-  <div class="form-group">
-    <label>Last Name</label>
-    <input
-      #userLastName="ngModel"
-      [(ngModel)]="user.lastName"
-      [ngClass]="{'is-invalid': userLastName.errors && userLastName.touched}"
-      class="form-control"
-      minlength="2"
-      name="lastName"
-      required
-      type="text"
-    >
-    <div [hidden]="!userLastName.errors?.required" class="invalid-feedback">
-      Last Name required.
-    </div>
-    <div [hidden]="!userLastName.errors?.minlength" class="invalid-feedback">
-      Must be at least 2 characters
+</div>
+
+<div class="section section-dark text-center">
+  <div class="section section1 section-dark text-center">
+    <div class="container">
+      <br>
+      <h1 class="title title1">Trending Properties</h1>
+      <hr class="br-line">
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card card1">
+            <img class="card-img-top image1" src="./assets/img/House Architecture 4.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">The Village Mall</h5>
+              <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i class="fa fa-dollar" aria-hidden="true"></i> 10,000</p>
+              <a href="#link"><button class="btn btn-warning" style="font-weight: 500">View</button></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card1">
+            <img class="card-img-top image1" src="./assets/img/House Architecture 5.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">The Village Mall</h5>
+              <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i class="fa fa-dollar" aria-hidden="true"></i> 10,000</p>
+              <a href="#link"><button class="btn btn-warning" style="font-weight: 500">View</button></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card1">
+            <img class="card-img-top image1" src="./assets/img/House Architecture 6.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">The Village Mall</h5>
+              <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i class="fa fa-dollar" aria-hidden="true"></i> 10,000</p>
+              <a href="#link"><button class="btn btn-warning" style="font-weight: 500">View</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card card1">
+            <img class="card-img-top image1" src="./assets/img/House Architecture 7.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">The Village Mall</h5>
+              <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i class="fa fa-dollar" aria-hidden="true"></i> 10,000</p>
+              <a href="#link"><button class="btn btn-warning" style="font-weight: 500">View</button></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card1">
+            <img class="card-img-top image1" src="./assets/img/House Architecture 8.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">The Village Mall</h5>
+              <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i class="fa fa-dollar" aria-hidden="true"></i> 10,000</p>
+              <a href="#link"><button class="btn btn-warning" style="font-weight: 500">View</button></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card1">
+            <img class="card-img-top image1" src="./assets/img/House Architecture 9.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">The Village Mall</h5>
+              <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i class="fa fa-dollar" aria-hidden="true"></i> 10,000</p>
+              <a href="#link"><button class="btn btn-warning" style="font-weight: 500">View</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
     </div>
   </div>
-  <div class="form-group">
-    <label>Email</label>
-    <input
-      #userEmail="ngModel"
-      [(ngModel)]="user.email"
-      [ngClass]="{'is-invalid': userEmail.errors && userEmail.touched}"
-      class="form-control"
-      name="email"
-      pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
-      required
-      type="email"
-    >
-    <div [hidden]="!userEmail.errors?.required" class="invalid-feedback">
-      Email required.
+</div>
+
+<div class="main">
+  <div class="section text-center">
+    <div class="container">
+      <br>
+      <h1 class="title title1">What We Offer</h1>
+      <hr class="br-line">
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="info">
+            <div class="icon icon-danger">
+              <i class="nc-icon nc-album-2"></i>
+            </div>
+            <div class="description">
+              <h5 class="info-title title2">Authentic Properties</h5>
+              <p class="p1">Only verified properties are available on Landville</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info">
+            <div class="icon icon-danger">
+              <i class="nc-icon nc-bulb-63"></i>
+            </div>
+            <div class="description">
+              <h5 class="info-title title2">Great Financial Plan</h5>
+              <p class="p1">Landville offers a flexible payment plan to help you acquire your desired
+                property</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info">
+            <div class="icon icon-danger">
+              <i class="nc-icon nc-chart-bar-32"></i>
+            </div>
+            <div class="description">
+              <h5 class="info-title title2">Excellent Customer Relation</h5>
+              <p class="p1">Landville ensures ou get the best by providing personnel that would
+                meaningfully engage you till you
+                acquire your dream property</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 mr-auto ml-auto">
+          <br>
+          <a href="about"><button class="btn btn-warning btn-search">More Details</button></a>
+        </div>
+      </div>
+      <br>
     </div>
-    <div [hidden]="!userEmail.errors?.pattern" class="invalid-feedback">
-      Email is not valid.
+
+    <div class="section section-dark text-center section1">
+      <div class="container">
+        <br>
+        <h1 class="title title1">Meet The Team</h1>
+        <hr class="br-line">
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card card-profile card-plain team">
+              <div class="card card-profile card-plain">
+
+                <div class="card-avatar">
+                  <a href="#avatar"><img src="./assets/img/profile.png" alt="profile"></a>
+                </div>
+                <div class="card-block">
+                  <a href="#">
+                    <div class="author p1">
+                      <h4 class="card-title lighter">Eyitato Ogumola</h4>
+                      <h5 class="card-category bold">CEO</h5>
+                    </div>
+                  </a>
+                  <div class="card-body">
+                    <p class="card-description text-justify text1">
+                      Teamwork is so important that it is virtually impossible for you to reach the heights of your
+                      capabilities or make the money that you want without becoming very good at it. silence isn’t
+                      golden, it’s deadly.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-profile card-plain team">
+              <div class="card card-profile card-plain">
+                <div class="card-avatar">
+                  <a href="#avatar"><img src="./assets/img/profile.png" alt="..."></a>
+                </div>
+                <div class="card-block">
+                  <a href="#">
+                    <div class="author p1">
+                      <h4 class="card-title lighter">Eyitato Ogumola</h4>
+                      <h5 class="card-category bold">CEO</h5>
+                    </div>
+                  </a>
+                  <div class="card-body">
+                    <p class="card-description text-justify text1">
+                      A group becomes a team when each member is sure enough of himself and his contribution to praise
+                      the skill of the others. No one can whistle a symphony. It takes an orchestra to play it.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-profile card-plain team">
+              <div class="card card-profile card-plain">
+                <div class="card-avatar">
+                  <a href="#avatar"><img src="./assets/img/profile.png" alt="profile"></a>
+                </div>
+                <div class="card-block">
+                  <a href="#">
+                    <div class="author p1">
+                      <h4 class="card-title lighter">Eyitato Ogumola</h4>
+                      <h5 class="card-category bold">CEO</h5>
+                    </div>
+                  </a>
+                  <div class="card-body">
+                    <p class="card-description text-justify text1">
+                      The strength of the team is each individual member. The strength of each member is the team. If
+                      you can laugh together, you can work together, silence isn’t golden, it’s deadly.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="section landing-section">
+      <div class="section section-dark text-center">
+        <div class="container">
+          <h1 class="text-center title1">Talk To Us</h1>
+          <hr class="br-line">
+          <br>
+
+          <div class="col-md-8 mr-auto ml-auto">
+            <form class="contact-form" action="mailto:sample@email.com?subject=Website Feedback" method="POST"
+              enctype="text/plain">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Name">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Email">
+                  </div>
+                </div>
+                <br>
+              </div>
+              <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
+              <div class="row">
+                <div class="col-md-7 ml-auto">
+                  <br>
+                  <button class="btn btn-warning" style="font-weight: 500" type="submit">Send</button>
+                </div>
+              </div>
+            </form>
+            <br>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <button [disabled]="userForm.form.valid" class="btn-form btn-form-gold">Sign In</button>
-  <button [disabled]="userForm.form.valid" class="btn-social btn-social-facebook">facebook</button>
-  <button [disabled]="userForm.form.valid" class="btn-social btn-social-google">google</button>
-  <button [disabled]="userForm.form.valid" class="btn-social btn-social-twitter">twitter</button>
-  <button [disabled]="userForm.form.valid" class="btn-form btn-form-blue">Pay Now</button>
-</form>
+</div>
+<app-footer></app-footer>
