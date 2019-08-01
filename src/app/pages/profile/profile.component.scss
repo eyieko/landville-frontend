@@ -1,0 +1,78 @@
+.profile-tab.active {
+  z-index: 2;
+  color: black;
+  background-color: #fff9cc;
+  border-bottom-color: orange !important;
+  border-bottom-style: solid !important;
+  border-bottom-right-radius: inherit;
+  border-bottom-width: thick !important;
+  border-bottom-left-radius: unset !important;
+}
+
+.no-border {
+  border: none !important;
+}
+
+#profileBand {
+  margin-bottom: 50px;
+  margin-top: 30px;
+  text-align: center;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+.profile {
+  &-container {
+    position: relative;
+    top: -110px;
+  }
+  &-band {
+    height: 100px;
+    background-color: #fff9cc;
+    &-content {
+      width: 100%;
+    }
+  }
+  &-tab {
+    background-color: #fff9cc;
+    margin-top: 20px;
+    &-active {
+      z-index: 2;
+      color: black;
+      background-color: #fff9cc;
+      border-bottom-color: orange !important;
+      border-bottom-style: solid !important;
+      border-bottom-right-radius: inherit;
+      border-bottom-width: thick !important;
+      border-bottom-left-radius: unset !important;
+      padding-bottom: inherit;
+    }
+    &-content {
+      font-size: x-small;
+      margin-left: 10%;
+      margin-top: 15%;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .profile {
+    margin-right: 0%;
+    width: 100%;
+    &-tab-content {
+      margin-left: auto;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  #profileBand {
+    margin: auto;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #profileBand {
+    margin: auto;
+  }
+}
