@@ -8,9 +8,6 @@ import {catchError} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private loginService: LoginService) {
-  }
-
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(catchError(err => {
       if (err.status === 401) {

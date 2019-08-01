@@ -12,7 +12,8 @@ const createSpyObj = (name: string, methods: string[]) => {
 };
 
 export const loginServiceSpy = createSpyObj('LoginService', [
-  'login'
+  'login',
+  'currentUserValue',
 ]);
 
 export const registerServiceSpy = createSpyObj('RegisterServiceService', [
@@ -47,8 +48,15 @@ export const localStorageSpy = createSpyObj('LocalStorage', [
 ]);
 export const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
-
 export const companyServiceSpy = createSpyObj('CompanyService', [
   'createCompany',
   'getCompanyDetails',
+]);
+
+export const httpRequestSpy = jasmine.createSpyObj('HttpRequest', [
+  'doesNotMatter',
+  'clone',
+]);
+export const httpHandlerSpy = jasmine.createSpyObj('HttpHandler', [
+  'handle'
 ]);
