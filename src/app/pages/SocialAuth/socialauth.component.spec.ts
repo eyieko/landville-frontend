@@ -23,6 +23,7 @@ import { LoginComponent } from '../login/login.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { RegistrationComponent } from '../registration/registration.component';
 
 const userData: SocialUser = {
   id: '123',
@@ -49,7 +50,11 @@ describe('SocialLoginComponentt', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SocialLoginComponentt, LoginComponent],
+      declarations: [
+        SocialLoginComponentt,
+        LoginComponent,
+        RegistrationComponent
+      ],
       imports: [
         HttpClientTestingModule,
         ToastrModule.forRoot(),
