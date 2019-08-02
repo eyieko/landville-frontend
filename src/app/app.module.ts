@@ -1,3 +1,4 @@
+
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,8 +12,10 @@ import {RouterModule} from '@angular/router';
 import {AuthLayoutComponent} from './layouts/auth-layout/auth-layout.component';
 import {CommonLayoutComponent} from './layouts/common-layout/common-layout.component';
 import {ComponentsModule} from './components/components.module';
+import { LocalStorageService } from './services/local-storage.service';
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
+
 
 @NgModule({
   imports: [
@@ -33,8 +36,8 @@ import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-
     PasswordResetComponent,
     EnterResetPasswordComponent,
   ],
-  providers: [],
+  providers: [LocalStorageService],
+
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}

@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  authUrl: 'auth/register/',
+  profileUrl:
+    'https://landville-backend-web-api.herokuapp.com/api/v1/auth/profile/'
 };
 
 /*

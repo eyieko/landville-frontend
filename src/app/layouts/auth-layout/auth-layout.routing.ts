@@ -1,7 +1,11 @@
-import {Routes} from '@angular/router';
-
-import {LoginComponent} from '../../pages/login/login.component';
+import { Routes } from '@angular/router';
+import { HomeComponent } from '../../pages/home/home.component'
+import { LoginComponent } from '../../pages/login/login.component';
+import { RegistrationComponent } from '../../pages/registration/registration.component';
 
 export const AuthLayoutRoutes: Routes = [
-  {path: 'login', component: LoginComponent, data: { title: 'login' } },
+  { path: 'login', component: LoginComponent, data: { title: 'login' } },
+  { path: 'register', component: RegistrationComponent },
+  { path: 'home', component: HomeComponent },
+
 ];

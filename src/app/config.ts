@@ -1,15 +1,15 @@
-function appConfig () {
-   
-    return {
-        base_url: 'http://127.0.0.1:8000/api/v1/'
-    };
+function appConfig() {
+  return {
+    base_url: 'https://landville-backend-web-api.herokuapp.com/api/v1/'
+  };
 }
 
 export enum HttpMethods {
-    GET = 'get',
-    PUT = 'put',
-    POST = 'post',
-    DELETE = 'delete',
-  }
+  GET = 'get',
+  PUT = 'put',
+  POST = 'post',
+  DELETE = 'delete',
+  PATCH = 'patch'
+}
 
-export const APPCONFIG = appConfig()
+export const APPCONFIG = appConfig();

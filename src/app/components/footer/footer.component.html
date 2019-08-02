@@ -3,23 +3,39 @@
     <!-- start .container -->
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3 col-sm-12">
+        <div class="col-md-3 col-sm-4">
           <div class="footer-widget">
-            <img alt="" class="img-fluid" src="assets/images/ICON/Logo.png">
+            <img
+              alt=""
+              class="img-fluid"
+              src="assets/images/ICON/Logo Icon.png"
+            />
           </div>
           <!-- Ends: .footer-widget -->
         </div>
         <!-- end /.col-md-4 -->
-        <div class="col-md-7 col-sm-4">
+        <div class="col-md-6 col-sm-4">
           <div class="footer-widget">
             <div class="footer-menu footer-menu--1">
-              <ul>
-                <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-              <span>All Rights reserved. &copy; {{ currentDate | date: "yyyy" }} Landville</span>
+              <div class="footer text-center">
+                <a href="#" class="btn btn-link btn-just-icon btn-neutral"
+                  ><i class="fa fa-facebook"></i
+                ></a>
+                <a href="#" class="btn btn-link btn-just-icon btn-neutral"
+                  ><i class="fa fa-twitter"></i
+                ></a>
+                <a href="#" class="btn btn-link btn-just-icon btn-neutral"
+                  ><i class="fa fa-google-plus"></i
+                ></a>
+                <a href="#" class="btn btn-link btn-just-icon btn-neutral"
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+              </div>
+              <br />
+              <span
+                >All Rights reserved. &copy;
+                {{ currentDate | date: 'yyyy' }} Landville</span
+              ><br />
             </div>
             <!-- end /.footer-menu -->
           </div>
@@ -27,11 +43,15 @@
         </div>
         <!-- end /.col-md-4 -->
 
-        <div class="col-md-2 col-sm-4">
+        <div class="col-md-3 col-sm-6">
           <div class="footer-widget">
             <div class="footer-menu">
-              <p>8, Lasode Cresent, Victoria Island <br> Lagos, Nigeria</p>
-              <p>07123456789</p>  <br>
+              <p>
+                8, Lasode Cresent, Victoria Island <br />
+                Lagos, Nigeria
+              </p>
+              <p>07123456789</p>
+              <br />
               <p>www.thelandville.com</p>
               <p>info@thelandville.com</p>
             </div>

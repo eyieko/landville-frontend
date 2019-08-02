@@ -1,0 +1,63 @@
+<div class="profile">
+  <div class="profile-band mb-2"></div>
+  <div class="container profile-container">
+    <div class="row">
+      <div class="col-md-5 col-sm-12 profile-sidebar">
+        <app-profile-sidebar></app-profile-sidebar>
+      </div>
+      <div class="col-md-7 col-sm-12">
+        <div
+          class="list-group list-group-horizontal-lg"
+          id="profileBand"
+          role="tablist"
+        >
+          <a
+            class="list-group-item no-border list-group-item-action profile-tab active"
+            data-toggle="list"
+            href="#personal"
+            role="tab"
+            >Personal Information</a
+          >
+          <a
+            class="list-group-item no-border list-group-item-action profile-tab "
+            data-toggle="list"
+            href="#financials"
+            role="tab"
+            >Financials</a
+          >
+          <a
+            class="list-group-item no-border list-group-item-action profile-tab "
+            data-toggle="list"
+            href="#transactions"
+            role="tab"
+            >Transactions</a
+          >
+        </div>
+
+        <div class="tab-content">
+          <div
+            class="tab-pane active profile-tab-content"
+            id="personal"
+            role="tabpanel"
+          >
+            <app-personal-information></app-personal-information>
+          </div>
+          <div
+            class="tab-pane profile-tab-content"
+            id="financials"
+            role="tabpanel"
+          >
+            <p>Payment Details</p>
+          </div>
+          <div
+            class="tab-pane profile-tab-content"
+            id="transactions"
+            role="tabpanel"
+          >
+            Transactions
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

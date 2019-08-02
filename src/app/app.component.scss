@@ -1,12 +1,15 @@
 hr.header-line {
-  background: linear-gradient(to right, var(--color-primary) 25%, var(--color-primary-dark) 75%);
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 25%,
+    var(--color-primary-dark) 75%
+  );
   padding: 0.25rem;
   margin: 0;
-
 }
 
 @media only screen and (max-width: 480px) {
   hr.header-line {
-    width: 140%;
+    width: 100%;
   }
 }
