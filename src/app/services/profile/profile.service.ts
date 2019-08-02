@@ -12,7 +12,7 @@ import { APPCONFIG } from 'src/app/config';
   providedIn: 'root'
 })
 export class ProfileService {
-  profileUrl = 'auth/profile/';
+  profileUrl = '/auth/profile/';
   userProfile$: Subject<any> = new Subject<any>();
   userToken = this.localStorageService.get('token', '');
   httpOptions = {

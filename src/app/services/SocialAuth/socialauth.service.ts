@@ -18,6 +18,7 @@ export class LoginService {
   googleUrl = APPCONFIG.base_url + '/auth/google/';
   facebook_url = APPCONFIG.base_url + '/auth/facebook/';
 
+
   constructor(private http: HttpClient) {}
 
   createGoogleUser(accessToken: any): Observable<any> {
