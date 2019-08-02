@@ -44,17 +44,7 @@ describe('AuthGuard', () => {
     state = TestBed.get(RouterStateSnapshot);
   });
 
-  function forPrivateRoute() {
-    route = TestBed.get(ActivatedRouteSnapshot);
-    spyOnProperty(route, 'data', 'get').and.returnValue(true);
-  }
-
   it('should ...', inject([AuthGuard], (guard: AuthGuard) => {
     expect(guard).toBeTruthy();
   }));
-
-  it('Authenticated can access private route when logged in', () => {
-    forPrivateRoute();
-    expect(authGuard.canActivate(route, state)).toEqual(true);
-  });
 });
