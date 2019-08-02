@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
+import { HttpMethods } from 'src/app/config';
+import { HttpService } from '../http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EnterResetPasswordService {
   data;
-  url = 'http://127.0.0.1:8000/api/v1/auth/password-reset/?token=';
+  url = 'password-reset/?token=';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   changePassword(token, newPassword): Observable<any> {
     this.data = {
@@ -18,6 +20,6 @@ export class EnterResetPasswordService {
       confirm_password: newPassword
     };
 
-    return this.http.patch(this.url + token, this.data);
+    return this.http.makeRequestWithData(this.url+token, this.data, HttpMethods.PATCH)
   }
 }

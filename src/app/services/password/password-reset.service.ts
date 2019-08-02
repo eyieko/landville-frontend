@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError, Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { HttpService } from '../http.service';
+import { HttpMethods } from 'src/app/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PasswordResetService {
   emailData;
-  url = 'http://127.0.0.1:8000/api/v1/auth/password-reset/';
+  url = 'password-reset/';
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpService) { }
 
   getResetLink(resetEmail): Observable<any> {
     this.emailData = {
       email: resetEmail
     };
-    return this.http.post(this.url, this.emailData);
+    return this.http.makeRequestWithData(this.url, this.emailData, HttpMethods.POST)
   }
 }
