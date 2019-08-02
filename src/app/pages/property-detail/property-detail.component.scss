@@ -1,0 +1,34 @@
+.card {
+    border: hidden;
+}
+.card-header {
+    border: hidden;
+    background-color: #e9ecef;
+}
+.card-body {
+    background-color: rgba(109, 105, 105, 0.03);;
+}
+.price {
+    color:#ee9619;
+}
+
+.btn-primary {
+    font-size: small;
+    color: #fff !important;
+    background-color: #ee9619 !important;
+    border-radius: 45px;
+    border-color:#ee9619 !important;
+}
+
+.no-gutters>.col, .no-gutters>[class*=col-] {
+    padding-left: 4px !important;
+}
+.link{
+    color:#ee9619;
+}
+.plans {
+    list-style-type:none
+}
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    margin-right: 35px;
+}

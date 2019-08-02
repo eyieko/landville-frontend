@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Landville</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card my-5">
+                    <div class="card-header">
+                        <b>{{property.title}}</b>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <img src="{{property.image_main}}"
+                                            style="height:280px;width: 500px;margin-left: 5px;" class="img-fluid"
+                                            alt="">
+                                        <div class="row no-gutters mt-3">
+                                            <div>
+                                                <div id="carouselExampleFade" class="carousel slide carousel-fade"
+                                                    data-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        <div class="carousel-item"
+                                                            *ngFor="let image of property.image_others let i = index"
+                                                            [ngClass]="{'active' : i == 0}">
+                                                            <img src="{{image}}" style="height:280px;"
+                                                                class="d-block w-100" alt="Image">
+                                                        </div>
+                                                    </div>
+                                                    <a class="carousel-control-prev" href="#carouselExampleFade"
+                                                        role="button" data-slide="prev">
+                                                        <span class="carousel-control-prev-icon"
+                                                            aria-hidden="true"></span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#carouselExampleFade"
+                                                        role="button" data-slide="next">
+                                                        <span class="carousel-control-next-icon"
+                                                            aria-hidden="true"></span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </div>
+                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>{{property.title}}</b><br>
+                                        <small><i class="fa fa-map-marker"></i>
+                                            {{property.address.State}},{{property.address.City}}</small>
+                                        <h6 class="price">N {{property.price}}</h6>
+
+                                        <hr>
+                                        <div class="plans">
+                                            <h6><b>Available plans</b></h6>
+                                            <li>Outright Purchase</li>
+                                            <li>installment payment</li>
+
+                                        </div>
+                                        <br>
+                                        <hr>
+                                        <span>Click <a href="" class="link">here</a> to schedule an inspection</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <h4><b>Facilities</b></h4>
+                    <div class="row"> 
+                        <div class="col-md-9">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        Lot size
+                                    </div>
+                                    <div class="col-md-3">
+                                        Bedrooms
+                                    </div>
+                                    <div class="col-md-3">
+                                        Bathrooms
+                                    </div>
+                                    <div class="col-md-3">
+                                        Garages
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+                    </div>
+
+                </div>
+                <div col-md-7>
+                    <h4>ABOUT PROPERTY</h4>
+                    <p>{{property.description}}</p>
+                    <h6></h6>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -18,6 +18,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 
+import { PropertyDetailComponent } from '../../pages/property-detail/property-detail.component'
+
 @NgModule({
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import {HttpClientModule} from '@angular/common/http';
     CompanyComponent,
     PropertiesComponent,
     NoPropertiesComponent,
-    CardComponent
+    CardComponent,
+    PropertyDetailComponent
   ],
   providers: [ProfileService, LocalStorageService],
 })
