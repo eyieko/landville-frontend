@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  authUrl: 'auth/register/',
   profileUrl:
-    'https://landville-backend-web-api.herokuapp.com/api/v1/auth/profile/'
+    'https://landville-backend-web-api.herokuapp.com/api/v1/auth/profile/',
+  api_url: 'https://landville-backend-web-api.herokuapp.com/api/v1',
+  authUrl: '/auth/register/'
 };

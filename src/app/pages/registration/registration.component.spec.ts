@@ -11,39 +11,47 @@ import { User } from 'src/app/models/register/user';
 import { HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RegistersuccessComponent } from './registersuccess/registersuccess.component';
-import { registerServiceSpy, resetSpies, toastServiceSpy } from '../../helpers/spies';
+import {
+  registerServiceSpy,
+  resetSpies,
+  toastServiceSpy
+} from '../../helpers/spies';
 import { of, throwError } from 'rxjs';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
   let fixture: ComponentFixture<RegistrationComponent>;
 
-
   beforeAll(() => resetSpies([registerServiceSpy]));
   afterEach(() => resetSpies([registerServiceSpy]));
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistrationComponent,
-        RegisterFormComponent, RegisterHeaderComponent, RegistersuccessComponent
+      declarations: [
+        RegistrationComponent,
+        RegisterFormComponent,
+        RegisterHeaderComponent,
+        RegistersuccessComponent
       ],
+      schemas: [NO_ERRORS_SCHEMA],
       imports: [
         NgxSpinnerModule,
         ReactiveFormsModule,
-        HttpClientModule ,
+        HttpClientModule,
         ToastrModule.forRoot(),
         RouterTestingModule
-    ],
-    providers: [
-      {
-        provide: RegisterServiceService, useValue: registerServiceSpy
-      },
-      {
-        provide: ToastrService, useValue: toastServiceSpy
-      }
-    ]
-    })
-    .compileComponents();
+      ],
+      providers: [
+        {
+          provide: RegisterServiceService,
+          useValue: registerServiceSpy
+        },
+        {
+          provide: ToastrService,
+          useValue: toastServiceSpy
+        }
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -59,33 +67,41 @@ describe('RegistrationComponent', () => {
   it('should test registering a user and return right response ', () => {
     const User = {
       email: 'akram@andela.com',
-      first_name: 'akram', last_name: 'mukasa', role: 'CA',
-      password: 'akram100', confirmed_password: 'akram100', data: ''
+      first_name: 'akram',
+      last_name: 'mukasa',
+      role: 'CA',
+      password: 'akram100',
+      confirmed_password: 'akram100',
+      data: ''
     };
     const response = {
       data: {
-          user: {
-              email: 'akram@nator.com',
-              first_name: 'akram',
-              last_name: 'mukasa',
-              role: 'CA'
-          },
-          message: 'Account created successfully,please check your mailbox to activate your account ',
-          status: 'success'
+        user: {
+          email: 'akram@nator.com',
+          first_name: 'akram',
+          last_name: 'mukasa',
+          role: 'CA'
+        },
+        message:
+          'Account created successfully,please check your mailbox to activate your account ',
+        status: 'success'
       }
-  };
+    };
 
     registerServiceSpy.registerUser.and.returnValue(of(response));
     component.registerUser(User);
     expect(toastServiceSpy.success).toHaveBeenCalledWith(response.data.message);
-
   });
 
   it('should throw error', () => {
     const User = {
       email: 'akram@andela.com',
-      first_name: 'akram', last_name: 'mukasa', role: 'CA',
-      password: 'akram100', confirmed_password: 'akram100', data: ''
+      first_name: 'akram',
+      last_name: 'mukasa',
+      role: 'CA',
+      password: 'akram100',
+      confirmed_password: 'akram100',
+      data: ''
     };
     const errorMessage = {
       error: {
@@ -94,11 +110,10 @@ describe('RegistrationComponent', () => {
         }
       }
     };
-    registerServiceSpy.registerUser.and.returnValue(throwError(
-      errorMessage
-    ));
+    registerServiceSpy.registerUser.and.returnValue(throwError(errorMessage));
     component.registerUser(User);
-    expect(toastServiceSpy.error).toHaveBeenCalledWith(errorMessage.error.errors.email[0]);
+    expect(toastServiceSpy.error).toHaveBeenCalledWith(
+      errorMessage.error.errors.email[0]
+    );
   });
-
 });

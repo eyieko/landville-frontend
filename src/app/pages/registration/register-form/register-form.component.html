@@ -3,42 +3,44 @@
     <div class="information">
       <div class="left-section">
         <h4>Create a free account today!</h4>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+        <form
+          [formGroup]="registerForm"
+          (ngSubmit)="onSubmit(registerForm.value)"
+        >
           <div class="input-wrap">
-              <div class="input-icons"> 
-                  <i class="fa fa-envelope icon"> 
-                </i> 
-            <input 
-            formControlName="email"
-            type="text" class="form-control"
-              placeholder="Email address"
-              [ngClass]="{
-                'is-invalid':
-                  (registerForm.get('email').touched ||
-                    registerForm.get('email').dirty) &&
-                  !registerForm.get('email').valid
-              }"
-            />
-            <span class="invalid-feedback">
-              <span *ngIf="registerForm.get('email').errors?.required">
-                Email is required
-              </span>
-              <span *ngIf= "registerForm.get('email').errors?.email">
+            <div class="input-icons">
+              <i class="fa fa-envelope icon"> </i>
+              <input
+                formControlName="email"
+                type="text"
+                class="form-control"
+                placeholder="Email address"
+                [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('email').touched ||
+                      registerForm.get('email').dirty) &&
+                    !registerForm.get('email').valid
+                }"
+              />
+              <span class="invalid-feedback">
+                <span *ngIf="registerForm.get('email').errors?.required">
+                  Email is required
+                </span>
+                <span *ngIf="registerForm.get('email').errors?.email">
                   Email must be avalid email
                 </span>
-            </span>
-              </div>
+              </span>
+            </div>
           </div>
-    
-            <div class="input-wrap">
-                <div class="input-icons"> 
-                    <i class="fa fa-user icon"> 
-                  </i> 
-              <input 
+
+          <div class="input-wrap">
+            <div class="input-icons">
+              <i class="fa fa-user icon"> </i>
+              <input
                 class="form-control"
                 formControlName="first_name"
-                placeholder="First Name" 
-                type='text'
+                placeholder="First Name"
+                type="text"
                 [ngClass]="{
                   'is-invalid':
                     (registerForm.get('first_name').touched ||
@@ -51,18 +53,16 @@
                   first name is required
                 </span>
               </span>
-                </div>
-            
             </div>
-            <div class="input-wrap">
-                <div class="input-icons"> 
-                    <i class="fa fa-user icon"> 
-                  </i> 
-              <input 
+          </div>
+          <div class="input-wrap">
+            <div class="input-icons">
+              <i class="fa fa-user icon"> </i>
+              <input
                 class="form-control"
                 formControlName="last_name"
-                placeholder="Last Name" 
-                type='text'
+                placeholder="Last Name"
+                type="text"
                 [ngClass]="{
                   'is-invalid':
                     (registerForm.get('last_name').touched ||
@@ -75,105 +75,121 @@
                   Last name name is required
                 </span>
               </span>
-                </div>
             </div>
+          </div>
 
-            <div class="input-wrap">
-                <div class="input-icons"> 
-                    <i class="fa fa-user icon"> 
-                  </i> 
-               
-              <select class="custom-select" formControlName="role"  placeholder=" Select a role"
-              [ngClass]="{
-                'is-invalid':
-                  (registerForm.get('role').touched ||
-                    registerForm.get('role').dirty) &&
-                  !registerForm.get('role').valid
-              }">
-                <option value=""  value="null" disabled="true" [selected]="true">Select a role</option>
+          <div class="input-wrap">
+            <div class="input-icons">
+              <i class="fa fa-user icon"> </i>
+
+              <select
+                class="custom-select"
+                formControlName="role"
+                placeholder=" Select a role"
+                [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('role').touched ||
+                      registerForm.get('role').dirty) &&
+                    !registerForm.get('role').valid
+                }"
+              >
+                <option value="" value="null" disabled="true" [selected]="true"
+                  >Select a role</option
+                >
                 <option value="CA">Client Admin</option>
                 <option value="BY">Buyer</option>
               </select>
               <span class="invalid-feedback">
-                  <span *ngIf="registerForm.get('role').errors?.required">
-                    Role is required
-                  </span>
+                <span *ngIf="registerForm.get('role').errors?.required">
+                  Role is required
+                </span>
               </span>
-             </div>
-
-            
             </div>
+          </div>
 
-            <div class="input-wrap">
-              
-                <div class="input-icons"> 
-                    <i class="fa fa-lock icon"> 
-                  </i> 
-              <input 
-              class="form-control"
-              formControlName="password"
-              placeholder="Create Password" 
-              type='password'
-              [ngClass]="{
-                'is-invalid':
-                  (registerForm.get('password').touched ||
-                    registerForm.get('password').dirty) &&
-                  !registerForm.get('password').valid
-              }"
-            />
-            <span class="invalid-feedback">
-              <span *ngIf="registerForm.get('password').errors?.required">
-                Password is required
-              </span>
-              <span *ngIf="registerForm.get('password').errors?.minlength">
+          <div class="input-wrap">
+            <div class="input-icons">
+              <i class="fa fa-lock icon"> </i>
+              <input
+                class="form-control"
+                formControlName="password"
+                placeholder="Create Password"
+                type="password"
+                [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('password').touched ||
+                      registerForm.get('password').dirty) &&
+                    !registerForm.get('password').valid
+                }"
+              />
+              <span class="invalid-feedback">
+                <span *ngIf="registerForm.get('password').errors?.required">
+                  Password is required
+                </span>
+                <span *ngIf="registerForm.get('password').errors?.minlength">
                   Password must contain an uppercase, number and a character
                 </span>
-            </span>
-                </div>
+              </span>
             </div>
+          </div>
 
-
-            <div class="input-wrap">
-                <div class="input-icons"> 
-                    <i class="fa fa-lock icon"> 
-                  </i> 
+          <div class="input-wrap">
+            <div class="input-icons">
+              <i class="fa fa-lock icon"> </i>
               <input
-              class="form-control"
-              formControlName="confirmed_password"
-              placeholder="Confirm password" 
-              type='password' 
-              [ngClass]="{
-                'is-invalid':
-                  (registerForm.get('confirmed_password').touched ||
-                    registerForm.get('confirmed_password').dirty) &&
-                  !registerForm.get('confirmed_password').valid
-              }"
-            />
-            <span class="invalid-feedback">
-              <span *ngIf="registerForm.get('confirmed_password').errors?.required">
-                confirmed Password is required
+                class="form-control"
+                formControlName="confirmed_password"
+                placeholder="Confirm password"
+                type="password"
+                [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('confirmed_password').touched ||
+                      registerForm.get('confirmed_password').dirty) &&
+                    !registerForm.get('confirmed_password').valid
+                }"
+              />
+              <span class="invalid-feedback">
+                <span
+                  *ngIf="
+                    registerForm.get('confirmed_password').errors?.required
+                  "
+                >
+                  confirmed Password is required
+                </span>
+                <span
+                  *ngIf="
+                    registerForm.get('confirmed_password').errors?.mustMatch
+                  "
+                >
+                  Passwords Must Match
+                </span>
               </span>
-              <span *ngIf="registerForm.get('confirmed_password').errors?.mustMatch">
-                Passwords Must Match
-              </span>
-            </span>
-                </div>
             </div>
+          </div>
 
-            <button type='submit' [disabled]="!registerForm.valid" 
-            [ngStyle]="registerForm.invalid && {'color':'white','backgroundColor': '#171039'} ">Create Account</button>
+          <button
+            type="submit"
+            [disabled]="!registerForm.valid"
+            [ngStyle]="
+              registerForm.invalid && {
+                color: 'white',
+                backgroundColor: '#171039'
+              }
+            "
+          >
+            Create Account
+          </button>
         </form>
         <p class="connect">Or Connect with</p>
-
         <p class="social-media">
-          <span>
-            <img src="../../../../assets/images/ICON/Facebook.png" />
-          </span>
-          <span>
-            <img src="../../../../assets/images/ICON/LinkedIn.png" />
-          </span>
+          <app-social-login></app-social-login>
         </p>
-        <p class="login-para">Already have your account? <a class="sign-link" href="/login">Sign in here</a></p>
+        <!-- <app-social-login></app-social-login> -->
+
+        <p class="login-para">
+          Already have your account?
+          <a class="sign-link" href="/login">Sign in here</a>
+        </p>
       </div>
       <div class="right-section">
         <div class="right-details">
@@ -188,7 +204,10 @@
           <img src="../../../../assets/images/ICON/FinancialPlans.png" />
           <div class="more-info">
             <h4>Great financial plan</h4>
-            <p>Landville offers a flexible payment plan to help you acquire your desired property.</p>
+            <p>
+              Landville offers a flexible payment plan to help you acquire your
+              desired property.
+            </p>
           </div>
         </div>
 
@@ -196,15 +215,19 @@
           <img src="../../../../assets/images/ICON/CustomerRelations.png" />
           <div class="more-info">
             <h4>Excellent Customer Relation</h4>
-            <p>Landville ensures you get the best by providing personnel that would meaningfully engage you till you
-              acquire your dream property. </p>
+            <p>
+              Landville ensures you get the best by providing personnel that
+              would meaningfully engage you till you acquire your dream
+              property.
+            </p>
           </div>
         </div>
 
         <hr />
 
         <p class="qoute">
-          "The wise young man or wage earner of today invests is money in real estate." -
+          "The wise young man or wage earner of today invests is money in real
+          estate." -
           <span>Andrew Carnegie</span>
         </p>
       </div>

@@ -1,9 +1,10 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
-import {FooterComponent} from './footer/footer.component';
-import {NavbarComponent} from './navbar/navbar.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -11,14 +12,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule
   ],
-  declarations: [
-    FooterComponent,
-    NavbarComponent,
-  ],
-  exports: [
-    NavbarComponent,
-    FooterComponent
-  ]
+  providers: [],
+  declarations: [FooterComponent, NavbarComponent],
+  exports: [NavbarComponent, FooterComponent]
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

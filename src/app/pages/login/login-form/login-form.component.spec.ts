@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import {FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { of, throwError } from 'rxjs';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -8,38 +8,39 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoginFormComponent } from './login-form.component';
 import { LoginHeaderComponent } from '../login-header/login-header.component';
 import { LoginSliderComponent } from '../login-slider/login-slider.component';
-import { SocialLoginComponent } from '../social-login/social-login.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoginService } from 'src/app/services/login/login.service';
-import { loginServiceSpy, resetSpies, toastServiceSpy } from '../../../helpers/spies';
+import {
+  loginServiceSpy,
+  resetSpies,
+  toastServiceSpy
+} from '../../../helpers/spies';
 
 const loginError = {
   errors: {
-      invalid: [
-          "invalid email and password combination"
-      ]
+    invalid: ['invalid email and password combination']
   }
-}
+};
 
 const loginData = {
-  email: "client1@testing.com",
-  password: "Idfwu8080!"
-}
+  email: 'client1@testing.com',
+  password: 'Idfwu8080!'
+};
 const loginResponse = {
-
-    data: {
-        user: {
-            email: "client1@testing.com",
-            token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZW1haWwiOiJjbGllbnQxQHRlc3RpbmcuY29tIiwiZXhwIjoxNTYzODc5MzQwfQ.USqawLLbtHZsWaykh9oeWs0tjrWkp-gIXErp4sFW2NY"
-        },
-        message: "You have successfully logged in",
-        status: "success"
-    }
-}
+  data: {
+    user: {
+      email: 'client1@testing.com',
+      token:
+        'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZW1haWwiOiJjbGllbnQxQHRlc3RpbmcuY29tIiwiZXhwIjoxNTYzODc5MzQwfQ.USqawLLbtHZsWaykh9oeWs0tjrWkp-gIXErp4sFW2NY'
+    },
+    message: 'You have successfully logged in',
+    status: 'success'
+  }
+};
 describe('LoginFormComponent', () => {
   let component: LoginFormComponent;
   let fixture: ComponentFixture<LoginFormComponent>;
-  
+
   beforeAll(() => resetSpies([loginServiceSpy]));
   afterEach(() => resetSpies([loginServiceSpy]));
   beforeEach(async(() => {
@@ -55,13 +56,13 @@ describe('LoginFormComponent', () => {
       declarations: [
         LoginFormComponent,
         LoginHeaderComponent,
-        LoginSliderComponent,
-        SocialLoginComponent,
+        LoginSliderComponent
       ],
-      providers: [{provide: LoginService, useValue: loginServiceSpy},
-        {provide: ToastrService, useValue: toastServiceSpy}]
-    })
-    .compileComponents();
+      providers: [
+        { provide: LoginService, useValue: loginServiceSpy },
+        { provide: ToastrService, useValue: toastServiceSpy }
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -76,22 +77,24 @@ describe('LoginFormComponent', () => {
     password.setValue('password');
     loginServiceSpy.login.and.returnValue(of(loginResponse));
     component.onLogin(loginData);
-    expect(toastServiceSpy.success).toHaveBeenCalledWith(loginResponse.data.message);
-  })
+    expect(toastServiceSpy.success).toHaveBeenCalledWith(
+      loginResponse.data.message
+    );
+  });
 
   it('should throw an error in case of wrong details', () => {
     const { email, password } = component.loginForm.controls;
     email.setValue('testemail@email.com');
     password.setValue('password');
-    loginServiceSpy.login.and.returnValue(throwError(
-      loginError
-    ));
+    loginServiceSpy.login.and.returnValue(throwError(loginError));
     component.onLogin(loginData);
-    expect(toastServiceSpy.error).toHaveBeenCalledWith('Invalid email and password combination');
-  })
+    expect(toastServiceSpy.error).toHaveBeenCalledWith(
+      'Invalid email and password combination'
+    );
+  });
   it('should call login method', () => {
-    component.onLogin(loginData)
-    expect(component.success).toBeFalsy()
+    component.onLogin(loginData);
+    expect(component.success).toBeFalsy();
   });
 
   it('should create', () => {
@@ -117,10 +120,10 @@ describe('LoginFormComponent', () => {
     email.setValue('testemail@email.com');
     password.setValue('password');
     setTimeout(function() {
-        expect(component.inputError).toBeFalsy()
-        done();
+      expect(component.inputError).toBeFalsy();
+      done();
     }, 3000);
-});
+  });
   it('should error if an invalid form passed', () => {
     const email = component.loginForm.controls.email;
     email.setValue('');

@@ -1,8 +1,7 @@
-import {async, TestBed} from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 
-import {AuthLayoutComponent} from './auth-layout.component';
-import {RouterTestingModule} from '@angular/router/testing';
-
+import { AuthLayoutComponent } from './auth-layout.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthLayoutComponent', () => {
   beforeEach(async(() => {
@@ -18,4 +17,3 @@ describe('AuthLayoutComponent', () => {
     expect(authLayoutComponent).toBeTruthy();
   });
 });
-

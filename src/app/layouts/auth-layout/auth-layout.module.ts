@@ -1,15 +1,15 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {HttpClientModule } from '@angular/common/http';
-import {RouterModule} from '@angular/router';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {NgxSpinnerModule} from 'ngx-spinner';
 
-import {AuthLayoutRoutes} from './auth-layout.routing';
-import {LoginComponent} from '../../pages/login/login.component';
-import { LoginFormComponent } from '../../pages/login/login-form/login-form.component';
-import { LoginHeaderComponent } from '../../pages/login/login-header/login-header.component';
-import { LoginSliderComponent } from '../../pages/login/login-slider/login-slider.component';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { AuthLayoutRoutes } from './auth-layout.routing';
+import { LoginComponent } from 'src/app/pages/login/login.component';
+import { LoginFormComponent } from 'src/app/pages/login/login-form/login-form.component';
+import { LoginHeaderComponent } from 'src/app/pages/login/login-header/login-header.component';
+import { LoginSliderComponent } from 'src/app/pages/login/login-slider/login-slider.component';
 import { SocialLoginComponent } from '../../pages/login/social-login/social-login.component';
 import { RegistrationComponent } from 'src/app/pages/registration/registration.component';
 import { RegisterFormComponent } from 'src/app/pages/registration/register-form/register-form.component';
@@ -20,6 +20,32 @@ import { PasswordResetComponent } from 'src/app/pages/password-reset/password-re
 import { EnterResetPasswordComponent } from 'src/app/pages/enter-reset-password/enter-reset-password.component';
 
 
+import {} from 'src/environments/environment.prod';
+
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+  AuthService
+} from 'angularx-social-login';
+import { SocialLoginComponentt } from 'src/app/pages/SocialAuth/socialauth.component';
+import { APPCONFIG } from 'src/app/config';
+
+//configs
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(APPCONFIG.googleId)
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider(APPCONFIG.facebookId)
+  }
+]);
+export function provideConfig() {
+  return config;
+}
 @NgModule({
   imports: [
     CommonModule,
@@ -28,19 +54,27 @@ import { EnterResetPasswordComponent } from 'src/app/pages/enter-reset-password/
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ComponentsModule
+    ComponentsModule,
+    SocialLoginModule
   ],
   declarations: [
     LoginComponent,
     LoginFormComponent,
     LoginHeaderComponent,
     LoginSliderComponent,
-    SocialLoginComponent,
     LoginComponent,
     RegistrationComponent,
     RegisterFormComponent,
     RegisterHeaderComponent,
-    HomeComponent
+    HomeComponent,
+    SocialLoginComponentt
+  ],
+  providers: [
+    AuthService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
   ]
 })
 export class AuthLayoutModule {}

@@ -2,18 +2,18 @@
   <div class="filter"></div>
 
   <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="home">
-      <img class="logo" alt="logo" src="./assets/images/ICON/Logo Icon.png" />
+    <a class="navbar-brand" routerLink="/">
+      <img alt="logo" class="logo" src="./assets/images/ICON/Logo Icon.png" />
     </a>
 
     <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      class="navbar-toggler"
+      data-target="/navbarSupportedContent"
+      data-toggle="collapse"
+      type="button"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,16 +21,32 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Properties</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="active"
+            >Properties</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profile">Profile</a>
+          <a class="nav-link" routerLink="/profile" routerLinkActive="active"
+            >Profile</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login">Login</a>
+          <a
+            class="nav-link"
+            routerLink="/create-company"
+            routerLinkActive="active"
+            >Create new company</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="register">Register</a>
+          <a class="nav-link" routerLink="/login" routerLinkActive="active"
+            >Login</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active"
+            >Register</a
+          >
         </li>
       </ul>
     </div>
@@ -49,10 +65,10 @@
               <label class="sr-only">Keyword</label>
               <div class="input-group">
                 <input
-                  type="text"
                   class="form-control"
                   name="keywords"
                   placeholder="Keyword ( Street Name, Address, ... )"
+                  type="text"
                 />
               </div>
             </div>
@@ -60,10 +76,10 @@
               <label class="sr-only">City</label>
               <div class="input-group">
                 <input
-                  type="text"
                   class="form-control"
                   name="City"
                   placeholder="City"
+                  type="text"
                 />
               </div>
             </div>
@@ -71,10 +87,10 @@
               <label class="sr-only">State</label>
               <div class="input-group">
                 <input
-                  type="text"
                   class="form-control"
                   name="State"
                   placeholder="State"
+                  type="text"
                 />
               </div>
             </div>
@@ -82,10 +98,10 @@
               <label class="sr-only">Minimum Price</label>
               <div class="input-group">
                 <input
-                  type="text"
                   class="form-control"
                   name="Minimum Price"
                   placeholder="Minimum Price"
+                  type="text"
                 />
               </div>
             </div>
@@ -93,17 +109,17 @@
               <label class="sr-only">Maximum Price</label>
               <div class="input-group">
                 <input
-                  type="text"
                   class="form-control"
                   name="Maximum Price"
                   placeholder="Maximum Price"
+                  type="text"
                 />
               </div>
             </div>
             <div class="col-md-4">
               <label class="sr-only">Bedrooms</label>
-              <select name="bedrooms" class="form-control">
-                <option selected="true" disabled="disabled"
+              <select class="form-control" name="bedrooms">
+                <option disabled="disabled" selected="true"
                   >Number of Bedrooms</option
                 >
                 <option>1 Bedroom</option>
@@ -124,7 +140,7 @@
   </div>
   <div class="container1">
     <div class="motto text-center">
-      <i class="fa fa-arrow" aria-hidden="true"></i>
+      <i aria-hidden="true" class="fa fa-arrow"></i>
     </div>
   </div>
 </div>
@@ -140,24 +156,24 @@
         <div class="col-md-4">
           <div class="card card1">
             <img
+              alt="Card image cap"
               class="card-img-top image1"
               src="./assets/img/House Architecture 4.jpg"
-              alt="Card image cap"
             />
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
               <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
+                <i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli
                 Avenue, Bugolobi.
               </p>
               <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
+                <i aria-hidden="true" class="fa fa-dollar"></i> 10,000
               </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">
                   View
-                </button></a
-              >
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -165,24 +181,24 @@
         <div class="col-md-4">
           <div class="card card1">
             <img
+              alt="Card image cap"
               class="card-img-top image1"
               src="./assets/img/House Architecture 5.jpg"
-              alt="Card image cap"
             />
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
               <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
+                <i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli
                 Avenue, Bugolobi.
               </p>
               <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
+                <i aria-hidden="true" class="fa fa-dollar"></i> 10,000
               </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">
                   View
-                </button></a
-              >
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -190,24 +206,24 @@
         <div class="col-md-4">
           <div class="card card1">
             <img
+              alt="Card image cap"
               class="card-img-top image1"
               src="./assets/img/House Architecture 6.jpg"
-              alt="Card image cap"
             />
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
               <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
+                <i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli
                 Avenue, Bugolobi.
               </p>
               <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
+                <i aria-hidden="true" class="fa fa-dollar"></i> 10,000
               </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">
                   View
-                </button></a
-              >
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -217,24 +233,24 @@
         <div class="col-md-4">
           <div class="card card1">
             <img
+              alt="Card image cap"
               class="card-img-top image1"
               src="./assets/img/House Architecture 7.jpg"
-              alt="Card image cap"
             />
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
               <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
+                <i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli
                 Avenue, Bugolobi.
               </p>
               <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
+                <i aria-hidden="true" class="fa fa-dollar"></i> 10,000
               </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">
                   View
-                </button></a
-              >
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -242,24 +258,24 @@
         <div class="col-md-4">
           <div class="card card1">
             <img
+              alt="Card image cap"
               class="card-img-top image1"
               src="./assets/img/House Architecture 8.jpg"
-              alt="Card image cap"
             />
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
               <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
+                <i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli
                 Avenue, Bugolobi.
               </p>
               <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
+                <i aria-hidden="true" class="fa fa-dollar"></i> 10,000
               </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">
                   View
-                </button></a
-              >
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -267,24 +283,24 @@
         <div class="col-md-4">
           <div class="card card1">
             <img
+              alt="Card image cap"
               class="card-img-top image1"
               src="./assets/img/House Architecture 9.jpg"
-              alt="Card image cap"
             />
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
               <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
+                <i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli
                 Avenue, Bugolobi.
               </p>
               <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
+                <i aria-hidden="true" class="fa fa-dollar"></i> 10,000
               </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">
                   View
-                </button></a
-              >
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -346,9 +362,9 @@
         </div>
         <div class="col-md-8 mr-auto ml-auto">
           <br />
-          <a href="about"
-            ><button class="btn btn-warning btn-search">More Details</button></a
-          >
+          <a routerLink="/about">
+            <button class="btn btn-warning btn-search">More Details</button>
+          </a>
         </div>
       </div>
       <br />
@@ -365,12 +381,12 @@
             <div class="card card-profile card-plain team">
               <div class="card card-profile card-plain">
                 <div class="card-avatar">
-                  <a href="#avatar"
-                    ><img src="./assets/img/profile.png" alt="profile"
+                  <a routerLink="/avatar"
+                    ><img alt="profile" src="./assets/img/profile.png"
                   /></a>
                 </div>
                 <div class="card-block">
-                  <a href="#">
+                  <a routerLink="/">
                     <div class="author p1">
                       <h4 class="card-title lighter">Eyitato Ogumola</h4>
                       <h5 class="card-category bold">CEO</h5>
@@ -393,12 +409,12 @@
             <div class="card card-profile card-plain team">
               <div class="card card-profile card-plain">
                 <div class="card-avatar">
-                  <a href="#avatar"
-                    ><img src="./assets/img/profile.png" alt="..."
+                  <a routerLink="/avatar"
+                    ><img alt="..." src="./assets/img/profile.png"
                   /></a>
                 </div>
                 <div class="card-block">
-                  <a href="#">
+                  <a routerLink="/">
                     <div class="author p1">
                       <h4 class="card-title lighter">Eyitato Ogumola</h4>
                       <h5 class="card-category bold">CEO</h5>
@@ -421,12 +437,12 @@
             <div class="card card-profile card-plain team">
               <div class="card card-profile card-plain">
                 <div class="card-avatar">
-                  <a href="#avatar"
-                    ><img src="./assets/img/profile.png" alt="profile"
+                  <a routerLink="/"
+                    ><img alt="profile" src="./assets/img/profile.png"
                   /></a>
                 </div>
                 <div class="card-block">
-                  <a href="#">
+                  <a routerLink="/">
                     <div class="author p1">
                       <h4 class="card-title lighter">Eyitato Ogumola</h4>
                       <h5 class="card-category bold">CEO</h5>
@@ -460,27 +476,27 @@
 
           <div class="col-md-8 mr-auto ml-auto">
             <form
-              class="contact-form"
               action="mailto:sample@email.com?subject=Website Feedback"
-              method="POST"
+              class="contact-form"
               enctype="text/plain"
+              method="POST"
             >
               <div class="row">
                 <div class="col-md-6">
                   <div class="input-group">
                     <input
-                      type="text"
                       class="form-control"
                       placeholder="Name"
+                      type="text"
                     />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="input-group">
                     <input
-                      type="email"
                       class="form-control"
                       placeholder="Email"
+                      type="email"
                     />
                   </div>
                 </div>
@@ -488,8 +504,8 @@
               </div>
               <textarea
                 class="form-control"
-                rows="4"
                 placeholder="Tell us your thoughts and feelings..."
+                rows="4"
               ></textarea>
               <div class="row">
                 <div class="col-md-7 ml-auto">
