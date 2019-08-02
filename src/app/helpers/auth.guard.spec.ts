@@ -1,9 +1,13 @@
-import {inject, TestBed} from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
-import {AuthGuard} from './auth.guard';
-import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
-import {routerSpy} from './spies';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { AuthGuard } from './auth.guard';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot
+} from '@angular/router';
+import { routerSpy } from './spies';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 class MockActivatedRouteSnapshot {
   private _data: any;
@@ -26,9 +30,12 @@ describe('AuthGuard', () => {
     TestBed.configureTestingModule({
       providers: [
         AuthGuard,
-        {provide: Router, useValue: routerSpy},
-        {provide: ActivatedRouteSnapshot, useClass: MockActivatedRouteSnapshot},
-        {provide: RouterStateSnapshot, useClass: MockRouterStateSnapshot},
+        { provide: Router, useValue: routerSpy },
+        {
+          provide: ActivatedRouteSnapshot,
+          useClass: MockActivatedRouteSnapshot
+        },
+        { provide: RouterStateSnapshot, useClass: MockRouterStateSnapshot }
       ],
       imports: [HttpClientTestingModule]
     });
@@ -47,8 +54,7 @@ describe('AuthGuard', () => {
   }));
 
   it('Authenticated can access private route when logged in', () => {
-
     forPrivateRoute();
-    expect(authGuard.canActivate(route, state)).toEqual(false);
+    expect(authGuard.canActivate(route, state)).toEqual(true);
   });
 });
