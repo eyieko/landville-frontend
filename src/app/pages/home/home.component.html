@@ -2,37 +2,32 @@
   <div class="filter"></div>
 
   <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="home">
-      <img class="logo" alt="logo" src="./assets/images/ICON/Logo Icon.png" />
+    <a class="navbar-brand" routerLink="/">
+      <img alt="logo" class="logo" src="./assets/images/ICON/Logo Icon.png">
     </a>
 
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="/navbarSupportedContent" data-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Properties</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Properties</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profile">Profile</a>
+          <a class="nav-link" routerLink="/create-company" routerLinkActive="active">Create new company</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login">Login</a>
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="register">Register</a>
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
         </li>
       </ul>
+
     </div>
   </nav>
 
@@ -48,83 +43,56 @@
             <div class="col-md-4">
               <label class="sr-only">Keyword</label>
               <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="keywords"
-                  placeholder="Keyword ( Street Name, Address, ... )"
-                />
+                <input class="form-control" name="keywords" placeholder="Keyword ( Street Name, Address, ... )"
+                       type="text">
               </div>
             </div>
             <div class="col-md-4">
               <label class="sr-only">City</label>
               <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="City"
-                  placeholder="City"
-                />
+                <input class="form-control" name="City" placeholder="City" type="text">
               </div>
             </div>
             <div class="col-md-4">
               <label class="sr-only">State</label>
               <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="State"
-                  placeholder="State"
-                />
+                <input class="form-control" name="State" placeholder="State" type="text">
               </div>
             </div>
             <div class="col-md-4">
               <label class="sr-only">Minimum Price</label>
               <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="Minimum Price"
-                  placeholder="Minimum Price"
-                />
+                <input class="form-control" name="Minimum Price" placeholder="Minimum Price" type="text">
               </div>
             </div>
             <div class="col-md-4">
               <label class="sr-only">Maximum Price</label>
               <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="Maximum Price"
-                  placeholder="Maximum Price"
-                />
+                <input class="form-control" name="Maximum Price" placeholder="Maximum Price" type="text">
               </div>
             </div>
             <div class="col-md-4">
               <label class="sr-only">Bedrooms</label>
-              <select name="bedrooms" class="form-control">
-                <option selected="true" disabled="disabled"
-                  >Number of Bedrooms</option
-                >
+              <select class="form-control" name="bedrooms">
+                <option disabled="disabled" selected="true">Number of Bedrooms</option>
                 <option>1 Bedroom</option>
                 <option>2 Bedrooms</option>
                 <option>3 Bedrooms</option>
               </select>
             </div>
             <div class="col-md-4">
-              <button class="btn btn-warning btn-search" type="submit">
-                Search
-              </button>
+              <button class="btn btn-warning btn-search" type="submit">Search</button>
             </div>
           </div>
         </form>
-        <br />
+        <br>
       </div>
     </div>
+
   </div>
   <div class="container1">
     <div class="motto text-center">
-      <i class="fa fa-arrow" aria-hidden="true"></i>
+      <i aria-hidden="true" class="fa fa-arrow"></i>
     </div>
   </div>
 </div>
@@ -132,82 +100,49 @@
 <div class="section section-dark text-center">
   <div class="section section1 section-dark text-center">
     <div class="container">
-      <br />
+      <br>
       <h1 class="title title1">Trending Properties</h1>
-      <hr class="br-line" />
-      <br />
+      <hr class="br-line">
+      <br>
       <div class="row">
         <div class="col-md-4">
           <div class="card card1">
-            <img
-              class="card-img-top image1"
-              src="./assets/img/House Architecture 4.jpg"
-              alt="Card image cap"
-            />
+            <img alt="Card image cap" class="card-img-top image1" src="./assets/img/House Architecture 4.jpg">
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
-              <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
-                Avenue, Bugolobi.
-              </p>
-              <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
-              </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
-                  View
-                </button></a
-              >
+              <p class="card-text"><i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i aria-hidden="true" class="fa fa-dollar"></i> 10,000</p>
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">View</button>
+              </a>
             </div>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="card card1">
-            <img
-              class="card-img-top image1"
-              src="./assets/img/House Architecture 5.jpg"
-              alt="Card image cap"
-            />
+            <img alt="Card image cap" class="card-img-top image1" src="./assets/img/House Architecture 5.jpg">
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
-              <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
-                Avenue, Bugolobi.
-              </p>
-              <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
-              </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
-                  View
-                </button></a
-              >
+              <p class="card-text"><i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i aria-hidden="true" class="fa fa-dollar"></i> 10,000</p>
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">View</button>
+              </a>
             </div>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="card card1">
-            <img
-              class="card-img-top image1"
-              src="./assets/img/House Architecture 6.jpg"
-              alt="Card image cap"
-            />
+            <img alt="Card image cap" class="card-img-top image1" src="./assets/img/House Architecture 6.jpg">
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
-              <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
-                Avenue, Bugolobi.
-              </p>
-              <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
-              </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
-                  View
-                </button></a
-              >
+              <p class="card-text"><i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i aria-hidden="true" class="fa fa-dollar"></i> 10,000</p>
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">View</button>
+              </a>
             </div>
           </div>
         </div>
@@ -216,80 +151,47 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card card1">
-            <img
-              class="card-img-top image1"
-              src="./assets/img/House Architecture 7.jpg"
-              alt="Card image cap"
-            />
+            <img alt="Card image cap" class="card-img-top image1" src="./assets/img/House Architecture 7.jpg">
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
-              <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
-                Avenue, Bugolobi.
-              </p>
-              <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
-              </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
-                  View
-                </button></a
-              >
+              <p class="card-text"><i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i aria-hidden="true" class="fa fa-dollar"></i> 10,000</p>
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">View</button>
+              </a>
             </div>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="card card1">
-            <img
-              class="card-img-top image1"
-              src="./assets/img/House Architecture 8.jpg"
-              alt="Card image cap"
-            />
+            <img alt="Card image cap" class="card-img-top image1" src="./assets/img/House Architecture 8.jpg">
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
-              <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
-                Avenue, Bugolobi.
-              </p>
-              <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
-              </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
-                  View
-                </button></a
-              >
+              <p class="card-text"><i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i aria-hidden="true" class="fa fa-dollar"></i> 10,000</p>
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">View</button>
+              </a>
             </div>
           </div>
         </div>
 
         <div class="col-md-4">
           <div class="card card1">
-            <img
-              class="card-img-top image1"
-              src="./assets/img/House Architecture 9.jpg"
-              alt="Card image cap"
-            />
+            <img alt="Card image cap" class="card-img-top image1" src="./assets/img/House Architecture 9.jpg">
             <div class="card-body">
               <h5 class="card-title">The Village Mall</h5>
-              <p class="card-text">
-                <i class="fa fa-map-marker" aria-hidden="true"></i> Luthuli
-                Avenue, Bugolobi.
-              </p>
-              <p class="card-text">
-                <i class="fa fa-dollar" aria-hidden="true"></i> 10,000
-              </p>
-              <a href="#link"
-                ><button class="btn btn-warning" style="font-weight: 500">
-                  View
-                </button></a
-              >
+              <p class="card-text"><i aria-hidden="true" class="fa fa-map-marker"></i> Luthuli Avenue, Bugolobi.</p>
+              <p class="card-text"><i aria-hidden="true" class="fa fa-dollar"></i> 10,000</p>
+              <a routerLink="/">
+                <button class="btn btn-warning" style="font-weight: 500">View</button>
+              </a>
             </div>
           </div>
         </div>
       </div>
-      <br />
+      <br>
     </div>
   </div>
 </div>
@@ -297,10 +199,10 @@
 <div class="main">
   <div class="section text-center">
     <div class="container">
-      <br />
+      <br>
       <h1 class="title title1">What We Offer</h1>
-      <hr class="br-line" />
-      <br />
+      <hr class="br-line">
+      <br>
       <div class="row">
         <div class="col-md-4">
           <div class="info">
@@ -309,9 +211,7 @@
             </div>
             <div class="description">
               <h5 class="info-title title2">Authentic Properties</h5>
-              <p class="p1">
-                Only verified properties are available on Landville
-              </p>
+              <p class="p1">Only verified properties are available on Landville</p>
             </div>
           </div>
         </div>
@@ -322,10 +222,8 @@
             </div>
             <div class="description">
               <h5 class="info-title title2">Great Financial Plan</h5>
-              <p class="p1">
-                Landville offers a flexible payment plan to help you acquire
-                your desired property
-              </p>
+              <p class="p1">Landville offers a flexible payment plan to help you acquire your desired
+                property</p>
             </div>
           </div>
         </div>
@@ -336,41 +234,38 @@
             </div>
             <div class="description">
               <h5 class="info-title title2">Excellent Customer Relation</h5>
-              <p class="p1">
-                Landville ensures ou get the best by providing personnel that
-                would meaningfully engage you till you acquire your dream
-                property
-              </p>
+              <p class="p1">Landville ensures ou get the best by providing personnel that would
+                meaningfully engage you till you
+                acquire your dream property</p>
             </div>
           </div>
         </div>
         <div class="col-md-8 mr-auto ml-auto">
-          <br />
-          <a href="about"
-            ><button class="btn btn-warning btn-search">More Details</button></a
-          >
+          <br>
+          <a routerLink="/about">
+            <button class="btn btn-warning btn-search">More Details</button>
+          </a>
         </div>
       </div>
-      <br />
+      <br>
     </div>
 
     <div class="section section-dark text-center section1">
       <div class="container">
-        <br />
+        <br>
         <h1 class="title title1">Meet The Team</h1>
-        <hr class="br-line" />
-        <br />
+        <hr class="br-line">
+        <br>
         <div class="row">
           <div class="col-md-4">
             <div class="card card-profile card-plain team">
               <div class="card card-profile card-plain">
+
                 <div class="card-avatar">
-                  <a href="#avatar"
-                    ><img src="./assets/img/profile.png" alt="profile"
-                  /></a>
+                  <a routerLink="/avatar"><img alt="profile" src="./assets/img/profile.png"></a>
                 </div>
                 <div class="card-block">
-                  <a href="#">
+                  <a routerLink="/">
                     <div class="author p1">
                       <h4 class="card-title lighter">Eyitato Ogumola</h4>
                       <h5 class="card-category bold">CEO</h5>
@@ -378,10 +273,9 @@
                   </a>
                   <div class="card-body">
                     <p class="card-description text-justify text1">
-                      Teamwork is so important that it is virtually impossible
-                      for you to reach the heights of your capabilities or make
-                      the money that you want without becoming very good at it.
-                      silence isn’t golden, it’s deadly.
+                      Teamwork is so important that it is virtually impossible for you to reach the heights of your
+                      capabilities or make the money that you want without becoming very good at it. silence isn’t
+                      golden, it’s deadly.
                     </p>
                   </div>
                 </div>
@@ -393,12 +287,10 @@
             <div class="card card-profile card-plain team">
               <div class="card card-profile card-plain">
                 <div class="card-avatar">
-                  <a href="#avatar"
-                    ><img src="./assets/img/profile.png" alt="..."
-                  /></a>
+                  <a routerLink="/avatar"><img alt="..." src="./assets/img/profile.png"></a>
                 </div>
                 <div class="card-block">
-                  <a href="#">
+                  <a routerLink="/">
                     <div class="author p1">
                       <h4 class="card-title lighter">Eyitato Ogumola</h4>
                       <h5 class="card-category bold">CEO</h5>
@@ -406,10 +298,8 @@
                   </a>
                   <div class="card-body">
                     <p class="card-description text-justify text1">
-                      A group becomes a team when each member is sure enough of
-                      himself and his contribution to praise the skill of the
-                      others. No one can whistle a symphony. It takes an
-                      orchestra to play it.
+                      A group becomes a team when each member is sure enough of himself and his contribution to praise
+                      the skill of the others. No one can whistle a symphony. It takes an orchestra to play it.
                     </p>
                   </div>
                 </div>
@@ -421,12 +311,10 @@
             <div class="card card-profile card-plain team">
               <div class="card card-profile card-plain">
                 <div class="card-avatar">
-                  <a href="#avatar"
-                    ><img src="./assets/img/profile.png" alt="profile"
-                  /></a>
+                  <a routerLink="/"><img alt="profile" src="./assets/img/profile.png"></a>
                 </div>
                 <div class="card-block">
-                  <a href="#">
+                  <a routerLink="/">
                     <div class="author p1">
                       <h4 class="card-title lighter">Eyitato Ogumola</h4>
                       <h5 class="card-category bold">CEO</h5>
@@ -434,10 +322,8 @@
                   </a>
                   <div class="card-body">
                     <p class="card-description text-justify text1">
-                      The strength of the team is each individual member. The
-                      strength of each member is the team. If you can laugh
-                      together, you can work together, silence isn’t golden,
-                      it’s deadly.
+                      The strength of the team is each individual member. The strength of each member is the team. If
+                      you can laugh together, you can work together, silence isn’t golden, it’s deadly.
                     </p>
                   </div>
                 </div>
@@ -445,66 +331,44 @@
             </div>
           </div>
         </div>
-        <br />
+        <br>
       </div>
     </div>
 
-    <br />
+    <br>
 
     <div class="section landing-section">
       <div class="section section-dark text-center">
         <div class="container">
           <h1 class="text-center title1">Talk To Us</h1>
-          <hr class="br-line" />
-          <br />
+          <hr class="br-line">
+          <br>
 
           <div class="col-md-8 mr-auto ml-auto">
-            <form
-              class="contact-form"
-              action="mailto:sample@email.com?subject=Website Feedback"
-              method="POST"
-              enctype="text/plain"
-            >
+            <form action="mailto:sample@email.com?subject=Website Feedback" class="contact-form" enctype="text/plain"
+                  method="POST">
               <div class="row">
                 <div class="col-md-6">
                   <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Name"
-                    />
+                    <input class="form-control" placeholder="Name" type="text">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="input-group">
-                    <input
-                      type="email"
-                      class="form-control"
-                      placeholder="Email"
-                    />
+                    <input class="form-control" placeholder="Email" type="email">
                   </div>
                 </div>
-                <br />
+                <br>
               </div>
-              <textarea
-                class="form-control"
-                rows="4"
-                placeholder="Tell us your thoughts and feelings..."
-              ></textarea>
+              <textarea class="form-control" placeholder="Tell us your thoughts and feelings..." rows="4"></textarea>
               <div class="row">
                 <div class="col-md-7 ml-auto">
-                  <br />
-                  <button
-                    class="btn btn-warning"
-                    style="font-weight: 500"
-                    type="submit"
-                  >
-                    Send
-                  </button>
+                  <br>
+                  <button class="btn btn-warning" style="font-weight: 500" type="submit">Send</button>
                 </div>
               </div>
             </form>
-            <br />
+            <br>
           </div>
         </div>
       </div>
