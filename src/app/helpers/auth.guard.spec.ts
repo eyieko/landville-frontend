@@ -44,11 +44,6 @@ describe('AuthGuard', () => {
     state = TestBed.get(RouterStateSnapshot);
   });
 
-  function forPrivateRoute() {
-    route = TestBed.get(ActivatedRouteSnapshot);
-    spyOnProperty(route, 'data', 'get').and.returnValue(true);
-  }
-
   it('should ...', inject([AuthGuard], (guard: AuthGuard) => {
     expect(guard).toBeTruthy();
   }));

@@ -1,0 +1,12 @@
+<div class="social-section">
+  <p>Or Connect with</p>
+  <div class="" *ngIf="!loggedIn">
+    <button (click)="signInWithFB()" class="btn btn-primary facebook">
+      <span class="fa fa-facebook"></span>
+    </button>
+    <button (click)="signInWithGoogle()" class="btn btn-danger google">
+      <span class="fa fa-google"></span>
+    </button>
+  </div>
+  <ngx-spinner></ngx-spinner>
+</div>

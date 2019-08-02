@@ -1,9 +1,11 @@
-import {environment} from '../environments/environment';
+import { environment } from '../environments/environment';
 
 function appConfig() {
-
   return {
     base_url: environment.api_url,
+    facebookId: '1782833315349267',
+    googleId:
+      '315082406739-imasn7gsabthac3uaer84oqmp1g2780p.apps.googleusercontent.com'
   };
 }
 

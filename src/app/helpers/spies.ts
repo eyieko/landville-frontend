@@ -18,7 +18,7 @@ export const toastServiceSpy = createSpyObj('ToastrService', [
   'success',
   'error',
   'info',
-  'warning',
+  'warning'
 ]);
 
 export const profileServiceSpy = createSpyObj('ProfileService', [
@@ -33,7 +33,7 @@ export const registerServiceSpy = createSpyObj('RegisterServiceService', [
 
 export const routerSpy = jasmine.createSpyObj('Router', [
   'navigateByUrl',
-  'navigate',
+  'navigate'
 ]);
 
 export const localStorageSpy = createSpyObj('LocalStorage', [
@@ -44,14 +44,12 @@ export const localStorageSpy = createSpyObj('LocalStorage', [
 
 export const companyServiceSpy = createSpyObj('CompanyService', [
   'createCompany',
-  'getCompanyDetails',
+  'getCompanyDetails'
 ]);
 
 export const httpRequestSpy = jasmine.createSpyObj('HttpRequest', [
   'doesNotMatter',
-  'clone',
+  'clone'
 ]);
 
-export const httpHandlerSpy = jasmine.createSpyObj('HttpHandler', [
-  'handle'
-]);
+export const httpHandlerSpy = jasmine.createSpyObj('HttpHandler', ['handle']);

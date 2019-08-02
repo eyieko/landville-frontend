@@ -9,9 +9,9 @@ import { LoginComponent } from './login.component';
 
 import { LoginHeaderComponent } from './login-header/login-header.component';
 import { LoginSliderComponent } from './login-slider/login-slider.component';
-import { SocialLoginComponent } from './social-login/social-login.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { toastServiceSpy } from '../../helpers/spies';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -26,12 +26,12 @@ describe('LoginComponent', () => {
         ToastrModule.forRoot(),
         NgxSpinnerModule
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [
         LoginComponent,
         LoginFormComponent,
         LoginHeaderComponent,
-        LoginSliderComponent,
-        SocialLoginComponent
+        LoginSliderComponent
       ],
       providers: [{ provide: ToastrService, useValue: toastServiceSpy }]
     }).compileComponents();
