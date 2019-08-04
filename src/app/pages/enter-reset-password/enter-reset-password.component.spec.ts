@@ -56,7 +56,7 @@ describe('EnterResetPasswordComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create EnterResetPasswordComponent', () => {
     expect(component).toBeTruthy();
   });
 
@@ -68,19 +68,19 @@ describe('EnterResetPasswordComponent', () => {
     }));
 
 
-  it('should be invalid', async(() => {
+  it('should be invalid when password is not set', async(() => {
       component.enterPasswordForm.get('newPassword').setValue('');
       component.enterPasswordForm.get('confirmPassword').setValue('');
       expect(component.enterPasswordForm.valid).toBeFalsy();
     }));
 
-it('should be valid', async(() => {
+it('should be valid when password is provided', async(() => {
       component.enterPasswordForm.get('newPassword').setValue('confirmPassword');
       component.enterPasswordForm.get('confirmPassword').setValue('confirmPassword');
       expect(component.enterPasswordForm.valid).toBeTruthy();
     }));
 
-  it('Should reset the password', async(() => {
+  it('Should get a backend response when password is provided', async(() => {
       const response = {
         data: {
           message : "If you have an account with us we have sent an email to reset your password"
@@ -90,10 +90,10 @@ it('should be valid', async(() => {
       const form = fixture.debugElement.query(By.css('form'));
       form.triggerEventHandler('ngSubmit', response);
 
-      expect(component.loading).toEqual(true);
+      expect(component.success).toEqual(true);
     }));
 
-  it('Should throw an error', async(() => {
+  it('Should throw an error when email is invalid', async(() => {
       const errorResponse = {
         errors: {
           email: ["Enter a valid email address."]
@@ -103,6 +103,6 @@ it('should be valid', async(() => {
         errorResponse
         ));
         component.onSubmit();
-        expect(component.loading).toEqual(false);
+        expect(component.success).toEqual(false);
       }));
     });

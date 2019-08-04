@@ -41,7 +41,7 @@ const routes: Routes = [
     component: PasswordResetComponent
   },
   {
-    path: 'password-reset',
+    path: 'auth/password-reset',
     component: EnterResetPasswordComponent
   },
   {

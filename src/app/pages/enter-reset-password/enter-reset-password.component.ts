@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { EnterResetPasswordService } from 'src/app/services/password/enter-reset-password.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -14,14 +14,13 @@ export class EnterResetPasswordComponent implements OnInit {
   enterPasswordForm: FormGroup;
   token: string;
   password: string;
-  successMessage: string;
   passwordError: boolean;
   disabled: boolean = true;
+  success: boolean;
   loading: boolean;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private changePasswordService: EnterResetPasswordService,
     private fb: FormBuilder,
     private toastrService: ToastrService,
@@ -47,21 +46,25 @@ export class EnterResetPasswordComponent implements OnInit {
       }
       this.disabled = this.passwordError || this.enterPasswordForm.invalid;
 
-
     });
   }
   onSubmit() {
+    this.loading = true;
     this.password = this.enterPasswordForm.get('newPassword').value;
 
     this.changePasswordService.changePassword(this.token, this.password).subscribe(res => {
       const { data: { message } } = res;
-      this.successMessage = message;
-      this.loading = true;
+      this.toastrService.success(message,'', {timeOut: 3000});
+      this.success = true;
+      this.loading = false;
 
     }, err => {
       this.loading = false;
-      this.toastrService.success('Your password resert token has expired','', {timeOut: 3000});
+      this.success = false;
+      this.toastrService.error('Your password reset token is invalid','', {timeOut: 3000});
     });
+    
+    this.disabled = true;
   }
 
 }

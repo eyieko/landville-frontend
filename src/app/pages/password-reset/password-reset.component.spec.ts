@@ -11,7 +11,6 @@ import { resetLinkService, toastServiceSpy } from 'src/app/helpers/spies';
 import { AuthLayoutComponent } from 'src/app/layouts/auth-layout/auth-layout.component';
 import { CommonLayoutComponent } from 'src/app/layouts/common-layout/common-layout.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from 'src/app/app.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { DebugElement } from '@angular/core';
 import { throwError, of } from 'rxjs';
@@ -55,7 +54,7 @@ describe('PasswordResetComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create PasswordResetComponent', () => {
     expect(component).toBeTruthy();
   });
 
@@ -66,17 +65,17 @@ describe('PasswordResetComponent', () => {
     expect(component.onSubmit).toHaveBeenCalledTimes(0);
     }));
 
-  it('should be invalid', async(() => {
+  it('should be invalid when email is not provided', async(() => {
       component.resetForm.get('email').setValue('');
       expect(component.resetForm.valid).toBeFalsy();
     }));
 
-  it('should be valid', async(() => {
+  it('should be valid when a valid email is provided', async(() => {
       component.resetForm.get('email').setValue('joel@gmail.com');
       expect(component.resetForm.valid).toBeTruthy();
     }));
 
-  it('Should send a reset link', async(() => {
+  it('Should get a backend response when a valid email is provided', async(() => {
       const response = {
         data: {
           message : "If you have an account with us we have sent an email to reset your password"
@@ -86,10 +85,10 @@ describe('PasswordResetComponent', () => {
       const form = fixture.debugElement.query(By.css('form'));
       form.triggerEventHandler('ngSubmit', response);
 
-      expect(component.loading).toEqual(true);
+      expect(component.success).toEqual(true);
     }));
 
-  it('Should throw an error', async(() => {
+  it('Should throw an error when an invalid email is provided', async(() => {
       const errorResponse = {
         errors: {
             email: [
@@ -101,9 +100,8 @@ describe('PasswordResetComponent', () => {
         errorResponse
       ));
       component.onSubmit();
-      expect(component.loading).toEqual(false);
+      expect(component.success).toEqual(false);
 
     }));
-
 
 });

@@ -8,7 +8,7 @@ import { HttpMethods } from 'src/app/config';
 })
 export class PasswordResetService {
   emailData;
-  url = 'password-reset/';
+  url = '/auth/password-reset/';
 
 
   constructor(private http: HttpService) { }
@@ -17,6 +17,6 @@ export class PasswordResetService {
     this.emailData = {
       email: resetEmail
     };
-    return this.http.makeRequestWithData(this.url, this.emailData, HttpMethods.POST)
+    return this.http.makeRequestWithData(this.url, this.emailData, HttpMethods.POST);
   }
 }
