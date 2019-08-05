@@ -5,7 +5,10 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> ft(terms): Enable users to activate terms of use on registration
 import { LoginService } from 'src/app/services/login/login.service';
 =======
 import { LoginService } from './login.service';

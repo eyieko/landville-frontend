@@ -7,7 +7,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { TermsPageComponent } from '../pages/terms/terms.component';
+=======
+import { TermsComponent } from './terms/terms.component';
+>>>>>>> ft(terms): Enable users to activate terms of use on registration
 
 @NgModule({
   imports: [
@@ -23,8 +27,13 @@ import { TermsPageComponent } from '../pages/terms/terms.component';
   declarations: [
     FooterComponent,
     NavbarComponent,
+<<<<<<< HEAD
     TopbarComponent, TermsPageComponent],
   exports: [NavbarComponent, FooterComponent, TopbarComponent, TermsPageComponent]
+=======
+    TopbarComponent, TermsComponent],
+  exports: [NavbarComponent, FooterComponent, TopbarComponent, TermsComponent]
+>>>>>>> ft(terms): Enable users to activate terms of use on registration
 })
 export class ComponentsModule {
 }
