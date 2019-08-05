@@ -1,12 +1,10 @@
-<div class="social-section">
-  <p>Or Connect with</p>
-  <div class="" *ngIf="!loggedIn">
-    <button (click)="signInWithFB()" class="btn btn-primary facebook">
-      <span class="fa fa-facebook"></span>
-    </button>
-    <button (click)="signInWithGoogle()" class="btn btn-danger google">
-      <span class="fa fa-google"></span>
-    </button>
+<p class="text-center">Or</p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="fb-login-button facebook mt-1" data-width="" data-size="large" data-button-type="login_with"
+      data-auto-logout-link="false" data-use-continue-as="false" (click)="signInWithFB()"></div>
   </div>
-  <ngx-spinner></ngx-spinner>
+  <div class="col-md-6"> <img src="../../../assets/btn_google_signin_dark_normal_web.png" class="google"
+      (click)="signInWithGoogle()" alt="" srcset=""> </div>
 </div>
+<ngx-spinner></ngx-spinner>

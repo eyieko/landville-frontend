@@ -77,6 +77,7 @@ describe('RegisterFormComponent', () => {
     component.registerForm.controls[`confirmed_password`].setValue(
       'natasha@100'
     );
+    component.registerForm.controls[`userAccepts`].setValue(true);
     expect(component.registerForm.valid).toBeTruthy();
   }));
 });

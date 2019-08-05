@@ -1,9 +1,9 @@
-.big-container{
+.big-container {
   display: flex;
   justify-content: center;
 }
 
-.container{
+.container {
   display: flex;
   grid-template-columns: 1fr 1fr;
   margin: 10em;
@@ -14,19 +14,21 @@
   box-shadow: -5px 5px 20px 3px #bdbaba;
   padding-left: -3px;
 }
+
 .login-slider {
   border-radius: 16px 0 0 16px
 }
 
 .login-section {
   border-radius: 0 16px 16px 0;
-  background-image:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../../../assets/img/House Architecture 4.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/img/House Architecture 4.jpg");
   background-size: 50em;
   background-position: center;
   background-clip: border-box;
   width: 110%;
 
 }
+
 img.bg {
   min-height: 100%;
   min-width: 1024px;
@@ -37,29 +39,31 @@ img.bg {
   left: 0;
   z-index: -2;
   opacity: 0.3;
- 
+
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
   img.bg {
-  left: 50%;
-  margin-left: -512px; }
+    left: 50%;
+    margin-left: -512px;
+  }
 }
 
 
-@media (min-width: 600px){
+@media (min-width: 600px) {
   p {
     font-size: 1.25rem;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .big-container{
+  .big-container {
     display: flex;
     width: 104%;
     height: 32em;
 
   }
+
   .container {
     background-image: none;
     margin: 0em;
@@ -72,28 +76,34 @@ img.bg {
   img.bg {
     display: none;
   }
+
   .login-section {
     width: 100%;
     border-radius: 0 4px 2px 0;
     height: 865px;
     background-size: cover;
   }
-  }
+}
 
 
-  @media only screen and (max-width: 480px) {
-  .big-container{
+@media only screen and (max-width: 480px) {
+  .big-container {
     display: flex;
     width: 104%;
     height: 32em;
   }
 }
-   
-  @media only screen and (max-width: 790px) {
-    .container {
-      display: -webkit-box;
-      padding-left: -15px;
-      padding-right: 63px;
-    }
-  }
 
+@media only screen and (max-width: 790px) {
+  .container {
+    display: -webkit-box;
+    padding-left: -15px;
+    padding-right: 63px;
+  }
+}
+
+
+.social {
+  margin-left: 30px !important;
+  color: white;
+}

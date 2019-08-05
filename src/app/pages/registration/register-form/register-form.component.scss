@@ -1,194 +1,60 @@
-
-.image-container{
-  display: flex;
-  justify-content: center;
-}
-.landvile-logo{
-  width: 130px;
-  height: 100px;
-}
-.title{
-  text-align: center;
-  color: grey;
-}
-.title h4{
-  margin: 60px 0px 20px 0px;
-}
-.information{
-  overflow: auto;
-  margin-top: 70px;
-}
-.left-section{
-  float: left;
-  width: 40%;
-}
-.left-section h4{
+.left-section h4 {
   color: grey;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  padding-right: 50px;
 }
-.left-section .input-wrap{
-  display: block;
-  width: 100%;
-  padding: 15px;
- 
-}
-.left-section .input-wrap img{
-  width: 27px;
-}
-.left-section .input-wrap:nth-child(4n) img, .left-section .input-wrap:nth-child(4n) img{
-  width: 15px;
-}
-.left-section button{
-  background: #FFA500;
-  display: block;
-  width: 100%;
-  text-align: center;
-  padding: 10px;
-  font-size: 1.2em;
-  color: black;
-  margin: 30px auto;
-  text-decoration: none;
-}
-.left-section p{
-  text-align: center;
-}
-.left-section .input-wrap input{
+
+
+
+.custom-select {
   height: 3rem;
-  border-radius: 4px;
-  background-color: white;
-  width: 400px;
-  padding-bottom: 20px;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 22px;
-
 }
 
-.form-control{
-  height: inherit;
-  font-size: 20px;
-  padding: 30px;
-  padding-top: 15px;
-  margin-right: 20px;
-  margin-left: 9px;
-}
-.role {
-  height: inherit;
-  font-size: 20px;
-}
-.custom-select{
-    height: 3rem;
-    border-radius: 4px;
-    background-color: white;
-    width: 400px;
-    margin-left: 9px;
-    padding-left: 30px;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 22px;
-    color: grey;
-    font-weight: normal;
-}
-
-
-
-.email:focus, .password:focus {
-  outline: none;
-}
-.social-media{
-  overflow: auto;
-  margin-top: 30px;
-}
-.social-media span{
-  float: left;
-  width: 43%;
-}
-.social-media span img{
-  width: 100%;
-}
-.social-media span:nth-child(2n){
-  float: right;
-}
-p.login-para{
-  font-size: 18px;
-  margin-top: 30px;
-}
-p a.sign-link{
+p a.sign-link {
   color: #FFA500;
   display: inline;
   background: none;
   padding: 0px;
   font-size: 17px;
 }
-.right-section{
-  float: left;
-  width: 60%;
-  padding-left: 70px;
-  padding-top: 50px;
-}
-.right-details{
+
+.right-details {
   overflow: auto;
   margin: 10px 0px 30px 0px;
 }
-.right-details img{
+
+.right-details img {
   width: 50px;
   float: left;
 }
-.more-info{
+
+.more-info {
   padding-left: 20px;
   float: left;
   width: 70%;
 }
-.more-info h4{
+
+.more-info h4 {
   margin: 0px;
   font-size: 17px;
 }
-.more-info p{
+
+.more-info p {
   color: grey;
 }
-.qoute{
-  padding-left: 60px;
-  margin-top: 80px;
+
+.form-check-label {
   color: grey;
-  font-style: italic;
 }
-.right-section hr{
-  margin-left: 60px;
-}
-.qoute span{
-  font-style: normal;
-  font-weight: bold;
-  color: black;
-}
-.input-icons i { 
-  position: absolute; 
-} 
 
-.input-icons { 
-  width: 100%; 
-  margin-bottom: 10px; 
-} 
-
-.icon { 
-  padding: 10px; 
-  color: black; 
-  min-width: 50px; 
-  text-align: center; 
-  padding-top: 15px;
-} 
-.invalid-feedback{
-margin-left:10px;
-width: 100%;
+@media (max-width:641px) {
+  .first {
+    display: none;
+  }
 }
-@media screen and (max-width: 768px){
-  .information{
-    overflow: auto;
-  }
-  .left-section, .right-section{
-    width: 100%;
-  }
-  .left-section .input-wrap input, .custom-select{
-    width: 100%;
-  }
+
+button[type="submit"] {
+  color: white;
+  background: #171029;
 }

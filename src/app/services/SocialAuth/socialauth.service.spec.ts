@@ -1,12 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { LoginService } from './socialauth.service';
-
-import {
-  HttpClientTestingModule,
-  HttpTestingController
-} from '@angular/common/http/testing';
-import { environment } from 'src/environments/environment';
-import { of, Observable } from 'rxjs';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { of } from 'rxjs';
 import { APPCONFIG } from 'src/app/config';
 
 describe('Test for Loginservice', () => {
@@ -39,11 +34,9 @@ describe('Test for Loginservice', () => {
   });
 
   it('should create a facebook user and return results', () => {
-    service
-      .createFacebookUser('kjskjsjdskdjskdsdsdjsdkjs')
-      .subscribe((data: any) => {
-        expect(data.token).toBe('noooovak');
-      });
+    service.createFacebookUser('kjskjsjdskdjskdsdsdjsdkjs').subscribe((data: any) => {
+      expect(data.token).toBe('noooovak');
+    });
     const mockurl = httpMock.expectOne(facebookUrl, 'call to api');
 
     expect(mockurl.request.method).toBe('POST');
