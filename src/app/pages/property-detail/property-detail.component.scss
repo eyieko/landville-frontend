@@ -4,6 +4,8 @@
 .card-header {
     border: hidden;
     background-color: #e9ecef;
+    color: #431c53;
+    
 }
 .card-body {
     background-color: rgba(109, 105, 105, 0.03);;
@@ -19,7 +21,10 @@
     border-radius: 45px;
     border-color:#ee9619 !important;
 }
-
+img.img-fluid {
+    height:450px;
+    width: inherit;
+}
 .no-gutters>.col, .no-gutters>[class*=col-] {
     padding-left: 4px !important;
 }
@@ -31,4 +36,20 @@
 }
 .carousel-control-next-icon, .carousel-control-prev-icon {
     margin-right: 35px;
+}
+.facilities{
+    background-color: #e9ecef;
+}
+video{
+    outline:none;
+}
+.amenities{
+    background-color: #ee9619;
+    height: 3.5rem;
+    padding-top: 1rem;
+    background-color: #e9ecef;
+    color: #431c53;  
+}
+.about h6{
+    color: #431c53;
 }
