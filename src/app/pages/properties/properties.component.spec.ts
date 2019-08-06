@@ -1,5 +1,5 @@
+import { PropertiesService } from './../../services/properties/properties.service';
 import { AppModule } from "./../../app.module";
-import { PropertiesService } from "../../shared/services/properties/properties.service";
 import { resetSpies, propertiesServiceSpy } from "./../../helpers/spies";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { DebugElement } from "@angular/core";
@@ -12,7 +12,8 @@ describe("PropertiesComponent", () => {
   let component: PropertiesComponent;
   let fixture: ComponentFixture<PropertiesComponent>;
   let debugElement: DebugElement;
-  const url = "http://127.0.0.1:8000/api/v1/properties/";
+  const url =
+    "https://landville-backend-web-api.herokuapp.com/api/v1/properties/";
 
   const Mockresponse = {
     data: {
@@ -24,8 +25,8 @@ describe("PropertiesComponent", () => {
           {
             id: 3,
             price: 10000000.0,
-            lot_size: 99.99,
-            image_others: [
+            lotSize: 99.99,
+            imageOthers: [
               "http://res.cloudinary.com/landville/image/upload/v1564567653/au4vtztnpklnmerfsq3m.png",
               "http://res.cloudinary.com/landville/image/upload/v1564567654/qp9hubcjzdfscrmguaxw.jpg"
             ],
@@ -38,28 +39,28 @@ describe("PropertiesComponent", () => {
               lat: 2345345345.4535,
               lon: 98978.09
             },
-            created_at: "2019-07-31T10:09:56.235176Z",
-            updated_at: "2019-07-31T10:10:37.174246Z",
+            createdAt: "2019-07-31T10:09:56.235176Z",
+            updatedAt: "2019-07-31T10:10:37.174246Z",
             title: "Kololo Flats",
-            property_type: "Empty Lot",
+            propertyType: "Empty Lot",
             description: "Exquisite flats in the world",
-            list_date: null,
-            is_published: false,
-            is_sold: false,
-            sold_at: null,
+            listDate: null,
+            isPublished: false,
+            isSold: false,
+            soldAt: null,
             bedrooms: null,
             bathrooms: null,
             garages: null,
-            image_main:
+            imageMain:
               "http://res.cloudinary.com/landville/image/upload/v1564567652/ncaviduqbwfrvqmiunsf.png",
             video:
               "http://res.cloudinary.com/landville/video/upload/v1564567795/xket6aopnbbjjpscxb0i.mp4",
-            view_count: 1,
-            last_viewed: "2019-07-31T10:10:37.174094Z",
-            purchase_plan: "Installments",
+            viewCount: 1,
+            lastViewed: "2019-07-31T10:10:37.174094Z",
+            purchasePlan: "Installments",
             slug: "brooklyn-kololo-flats",
             client: {
-              client_name: "clients Company",
+              clientName: "clients Company",
               phone: "+254 7002780187",
               email: "clients.company@andela.com",
               address: {

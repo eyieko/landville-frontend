@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PropertiesResponse, Property } from 'src/app/models/Property';
-import { LocalStorageService } from '../local-storage.service';
+import { PropertiesResponse } from 'src/app/models/Property';
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,4 @@
-import { LocalStorageService } from "src/app/shared/services/local-storage.service";
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
