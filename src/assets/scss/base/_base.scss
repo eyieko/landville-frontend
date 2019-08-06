@@ -18,3 +18,43 @@
   --color-grey-dark-2: #777;
   --color-grey-dark-3: #999;
 }
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
+body {
+  background: #fff;
+  color: #444;
+  font-family: "Open Sans", sans-serif;
+}
+
+a {
+  color: var(--color-primary);
+  transition: 0.5s;
+}
+
+a:hover,
+a:active,
+a:focus {
+  color: var(--color-primary-dark);
+  outline: none;
+  text-decoration: none;
+}
+
+p {
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  padding: 0;
+}

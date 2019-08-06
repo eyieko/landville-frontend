@@ -14,11 +14,15 @@ import { CommonLayoutRoutes } from './common-layout.routing';
 import { ProfileModule } from 'src/app/pages/profile/profile.module';
 import { RegistersuccessComponent } from '../../pages/registration/registersuccess/registersuccess.component';
 import { NoPropertiesComponent } from 'src/app/pages/properties/no-properties/no-properties.component';
+import {CompanyComponent} from 'src/app/pages/company/company.component';
+import {CommonLayoutRoutes} from 'src/app/layouts/common-layout/common-layout.routing';
+import {ProfileModule} from 'src/app/pages/profile/profile.module';
+import {RegistersuccessComponent} from 'src/app/pages/registration/registersuccess/registersuccess.component';
+import {HomeComponent} from 'src/app/pages/home/home.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(CommonLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
     ProfileModule,
@@ -28,6 +32,7 @@ import { NoPropertiesComponent } from 'src/app/pages/properties/no-properties/no
     RouterModule.forChild(CommonLayoutRoutes)
   ],
   declarations: [
+    HomeComponent,
     RegistersuccessComponent,
     CompanyComponent,
     PropertiesComponent,

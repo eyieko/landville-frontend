@@ -27,8 +27,8 @@ import {
 import { SocialLoginComponentt } from 'src/app/pages/SocialAuth/socialauth.component';
 import { APPCONFIG } from 'src/app/config';
 
-//configs
-let config = new AuthServiceConfig([
+// configs
+const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
     provider: new GoogleLoginProvider(APPCONFIG.googleId)
