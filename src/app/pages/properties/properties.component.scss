@@ -2,6 +2,10 @@
   color: #ee9619;
 }
 
+.bg-light:hover {
+  background-color: #f0f0f0 !important;
+}
+
 .view {
   padding: 1.875rem 0px 1.875rem 1.875rem;
   width: 71%;
@@ -10,6 +14,17 @@
 .view i {
   float: right;
   margin-left: 10px;
+}
+
+.card-img {
+  width: 92%;
+  border-radius: calc(0.25rem - 1px);
+}
+
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+  text-decoration: none;
 }
 
 .listview {
@@ -50,6 +65,7 @@
 .card-title {
   font-size: large;
   color: #431c53;
+  text-decoration: none;
 }
 
 .list-card {
@@ -92,14 +108,6 @@
 
 .row {
   margin-left: 0px;
-}
-
-.center {
-  width: 10%;
-  margin-top: 7%;
-  margin-left: 45%;
-  font-family: "Mukta", sans-serif;
-  padding-bottom: 17%;
 }
 
 @media screen and (max-width: 1024px) {

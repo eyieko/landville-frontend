@@ -1,4 +1,5 @@
-import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { LocalStorageService } from "src/app/services/local-storage.service";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
@@ -11,6 +12,7 @@ import { PropertiesComponent } from "../../pages/properties/properties.component
 import { CommonLayoutRoutes } from "./common-layout.routing";
 import { ProfileModule } from "src/app/pages/profile/profile.module";
 import { RegistersuccessComponent } from "../../pages/registration/registersuccess/registersuccess.component";
+import { NoPropertiesComponent } from "src/app/pages/properties/no-properties/no-properties.component";
 
 @NgModule({
   imports: [
@@ -20,12 +22,15 @@ import { RegistersuccessComponent } from "../../pages/registration/registersucce
     ReactiveFormsModule,
     ProfileModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSpinnerModule,
+    RouterModule.forChild(CommonLayoutRoutes)
   ],
   declarations: [
     RegistersuccessComponent,
     CompanyComponent,
-    PropertiesComponent
+    PropertiesComponent,
+    NoPropertiesComponent
   ],
   providers: [LocalStorageService]
 })
