@@ -4,7 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { of } from 'rxjs';
 import { APPCONFIG } from 'src/app/config';
 
-describe('Test for Loginservice', () => {
+describe("Test for Loginservice", () => {
   // We declare the variables that we'll use for the Test Controller and for our Service
   let service: LoginService;
   let httpMock: HttpTestingController;
@@ -23,14 +23,14 @@ describe('Test for Loginservice', () => {
     facebookUrl = APPCONFIG.base_url + '/auth/facebook/';
   });
 
-  it('should create a google user and return token', () => {
-    service.createGoogleUser('kelvinonkundi').subscribe((data: any) => {
-      expect(data.token).toBe('noooovak');
+  it("should create a google user and return token", () => {
+    service.createGoogleUser("kelvinonkundi").subscribe((data: any) => {
+      expect(data.token).toBe("noooovak");
     });
-    spyOn(service, 'createGoogleUser').and.returnValue(of({ data: 'data' }));
-    const mockurl = httpMock.expectOne(googleUrl, 'call to api');
+    spyOn(service, "createGoogleUser").and.returnValue(of({ data: "data" }));
+    const mockurl = httpMock.expectOne(googleUrl, "call to api");
 
-    expect(mockurl.request.method).toBe('POST');
+    expect(mockurl.request.method).toBe("POST");
   });
 
   it('should create a facebook user and return results', () => {
@@ -39,6 +39,6 @@ describe('Test for Loginservice', () => {
     });
     const mockurl = httpMock.expectOne(facebookUrl, 'call to api');
 
-    expect(mockurl.request.method).toBe('POST');
+    expect(mockurl.request.method).toBe("POST");
   });
 });
