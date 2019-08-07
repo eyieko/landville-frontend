@@ -1,48 +1,60 @@
 <div class="container">
-  <div class="payment-form">
+  <form
+    class="payment-form"
+    [formGroup]="form"
+    (ngSubmit)="onSubmitPaymentDetails(form)"
+  >
     <div class="heading">Pay with International Card</div>
     <div class="container">
       <div>
         Card Number:
       </div>
-      <input class="form-control" />
+      <input formControlName="cardno" class="form-control" type="number" />
       <div>
         CVV Number:
       </div>
-      <input class="form-control" />
+      <input formControlName="cvv" class="form-control" />
       <div>
         Card Expiry:
       </div>
       <div>
-        <input class="form-control left" placeholder="month" />
-        <input class="form-control right" placeholder="year" />
+        <input
+          formControlName="expirymonth"
+          class="form-control left"
+          placeholder="month"
+        />
+        <input
+          formControlName="expiryyear"
+          class="form-control right"
+          placeholder="year"
+        />
       </div>
       <div>
         Amount:
       </div>
-      <input class="form-control" />
+      <input formControlName="amount" class="form-control" />
       <div>
         Billing zip:
       </div>
-      <input class="form-control" />
+      <input formControlName="billingzip" class="form-control" />
       <div>
         Billing City:
       </div>
-      <input class="form-control" />
+      <input formControlName="billingcity" class="form-control" />
       <div>
         Billing Address:
       </div>
-      <input class="form-control" />
+      <input formControlName="billingaddress" class="form-control" />
       <div>
         Billing State:
       </div>
-      <input class="form-control" />
+      <input formControlName="billingstate" class="form-control" />
       <div>
         Billing Country:
       </div>
-      <input class="form-control" />
+      <input formControlName="billingcountry" class="form-control" />
       <input type="button" class="btn btn-secondary" value="Back" />
-      <input type="button" class="btn btn-primary" value="Submit" />
+      <input type="submit" class="btn btn-primary" value="Submit" />
     </div>
-  </div>
+  </form>
 </div>

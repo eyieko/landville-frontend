@@ -1,9 +1,13 @@
 .payment-form {
-  width: 40%;
+  width: 50%;
+  min-width: 300px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
-  box-shadow: 0 0 20px black;
+  box-shadow: 0 0 5px black;
+}
+.payment-form > .container {
+  margin-bottom: 1em;
 }
 .heading {
   background: goldenrod;
@@ -23,4 +27,9 @@
   width: 40%;
 }
 .btn {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.btn-primary {
+  float: right;
 }
