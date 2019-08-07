@@ -18,6 +18,7 @@ export class EnterResetPasswordComponent implements OnInit {
   disabled: boolean = true;
   success: boolean;
   loading: boolean;
+  message: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -57,11 +58,19 @@ export class EnterResetPasswordComponent implements OnInit {
       this.toastrService.success(message,'', {timeOut: 3000});
       this.success = true;
       this.loading = false;
+      console.log(res);
+      
 
     }, err => {
+      console.log(err.errors);
       this.loading = false;
       this.success = false;
-      this.toastrService.error('Your password reset token is invalid','', {timeOut: 3000});
+      if (err.errors.password) {
+        this.message = err.errors.password
+      } else {
+        this.message = err.errors.token
+      }
+      this.toastrService.error(this.message,'', {timeOut: 3000});
     });
     
     this.disabled = true;
