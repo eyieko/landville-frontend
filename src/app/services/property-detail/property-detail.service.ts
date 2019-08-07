@@ -17,15 +17,14 @@ export class PropertyDetailService {
         };
 
     getProperty(slug): Observable<any> {
-        console.log(slug)
-        
+
         const httpOptions = {
             headers: new HttpHeaders({
             Authorization: `Bearer ${this.userToken}`
 
             }),
         };
-        const endpoint = `properties/${slug}`
+        const endpoint = `/properties/${slug}`
     
         return this.http.getRequestWithParams(endpoint, httpOptions);
     }

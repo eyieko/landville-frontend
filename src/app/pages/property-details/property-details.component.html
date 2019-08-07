@@ -14,18 +14,21 @@
             <div class="col-md-9">
                 <div class="card my-5">
                     <div class="card-header">
-                        <h5><b>{{property.title}}</b></h5>
-                        <div style="margin-top:-1%;">
-                            <small><i class="fa fa-map-marker"></i>
-                                {{property.address.State}},{{property.address.City}}</small>
+                        <h5><b>{{title}}</b></h5>
+                        <div style="margin-top:-1%;" class="address">
+                            <b><i class="fa fa-map-marker"></i></b>
+                            {{state}}, {{city}}
                         </div>
-                        <h5 class="price">&#8358; {{property.price}}</h5>
+                        <h5 class="price">&#8358; {{price}}</h5>
                     </div>
                     <div class="card-body">
                         <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item" *ngFor="let image of property.image_others let i = index"
-                                    [ngClass]="{'active' : i == 0}">
+                                <div class="carousel-item active">
+                                    <img src="{{image_main}}" class="d-block w-100" class="img-fluid"
+                                        alt="Image">
+                                </div>
+                                <div class="carousel-item" *ngFor="let image of image_others">
                                     <img src="{{image}}" class="d-block w-100" class="img-fluid" alt="Image">
                                 </div>
                             </div>
@@ -42,22 +45,32 @@
 
                         </div>
                     </div>
-                    <div class="container">
+                    <div class="container" *ngIf="ifBuilding">
                         <div class="row amenities">
                             <span class="col-md-3"><b>Lot size: </b>{{property.lot_size}}</span>
 
-                            <span class="col-md-3"><b>Bedrooms: </b> {{property.bedrooms}}</span>
-
-                            <span class="col-md-3"><b>Bathrooms: </b>{{property.bathrooms}}</span>
-
-                            <span class="col-md-3"><b>Garages: </b>{{property.garages}}</span>
+                            <span class="col-md-3"><b>Bedrooms: </b>
+                                <span *ngIf="rooms"> {{rooms}} </span>
+                                <span *ngIf="!rooms"> None </span>
+                            </span>
+                            <span class="col-md-3"><b>Bathrooms: </b>
+                                <span *ngIf="bedrooms"> {{rooms}} </span>
+                                <span *ngIf="!bedrooms"> None </span>
+                            </span>
+                            <span class="col-md-3"><b>Garages: </b>
+                                <span *ngIf="garages"> {{rooms}} </span>
+                                <span *ngIf="!garages"> None </span>
+                            </span>
                         </div>
                     </div>
                 </div>
                 <div class="about">
                     <h6><b>ABOUT PROPERTY</b></h6>
-                    <p>{{property.description}}</p>
-                    <p><span><a href="{{property.video}}" class="">Take a tour</a></span></p>
+                    <p>{{description}}</p>
+                    <p><span><a href="{{video}}" class="">Watch a video</a></span></p>
+                    <div>
+                        <span>Click <a href="">here</a> to schedule an inspection</span>
+                    </div>
                 </div>
             </div>
 

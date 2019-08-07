@@ -18,7 +18,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 
-import { PropertyDetailComponent } from '../../pages/property-detail/property-detail.component'
+import { PropertyDetailsComponent } from '../../pages/property-details/property-details.component'
 
 @NgModule({
   imports: [
@@ -40,7 +40,7 @@ import { PropertyDetailComponent } from '../../pages/property-detail/property-de
     PropertiesComponent,
     NoPropertiesComponent,
     CardComponent,
-    PropertyDetailComponent
+    PropertyDetailsComponent
   ],
   providers: [ProfileService, LocalStorageService],
 })
