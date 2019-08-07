@@ -58,11 +58,9 @@ export class EnterResetPasswordComponent implements OnInit {
       this.toastrService.success(message,'', {timeOut: 3000});
       this.success = true;
       this.loading = false;
-      console.log(res);
       
 
     }, err => {
-      console.log(err.errors);
       this.loading = false;
       this.success = false;
       if (err.errors.password) {

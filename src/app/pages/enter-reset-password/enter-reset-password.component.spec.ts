@@ -74,11 +74,17 @@ describe('EnterResetPasswordComponent', () => {
       expect(component.enterPasswordForm.valid).toBeFalsy();
     }));
 
-it('should be valid when password is provided', async(() => {
-      component.enterPasswordForm.get('newPassword').setValue('confirmPassword');
-      component.enterPasswordForm.get('confirmPassword').setValue('confirmPassword');
-      expect(component.enterPasswordForm.valid).toBeTruthy();
-    }));
+  it('should be invalid when provided password is too common', async(() => {
+        component.enterPasswordForm.get('newPassword').setValue('123456');
+        component.enterPasswordForm.get('confirmPassword').setValue('123456');
+        expect(component.enterPasswordForm.valid).toBeTruthy();
+      }));
+
+  it('should be valid when password is provided', async(() => {
+        component.enterPasswordForm.get('newPassword').setValue('confirmPassword');
+        component.enterPasswordForm.get('confirmPassword').setValue('confirmPassword');
+        expect(component.enterPasswordForm.valid).toBeTruthy();
+      }));
 
   it('Should get a backend response when password is provided', async(() => {
       const response = {
