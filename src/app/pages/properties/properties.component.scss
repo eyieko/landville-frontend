@@ -2,14 +2,27 @@
   color: #ee9619;
 }
 
+.list-active {
+  background-color: var(--color-secondary-dark);
+  color: var(--color-primary);
+  padding: 0.2rem;
+}
+
+.list-deactive {
+  background-color: grey;
+  color: white;
+  padding: 0.2rem;
+}
+
+
 .bg-light:hover {
   background-color: #f0f0f0 !important;
 }
 
 .view {
-  padding: 1.875rem 0px 1.875rem 1.875rem;
-  width: 71%;
-  overflow: auto;
+  padding: 1.875rem 0px 2.875rem 1.875rem;
+  width: 11%;
+  margin-left: 41rem;
 }
 .view i {
   float: right;
@@ -28,10 +41,10 @@ a.custom-card:hover {
 }
 
 .listview {
-  width: 37.5rem;
+  width: 95%;
   margin-left: 3.75rem;
   margin-bottom: 1.875rem;
-  height: 12.6875rem;
+  height: 14.6875rem;
 }
 
 .card-columns {
@@ -46,16 +59,9 @@ a.custom-card:hover {
   padding-top: 0.4375rem;
 }
 
-.img-fluid {
-  max-width: 100%;
-  height: 11.875rem;
-  padding: 0.3125rem;
-}
-
 .img-fluid2 {
-  padding: 0.3125rem;
-  height: 11.875rem;
-  width: 12.5rem;
+  height: 13.875rem;
+  width: 16.5rem;
 }
 
 .col {
@@ -87,11 +93,11 @@ a.custom-card:hover {
 
 .priceL {
   color: #ee9619;
+  margin-top: 10.2rem;
 }
 
 .page-buttons {
-  padding-bottom: 1.875rem;
-  width: 71%;
+  padding-bottom: 3.5rem;
 }
 
 .prev {

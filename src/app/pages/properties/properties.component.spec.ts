@@ -1,27 +1,29 @@
-import { NgxSpinnerModule } from "ngx-spinner";
-import { PropertiesService } from "./../../services/properties/properties.service";
-import { AppModule } from "./../../app.module";
-import { resetSpies, propertiesServiceSpy } from "./../../helpers/spies";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { DebugElement } from "@angular/core";
-import { PropertiesComponent } from "../properties/properties.component";
-import { HttpClientModule } from "@angular/common/http";
-import { of } from "rxjs";
-import { By } from "@angular/platform-browser";
+import { AuthLayoutModule } from './../../layouts/auth-layout/auth-layout.module';
+import { CardComponent } from './../../components/card/card.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { PropertiesService } from './../../services/properties/properties.service';
+import { AppModule } from './../../app.module';
+import { resetSpies, propertiesServiceSpy } from './../../helpers/spies';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { PropertiesComponent } from '../properties/properties.component';
+import { HttpClientModule } from '@angular/common/http';
+import { of } from 'rxjs';
+import { By } from '@angular/platform-browser';
 
-describe("PropertiesComponent", () => {
+describe('PropertiesComponent', () => {
   let component: PropertiesComponent;
   let fixture: ComponentFixture<PropertiesComponent>;
   let debugElement: DebugElement;
   const url =
-    "https://landville-backend-web-api.herokuapp.com/api/v1/properties/";
+    'https://landville-backend-web-api.herokuapp.com/api/v1/properties/';
 
   const Mockresponse = {
     data: {
       properties: {
         count: 1,
-        next: "",
-        previous: "",
+        next: '',
+        previous: '',
         results: []
       }
     }
@@ -32,8 +34,13 @@ describe("PropertiesComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PropertiesComponent],
-      imports: [AppModule, HttpClientModule, NgxSpinnerModule],
+      declarations: [PropertiesComponent, CardComponent],
+      imports: [
+        AppModule,
+        HttpClientModule,
+        NgxSpinnerModule,
+        AuthLayoutModule
+      ],
       providers: [
         {
           provide: PropertiesService,
@@ -50,18 +57,18 @@ describe("PropertiesComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should be created", () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 
-  it("should call getProperties function", () => {
-    const url = "http://api/v1/properties";
+  it('should call getProperties function', () => {
+    const url = 'http://api/v1/properties';
     const response = {
       data: {
         properties: {
           count: 1,
-          next: "",
-          previous: "",
+          next: '',
+          previous: '',
           results: []
         }
       }
@@ -72,14 +79,14 @@ describe("PropertiesComponent", () => {
     expect(component.properties).toEqual(response.data.properties.results);
   });
 
-  it("should use component next property ", () => {
-    const url = "http://127.0.0.1:8000/api/v1/properties/";
+  it('should use component next property ', () => {
+    const url = 'http://127.0.0.1:8000/api/v1/properties/';
     const response = {
       data: {
         properties: {
           count: 1,
-          next: "",
-          previous: "",
+          next: '',
+          previous: '',
           results: []
         }
       }
@@ -90,14 +97,14 @@ describe("PropertiesComponent", () => {
     expect(component.next).toEqual(response.data.properties.next);
   });
 
-  it("should use component next property ", () => {
-    const url = "http://127.0.0.1:8000/api/v1/properties/";
+  it('should use component next property ', () => {
+    const url = 'http://127.0.0.1:8000/api/v1/properties/';
     const response = {
       data: {
         properties: {
           count: 1,
-          next: "",
-          previous: "",
+          next: '',
+          previous: '',
           results: []
         }
       }
@@ -108,14 +115,14 @@ describe("PropertiesComponent", () => {
     expect(component.next).toEqual(response.data.properties.next);
   });
 
-  it("should set the components next property when properties exist", () => {
-    const url = "http://127.0.0.1:8000/api/v1/properties/";
+  it('should set the components next property when properties exist', () => {
+    const url = 'http://127.0.0.1:8000/api/v1/properties/';
     const response = {
       data: {
         properties: {
           count: 1,
-          next: "http://127.0.0.1:8000/api/v1/properties/limit?=10",
-          previous: "http://127.0.0.1:8000/api/v1/properties/limit?=10",
+          next: 'http://127.0.0.1:8000/api/v1/properties/limit?=10',
+          previous: 'http://127.0.0.1:8000/api/v1/properties/limit?=10',
           results: [
             {
               id: 46,
@@ -123,20 +130,20 @@ describe("PropertiesComponent", () => {
               lot_size: 99.0,
               image_others: [],
               address: {
-                City: "Gulu",
-                State: "Kumi",
-                Street: "Mumbai"
+                City: 'Gulu',
+                State: 'Kumi',
+                Street: 'Mumbai'
               },
               coordinates: {
                 lat: 2345345.4535,
                 lon: 5878.09
               },
-              created_at: "2019-08-06T15:32:56.178294Z",
-              updated_at: "2019-08-06T15:32:56.178424Z",
-              title: "Kumi hostel",
-              property_type: "Building",
+              created_at: '2019-08-06T15:32:56.178294Z',
+              updated_at: '2019-08-06T15:32:56.178424Z',
+              title: 'Kumi hostel',
+              property_type: 'Building',
               description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate mi sit amet mauris commodo. Diam sollicitudin tempor id eu nisl nunc. Vel quam elementum pulvinar etiam. Velit ut tortor pretium viverra. Vitae turpis massa sed elementum tempus egestas sed. Ipsum a arcu cursus vitae. Integer quis auctor elit sed vulputate mi. Porta non pulvinar neque laoreet suspendisse interdum. Elementum sagittis vitae et leo duis ut diam. Urna molestie at elementum eu facilisis sed. Non curabitur gravida arcu ac. Id consectetur purus ut faucibus pulvinar elementum integer.",
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate mi sit amet mauris commodo. Diam sollicitudin tempor id eu nisl nunc. Vel quam elementum pulvinar etiam. Velit ut tortor pretium viverra. Vitae turpis massa sed elementum tempus egestas sed. Ipsum a arcu cursus vitae. Integer quis auctor elit sed vulputate mi. Porta non pulvinar neque laoreet suspendisse interdum. Elementum sagittis vitae et leo duis ut diam. Urna molestie at elementum eu facilisis sed. Non curabitur gravida arcu ac. Id consectetur purus ut faucibus pulvinar elementum integer.',
               list_date: null,
               is_published: false,
               is_sold: false,
@@ -145,20 +152,20 @@ describe("PropertiesComponent", () => {
               bathrooms: 1,
               garages: null,
               image_main:
-                "http://res.cloudinary.com/landville/image/upload/v1565105575/lrmfrjblnm8p2d0dac48.jpg",
+                'http://res.cloudinary.com/landville/image/upload/v1565105575/lrmfrjblnm8p2d0dac48.jpg',
               video: null,
               view_count: 0,
               last_viewed: null,
-              purchase_plan: "Installments",
-              slug: "mumbai-kumi-hostel",
+              purchase_plan: 'Installments',
+              slug: 'mumbai-kumi-hostel',
               client: {
-                client_name: "client Company 2",
-                phone: "+254 7002785197",
-                email: "client_company_2@gmail.com",
+                client_name: 'client Company 2',
+                phone: '+254 7002785197',
+                email: 'client_company_2@gmail.com',
                 address: {
-                  City: "city633",
-                  State: "state",
-                  Street: "street"
+                  City: 'city633',
+                  State: 'state',
+                  Street: 'street'
                 }
               }
             }
@@ -173,14 +180,14 @@ describe("PropertiesComponent", () => {
     expect(component.previous).toEqual(response.data.properties.previous);
   });
 
-  it("should set the disabledNext and disabledPrevious to true", () => {
-    const url = "http://127.0.0.1:8000/api/v1/properties/";
+  it('should set the disabledNext and disabledPrevious to true', () => {
+    const url = 'http://127.0.0.1:8000/api/v1/properties/';
     const response = {
       data: {
         properties: {
           count: 1,
-          next: "",
-          previous: "",
+          next: '',
+          previous: '',
           results: [
             {
               id: 46,
@@ -188,20 +195,20 @@ describe("PropertiesComponent", () => {
               lot_size: 99.0,
               image_others: [],
               address: {
-                City: "Gulu",
-                State: "Kumi",
-                Street: "Mumbai"
+                City: 'Gulu',
+                State: 'Kumi',
+                Street: 'Mumbai'
               },
               coordinates: {
                 lat: 2345345.4535,
                 lon: 5878.09
               },
-              created_at: "2019-08-06T15:32:56.178294Z",
-              updated_at: "2019-08-06T15:32:56.178424Z",
-              title: "Kumi hostel",
-              property_type: "Building",
+              created_at: '2019-08-06T15:32:56.178294Z',
+              updated_at: '2019-08-06T15:32:56.178424Z',
+              title: 'Kumi hostel',
+              property_type: 'Building',
               description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate mi sit amet mauris commodo. Diam sollicitudin tempor id eu nisl nunc. Vel quam elementum pulvinar etiam. Velit ut tortor pretium viverra. Vitae turpis massa sed elementum tempus egestas sed. Ipsum a arcu cursus vitae. Integer quis auctor elit sed vulputate mi. Porta non pulvinar neque laoreet suspendisse interdum. Elementum sagittis vitae et leo duis ut diam. Urna molestie at elementum eu facilisis sed. Non curabitur gravida arcu ac. Id consectetur purus ut faucibus pulvinar elementum integer.",
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate mi sit amet mauris commodo. Diam sollicitudin tempor id eu nisl nunc. Vel quam elementum pulvinar etiam. Velit ut tortor pretium viverra. Vitae turpis massa sed elementum tempus egestas sed. Ipsum a arcu cursus vitae. Integer quis auctor elit sed vulputate mi. Porta non pulvinar neque laoreet suspendisse interdum. Elementum sagittis vitae et leo duis ut diam. Urna molestie at elementum eu facilisis sed. Non curabitur gravida arcu ac. Id consectetur purus ut faucibus pulvinar elementum integer.',
               list_date: null,
               is_published: false,
               is_sold: false,
@@ -210,20 +217,20 @@ describe("PropertiesComponent", () => {
               bathrooms: 1,
               garages: null,
               image_main:
-                "http://res.cloudinary.com/landville/image/upload/v1565105575/lrmfrjblnm8p2d0dac48.jpg",
+                'http://res.cloudinary.com/landville/image/upload/v1565105575/lrmfrjblnm8p2d0dac48.jpg',
               video: null,
               view_count: 0,
               last_viewed: null,
-              purchase_plan: "Installments",
-              slug: "mumbai-kumi-hostel",
+              purchase_plan: 'Installments',
+              slug: 'mumbai-kumi-hostel',
               client: {
-                client_name: "client Company 2",
-                phone: "+254 7002785197",
-                email: "client_company_2@gmail.com",
+                client_name: 'client Company 2',
+                phone: '+254 7002785197',
+                email: 'client_company_2@gmail.com',
                 address: {
-                  City: "city633",
-                  State: "state",
-                  Street: "street"
+                  City: 'city633',
+                  State: 'state',
+                  Street: 'street'
                 }
               }
             }
@@ -238,22 +245,22 @@ describe("PropertiesComponent", () => {
     expect(component.disabledPrevious).toBeTruthy();
   });
 
-  it("should go to next page on button click", () => {
+  it('should go to next page on button click', () => {
     debugElement = fixture.debugElement;
-    debugElement.query(By.css(".next")).triggerEventHandler("click", null);
+    debugElement.query(By.css('.next')).triggerEventHandler('click', null);
     expect(propertiesServiceSpy.getProperties).toHaveBeenCalled();
   });
 
-  it("should go to previous page on button click", () => {
+  it('should go to previous page on button click', () => {
     debugElement = fixture.debugElement;
-    debugElement.query(By.css(".prev")).triggerEventHandler("click", null);
+    debugElement.query(By.css('.prev')).triggerEventHandler('click', null);
     expect(propertiesServiceSpy.getProperties).toHaveBeenCalled();
   });
 
-  it("should toggle view on button click", () => {
+  it('should toggle view on button click', () => {
     debugElement = fixture.debugElement;
-    spyOn(component, "toggleView");
-    debugElement.query(By.css(".fas")).triggerEventHandler("click", null);
+    spyOn(component, 'toggleView');
+    debugElement.query(By.css('.fas')).triggerEventHandler('click', null);
 
     fixture.whenStable().then(() => {
       expect(component.toggleView()).toHaveBeenCalled();

@@ -20,22 +20,26 @@ export class PropertiesComponent implements OnInit {
   results: any[] = [];
   disabledNext: boolean = false;
   disabledPrevious: boolean = false;
+  listToggle: boolean = false;
+  gridToggle: boolean = true;
+  count: number = 0;
 
   constructor(
     private propertiesServices: PropertiesService,
     private spinner: NgxSpinnerService,
     private toastrService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.setProperties(this.propertiesUrl);
   }
 
   setProperties(url: string) {
+    this.spinner.show();
     this.propertiesServices.getProperties(url).subscribe(response => {
-      this.spinner.show();
       this.results = response.data.properties.results;
+      this.count = response.data.properties.count;
       if (this.results.length === 0) {
         this.router.navigate(['no-properties']);
         this.toastrService.success(
@@ -56,9 +60,7 @@ export class PropertiesComponent implements OnInit {
           this.disabledPrevious = true;
         }
       }
-      setTimeout(() => {
-        this.spinner.hide();
-      }, 1000);
+      this.spinner.hide();
     });
   }
 
@@ -76,5 +78,7 @@ export class PropertiesComponent implements OnInit {
 
   toggleView() {
     this.toggle = !this.toggle;
+    this.listToggle = !this.listToggle;
+    this.gridToggle = !this.gridToggle;
   }
 }
