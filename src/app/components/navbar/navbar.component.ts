@@ -45,11 +45,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if (this.eRef.nativeElement.contains(event.target)) {
       this.dropDownActive = false;
-    } else {
-      this.dropDownActive = false;
-    }
   }
 
   handleDropdownDisplay() {

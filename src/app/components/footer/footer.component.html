@@ -1,65 +1,88 @@
-<footer class="footer-area footer--light">
-  <div class="footer-big">
-    <!-- start .container -->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-3 col-sm-4">
-          <div class="footer-widget">
-            <img alt="" class="img-fluid" height="150" src="assets/images/ICON/Logo Icon.png" width="150">
-          </div>
-          <!-- Ends: .footer-widget -->
-        </div>
-        <!-- end /.col-md-4 -->
-        <div class="col-md-6 col-sm-4">
-          <div class="footer-widget">
-            <div class="footer-menu footer-menu--1">
-              <div class="footer text-center">
-                <a href="#" class="btn btn-link btn-just-icon btn-neutral"
-                  ><i class="fa fa-facebook"></i
-                ></a>
-                <a href="#" class="btn btn-link btn-just-icon btn-neutral"
-                  ><i class="fa fa-twitter"></i
-                ></a>
-                <a href="#" class="btn btn-link btn-just-icon btn-neutral"
-                  ><i class="fa fa-google-plus"></i
-                ></a>
-                <a href="#" class="btn btn-link btn-just-icon btn-neutral"
-                  ><i class="fa fa-linkedin"></i
-                ></a>
-              </div>
-              <br />
-              <span
-                >All Rights reserved. &copy;
-                {{ currentDate | date: 'yyyy' }} Landville</span
-              ><br />
-            </div>
-            <!-- end /.footer-menu -->
-          </div>
-          <!-- Ends: .footer-widget -->
-        </div>
-        <!-- end /.col-md-4 -->
+<!-- Footer -->
+<footer class="page-footer font-small pt-4 footer--light">
 
-        <div class="col-md-3 col-sm-6">
-          <div class="footer-widget">
-            <div class="footer-menu">
-              <p>
-                8, Lasode Cresent, Victoria Island <br />
-                Lagos, Nigeria
-              </p>
-              <p>07123456789</p>
-              <br />
-              <p>www.thelandville.com</p>
-              <p>info@thelandville.com</p>
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-3 mt-md-0 mt-3">
+
+                <!-- Content -->
+                <div class="footer-widget d-flex justify-content-center">
+                    <img alt="" class="img-fluid" height="150" src="assets/images/ICON/Logo Icon.png" width="150">
+                </div>
+
             </div>
-            <!-- end /.footer-menu -->
-          </div>
-          <!-- Ends: .footer-widget -->
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none pb-3">
+
+            <!-- Grid column -->
+            <div class="col-md-6 mb-md-0">
+
+                <!-- Links -->
+                <div class="mb-5 flex-center">
+
+                    <!-- Facebook -->
+                    <a class="fb-ic">
+                        <i class="fa fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                    </a>
+                    <!-- Twitter -->
+                    <a class="tw-ic">
+                        <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                    </a>
+                    <!-- Google +-->
+                    <a class="gplus-ic">
+                        <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                    </a>
+                    <!--Linkedin -->
+                    <a class="li-ic">
+                        <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                    </a>
+                </div>
+
+            </div>
+            <!-- Grid column -->
+            <hr class="clearfix w-100 d-md-none pb-3">
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <!-- Links -->
+                <h5 class="text-uppercase">Contact us</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        8, Lasode Cresent, Victoria Island <br/>
+                        Lagos, Nigeria
+                    </li>
+                    <li>
+                        07123456789
+                    </li>
+                    <li>
+                        www.thelandville.com
+                    </li>
+                    <li>
+                        info@thelandville.com
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
         </div>
-        <!-- end /.col-lg-4 -->
-      </div>
-      <!-- end /.row -->
+        <!-- Grid row -->
+
     </div>
-    <!-- end /.container -->
-  </div>
-  <!-- end /.footer-big -->
+    <!-- Footer Links -->
+    <hr class="clearfix w-100 d-md-none pb-3">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© {{ currentDate | date: 'yyyy' }} Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/"> Landville</a>
+    </div>
+    <!-- Copyright -->
+
 </footer>
+<!-- Footer -->
