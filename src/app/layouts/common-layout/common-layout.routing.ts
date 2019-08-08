@@ -1,9 +1,9 @@
-import {Routes} from '@angular/router';
-import {CompanyComponent} from 'src/app/pages/company/company.component';
-import {AuthGuard} from 'src/app/helpers/auth.guard';
-import {RegistersuccessComponent} from 'src/app/pages/registration/registersuccess/registersuccess.component';
-import {ProfileComponent} from 'src/app/pages/profile/profile.component';
-import {HomeComponent} from 'src/app/pages/home/home.component';
+import { Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/helpers/auth.guard';
+import { CompanyComponent } from 'src/app/pages/company/company.component';
+import { HomeComponent } from 'src/app/pages/home/home.component';
+import { ProfileComponent } from 'src/app/pages/profile/profile.component';
+import { RegistersuccessComponent } from 'src/app/pages/registration/registersuccess/registersuccess.component';
 
 import { Routes } from "@angular/router";
 import { CompanyComponent } from "../../pages/company/company.component";
@@ -26,4 +26,7 @@ export const CommonLayoutRoutes: Routes = [
  { path: "registersuccess", component: RegistersuccessComponent },
   { path: "properties", component: PropertiesComponent },
   { path: "no-properties", component: NoPropertiesComponent }
+  {path: 'create-company', component: CompanyComponent, canActivate: [AuthGuard]},
+  {path: 'registersuccess', component: RegistersuccessComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
 ];

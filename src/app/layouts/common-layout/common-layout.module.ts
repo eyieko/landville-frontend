@@ -19,6 +19,18 @@ import {CommonLayoutRoutes} from 'src/app/layouts/common-layout/common-layout.ro
 import {ProfileModule} from 'src/app/pages/profile/profile.module';
 import {RegistersuccessComponent} from 'src/app/pages/registration/registersuccess/registersuccess.component';
 import {HomeComponent} from 'src/app/pages/home/home.component';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { CommonLayoutRoutes } from 'src/app/layouts/common-layout/common-layout.routing';
+
+import { CompanyComponent } from 'src/app/pages/company/company.component';
+import { HomeComponent } from 'src/app/pages/home/home.component';
+import { ProfileModule } from 'src/app/pages/profile/profile.module';
+import { RegistersuccessComponent } from 'src/app/pages/registration/registersuccess/registersuccess.component';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @NgModule({
   imports: [
@@ -39,6 +51,7 @@ import {HomeComponent} from 'src/app/pages/home/home.component';
     NoPropertiesComponent,
     CardComponent
   ],
+  providers: [ProfileService],
   providers: [LocalStorageService]
 })
 export class CommonLayoutModule {}

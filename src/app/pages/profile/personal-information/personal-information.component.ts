@@ -15,6 +15,15 @@ import {
 } from "src/app/models/Profile";
 import { ProfileService } from "src/app/services/profile/profile.service";
 import { removeSubscription } from "src/app/helpers/unsubscribe";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
+import { removeSubscription } from 'src/app/helpers/unsubscribe';
+
+import { UserProfileUpdateErrorResponse } from 'src/app/models/Profile';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: "app-personal-information",
@@ -30,28 +39,28 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
   };
   profileForm: FormGroup;
   firstName = new FormControl(
-    { value: "", disabled: true },
+    {value: '', disabled: true},
     Validators.required
   );
   lastName = new FormControl(
-    { value: "", disabled: true },
+    {value: '', disabled: true},
     Validators.required
   );
-  emailAddress = new FormControl({ value: "", disabled: true }, [
+  emailAddress = new FormControl({value: '', disabled: true}, [
     Validators.required,
     Validators.email
   ]);
-  street = new FormControl("", Validators.required);
-  city = new FormControl("", Validators.required);
-  state = new FormControl("", Validators.required);
-  phone = new FormControl("", [Validators.required, Validators.minLength(14)]);
-  employer = new FormControl("");
-  designation = new FormControl("");
+  street = new FormControl('', Validators.required);
+  city = new FormControl('', Validators.required);
+  state = new FormControl('', Validators.required);
+  phone = new FormControl('', [Validators.required, Validators.minLength(14)]);
+  employer = new FormControl('');
+  designation = new FormControl('');
   // tslint:disable-next-line: variable-name
-  next_of_kin = new FormControl("");
+  next_of_kin = new FormControl('');
   // tslint:disable-next-line: variable-name
-  next_of_kin_contact = new FormControl("");
-  bio = new FormControl("");
+  next_of_kin_contact = new FormControl('');
+  bio = new FormControl('');
 
   constructor(
     private fb: FormBuilder,
@@ -78,12 +87,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.setProfile();
   }
+
   setProfile() {
     this.spinner.show();
     this.subscribe.push(
       this.profileService.userProfile$.subscribe(
         response => {
-          const { profile } = response.data;
+          const {profile} = response.data;
           // we use `patchValue` because the response from the server might not have prefilled address information
           this.profileForm.patchValue({
             firstName: profile.user.first_name,
@@ -108,6 +118,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
       )
     );
   }
+
   resetFormErrors() {
     this.formErrors = {
       errors: {
@@ -115,6 +126,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
       }
     };
   }
+
   saveProfile() {
     this.spinner.show();
     const addressData = {
@@ -164,7 +176,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
       )
     );
   }
-  onProfileChange(profile: UserProfileUpdatedResponse) {}
+
   ngOnDestroy(): void {
     removeSubscription(this.subscribe);
   }

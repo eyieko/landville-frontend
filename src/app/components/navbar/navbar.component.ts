@@ -1,20 +1,77 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { LoginService } from 'src/app/services/login/login.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
-  dropDownActive: boolean = false;
+export class NavbarComponent implements OnInit, OnDestroy {
+  // Properties
+  dropDownActive: boolean;
+  authenticated: boolean;
+  firstName: string;
+  lastName: string;
+  profileImage: string;
 
-  constructor() {
+  //
+  subscription = new Subscription();
+
+
+  constructor(
+    private profileService: ProfileService,
+    private localStorageService: LocalStorageService,
+    private eRef: ElementRef,
+  ) {
+    this.authenticated = false;
+    this.dropDownActive = false;
+    this.firstName = '';
+    this.lastName = '';
+    this.profileImage = 'assets/img/people.png';
+
+    // Check if user is authenticated
+    const token = this.localStorageService.get('token', false);
+    if (token) {
+      this.authenticated = true;
+    }
   }
 
   ngOnInit() {
+    this.profileDetails();
   }
 
-  handleDropdownDisplay($event: MouseEvent) {
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if (this.eRef.nativeElement.contains(event.target)) {
+      this.dropDownActive = false;
+    } else {
+      this.dropDownActive = false;
+    }
+  }
+
+  handleDropdownDisplay() {
     this.dropDownActive = !this.dropDownActive;
+  }
+
+  profileDetails() {
+    this.subscription.add(
+      this.profileService.userProfile$.subscribe(res => {
+        const profileData = res.data.profile;
+        this.profileImage = profileData.image;
+        this.firstName = profileData.user.first_name;
+        this.lastName = profileData.user.last_name;
+      })
+    );
+  }
+
+  handleLogout() {
+    LoginService.logout();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

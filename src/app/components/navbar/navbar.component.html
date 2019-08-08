@@ -3,32 +3,40 @@
     <div class="container">
 
       <div class="pull-left" id="logo">
-        <a href="#body"><img alt="" height="40" src="assets/images/ICON/Logo Icon.png" title="" width="40"/></a>
+          <a routerLink="/">
+              <img alt="" height="40" src="assets/images/ICON/Logo Icon.png" title="" width="40"/>
+          </a>
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
-          <li class="menu-active"><a href="#body">Home</a></li>
-          <li><a href="/">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Properties</a></li>
-          <li><a href="#profil;e">Contact</a></li>
-          <li class="dropdown">
-            <a (click)="handleDropdownDisplay($event)" class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <li class="menu-active"><a routerLink="/" routerLinkActive="active">Home</a></li>
+            <li><a routerLink="/" routerLinkActive="active">About Us</a></li>
+            <li><a routerLink="/" routerLinkActive="active">Services</a></li>
+            <li><a routerLink="/" routerLinkActive="active">Properties</a></li>
+            <li><a routerLink="/" routerLinkActive="active">Contact</a></li>
+            <li *ngIf="!authenticated"><a class="btn-auth" routerLink="/register" routerLinkActive="active">Sign up</a>
+            </li>
+            <li *ngIf="!authenticated"><a class="btn-auth" routerLink="/login" routerLinkActive="active">Log in </a>
+            </li>
+
+            <li *ngIf="authenticated" class="dropdown">
+                <a (click)="handleDropdownDisplay($event)" class="dropdown-toggle" data-toggle="dropdown">
               <span class="profile-ava">
-                <img alt="" height="34" src="assets/img/profile.png" width="34">
+                <img [src]="profileImage" alt="" height="34" width="34">
               </span>
-              <span class="username">Alpha Ng'ang'a</span>
+                    <span class="username">{{firstName}} {{lastName}}</span>
               <b class="caret"></b>
             </a>
             <ul [ngClass]="{'dropdownopen': dropDownActive}" class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="#"><i class="fa fa-user"></i> My Profile</a>
+                  <a routerLink="/profile" routerLinkActive="active"><i class="fa fa-user"></i> My Profile</a>
               </li>
-              <li><a href="#company"><i class="fa fa-plus"></i>Create Company</a></li>
+                <li><a routerLink="/create-company"><i class="fa fa-plus"></i>Create Company</a></li>
               <li>
-                <a href="login"><i class="fa fa-sign-out"></i> Log Out</a>
+                  <a (click)="handleLogout($event)" routerLink="/logout" routerLinkActive="active"><i
+                          class="fa fa-sign-out"></i> Log Out</a>
               </li>
             </ul>
           </li>

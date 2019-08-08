@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {HttpService} from '../http.service';
-import {HttpMethods} from '../../config';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpMethods } from '../../config';
+import { HttpService } from '../http.service';
 
 
 @Injectable({
@@ -16,7 +16,7 @@ export class LoginService {
 
   static logout() {
     // removes user from local storage to log user out
-    localStorage.removeItem('token');
+    localStorage.clear();
     location.reload(true);
   }
 
