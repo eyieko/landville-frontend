@@ -53,15 +53,15 @@
           <br />
         </span>
         <span *ngIf="form.controls['cvv'].errors?.minlength">
-          Card number should not be less than 3 integers
+          CVV number should not be less than 3 integers
           <br />
         </span>
         <span *ngIf="form.controls['cvv'].errors?.maxlength">
-          Card number should not be more than 4 integers
+          CVV number should not be more than 4 integers
           <br />
         </span>
       </span>
-      <div>
+      <!-- <div>
         Card Expiry:
       </div>
       <div>
@@ -69,12 +69,48 @@
           formControlName="expirymonth"
           class="form-control left"
           placeholder="month"
+          [ngClass]="{
+            'is-invalid':
+              (form.get('expirymonth').touched ||
+                form.get('expirymonth').dirty) &&
+              !form.get('expirymonth').valid
+          }"
         />
+
         <input
           formControlName="expiryyear"
           class="form-control right"
           placeholder="year"
+          [ngClass]="{
+            'is-invalid':
+              (form.get('expiryyear').touched ||
+                form.get('expiryyear').dirty) &&
+              !form.get('expiryyear').valid
+          }"
         />
+
+        <span class="invalid-feedback">
+          <span *ngIf="form.get('expirymonth').errors?.required">
+            Month of expiry for your card is required
+            <br />
+          </span>
+          <span *ngIf="form.get('expirymonth').errors?.min">
+            Month of expiry for your card should not be less than 1
+            <br />
+          </span>
+          <span *ngIf="form.get('expirymonth').errors?.max">
+            Month of expiry for your card should not be more than 12
+            <br />
+          </span>
+          <span *ngIf="form.get('expiryyear').errors?.required">
+            year of expiry for your card is required
+            <br />
+          </span>
+          <span *ngIf="form.get('expiryyear').errors?.min">
+            Year of expiry for your card should not be earlier than 2019
+            <br />
+          </span>
+        </span>
       </div>
       <div>
         Amount:
@@ -91,6 +127,9 @@
       <span class="invalid-feedback">
         <span *ngIf="form.get('amount').errors?.required">
           Amount is required
+        </span>
+        <span *ngIf="form.get('amount').errors?.pattern">
+          Amount should be a number
         </span>
       </span>
       <div>
@@ -205,7 +244,7 @@
             The Purpose for this transaction is required
           </span>
         </span>
-      </div>
+      </div> -->
 
       <input type="button" class="btn btn-secondary" value="Back" />
       <input

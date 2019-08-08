@@ -58,7 +58,7 @@ export class PaymentsComponent implements OnInit {
       billingaddress: [null, [Validators.required]],
       billingstate: [null, [Validators.required]],
       billingcountry: [null, [Validators.required]],
-      save_card: [null, [Validators.required]],
+      save_card: null,
       purpose: [null, [Validators.required]]
     });
   }

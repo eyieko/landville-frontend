@@ -1,9 +1,9 @@
 export interface InternationalPayment {
-  cardno: BigInteger;
+  cardno: number;
   cvv: string;
   expirymonth: string;
   expiryyear: string;
-  amount: DoubleRange;
+  amount: number;
   billingzip: string;
   billingcity: string;
   billingaddress: string;
