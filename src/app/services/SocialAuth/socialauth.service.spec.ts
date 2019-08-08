@@ -24,8 +24,8 @@ describe('Test for Loginservice', () => {
     //inject service
     service = TestBed.get(LoginService);
     httpMock = TestBed.get(HttpTestingController);
-    googleUrl = APPCONFIG.base_url + 'auth/google/';
-    facebookUrl = APPCONFIG.base_url + 'auth/facebook/';
+    googleUrl = APPCONFIG.base_url + '/auth/google/';
+    facebookUrl = APPCONFIG.base_url + '/auth/facebook/';
   });
 
   it('should create a google user and return token', () => {

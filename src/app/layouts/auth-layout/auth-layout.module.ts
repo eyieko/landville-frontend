@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +15,7 @@ import { RegisterFormComponent } from 'src/app/pages/registration/register-form/
 import { RegisterHeaderComponent } from 'src/app/pages/registration/register-header/register-header.component';
 import { HomeComponent } from 'src/app/pages/home/home.component';
 import { ComponentsModule } from 'src/app/components/components.module';
+
 
 import {} from 'src/environments/environment.prod';
 

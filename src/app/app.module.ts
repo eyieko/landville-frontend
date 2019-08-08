@@ -1,9 +1,10 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ToastrModule} from 'ngx-toastr';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing';
@@ -14,6 +15,9 @@ import {ComponentsModule} from './components/components.module';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import {ErrorInterceptor} from './helpers/error.interceptor';
 import { LocalStorageService } from './services/local-storage.service';
+import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
+import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
+
 
 
 @NgModule({
@@ -21,6 +25,7 @@ import { LocalStorageService } from './services/local-storage.service';
     FormsModule,
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     RouterModule,
     ComponentsModule,
     HttpClientModule,
@@ -31,6 +36,8 @@ import { LocalStorageService } from './services/local-storage.service';
     AppComponent,
     AuthLayoutComponent,
     CommonLayoutComponent,
+    PasswordResetComponent,
+    EnterResetPasswordComponent,
   ],
   providers: [
     LocalStorageService,

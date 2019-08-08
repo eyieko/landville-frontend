@@ -52,4 +52,12 @@ export const httpRequestSpy = jasmine.createSpyObj('HttpRequest', [
   'clone'
 ]);
 
+export const  resetLinkService = createSpyObj('PasswordResetService', [
+    'getResetLink'
+]);
+
+export const  resetPassordService = createSpyObj('EnterResetPasswordService', [
+    'changePassword'
+]);
+
 export const httpHandlerSpy = jasmine.createSpyObj('HttpHandler', ['handle']);
