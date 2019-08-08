@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { InternationalPaymentService } from "../../services/internationalPayment/international-payment.service";
 import { ToastrService } from "ngx-toastr";
+import { Location } from "@angular/common";
 import {
   FormGroup,
   FormBuilder,
@@ -24,6 +25,7 @@ export class PaymentsComponent implements OnInit {
   constructor(
     private internationalPaymentService: InternationalPaymentService,
     private toastrService: ToastrService,
+    private _location: Location,
     // private subscription: Subscription,
     private fb: FormBuilder
   ) {}
@@ -31,7 +33,7 @@ export class PaymentsComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       cardno: [
-        "",
+        null,
         [
           Validators.required,
           Validators.pattern("^[1-9]+[0-9]*$"),
@@ -63,6 +65,9 @@ export class PaymentsComponent implements OnInit {
     });
   }
 
+  backClicked() {
+    this._location.back();
+  }
   // ngOnDestroy() {
   //   this.subscription.unsubscribe();
   // }

@@ -35,8 +35,8 @@ describe("PaymentsComponent", () => {
   });
 
   it("should error if an invalid form is passed", () => {
-    const email = component.form.controls.cardno;
-    email.setValue("");
+    const cardno = component.form.controls.cardno;
+    cardno.setValue("");
     expect(component.form.invalid).toBeTruthy();
   });
 
