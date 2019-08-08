@@ -1,11 +1,12 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
-import {FooterComponent} from './footer/footer.component';
-import {NavbarComponent} from './navbar/navbar.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {TopbarComponent} from './topbar/topbar.component';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { TopbarComponent } from './topbar/topbar.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,9 @@ import {TopbarComponent} from './topbar/topbar.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    LocalStorageService,
+  ],
   declarations: [
     FooterComponent,
     NavbarComponent,

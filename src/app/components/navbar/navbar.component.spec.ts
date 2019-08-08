@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { localStorageSpy } from 'src/app/helpers/spies';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 import { NavbarComponent } from './navbar.component';
 
@@ -8,9 +11,17 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      imports: [
+        HttpClientTestingModule,
+      ],
+      declarations: [
+        NavbarComponent,
+      ],
+      providers: [
+        {provide: LocalStorageService, useValue: localStorageSpy},
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
