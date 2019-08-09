@@ -68,11 +68,129 @@ export const mockProfileResponse = {
       designation: 'Waiter',
       next_of_kin: 'Masha',
       next_of_kin_contact: '235235423523452',
-      bio: 'I am simply amazing'
+      bio: 'I am simply amazing',
+      card_info: {
+        card_info: {
+          card_brand: 'MASTER CARD',
+          embedtoken: 'flw-t1nf-4490d819ca68842ceb24ba4707ea8233-m03k',
+          card_expiry: '10/22',
+          card_number: '*********8381'
+        }
+      }
     },
     message: 'Profile retreived successfully'
   }
 };
+
+export const mockProfileResponse1 = {
+  data: {
+    profile: {
+      user: {
+        id: 13,
+        first_name: 'Client',
+        last_name: 'Forever',
+        email: 'forever@young.forever',
+        role: 'CA'
+      },
+      phone: '+234 123 4435500',
+      address: {
+        City: 'Kigali',
+        State: 'Rwanda',
+        Street: 'Burn'
+      },
+      level: 'STARTER',
+      image: 'https://dummyimage.com/300',
+      employer: 'Fast Foods',
+      designation: 'Waiter',
+      next_of_kin: 'Masha',
+      next_of_kin_contact: '235235423523452',
+      bio: 'I am simply amazing',
+      card_info: {
+        card_info: {
+          card_brand: 'VISA',
+          embedtoken: 'flw-t1nf-4490d819ca68842ceb24ba4707ea8233-m03k',
+          card_expiry: '10/22',
+          card_number: '*********8381'
+        }
+      }
+    },
+    message: 'Profile retreived successfully'
+  }
+};
+
+export const mockProfileResponse2 = {
+  data: {
+    profile: {
+      user: {
+        id: 13,
+        first_name: 'Client',
+        last_name: 'Forever',
+        email: 'forever@young.forever',
+        role: 'CA'
+      },
+      phone: '+234 123 4435500',
+      address: {
+        City: 'Kigali',
+        State: 'Rwanda',
+        Street: 'Burn'
+      },
+      level: 'STARTER',
+      image: 'https://dummyimage.com/300',
+      employer: 'Fast Foods',
+      designation: 'Waiter',
+      next_of_kin: 'Masha',
+      next_of_kin_contact: '235235423523452',
+      bio: 'I am simply amazing',
+      card_info: {
+        card_info: {
+          card_brand: 'AMERICAN EXPRESS',
+          embedtoken: 'flw-t1nf-4490d819ca68842ceb24ba4707ea8233-m03k',
+          card_expiry: '10/22',
+          card_number: '*********8381'
+        }
+      }
+    },
+    message: 'Profile retreived successfully'
+  }
+};
+
+export const mockProfileResponse3 = {
+  data: {
+    profile: {
+      user: {
+        id: 13,
+        first_name: 'Client',
+        last_name: 'Forever',
+        email: 'forever@young.forever',
+        role: 'CA'
+      },
+      phone: '+234 123 4435500',
+      address: {
+        City: 'Kigali',
+        State: 'Rwanda',
+        Street: 'Burn'
+      },
+      level: 'STARTER',
+      image: 'https://dummyimage.com/300',
+      employer: 'Fast Foods',
+      designation: 'Waiter',
+      next_of_kin: 'Masha',
+      next_of_kin_contact: '235235423523452',
+      bio: 'I am simply amazing',
+      card_info: {
+        card_info: {
+          card_brand: 'PAY PAL',
+          embedtoken: 'flw-t1nf-4490d819ca68842ceb24ba4707ea8233-m03k',
+          card_expiry: '10/22',
+          card_number: '*********8381'
+        }
+      }
+    },
+    message: 'Profile retreived successfully'
+  }
+};
+
+
 
 export const mockProfileResponseNoAddress = {
   data: {
@@ -92,7 +210,7 @@ export const mockProfileResponseNoAddress = {
       designation: 'Waiter',
       next_of_kin: 'Masha',
       next_of_kin_contact: '235235423523452',
-      bio: 'I am simply amazing'
+      bio: 'I am simply amazing',
     },
     message: 'Profile retreived successfully'
   }
@@ -104,4 +222,27 @@ export const mockProfileFormErrorResponse = {
       phone: ['Phone number must be of the format +234 123 4567890']
     }
   }
+};
+
+// mock the return object of deposits data
+export const mockDepositsResponse = {
+  data: {
+    transactions: [
+      {
+        title: 'people prop',
+        buyer: 'buyer@vmailcloud.com',
+        price: 2000.0,
+        total_amount_paid: 300.0,
+        balance: 1700.0,
+        deposits: [
+          {
+            date: '2019-08-15T08:11:46.716743Z',
+            amount: 300.0
+          }
+        ],
+        percentage_completion: '15.00'
+      }
+    ]
+  },
+  message: 'Transaction(s) retrieved successfully'
 };

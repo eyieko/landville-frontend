@@ -13,7 +13,9 @@ import { APPCONFIG } from 'src/app/config';
 })
 export class ProfileService {
   profileUrl = '/auth/profile/';
+  depositeUrl = '/transactions/';
   userProfile$: Subject<any> = new Subject<any>();
+  getDep$: Subject<any> = new Subject<any>();
   userToken = this.localStorageService.get('token', '');
   httpOptions = {
     headers: new HttpHeaders({
@@ -52,6 +54,13 @@ export class ProfileService {
     return this.http.patch<UserProfileUpdatedResponse>(
       `${APPCONFIG.base_url}${this.profileUrl}`,
       profileData,
+      this.httpOptions
+    );
+  }
+
+  getDeposits(): Observable<any> {
+    return this.http.get<any>(
+      `${APPCONFIG.base_url}${this.depositeUrl}`,
       this.httpOptions
     );
   }

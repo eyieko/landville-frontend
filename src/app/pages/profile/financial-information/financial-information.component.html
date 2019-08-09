@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="container">
+    <div class="title-container">
+      <h3>Payment Details</h3>
+    </div>
+    <hr />
+    <div class="row mt-4">
+      <div class="credit-info">
+        <div class="credit-info-content">
+          <div class="card-content-title">
+            <h5>Card Information</h5>
+          </div>
+          <img
+            src="{{cardInfo === null ? '' : cardInfo.cardBrand}}"
+            class="{{cardInfo === null || cardInfo.cardBrand === undefined? 'hidden' : 'credit-card-image'}}"
+            id="credit-card-image"
+            alt="card image"
+          />
+
+          <div>
+            <label>Cardholder's Name</label>
+            <input
+              class="input-field"
+              placeholder="{{cardInfo === null ? '' : cardInfo.cardOwner}}"
+              disabled
+            />
+            Card Number
+            <table>
+              <tr>
+                <td>
+                  <input class="input-field" placeholder="XXXX" disabled />
+                </td>
+                <td>
+                  <input class="input-field" placeholder="XXXX" disabled />
+                </td>
+                <td>
+                  <input class="input-field" placeholder="XXXX" disabled />
+                </td>
+                <td>
+                  <input class="input-field" placeholder="{{cardInfo === null ? '00/00' : cardInfo.cardNumber}}" disabled />
+                </td>
+              </tr>
+            </table>
+
+            <table class="half-input-table">
+              <tr>
+                <td>
+                  Expiration Date
+                  <input class="input-field" placeholder="{{cardInfo === null ? '00/00' : cardInfo.cardExpiry}}" disabled />
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="card-content-title">
+        <h5>Current Savings Status</h5>
+      </div>
+      <div class="saving-status">
+        <div class="row full-width">
+          <div class="col-8 column-1">
+            <div class="property-value">
+              <p>Property Value</p>
+              <h2>
+                {{
+                  deposits.error !== undefined
+                    ? "No Purchase Yet"
+                    : deposits.price
+                }}
+              </h2>
+            </div>
+            <div class="current-savings">
+              <p>Current Savings</p>
+              <h2>
+                {{
+                  deposits.error !== undefined
+                    ? "No savings Yet"
+                    :deposits.total_amount_paid
+                }}
+              </h2>
+            </div>
+          </div>
+          <div class="col-4 savings-progress">
+            <round-progress
+              [current]="
+                deposits.error !== undefined
+                  ? 0
+                  : deposits.percentage_completion
+              "
+              [max]="
+                deposits.error !== undefined ? 0 : 100
+              "
+              [color]="'#f7b53a'"
+            ></round-progress>
+            <div class="percentageValue">
+                {{
+                deposits.error !== undefined
+                  ? 0
+                  : deposits.percentage_completion.toString().split(".")[0]
+                }} %
+            </div>
+            <p>Savings Progress</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div></div>
+  </div>
+</div>

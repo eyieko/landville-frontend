@@ -10,27 +10,21 @@ import { APPCONFIG } from 'src/app/config';
 })
 export class HttpService {
 
-  base_url = APPCONFIG.base_url
+  base_url = APPCONFIG.base_url;
 
-  httpOptions = { 
+  httpOptions = {
     headers: new HttpHeaders({
        'Content-Type': 'application/json'
-    }) 
-  }
+    })
+  };
 
   constructor(private http: HttpClient) { }
-  
-  // get request without any params
-  // commented out for testing purposes
-  // getRequest(endpoint, baseUrl = this.base_url) {
-  //   return this.http.get(baseUrl + endpoint);
-  // }
 
   // // use this when making get requests with params
   getRequestWithParams(endpoint, params = {}) {
     return this.http.get(this.base_url + endpoint, { params });
   }
-  
+
   // use this for POST,PUT or PATCH.
   makeRequestWithData<T>(
     endpoint: any,

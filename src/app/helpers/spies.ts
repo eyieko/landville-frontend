@@ -23,7 +23,8 @@ export const toastServiceSpy = createSpyObj('ToastrService', [
 export const profileServiceSpy = createSpyObj('ProfileService', [
   'getProfile',
   'updateProfile',
-  'pushProfile'
+  'pushProfile',
+  'getDeposits'
 ]);
 
 export const registerServiceSpy = createSpyObj('RegisterServiceService', [

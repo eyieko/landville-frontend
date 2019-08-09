@@ -34,6 +34,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "angular-font-awesome": "^3.1.2",
+    "angular-svg-round-progressbar": "^3.0.1",
     "angularx-social-login": "^1.2.7",
     "bootstrap": "^4.3.1",
     "dotenv": "^8.0.0",
