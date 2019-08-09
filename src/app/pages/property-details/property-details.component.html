@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="card my-5">
                     <div class="card-header">
                         <h5><b>{{title}}</b></h5>
@@ -19,16 +19,15 @@
                             <b><i class="fa fa-map-marker"></i></b>
                             {{state}}, {{city}}
                         </div>
-                        <h5 class="price">&#8358; {{price}}</h5>
+                        <h5 class="price"><b>&#8358; {{price}}</b></h5>
                     </div>
                     <div class="card-body">
                         <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{image_main}}" class="d-block w-100" class="img-fluid"
-                                        alt="Image">
+                                    <img src="{{imageMain}}" class="d-block w-100" class="img-fluid" alt="Image">
                                 </div>
-                                <div class="carousel-item" *ngFor="let image of image_others">
+                                <div class="carousel-item" *ngFor="let image of imageOthers">
                                     <img src="{{image}}" class="d-block w-100" class="img-fluid" alt="Image">
                                 </div>
                             </div>
@@ -42,43 +41,71 @@
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
-
                         </div>
                     </div>
-                    <div class="container" *ngIf="ifBuilding">
-                        <div class="row amenities">
-                            <span class="col-md-3"><b>Lot size: </b>{{property.lot_size}}</span>
-
-                            <span class="col-md-3"><b>Bedrooms: </b>
-                                <span *ngIf="rooms"> {{rooms}} </span>
-                                <span *ngIf="!rooms"> None </span>
-                            </span>
-                            <span class="col-md-3"><b>Bathrooms: </b>
-                                <span *ngIf="bedrooms"> {{rooms}} </span>
-                                <span *ngIf="!bedrooms"> None </span>
-                            </span>
-                            <span class="col-md-3"><b>Garages: </b>
-                                <span *ngIf="garages"> {{rooms}} </span>
-                                <span *ngIf="!garages"> None </span>
-                            </span>
+                    <div class="container rooms" *ngIf="ifBuilding">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <span class="col">
+                                        <span *ngIf="rooms"><b>{{rooms}} Bedrooms</b></span>
+                                        <span *ngIf="!rooms"><b>0 Bedrooms</b></span>
+                                    </span>
+                                    <span class="col">
+                                        <span *ngIf="bathrooms"><b>{{bathrooms}} Bathrooms</b></span>
+                                        <span *ngIf="!bathrooms"><b>0 Bathrooms</b></span>
+                                    </span>
+                                    <span class="col">
+                                        <span *ngIf="garages"> <b>{{garages}} Garages</b></span>
+                                        <span *ngIf="!garages"> <b>0 Garages </b></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-star"></i> Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="about">
                     <h6><b>ABOUT PROPERTY</b></h6>
+                    <p><b>Lot size: </b>{{lotSize}}</p>
                     <p>{{description}}</p>
-                    <p><span><a href="{{video}}" class="">Watch a video</a></span></p>
+                    <p *ngIf="ifVideo"><span><a href="{{video}}" class="">Watch a video</a></span></p>
                     <div>
-                        <span>Click <a href="">here</a> to schedule an inspection</span>
+                        <button class="btn btn-primary">Schedule an inspection</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="details-plans">
+                    <ul>
+                        <h6><b>Available Plans</b></h6>
+                        <li>Outright Purchase</li>
+                        <li>Installment Payment</li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mt-5 text-center">
+                    <p class="card-title"><b>About Seller</b></p>
+                    <div class="card-body">
+                        <h5 class="card-header">{{clientName}}</h5>
+                        <div class="card-text">
+                            <small>
+                                <p>{{clientStreet}}</p>
+                                <p>{{clientState}}, {{clientCity}}</p>
+                            </small> 
+                            <div>
+                                <h6>Contact:</h6>
+                                {{phone}}<br>
+                                {{email}}
+                            </div> 
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-2">
-
-            </div>
         </div>
+        <ngx-spinner></ngx-spinner>
     </div>
-</body>
-
-</html>
+</body></html>

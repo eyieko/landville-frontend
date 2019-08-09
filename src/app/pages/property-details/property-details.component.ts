@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PropertyDetail } from '../../models/property-detail/Property-detail'
 import { PropertyDetailService } from '../../services/property-detail/property-detail.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-property-details',
@@ -21,15 +21,24 @@ export class PropertyDetailsComponent implements OnInit {
   title: string;
   price: string;
   description: string;
-  image_main: string;
-  image_others: Array<any> = [];
-  lot_size: string;
+  imageMain: string;
+  imageOthers: Array<any> = [];
+  lotSize: string;
   video: string;
   ifBuilding: boolean;
+  ifVideo: boolean;
+  createdAt: string;
+  clientName: string;
+  phone: string;
+  email: string;
+  clientStreet: string;
+  clientState: string;
+  clientCity: string;
 
   constructor(
     private route: ActivatedRoute,
-    private propertyservice: PropertyDetailService
+    private propertyservice: PropertyDetailService,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +49,7 @@ export class PropertyDetailsComponent implements OnInit {
   }
 
   viewProperty(slug) {
+    this.spinner.show();
     this.propertyservice.getProperty(slug).subscribe(
       response => {
         const priceHolder = response.data.property.price;
@@ -49,15 +59,24 @@ export class PropertyDetailsComponent implements OnInit {
         this.state = response.data.property.address.State;
         this.street = response.data.property.address.Street;
         this.price = priceHolder.toString();
-        this.image_main = response.data.property.image_main;
-        this.image_others = response.data.property.image_others;
-        this.lot_size = response.data.property.lot_size;
+        this.imageMain = response.data.property.image_main;
+        this.imageOthers = response.data.property.image_others;
+        this.lotSize = response.data.property.lot_size;
         this.video = response.data.property.video
         this.property = response.data.property;
-        this.checkIfBuilding(response.data.property.property_type, response.data.property );
-        
+        this.checkIfBuilding(response.data.property.property_type, response.data.property);
+        this.checkIfVideo(this.video)
+        this.clientName = response.data.property.client.client_name;
+        this.phone = response.data.property.client.phone
+        this.email = response.data.property.client.email
+        this.clientStreet = response.data.property.client.address.Street
+        this.clientCity = response.data.property.client.address.City
+        this.clientState = response.data.property.client.address.State
+        this.spinner.hide();
       }
+
     )
+
   }
   checkIfBuilding(property, data) {
     if (property === "Building") {
@@ -67,6 +86,10 @@ export class PropertyDetailsComponent implements OnInit {
       this.garages = data.garages;
     }
   }
+  checkIfVideo(video: string) {
+    if (video) {
+      this.ifVideo = true;
+    }
+  }
+
 }
-
-
