@@ -49,7 +49,7 @@ const routes: Routes = [
     component: EnterResetPasswordComponent
   },
   {
-    path: "payments",
+    path: "international-payment",
     component: PaymentsComponent
   },
   {
