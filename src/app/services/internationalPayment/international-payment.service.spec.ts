@@ -8,6 +8,7 @@ import { environment } from "../../../environments/environment";
 
 import { InternationalPaymentService } from "./international-payment.service";
 import { PaymentsComponent } from "src/app/pages/payments/payments.component";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe("InternationalPaymentService", () => {
   const payload = {
@@ -28,6 +29,8 @@ describe("InternationalPaymentService", () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, ReactiveFormsModule, FormsModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
       declarations: [PaymentsComponent],
       providers: [InternationalPaymentService]
     })

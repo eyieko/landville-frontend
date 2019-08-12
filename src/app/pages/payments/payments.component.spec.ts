@@ -16,6 +16,7 @@ import {
 } from "../../helpers/spies";
 import { InternationalPaymentService } from "src/app/services/internationalPayment/international-payment.service";
 import { By } from "@angular/platform-browser";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe("PaymentsComponent", () => {
   let component: PaymentsComponent;
@@ -24,6 +25,8 @@ describe("PaymentsComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule, HttpClientTestingModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
       declarations: [PaymentsComponent],
       providers: [
         { provide: ToastrService, useValue: toastServiceSpy },
