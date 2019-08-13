@@ -1,9 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-<<<<<<< HEAD
-import { TermsService } from './terms.service';
-=======
 import { TermsService } from 'src/app/services/terms/terms.service';
->>>>>>> ft(terms): Enable users to activate terms of use on registration
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
 describe('TermsService', () => {

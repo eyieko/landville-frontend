@@ -4,15 +4,7 @@ import { LoginFormComponent } from 'src/app/pages/login/login-form/login-form.co
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> ft(terms): Enable users to activate terms of use on registration
 import { LoginService } from 'src/app/services/login/login.service';
-=======
-import { LoginService } from './login.service';
->>>>>>> ft(terms): Enable users to activate terms of use on registration
 import { AppModule } from 'src/app/app.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { APPCONFIG } from 'src/app/config';
