@@ -17,6 +17,7 @@ import {
 import { InternationalPaymentService } from "src/app/services/internationalPayment/international-payment.service";
 import { By } from "@angular/platform-browser";
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Router } from '@angular/router';
 
 describe("PaymentsComponent", () => {
   let component: PaymentsComponent;
@@ -30,6 +31,7 @@ describe("PaymentsComponent", () => {
       declarations: [PaymentsComponent],
       providers: [
         { provide: ToastrService, useValue: toastServiceSpy },
+        { provide: Router, useValue: routerSpy },
         { provide: Location, useValue: locationSpy },
         {
           provide: InternationalPaymentService,

@@ -9,6 +9,9 @@ import {
   ReactiveFormsModule,
   AbstractControl
 } from "@angular/forms";
+import { NgxSpinnerService } from "ngx-spinner";
+import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
 // import { Subscription } from "rxjs";
 
 @Component({
@@ -21,13 +24,15 @@ export class PaymentsComponent implements OnInit {
   payload: any;
   form: FormGroup;
   formData;
+  subscription: Subscription[] = [];
 
   constructor(
     private internationalPaymentService: InternationalPaymentService,
     private toastrService: ToastrService,
     private _location: Location,
-    // private subscription: Subscription,
-    private fb: FormBuilder
+    private router: Router,
+    private fb: FormBuilder,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit() {
@@ -53,14 +58,14 @@ export class PaymentsComponent implements OnInit {
         null,
         [Validators.required, Validators.max(12), Validators.min(1)]
       ],
-      expiryyear: [null, [Validators.required, Validators.min(2019)]],
+      expiryyear: [null, [Validators.required, Validators.min(19)]],
       amount: [null, [Validators.required]],
       billingzip: [null, [Validators.required]],
       billingcity: [null, [Validators.required]],
       billingaddress: [null, [Validators.required]],
       billingstate: [null, [Validators.required]],
       billingcountry: [null, [Validators.required]],
-      save_card: null,
+      save_card: false,
       purpose: [null, [Validators.required]]
     });
   }
@@ -68,9 +73,9 @@ export class PaymentsComponent implements OnInit {
   backClicked() {
     this._location.back();
   }
-  // ngOnDestroy() {
-  //   this.subscription.unsubscribe();
-  // }
+  ngOnDestroy() {
+    this.subscription[0].unsubscribe();
+  }
 
   // validateCardNo(control: AbstractControl): {[key: string]: boolean} | null{
   //     if( typeof(control.value)
@@ -80,7 +85,7 @@ export class PaymentsComponent implements OnInit {
   onSubmitPaymentDetails({ value }) {
     console.log(value);
 
-    this.loading = true;
+    this.spinner.show();
     this.payload = {
       cardno: value.cardno,
       cvv: value.cvv,
@@ -96,19 +101,25 @@ export class PaymentsComponent implements OnInit {
       purpose: value.purpose
     };
 
-    this.internationalPaymentService
-      .createInternationalPayment(this.payload)
-      // .pipe(first())
-      .subscribe(
-        data => {
-          this.loading = false;
-          this.toastrService.success("Your Payment has been placed");
-          // this.router.navigate(["/"]);
-        },
-        error => {
-          this.toastrService.error(JSON.stringify(error.errors));
-          this.loading = false;
-        }
-      );
+    this.subscription.push(
+      this.internationalPaymentService
+        .createInternationalPayment(this.payload)
+        // .pipe(first())
+        .subscribe(
+          data => {
+            this.spinner.hide();
+            this.toastrService.success("Your Payment has been placed");
+            this.router.navigateByUrl("https://www.google.com/");
+          },
+          error => {
+            let errors = "";
+            for (var key in error) {
+              errors += `${key}: ${error[key]}`;
+            }
+            this.toastrService.error(errors);
+            this.loading = false;
+          }
+        )
+    );
   }
 }
