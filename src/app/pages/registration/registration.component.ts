@@ -21,11 +21,6 @@ export class RegistrationComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
   ) {
-    // redirect to home if already logged in
-    const currentUser = localStorage.getItem('token');
-    if (currentUser) {
-      this.router.navigate(['/']);
-    }
   }
 
   ngOnInit() {
