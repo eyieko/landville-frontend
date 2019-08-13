@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from 'src/app/modules/shared/components/card/card.component';
 import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-errors.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-
     TopbarComponent,
     CardComponent,
     InputErrorsComponent,
+    SearchComponent
   ],
   exports: [
     FooterComponent,
@@ -34,6 +36,7 @@ import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-
     TopbarComponent,
     CardComponent,
     InputErrorsComponent,
+    SearchComponent
   ],
 })
 export class SharedModule {
