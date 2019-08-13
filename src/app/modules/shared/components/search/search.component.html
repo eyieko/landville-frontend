@@ -1,4 +1,54 @@
-<p>search works!</p>
-<div *ngFor='let search of search$'>
-    <h2> {{ search.tittle }} </h2>
+<div class="row">
+    <div class="col-md-12 mr-auto ml-auto">
+        <form class="search-form">
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="sr-only">Keyword</label>
+                    <div class="input-group">
+                        <input class="form-control" name="keywords" placeholder="Keyword ( Street Name, Address, ... )"
+                            type="text" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="sr-only">City</label>
+                    <div class="input-group">
+                        <input class="form-control" name="City" placeholder="City" type="text" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="sr-only">State</label>
+                    <div class="input-group">
+                        <input class="form-control" name="State" placeholder="State" type="text" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="sr-only">Minimum Price</label>
+                    <div class="input-group">
+                        <input class="form-control" name="Minimum Price" placeholder="Minimum Price" type="text" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="sr-only">Maximum Price</label>
+                    <div class="input-group">
+                        <input class="form-control" name="Maximum Price" placeholder="Maximum Price" type="text" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="sr-only">Bedrooms</label>
+                    <select class="form-control" name="bedrooms">
+                        <option disabled="disabled" selected="true">Number of Bedrooms</option>
+                        <option>1 Bedroom</option>
+                        <option>2 Bedrooms</option>
+                        <option>3 Bedrooms</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-warning btn-search" type="submit">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </form>
+        <br />
+    </div>
 </div>
