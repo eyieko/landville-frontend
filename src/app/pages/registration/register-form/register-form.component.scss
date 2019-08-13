@@ -46,7 +46,6 @@ p a.sign-link {
 
 .form-check-label {
   color: grey;
-<<<<<<< HEAD
 }
 
 @media (max-width:641px) {
@@ -61,19 +60,12 @@ button[type="submit"] {
 }
 
 
-.form-check-label{
+.form-check-label {
   color: grey !important;
 }
-.form-check-input{
-  margin:-12px -20px;
-=======
-}
 
-@media (max-width:641px) {
-  .first {
-    display: none;
-  }
->>>>>>> ft(terms): Enable users to activate terms of use on registration
+.form-check-input {
+  margin: -12px -20px;
 }
 
 button[type="submit"] {

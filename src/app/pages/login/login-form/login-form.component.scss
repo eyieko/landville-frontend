@@ -8,14 +8,16 @@
   margin: 0rem 0rem 0rem 0rem;
 }
 
-.email, .password {
+.email,
+.password {
   border: none;
   height: 1.9em;
   width: 19rem;
   font-size: 20px;
 }
 
-.email:focus, .password:focus {
+.email:focus,
+.password:focus {
   outline: none;
 }
 
@@ -48,7 +50,9 @@
 
 }
 
-button:focus {outline:0;}
+button:focus {
+  outline: 0;
+}
 
 .notification {
   font-family: Arial, Helvetica, sans-serif;
@@ -63,10 +67,10 @@ button:focus {outline:0;}
     transform: scale(0.82);
     padding-left: 223px;
     padding-right: 237px;
-   }
+  }
 
-   .login-form button {
+  .login-form button {
     margin: 0.5rem 6rem 1rem 1.9rem;
   }
 
-  }
+}

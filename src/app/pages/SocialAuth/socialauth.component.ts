@@ -28,11 +28,7 @@ export class SocialLoginComponentt {
     private router: Router,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService
-<<<<<<< HEAD
   ) { }
-=======
-  ) {}
->>>>>>> ft(terms): Enable users to activate terms of use on registration
   signInWithGoogle() {
     this.spinner.show();
     this.socialAuthService

@@ -1,19 +1,11 @@
 <div class='login-form'>
   <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
     <div class="input" [ngStyle]="{'border': inputError ? '1px solid #f00': 'none'}">
-<<<<<<< HEAD
       <img src="assets/img/ICON/Email.png" />
       <input class="email" formControlName="email" type='email' email="email" placeholder="email@domain.com" />
     </div>
     <div class="input" [ngStyle]="{'border': inputError ? '1px solid #f00': 'none'}">
       <img src="assets/img/ICON/Login.png" />
-=======
-      <img src="../../../assets/img/ICON/Email.png" />
-      <input class="email" formControlName="email" type='email' email="email" placeholder="email@domain.com" />
-    </div>
-    <div class="input" [ngStyle]="{'border': inputError ? '1px solid #f00': 'none'}">
-      <img src="../../../assets/img/ICON/Login.png" />
->>>>>>> ft(terms): Enable users to activate terms of use on registration
       <input class="password" formControlName="password" type="password" password="password" placeholder="password" />
     </div>
     <p class="notification">{{ notification }}</p>
