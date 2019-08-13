@@ -6,7 +6,7 @@ import { Search } from 'src/app/models/Search';
   providedIn: 'root'
 })
 export class SearchService {
-  apiUrl = "https://landville-backend-web-api.herokuapp.com/api/v1/properties/?" + "title"
+  apiUrl = "https://landville-backend-web-api.herokuapp.com/api/v1/properties/?" + ""
 
   constructor(private _http: HttpClient) { }
 
