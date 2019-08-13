@@ -155,19 +155,25 @@
               </span>
             </div>
 
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" formControlName="userAccepts" type="checkbox" id="inlineCheckbox1"
-                value="option1">
-              <label class="form-check-label" for="inlineCheckbox1">I Accept <a class="form-check-label"
-                  routerLink="/terms-and-conditions" target="_blank">terms and
-                  conditions of
-                  LandVille</a></label>
-              <span *ngIf="
-                    registerForm.get('userAccepts').errors?.requiredTrue
-                  ">
-                You must accepts terms and conditions of use
-              </span>
-            </div>
+            <div class="form-group">
+  <div class="form-check">
+    <input class="form-check-input" [ngClass]="{
+      'is-invalid':
+        (registerForm.get('userAccepts').touched ||
+          registerForm.get('userAccepts').dirty) &&
+        !registerForm.get('userAccepts').valid
+    }"  type="checkbox" formControlName="userAccepts"/>
+    <label class="form-check-label">
+      I Accept <a class="form-check-label"
+          routerLink="/terms-and-conditions" target="_blank">terms and
+          conditions of
+          LandVille</a></label>
+
+    <div class="invalid-feedback">
+      You must accept terms and conditions of use.
+    </div>
+  </div>
+</div>
 
             <button type="submit" [disabled]="!registerForm.valid" class="btn btn-block" [ngStyle]="
               registerForm.valid && {
