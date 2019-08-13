@@ -49,10 +49,6 @@ const routes: Routes = [
     component: EnterResetPasswordComponent
   },
   {
-    path: "international-payment",
-    component: PaymentsComponent
-  },
-  {
     path: '**',
     redirectTo: 'home'
   }

@@ -43,7 +43,6 @@ import { PropertyDetailsModule } from "src/app/pages/property-details/property-d
     PropertiesComponent,
     NoPropertiesComponent,
     CardComponent,
-
   ],
   providers: [ProfileService, LocalStorageService, Title],
 })

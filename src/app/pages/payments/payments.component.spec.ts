@@ -16,8 +16,9 @@ import {
 } from "../../helpers/spies";
 import { InternationalPaymentService } from "src/app/services/internationalPayment/international-payment.service";
 import { By } from "@angular/platform-browser";
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Router } from '@angular/router';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from "@angular/core";
+import { Router } from "@angular/router";
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe("PaymentsComponent", () => {
   let component: PaymentsComponent;
@@ -25,9 +26,8 @@ describe("PaymentsComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ReactiveFormsModule, HttpClientTestingModule],
+      imports: [FormsModule, ReactiveFormsModule, HttpClientTestingModule, NgxSpinnerModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-
       declarations: [PaymentsComponent],
       providers: [
         { provide: ToastrService, useValue: toastServiceSpy },

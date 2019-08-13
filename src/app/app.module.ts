@@ -21,6 +21,7 @@ import { NoAuthGuard } from './guards/no-auth.guard';
 import { TermsService } from './services/terms/terms.service';
 
 
+import { PaymentsComponent } from "./pages/payments/payments.component";
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { TermsService } from './services/terms/terms.service';
     RouterModule,
     ComponentsModule,
     HttpClientModule,
+    NgxSpinnerModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
 		NgxSpinnerModule
@@ -42,7 +44,6 @@ import { TermsService } from './services/terms/terms.service';
     CommonLayoutComponent,
     PasswordResetComponent,
     EnterResetPasswordComponent,
-    PaymentsComponent,
     
   ],
   providers: [

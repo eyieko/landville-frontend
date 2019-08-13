@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from "@angular/core";
 import { InternationalPaymentService } from "../../services/internationalPayment/international-payment.service";
 import { ToastrService } from "ngx-toastr";
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Location } from "@angular/common";
 import {
   FormGroup,
@@ -12,7 +13,8 @@ import {
 import { NgxSpinnerService } from "ngx-spinner";
 import { Router } from "@angular/router";
 import { Subscription } from "rxjs";
-// import { Subscription } from "rxjs";
+import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
+import { removeSubscription } from 'src/app/helpers/unsubscribe';
 
 @Component({
   selector: "app-payments",
@@ -25,6 +27,9 @@ export class PaymentsComponent implements OnInit {
   form: FormGroup;
   formData;
   subscription: Subscription[] = [];
+  currentUrl: SafeUrl;
+  iframeSrc: SafeUrl;
+  shouldHide: boolean = true;
 
   constructor(
     private internationalPaymentService: InternationalPaymentService,
@@ -32,10 +37,15 @@ export class PaymentsComponent implements OnInit {
     private _location: Location,
     private router: Router,
     private fb: FormBuilder,
-    private spinner: NgxSpinnerService
-  ) {}
+    private spinner: NgxSpinnerService,
+    private modalService: NgbModal,
+    private sanitizer: DomSanitizer
+
+  ) { }
 
   ngOnInit() {
+
+
     this.form = this.fb.group({
       cardno: [
         null,
@@ -59,7 +69,10 @@ export class PaymentsComponent implements OnInit {
         [Validators.required, Validators.max(12), Validators.min(1)]
       ],
       expiryyear: [null, [Validators.required, Validators.min(19)]],
-      amount: [null, [Validators.required]],
+      amount: [
+        null,
+        [Validators.required, Validators.pattern("^[1-9]+[0-9]*$")]
+      ],
       billingzip: [null, [Validators.required]],
       billingcity: [null, [Validators.required]],
       billingaddress: [null, [Validators.required]],
@@ -74,17 +87,13 @@ export class PaymentsComponent implements OnInit {
     this._location.back();
   }
   ngOnDestroy() {
-    this.subscription[0].unsubscribe();
+    removeSubscription(this.subscription);
   }
 
-  // validateCardNo(control: AbstractControl): {[key: string]: boolean} | null{
-  //     if( typeof(control.value)
-  //     return null;
-  // }
 
   onSubmitPaymentDetails({ value }) {
-    console.log(value);
 
+    this.loading = true
     this.spinner.show();
     this.payload = {
       cardno: value.cardno,
@@ -101,25 +110,33 @@ export class PaymentsComponent implements OnInit {
       purpose: value.purpose
     };
 
+
     this.subscription.push(
       this.internationalPaymentService
         .createInternationalPayment(this.payload)
-        // .pipe(first())
         .subscribe(
           data => {
             this.spinner.hide();
+            this.loading = false
             this.toastrService.success("Your Payment has been placed");
-            this.router.navigateByUrl("https://www.google.com/");
+            this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(data.message);
+            console.log(this.iframeSrc);
+
+            this.shouldHide = false;
           },
           error => {
+            this.spinner.hide();
+            this.loading = false
+
             let errors = "";
             for (var key in error) {
-              errors += `${key}: ${error[key]}`;
+              let msg = String(error[key])
+              errors += `${key}: ${msg}`;
             }
             this.toastrService.error(errors);
-            this.loading = false;
           }
         )
     );
+
   }
 }

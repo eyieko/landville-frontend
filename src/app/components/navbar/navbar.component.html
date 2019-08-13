@@ -25,9 +25,7 @@
           routerLinkActive="active">Contact</a>
       </li>
       <li class="nav-item dropdown">
-        <span class="nav-link dropbtn" data-toggle="dropdown"
-          >Make Payment <span class="caret"></span
-        ></span>
+        <span class="nav-link dropbtn" data-toggle="dropdown">Make Payment <span class="caret"></span></span>
         <div class="dropdown-content">
           <a routerLink="#" routerLinkActive="active">PIN Card Payment</a>
           <a routerLink="/international-payment" routerLinkActive="active">International Payment</a>
@@ -72,7 +70,15 @@
             Create Company</a>
           <a class="dropdown-item waves-effect waves-light" routerLink="/reset-link"><i class="fa fa-plus"></i> Password
             Reset</a>
-          <a (click)="handleLogout()" class="dropdown-item waves-effect waves-light profileDropDown" routerLink="/logout"
+          <div class="dropdown-item waves-effect waves-light dropdown">
+            <div class="nav-link dropbtn" data-toggle="dropdown">Make Payment </div>
+            <div class="dropdown-content">
+              <a routerLink="#" routerLinkActive="active">PIN Card Payment</a>
+              <a routerLink="/international-payment" routerLinkActive="active">International Payment</a>
+              <a routerLink="#" routerLinkActive="active">Tokenized Card</a>
+            </div>
+          </div>
+          <a (click)="handleLogout()" class="dropdown-item waves-effect waves-light" routerLink="/logout"
             routerLinkActive="active">
             <i class="fa fa-sign-out "></i> Log Out</a>
         </div>

@@ -16,6 +16,7 @@ import { DebugElement } from '@angular/core';
 import { throwError, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { PaymentsComponent } from '../payments/payments.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('PasswordResetComponent', () => {
   let component: PasswordResetComponent;
@@ -40,6 +41,7 @@ describe('PasswordResetComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         ComponentsModule,
+        NgxSpinnerModule
 
       ],
       providers: [
@@ -47,7 +49,7 @@ describe('PasswordResetComponent', () => {
         { provide: ToastrService, useValue: toastServiceSpy }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -65,45 +67,45 @@ describe('PasswordResetComponent', () => {
     spyOn(component, 'onSubmit');
     el = fixture.debugElement.query(By.css('button')).nativeElement;
     expect(component.onSubmit).toHaveBeenCalledTimes(0);
-    }));
+  }));
 
   it('should be invalid when email is not provided', async(() => {
-      component.resetForm.get('email').setValue('');
-      expect(component.resetForm.valid).toBeFalsy();
-    }));
+    component.resetForm.get('email').setValue('');
+    expect(component.resetForm.valid).toBeFalsy();
+  }));
 
   it('should be valid when a valid email is provided', async(() => {
-      component.resetForm.get('email').setValue('joel@gmail.com');
-      expect(component.resetForm.valid).toBeTruthy();
-    }));
+    component.resetForm.get('email').setValue('joel@gmail.com');
+    expect(component.resetForm.valid).toBeTruthy();
+  }));
 
   it('Should get a backend response when a valid email is provided', async(() => {
-      const response = {
-        data: {
-          message : "If you have an account with us we have sent an email to reset your password"
-        }
-      };
-      resetLinkService.getResetLink.and.returnValue(of(response));
-      const form = fixture.debugElement.query(By.css('form'));
-      form.triggerEventHandler('ngSubmit', response);
+    const response = {
+      data: {
+        message: "If you have an account with us we have sent an email to reset your password"
+      }
+    };
+    resetLinkService.getResetLink.and.returnValue(of(response));
+    const form = fixture.debugElement.query(By.css('form'));
+    form.triggerEventHandler('ngSubmit', response);
 
-      expect(component.success).toEqual(true);
-    }));
+    expect(component.success).toEqual(true);
+  }));
 
   it('Should throw an error when an invalid email is provided', async(() => {
-      const errorResponse = {
-        errors: {
-            email: [
-                "Enter a valid email address."
-            ]
-        }
+    const errorResponse = {
+      errors: {
+        email: [
+          "Enter a valid email address."
+        ]
+      }
     };
-      resetLinkService.getResetLink.and.returnValue(throwError(
-        errorResponse
-      ));
-      component.onSubmit();
-      expect(component.success).toEqual(false);
+    resetLinkService.getResetLink.and.returnValue(throwError(
+      errorResponse
+    ));
+    component.onSubmit();
+    expect(component.success).toEqual(false);
 
-    }));
+  }));
 
 });
