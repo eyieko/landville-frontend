@@ -20,8 +20,10 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     ProfileSidebarComponent,
     ProfileComponent,
     PersonalInformationComponent,
+
     FinancialInformationComponent,
-    RoleTransformPipe
+    RoleTransformPipe,
+    TransactionInformationComponent
   ],
   exports: [ProfileComponent],
   imports: [
