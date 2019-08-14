@@ -1,15 +1,16 @@
-import {TestBed} from '@angular/core/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {ErrorInterceptor} from './error.interceptor';
-import {httpHandlerSpy, httpRequestSpy} from './spies';
-import {HttpHandler, HttpRequest} from '@angular/common/http';
-import {throwError} from 'rxjs';
+import { HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { throwError } from 'rxjs';
+import { ErrorInterceptor } from './error.interceptor';
+import { httpHandlerSpy, httpRequestSpy } from './spies';
 
 
 describe('ErrorInterceptor', () => {
   let errorInterceptor: ErrorInterceptor;
 
   beforeEach(() => {
+    // @ts-ignore
     errorInterceptor = new ErrorInterceptor();
 
     TestBed.configureTestingModule({
