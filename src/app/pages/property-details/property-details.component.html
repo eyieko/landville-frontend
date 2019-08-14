@@ -69,7 +69,9 @@
                 </div>
                 <div class="about">
                     <h6><b>ABOUT PROPERTY</b></h6>
-                    <p><b>Lot size: </b>{{lotSize}}</p>
+                    <p><small>Created at {{createdAt | date: "dd/MM/yyyy"}}</small></p>
+                    
+                    <span><b>Lot size: {{lotSize}} sq. ft</b></span>
                     <p>{{description}}</p>
                     <p *ngIf="ifVideo"><span><a href="{{video}}" class="">Watch a video</a></span></p>
                     <div>
@@ -104,6 +106,9 @@
                         </div>
                     </div>
                 </div>
+                   
+                        <img alt="Card image" class="card-img mt-5" src="assets/img/designs/Design.jpg">
+                    
             </div>
         </div>
         <ngx-spinner></ngx-spinner>

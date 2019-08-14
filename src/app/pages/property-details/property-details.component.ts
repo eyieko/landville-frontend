@@ -67,6 +67,7 @@ export class PropertyDetailsComponent implements OnInit {
         this.checkIfBuilding(response.data.property.property_type, response.data.property);
         this.checkIfVideo(this.video)
         this.clientName = response.data.property.client.client_name;
+        this.createdAt = response.data.property.created_at
         this.phone = response.data.property.client.phone
         this.email = response.data.property.client.email
         this.clientStreet = response.data.property.client.address.Street
