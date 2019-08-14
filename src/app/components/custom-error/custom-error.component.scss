@@ -1,0 +1,75 @@
+.not-found {
+  font-family: 'Montserrat', sans-serif;
+
+  & h1 {
+    font-size: 18rem;
+    margin: 0;
+    font-weight: 900;
+    background: url(https://static1.squarespace.com/static/56e85432b09f95498f330381/t/58fcf0f217bffcd18b17d71e/1492971763817/Why-Do-Stars-All-Look-Almost-the-Same-Size-ftr.jpg)  -10rem -4rem no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    @media(max-width: 992px) {
+      font-size: 14rem;
+    }
+
+    @media(max-width: 768px) {
+      font-size: 11rem;
+    }
+
+    @media(max-width: 543px) {
+      font-size: 9rem;
+    }
+
+    @media(max-width: 438px) {
+      font-size: 7rem;
+    }
+
+    @media(max-width: 350px) {
+      font-size: 5rem;
+    }
+  }
+
+  &-description {
+
+    & h3 {
+      color: #000;
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    & p {
+      font-size: 1.1rem;
+      font-weight: 100;
+      margin-bottom: 2rem;
+    }
+
+    & a {
+      font-size: 1rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      background: linear-gradient(
+                      to right,
+                      var(--color-primary) 25%,
+                      var(--color-primary-dark) 75%
+      );
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 4rem;
+      color: #fff;
+      font-weight: 700;
+      -webkit-box-shadow: 0 .4rem 1.5rem -.5rem #0046d5;
+      box-shadow: 0 .4rem 1.5rem -.5rem #0046d5;
+
+      @media (max-width: 320px) {
+        font-size: 1rem;
+      }
+
+      &:hover {
+        color: var(--color-primary);
+        background: var(--color-grey-dark-1);
+      }
+    }
+  }
+}

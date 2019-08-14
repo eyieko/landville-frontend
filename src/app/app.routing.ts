@@ -1,11 +1,11 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {BrowserModule} from '@angular/platform-browser';
-import {RouterModule, Routes} from '@angular/router';
-import {AuthLayoutComponent} from './layouts/auth-layout/auth-layout.component';
-import {CommonLayoutComponent} from './layouts/common-layout/common-layout.component';
-import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
-import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { EnterResetPasswordComponent } from 'src/app/pages/enter-reset-password/enter-reset-password.component';
+import { PasswordResetComponent } from 'src/app/pages/password-reset/password-reset.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { CommonLayoutComponent } from './layouts/common-layout/common-layout.component';
 
 
 const routes: Routes = [
@@ -46,12 +46,13 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'error404',
   }
 ];
 
 @NgModule({
-  imports: [CommonModule, BrowserModule, RouterModule.forRoot(routes)],
+  imports: [ CommonModule, BrowserModule, RouterModule.forRoot(routes) ],
   exports: []
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
