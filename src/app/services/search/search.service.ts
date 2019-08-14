@@ -7,28 +7,28 @@ import { Search } from 'src/app/models/Search';
 })
 export class SearchService {
 
-  Search({ value }) {
-    value.title
-    value.description
-    value.street
-    value.state
-    value.company
-    value.city
-    value.type
-    value.purchase_plan
-    value.garages
-    value.bathrooms
-    value.bedrooms
-    value.lot_size
-    value.price_min
-    value.price_max
-  }
+  // Search({ value }) {
+  //   value.title
+  //   value.description
+  //   value.street
+  //   value.state
+  //   value.company
+  //   value.city
+  //   value.type
+  //   value.purchase_plan
+  //   value.garages
+  //   value.bathrooms
+  //   value.bedrooms
+  //   value.lot_size
+  //   value.price_min
+  //   value.price_max
+  // }
   apiUrl = "http://localhost:4200/api/v1/properties/?"
 
   constructor(private http: HttpClient) { }
 
   searchProperties() {
-    let URL = this.apiUrl + this.Search;
-    return this.http.get(URL)
+    let searchUrl = this.apiUrl;
+    return this.http.get(searchUrl)
   }
 }
