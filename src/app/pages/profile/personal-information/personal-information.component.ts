@@ -1,20 +1,3 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from "@angular/forms";
-import { Subscription } from "rxjs";
-import { ToastrService } from "ngx-toastr";
-import { NgxSpinnerService } from "ngx-spinner";
-
-import {
-  UserProfileUpdateErrorResponse,
-  UserProfileUpdatedResponse
-} from "src/app/models/Profile";
-import { ProfileService } from "src/app/services/profile/profile.service";
-import { removeSubscription } from "src/app/helpers/unsubscribe";
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -26,9 +9,9 @@ import { UserProfileUpdateErrorResponse } from 'src/app/models/Profile';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
-  selector: "app-personal-information",
-  templateUrl: "./personal-information.component.html",
-  styleUrls: ["./personal-information.component.scss"]
+  selector: 'app-personal-information',
+  templateUrl: './personal-information.component.html',
+  styleUrls: [ './personal-information.component.scss' ]
 })
 export class PersonalInformationComponent implements OnInit, OnDestroy {
   subscribe: Subscription[] = [];
@@ -39,21 +22,21 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
   };
   profileForm: FormGroup;
   firstName = new FormControl(
-    {value: '', disabled: true},
+    { value: '', disabled: true },
     Validators.required
   );
   lastName = new FormControl(
-    {value: '', disabled: true},
+    { value: '', disabled: true },
     Validators.required
   );
-  emailAddress = new FormControl({value: '', disabled: true}, [
+  emailAddress = new FormControl({ value: '', disabled: true }, [
     Validators.required,
     Validators.email
   ]);
   street = new FormControl('', Validators.required);
   city = new FormControl('', Validators.required);
   state = new FormControl('', Validators.required);
-  phone = new FormControl('', [Validators.required, Validators.minLength(14)]);
+  phone = new FormControl('', [ Validators.required, Validators.minLength(14) ]);
   employer = new FormControl('');
   designation = new FormControl('');
   // tslint:disable-next-line: variable-name
@@ -93,7 +76,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
     this.subscribe.push(
       this.profileService.userProfile$.subscribe(
         response => {
-          const {profile} = response.data;
+          const { profile } = response.data;
           // we use `patchValue` because the response from the server might not have prefilled address information
           this.profileForm.patchValue({
             firstName: profile.user.first_name,
@@ -136,7 +119,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
     };
     // the backend expects to pick address from an `address` dictionary that
     // does not exist on the form yet. Add the dictionary and pass it with input values
-    this.profileForm.addControl("address", new FormControl({}));
+    this.profileForm.addControl('address', new FormControl({}));
     this.profileForm.patchValue({
       address: addressData
     });
@@ -166,10 +149,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
         error => {
           this.spinner.hide();
           this.formErrors = error.error;
-          for (const [key, value] of Object.entries(this.formErrors.errors)) {
+          for (const [ key, value ] of Object.entries(this.formErrors.errors)) {
             this.toasterService.error(
               `Could not update your profile.
-              ${key}: ${value}`
+              ${ key }: ${ value }`
             );
           }
         }
