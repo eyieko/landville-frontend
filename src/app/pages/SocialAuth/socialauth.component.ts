@@ -28,7 +28,7 @@ export class SocialLoginComponentt {
     private router: Router,
     private toastr: ToastrService,
     private spinner: NgxSpinnerService
-  ) {}
+  ) { }
   signInWithGoogle() {
     this.spinner.show();
     this.socialAuthService

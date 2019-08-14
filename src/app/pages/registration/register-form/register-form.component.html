@@ -4,14 +4,14 @@
       <div class="card">
         <div class="card-body">
           <div class="right-details">
-            <img src="../../../../assets/images/ICON/AuthenticProperty.png" />
+            <img src="assets/img/ICON/AuthenticProperty.png" />
             <div class="more-info">
               <h4>Authentic Properties</h4>
               <p>Only verified properties are available on Landville</p>
             </div>
           </div>
           <div class="right-details">
-            <img src="../../../../assets/images/ICON/FinancialPlans.png" />
+            <img src="assets/img/ICON/FinancialPlans.png" />
             <div class="more-info">
               <h4>Great financial plan</h4>
               <p>
@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="right-details">
-            <img src="../../../../assets/images/ICON/CustomerRelations.png" />
+            <img src="assets/img/ICON/CustomerRelations.png" />
             <div class="more-info">
               <h4>Excellent Customer Relation</h4>
               <p>
@@ -156,24 +156,24 @@
             </div>
 
             <div class="form-group">
-  <div class="form-check">
-    <input class="form-check-input" [ngClass]="{
+              <div class="form-check">
+                <input class="form-check-input" [ngClass]="{
       'is-invalid':
         (registerForm.get('userAccepts').touched ||
           registerForm.get('userAccepts').dirty) &&
         !registerForm.get('userAccepts').valid
-    }"  type="checkbox" formControlName="userAccepts"/>
-    <label class="form-check-label">
-      I Accept <a class="form-check-label"
-          routerLink="/terms-and-conditions" target="_blank"><strong><u>terms and
-          conditions of
-          LandVille</u></strong></a></label>
+    }" type="checkbox" formControlName="userAccepts" />
+                <label class="form-check-label">
+                  I Accept <a class="form-check-label" routerLink="/terms-and-conditions"
+                    target="_blank"><strong><u>terms and
+                        conditions of
+                        LandVille</u></strong></a></label>
 
-    <div class="invalid-feedback">
-      You must accept terms and conditions of use.
-    </div>
-  </div>
-</div>
+                <div class="invalid-feedback">
+                  You must accept terms and conditions of use.
+                </div>
+              </div>
+            </div>
 
             <button type="submit" [disabled]="!registerForm.valid" class="btn btn-block" [ngStyle]="
               registerForm.valid && {
@@ -185,60 +185,17 @@
             </button>
           </form>
           <app-social-login></app-social-login>
-<<<<<<< HEAD
-        </p>
-        <!-- <app-social-login></app-social-login> -->
+        </div>
 
-        <p class="login-para">
-          Already have your account?
-          <a class="sign-link" href="/login">Sign in here</a>
-        </p>
       </div>
-      <div class="right-section">
-        <div class="right-details">
-          <img src="../../../../assets/img/ICON/AuthenticProperty.png" />
-          <div class="more-info">
-            <h4>Authentic Properties</h4>
-            <p>Only verified properties are available on Landville</p>
-          </div>
-=======
->>>>>>> ft(terms): Enable users to activate terms of use on registration
-        </div>
-      </div>
-
-<<<<<<< HEAD
-        <div class="right-details">
-          <img src="../../../../assets/img/ICON/FinancialPlans.png" />
-          <div class="more-info">
-            <h4>Great financial plan</h4>
-            <p>
-              Landville offers a flexible payment plan to help you acquire your
-              desired property.
-            </p>
-          </div>
-        </div>
-
-        <div class="right-details">
-          <img src="../../../../assets/img/ICON/CustomerRelations.png" />
-          <div class="more-info">
-            <h4>Excellent Customer Relation</h4>
-            <p>
-              Landville ensures you get the best by providing personnel that
-              would meaningfully engage you till you acquire your dream
-              property.
-            </p>
-          </div>
-        </div>
-=======
-
->>>>>>> ft(terms): Enable users to activate terms of use on registration
 
       <!-- <app-social-login></app-social-login> -->
 
       <p class="login-para">
-        Already have an account?
-        <a class="sign-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Sign in here</a>
-      </p>
+        <p class="login-para text-center">
+          Already have an account?
+          <a class="sign-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Sign in here</a>
+        </p>
     </div>
   </div>
 </div>
