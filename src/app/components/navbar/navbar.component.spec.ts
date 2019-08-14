@@ -1,7 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
-import { APPCONFIG } from 'src/app/config';
 import { localStorageSpy, profileServiceSpy } from 'src/app/helpers/spies';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
@@ -57,16 +55,6 @@ describe('NavbarComponent', () => {
   it('should handle Dropdown Display', () => {
     component.handleDropdownDisplay();
     expect(component.dropDownActive).toBeTruthy();
-  });
-  it('should get company details', () => {
-    profileServiceSpy.pushProfile();
-    const req = httpMock.expectOne(
-      `${ APPCONFIG.base_url }/auth/profile/`
-    );
-    profileServiceSpy.userProfile$.and.returnValue(of(response));
-    component.profileDetails();
-
-    expect(profileServiceSpy.userProfile$).toBeTruthy();
   });
   // it('should assign firstName when route is resolved', () => {
   //   profileServiceSpy.userProfile$.and.returnValue(of(response));
