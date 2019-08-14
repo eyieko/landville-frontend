@@ -1,31 +1,17 @@
-import { Injectable } from "@angular/core";
-import { HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { HttpService } from "../http.service";
-import { LocalStorageService } from '../local-storage.service'
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpService } from 'src/app/services/http.service';
 
 @Injectable({
-    providedIn: "root"
+    providedIn: 'root'
 })
 export class PropertyDetailService {
-    userToken = this.localStorageService.get('token', '');
-
     constructor(
-        private http: HttpService,
-        private localStorageService: LocalStorageService) { 
-        
-        };
-
+        private http: HttpService) {
+        }
     getProperty(slug): Observable<any> {
 
-        const httpOptions = {
-            headers: new HttpHeaders({
-            Authorization: `Bearer ${this.userToken}`
-
-            }),
-        };
-        const endpoint = `/properties/${slug}`
-    
-        return this.http.getRequestWithParams(endpoint, httpOptions);
+        const endpoint = `/properties/${slug}`;   
+        return this.http.getRequestWithParams(endpoint);
     }
 }

@@ -1,3 +1,7 @@
+import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -18,8 +22,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 
-
-import { PropertyDetailsComponent } from '../../pages/property-details/property-details.component'
+import { PropertyDetailsComponent } from 'src/app/pages/property-details/property-details.component'
 
 @NgModule({
   imports: [
@@ -43,7 +46,7 @@ import { PropertyDetailsComponent } from '../../pages/property-details/property-
     CardComponent,
     PropertyDetailsComponent
   ],
-  providers: [ProfileService, LocalStorageService],
+  providers: [ProfileService, LocalStorageService, Title],
 })
 export class CommonLayoutModule {
 }

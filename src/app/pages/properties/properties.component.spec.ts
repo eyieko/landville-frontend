@@ -10,6 +10,7 @@ import { PropertiesComponent } from '../properties/properties.component';
 import { HttpClientModule } from '@angular/common/http';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 describe('PropertiesComponent', () => {
   let component: PropertiesComponent;
@@ -39,7 +40,8 @@ describe('PropertiesComponent', () => {
         AppModule,
         HttpClientModule,
         NgxSpinnerModule,
-        AuthLayoutModule
+        AuthLayoutModule,
+        RouterModule
       ],
       providers: [
         {

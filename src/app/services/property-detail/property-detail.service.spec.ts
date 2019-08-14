@@ -1,10 +1,10 @@
-import { TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { PropertyDetailService } from './property-detail.service';
+import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
 import { HttpClient } from '@angular/common/http';
-import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
-import { LocalStorageService } from '../local-storage.service';
-import { httpClientSpy, resetSpies } from '../../helpers/spies';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { httpClientSpy, resetSpies } from 'src/app/helpers/spies';
 
 describe('PropertyDetailService', () => {
     let propertyDetailService: PropertyDetailService;
@@ -20,8 +20,7 @@ describe('PropertyDetailService', () => {
                     provide: HttpClient, useValue: httpClientSpy
                 }
             ]
-        });
-       
+        });       
         propertyDetailService = TestBed.get(PropertyDetailService);
     }
     );
@@ -32,8 +31,7 @@ describe('PropertyDetailService', () => {
     });
 
     it('should test getting property', () => {
-        const slug = 'hello';
-  
+        const slug = 'hello';  
         const responseObject = {
             success: true,
             message: 'successful'
@@ -41,7 +39,6 @@ describe('PropertyDetailService', () => {
         httpClientSpy.get.and.returnValue(of(responseObject));
         propertyDetailService.getProperty(slug).subscribe(res => {
             expect(res).toBe(responseObject);
-        })
+        });
     });
-    
-})
+});

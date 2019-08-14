@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PropertyDetailService } from '../../services/property-detail/property-detail.service';
+import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { PropertyDetail } from 'src/app/models/property-detail/Property-detail';
 
 @Component({
   selector: 'app-property-details',
@@ -10,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 
 export class PropertyDetailsComponent implements OnInit {
-  property: Array<any> = [];
+  property: PropertyDetail;
   slug: string;
   rooms: number;
   bathrooms: number;
@@ -43,10 +44,11 @@ export class PropertyDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(result => {
-      let slug = result.get('slug');
+      const slug = result.get('slug');
       this.viewProperty(slug);
-    })
+    });
   }
+
 
   viewProperty(slug) {
     this.spinner.show();
@@ -62,25 +64,25 @@ export class PropertyDetailsComponent implements OnInit {
         this.imageMain = response.data.property.image_main;
         this.imageOthers = response.data.property.image_others;
         this.lotSize = response.data.property.lot_size;
-        this.video = response.data.property.video
+        this.video = response.data.property.video;
         this.property = response.data.property;
         this.checkIfBuilding(response.data.property.property_type, response.data.property);
-        this.checkIfVideo(this.video)
+        this.checkIfVideo(this.video);
         this.clientName = response.data.property.client.client_name;
-        this.createdAt = response.data.property.created_at
-        this.phone = response.data.property.client.phone
-        this.email = response.data.property.client.email
-        this.clientStreet = response.data.property.client.address.Street
-        this.clientCity = response.data.property.client.address.City
-        this.clientState = response.data.property.client.address.State
+        this.createdAt = response.data.property.created_at;
+        this.phone = response.data.property.client.phone;
+        this.email = response.data.property.client.email;
+        this.clientStreet = response.data.property.client.address.Street;
+        this.clientCity = response.data.property.client.address.City;
+        this.clientState = response.data.property.client.address.State;
         this.spinner.hide();
       }
-
-    )
+       
+    );
 
   }
   checkIfBuilding(property, data) {
-    if (property === "Building") {
+    if (property === 'Building') {
       this.ifBuilding = true;
       this.rooms = data.bedrooms;
       this.bathrooms = data.bathrooms;

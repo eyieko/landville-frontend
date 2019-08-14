@@ -70,12 +70,11 @@ video{
     span{
         flex-basis: unset;
     }
-    .img-fluid{
-        height: 382px;
-        width: 350px;
+    img.img-fluid{
+        height: 300px;
     }
 }
-@media (max-width: 375px){
+@media (max-width: 450px){
 
     .img-fluid{
         height: 350px;

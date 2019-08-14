@@ -1,15 +1,14 @@
-
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PropertyDetailsComponent } from './property-details.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
 import {
-    resetSpies, propertyDetailSpy, activatedRoutespy
-} from '../../helpers/spies';
+    resetSpies, propertyDetailSpy,
+} from 'src/app/helpers/spies';
 import { of } from 'rxjs';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('Property detail', () => {
     let component: PropertyDetailsComponent;
@@ -65,10 +64,10 @@ describe('Property detail', () => {
                 }
             }
         }
-      }
-      
+    }
+
     let mockActivateRouteParam = {
-      paramMap: of({ get: () => 'hello'})
+        paramMap: of({ get: () => 'hello'})
     }
 
     beforeAll(() => resetSpies([propertyDetailSpy]));
@@ -79,10 +78,10 @@ describe('Property detail', () => {
             declarations: [
                 PropertyDetailsComponent
             ],
-            schemas: [NO_ERRORS_SCHEMA],
             imports: [
                 HttpClientTestingModule,
-                RouterTestingModule.withRoutes([{ path: '**', component: PropertyDetailsComponent },]), 
+                RouterTestingModule.withRoutes([{ path: '**', component: PropertyDetailsComponent },]),
+                NgxSpinnerModule
             ],
             providers: [
 
@@ -105,12 +104,12 @@ describe('Property detail', () => {
     });
        
     it ('should create' ,() =>{
-       expect(component).toBeTruthy();
-    }); 
-
+      expect(component).toBeTruthy();
+    });
+         
     it('should call getProperties', () => {
       propertyDetailSpy.getProperty.and.returnValue(of(responseObject));
-      spyOn(component, 'viewProperty');
-      expect(propertyDetailSpy.getProperty).toHaveBeenCalled();
+        spyOn(component, 'viewProperty');
+        expect(propertyDetailSpy.getProperty).toHaveBeenCalled();
     });
 });
