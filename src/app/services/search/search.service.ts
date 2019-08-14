@@ -6,11 +6,29 @@ import { Search } from 'src/app/models/Search';
   providedIn: 'root'
 })
 export class SearchService {
-  apiUrl = "https://landville-backend-web-api.herokuapp.com/api/v1/properties/?" + ""
 
-  constructor(private _http: HttpClient) { }
+  Search({ value }) {
+    value.title
+    value.description
+    value.street
+    value.state
+    value.company
+    value.city
+    value.type
+    value.purchase_plan
+    value.garages
+    value.bathrooms
+    value.bedrooms
+    value.lot_size
+    value.price_min
+    value.price_max
+  }
+  apiUrl = "http://localhost:4200/api/v1/properties/?"
+
+  constructor(private http: HttpClient) { }
 
   searchProperties() {
-    return this._http.get<Search[]>(this.apiUrl)
+    let URL = this.apiUrl + this.Search;
+    return this.http.get(URL)
   }
 }

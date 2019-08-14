@@ -9,23 +9,30 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  search$: Search[];
+
+  results: any[] = [];
   searchForm = new FormGroup({
-    Keyword: new FormControl(),
-    City: new FormControl(),
-    State: new FormControl(),
-    minimumPrice: new FormControl(),
-    maximumPrice: new FormControl(),
-    Bedrooms: new FormControl(),
+    title: new FormControl(),
+    description: new FormControl(),
+    street: new FormControl(),
+    state: new FormControl(),
+    company: new FormControl(),
+    city: new FormControl(),
+    type: new FormControl(),
+    purchase_plan: new FormControl(),
+    garages: new FormControl(),
+    bathrooms: new FormControl(),
+    bedrooms: new FormControl(),
+    lot_size: new FormControl(),
+    price_min: new FormControl(),
+    price_max: new FormControl(),
   })
   constructor(private searchService: SearchService) { }
 
-  Search({value}) {
-  }
-
   ngOnInit() {
-    this.searchService.searchProperties()
-      .subscribe(search => this.search$ = search);
+    this.searchForm.valueChanges
+      .subscribe(searchForm => this.searchService.searchProperties()
+        .subscribe(result => console.log(result)));
   }
 
 }
