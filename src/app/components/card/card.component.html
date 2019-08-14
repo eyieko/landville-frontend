@@ -1,0 +1,19 @@
+<div class="card bg-light">
+  <img class="card-img-top img-fluid" [src]="imageMain" alt="Card image cap" />
+  <div class="card-body">
+    <h4>
+      <b
+        ><a class="card-title" routerLink="/#" routerLinkActive="active">{{
+          title
+        }}</a></b
+      >
+    </h4>
+    <p class="card-text grid-card">
+      <img alt="" src="assets/img/marker.svg" [style.width.px]="10" />
+      {{ street }}, {{ city }}
+    </p>
+    <div class="price">
+      <b>&#8358; {{ price }}</b>
+    </div>
+  </div>
+</div>
