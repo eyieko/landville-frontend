@@ -2,14 +2,6 @@
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 @import '~ngx-toastr/toastr-bs4-alert';
-// abstracts
-@import 'assets/scss/abstracts/variables';
-// base
-@import 'assets/scss/base/base';
-// layouts
-@import 'assets/scss/layout/footer';
-@import 'assets/scss/layout/forms';
-@import 'assets/scss/layout/headers';
 @import '~ngx-toastr/toastr';
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/ngx-toastr/toastr.css';

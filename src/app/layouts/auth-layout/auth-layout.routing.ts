@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from '../../pages/home/home.component';
 
 import { LoginComponent } from '../../pages/login/login.component';
 import { RegistrationComponent } from '../../pages/registration/registration.component';
@@ -7,5 +6,4 @@ import { RegistrationComponent } from '../../pages/registration/registration.com
 export const AuthLayoutRoutes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'login' } },
   { path: 'register', component: RegistrationComponent },
-  { path: 'home', component: HomeComponent }
 ];

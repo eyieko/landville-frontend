@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LoginService} from '../../../services/login/login.service';
-import {LoginData} from '../../../models/login/loginData';
-import {ToastrService} from 'ngx-toastr';
-import {NgxSpinnerService} from 'ngx-spinner';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { LoginData } from 'src/app/models';
+import { LoginService } from 'src/app/services/login/login.service';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'app-login-form',
@@ -28,6 +29,7 @@ export class LoginFormComponent implements OnInit {
     private route: ActivatedRoute,
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
+    private profileService: ProfileService,
   ) {
     // redirect to home if already logged in
     const currentUser = localStorage.getItem('token');
@@ -56,8 +58,11 @@ export class LoginFormComponent implements OnInit {
       this.notification = 'Login was succesful';
       localStorage.setItem('token', response.data.user.token);
 
+      // Get User profile.
+      this.profileService.pushProfile();
+
       this.router.navigate([this.returnUrl]);
-    }, error => {
+    }, () => {
       this.spinner.hide();
       this.toastrService.error('Invalid email and password combination');
       this.setErrorTimeout();

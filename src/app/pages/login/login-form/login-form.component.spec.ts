@@ -1,20 +1,17 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
-import { of, throwError } from 'rxjs';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
-import { LoginFormComponent } from './login-form.component';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { of, throwError } from 'rxjs';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { LoginService } from 'src/app/services/login/login.service';
+import { localStorageSpy, loginServiceSpy, resetSpies, toastServiceSpy } from '../../../helpers/spies';
 import { LoginHeaderComponent } from '../login-header/login-header.component';
 import { LoginSliderComponent } from '../login-slider/login-slider.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { LoginService } from 'src/app/services/login/login.service';
-import {
-  loginServiceSpy,
-  resetSpies,
-  toastServiceSpy
-} from '../../../helpers/spies';
+
+import { LoginFormComponent } from './login-form.component';
 
 const loginError = {
   errors: {
@@ -59,8 +56,9 @@ describe('LoginFormComponent', () => {
         LoginSliderComponent
       ],
       providers: [
-        { provide: LoginService, useValue: loginServiceSpy },
-        { provide: ToastrService, useValue: toastServiceSpy }
+        {provide: LoginService, useValue: loginServiceSpy},
+        {provide: ToastrService, useValue: toastServiceSpy},
+        {provide: LocalStorageService, useValue: localStorageSpy},
       ]
     }).compileComponents();
   }));
@@ -72,7 +70,7 @@ describe('LoginFormComponent', () => {
   });
 
   it('should login a user successfully', () => {
-    const { email, password } = component.loginForm.controls;
+    const {email, password} = component.loginForm.controls;
     email.setValue('testemail@email.com');
     password.setValue('password');
     loginServiceSpy.login.and.returnValue(of(loginResponse));
@@ -83,7 +81,7 @@ describe('LoginFormComponent', () => {
   });
 
   it('should throw an error in case of wrong details', () => {
-    const { email, password } = component.loginForm.controls;
+    const {email, password} = component.loginForm.controls;
     email.setValue('testemail@email.com');
     password.setValue('password');
     loginServiceSpy.login.and.returnValue(throwError(loginError));
@@ -115,11 +113,11 @@ describe('LoginFormComponent', () => {
     email.setValue('someemail@email.com');
     expect(email.valid).toBeTruthy();
   });
-  it('should tests error timeout', function(done) {
-    const { email, password } = component.loginForm.controls;
+  it('should tests error timeout', function (done) {
+    const {email, password} = component.loginForm.controls;
     email.setValue('testemail@email.com');
     password.setValue('password');
-    setTimeout(function() {
+    setTimeout(function () {
       expect(component.inputError).toBeFalsy();
       done();
     }, 3000);

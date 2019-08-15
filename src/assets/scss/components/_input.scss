@@ -1,8 +1,9 @@
-input {
+select, input {
   height: 3rem !important;
 }
 
 .form-control {
+
 
   &:focus {
     box-shadow: 0 0 0 0.2rem var(--color-primary);
