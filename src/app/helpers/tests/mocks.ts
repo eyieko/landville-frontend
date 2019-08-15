@@ -288,3 +288,17 @@ export const clientsMockresponse = {
     message: 'You have retrieved all clients'
   }
 };
+
+export const mockSearchResponse = {
+  data: {
+    data: {
+      search: 'SearchKeyword',
+      state: 'TestState',
+      city: 'TestCity',
+      property_type: 'B',
+      bedrooms: 1,
+      priceMin: 1000,
+      priceMax: 2000,
+    }
+  }
+}

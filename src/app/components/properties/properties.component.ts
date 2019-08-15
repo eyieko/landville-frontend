@@ -3,9 +3,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { PropertiesService } from 'src/app/services/properties/properties.service';
 import { Component, OnInit } from '@angular/core';
 import { Property } from 'src/app/models/Property';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment.prod';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-properties',
@@ -24,6 +25,7 @@ export class PropertiesComponent implements OnInit {
   listToggle = false;
   gridToggle = true;
   count = 0;
+  searchParams: string;
 
   constructor(
     private propertiesServices: PropertiesService,
@@ -32,15 +34,23 @@ export class PropertiesComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private metaService: Meta,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private route: ActivatedRoute,
+  ) {
+    this.searchParams = this.route.snapshot.queryParams.q || `/`;
+  }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(data => {
       this.titleService.setTitle(data.title);
       this.metaService.addTags(data.tags, true);
     });
-    this.setProperties(this.propertiesUrl);
+    this.activatedRoute.queryParamMap.subscribe((searchMap: ParamMap) => {
+      const refresh = searchMap.get(`refresh`);
+      if (refresh) {
+        this.setProperties(`${this.propertiesUrl}?${this.searchParams}`);
+      }
+    });
   }
 
   setDocTitle(title: string) {

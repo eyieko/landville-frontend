@@ -6,7 +6,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from 'src/app/app.component';
 import { AppRoutingModule } from 'src/app/app.routing';
-
 import { RouterModule } from '@angular/router';
 import { FeaturesComponent } from 'src/app/modules/features/features.component';
 import { SharedModule } from 'src/app/modules/shared/shared.module';

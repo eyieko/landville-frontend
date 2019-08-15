@@ -1,3 +1,4 @@
+import { ButtonComponent } from './components/button/button.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -28,7 +29,8 @@ import { SearchComponent } from './components/search/search.component';
     TopbarComponent,
     CardComponent,
     InputErrorsComponent,
-    SearchComponent
+    SearchComponent,
+    ButtonComponent
   ],
   exports: [
     FooterComponent,
@@ -36,7 +38,8 @@ import { SearchComponent } from './components/search/search.component';
     TopbarComponent,
     CardComponent,
     InputErrorsComponent,
-    SearchComponent
+    SearchComponent,
+    ButtonComponent
   ],
 })
 export class SharedModule {
