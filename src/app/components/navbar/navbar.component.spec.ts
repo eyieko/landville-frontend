@@ -56,18 +56,4 @@ describe('NavbarComponent', () => {
     component.handleDropdownDisplay();
     expect(component.dropDownActive).toBeTruthy();
   });
-  // it('should assign firstName when route is resolved', () => {
-  //   profileServiceSpy.userProfile$.and.returnValue(of(response));
-  //   fixture.detectChanges();
-  //   fixture.whenStable().then(() => {
-  //     expect(component.profileImage).toEqual('image');
-  //   });
-  // });
-  // it('should assign firstName when route is resolved', () => {
-  //   profileServiceSpy.userProfile$.and.returnValue(of(response));
-  //   fixture.detectChanges();
-  //   fixture.whenStable().then(() => {
-  //     expect(component.profileImage).toEqual('image');
-  //   });
-  // });
 });
