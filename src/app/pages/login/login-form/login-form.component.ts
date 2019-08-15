@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { LoginData } from 'src/app/models';
 import { LoginService } from 'src/app/services/login/login.service';
-import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'app-login-form',
@@ -27,10 +26,8 @@ export class LoginFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private route: ActivatedRoute,
     private toastrService: ToastrService,
-    private spinner: NgxSpinnerService,
-    private profileService: ProfileService,
+    private spinner: NgxSpinnerService
   ) {
   }
 

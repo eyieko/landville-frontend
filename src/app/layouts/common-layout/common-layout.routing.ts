@@ -5,6 +5,7 @@ import { ProfileComponent } from 'src/app/pages/profile/profile.component';
 import { NoPropertiesComponent } from 'src/app/pages/properties/no-properties/no-properties.component';
 import { RegistersuccessComponent } from 'src/app/pages/registration/registersuccess/registersuccess.component';
 import { PropertiesComponent } from '../../pages/properties/properties.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 export const CommonLayoutRoutes: Routes = [
   { path: 'home', component: HomeComponent },

@@ -3,11 +3,12 @@ import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { LoginService } from 'src/app/services/login/login.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: [ './navbar.component.scss' ]
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   // Properties
@@ -25,6 +26,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private profileService: ProfileService,
     private localStorageService: LocalStorageService,
     private eRef: ElementRef,
+    private authService: AuthService
   ) {
     this.authenticated = false;
     this.dropDownActive = false;
@@ -33,8 +35,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.profileImage = 'assets/img/people.png';
 
     // Check if user is authenticated
-    const token = this.localStorageService.get('token', false);
-    if (token) {
+    if (authService.isLoggedIn()) {
       this.authenticated = true;
     }
   }
@@ -43,7 +44,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.profileDetails();
   }
 
-  @HostListener('document:click', [ '$event' ])
+  @HostListener('document:click', ['$event'])
   clickout(event) {
     this.dropDownActive = false;
   }
