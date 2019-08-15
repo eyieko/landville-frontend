@@ -33,7 +33,7 @@ export class PropertiesComponent implements OnInit {
     private titleService: Title,
     private metaService: Meta,
     private activatedRoute: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(data => {
