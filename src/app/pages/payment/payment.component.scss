@@ -1,0 +1,54 @@
+span.error {
+	width: 100%;
+margin-top: 0.25rem;
+font-size: 80%;
+color: #dc3545;
+}
+label, .form-control {
+	font-size: 13px;
+	height: 35px !important;
+}
+label {
+	margin-bottom: 0 !important;
+}
+.card {
+	width: 400px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding-bottom: 20px;
+}
+.card-header {
+	background-color: #f8c302;
+	margin-bottom: 20px;
+}
+input[type="checkbox"] {
+	margin-left: 2px;
+}
+input[type="radio"] {
+margin: 10px;
+}
+button {
+	background-color: #171039;
+	color: white;
+	border-radius: 40rem;
+	&:hover{
+		color: white;
+		transform: scale(1.05);
+	}
+}
+
+@media screen and (max-width: 600px) {
+  .col-md-6, button, .card {
+		width: 100%;
+		margin-top: 10px;
+		margin-left: auto;
+	}
+	.card {
+		margin: 10px;
+	}
+}
+@media screen and (max-width: 900px) {
+  .card {
+		width: 70%;
+	}
+}

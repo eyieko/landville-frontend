@@ -31,6 +31,20 @@
       <li *ngIf="!authenticated" class="nav-item"><a class="btn-auth" routerLink="/login" routerLinkActive="active">Log
           in </a>
       </li>
+			<li *ngIf="authenticated" class="nav-item avatar dropdown">
+				<a aria-expanded="false" aria-haspopup="true"
+					class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown"
+					id="navbarDropdownMenuLink-6">
+						<span class="username">Make Payment</span>
+						<b class="caret"></b>
+				</a>
+				<div aria-labelledby="navbarDropdownMenuLink-6"
+						class="dropdown-menu dropdown-menu-lg-right dropdown-secondary">
+						<a class="dropdown-item waves-effect waves-light eborder-top" routerLink="/payment/pin" routerLinkActive="active"> Card & PIN</a>
+						<a class="dropdown-item waves-effect waves-light" routerLink="">International Card</a>
+						<a class="dropdown-item waves-effect waves-light" routerLink="/payment/saved-card">Saved Card</a>
+				</div>
+			</li>
 
       <li *ngIf="authenticated" class="nav-item avatar dropdown">
         <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle waves-effect waves-light"

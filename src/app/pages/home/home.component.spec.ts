@@ -1,3 +1,4 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { ComponentsModule } from '../../components/components.module';
@@ -9,8 +10,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ComponentsModule],
-      declarations: [HomeComponent]
+      imports: [FormsModule, ComponentsModule, RouterTestingModule],
+			declarations: [HomeComponent]
     })
       .compileComponents();
   }));
@@ -24,5 +25,4 @@ describe('HomeComponent', () => {
   it('should create the component successfully', () => {
     expect(component).toBeTruthy();
   });
-
 });
