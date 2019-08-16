@@ -109,11 +109,11 @@ describe('LoginFormComponent', () => {
     email.setValue('someemail@email.com');
     expect(email.valid).toBeTruthy();
   });
-  it('should tests error timeout', function (done) {
+  it('should tests error timeout',  (done)=> {
     const { email, password } = component.loginForm.controls;
     email.setValue('testemail@email.com');
     password.setValue('password');
-    setTimeout(function () {
+    setTimeout(function() {
       expect(component.inputError).toBeFalsy();
       done();
     }, 3000);

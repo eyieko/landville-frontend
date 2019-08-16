@@ -18,7 +18,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class SocialLoginComponentt {
   user: SocialUser = null;
   loggedIn: boolean;
-  loading: boolean = true;
+  loading = true;
 
 
   // inject services and depe

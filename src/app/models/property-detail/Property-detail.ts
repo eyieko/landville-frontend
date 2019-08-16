@@ -1,6 +1,6 @@
 import { Address } from './Address';
-import { Coordinates } from './Coordinates'
-import { Client } from './Client'
+import { Coordinates } from './Coordinates';
+import { Client } from './Client';
 
 export interface PropertyDetail {
     data: {
@@ -31,5 +31,5 @@ export interface PropertyDetail {
             slug: string,
             client: Client
         }
-    }
+    };
 }

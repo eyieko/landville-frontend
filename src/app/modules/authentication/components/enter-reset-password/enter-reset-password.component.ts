@@ -70,9 +70,9 @@ export class EnterResetPasswordComponent implements OnInit {
       this.loading = false;
       this.success = false;
       if (err.errors.password) {
-        this.message = err.errors.password
+        this.message = err.errors.password;
       } else {
-        this.message = err.errors.token
+        this.message = err.errors.token;
       }
       this.toastrService.error(this.message, '');
     });

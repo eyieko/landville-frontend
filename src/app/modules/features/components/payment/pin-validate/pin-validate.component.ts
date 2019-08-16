@@ -52,11 +52,11 @@ export class PinValidateComponent implements OnInit {
       resp => {
         this.spinner.hide();
         this.router.navigate(['/home']);
-        this.toastr.success(resp['message']);
+        this.toastr.success();
       },
       error => {
         this.spinner.hide();
-        this.toastr.error(error['error']['message']);
+        this.toastr.error(error.error.message);
       }
     );
   }

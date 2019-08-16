@@ -8,7 +8,7 @@ import { of, throwError } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { routerSpy } from 'src/app/helpers/tests/spies';
+import { routerSpy, buyPropertyServiceSpy} from 'src/app/helpers/tests/spies';
 
 
 describe('PinPaymentComponent', () => {
@@ -37,7 +37,7 @@ describe('PinPaymentComponent', () => {
     fixture.detectChanges();
 
     component = new PinPaymentComponent(mockPaymentService, routerSpy,
-      mockSpinner, mockToastr, mockLocation, mockTitleSvc, mockActivatedRoute);
+      mockSpinner, mockToastr, mockLocation, mockTitleSvc, mockActivatedRoute, buyPropertyServiceSpy);
   });
 
   it('should create', () => {

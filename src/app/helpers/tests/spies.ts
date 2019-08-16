@@ -95,3 +95,11 @@ export const httpServiceSpy = jasmine.createSpyObj('HttpService', [
   'makeRequestWithData',
   'getRequestWithParams'
 ]);
+
+export const propertiesWishlistSpy = createSpyObj('PropertiesWishlistService', [
+  'getMyWishlist',
+  'addToWishlist',
+  'removeFromWishList'
+]);
+
+export const buyPropertyServiceSpy = createSpyObj('BuyPropertyService', ['changeProperty']);

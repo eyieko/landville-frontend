@@ -1,6 +1,6 @@
-import { Client } from "./Client";
-import { Coordinates } from "./Coordinates";
-import { Address } from "./Address";
+import { Client } from './Client';
+import { Coordinates } from './Coordinates';
+import { Address } from './Address';
 
 export interface Property {
   id?: number;
@@ -38,5 +38,12 @@ export interface PropertiesResponse extends Property {
       previous: string;
       results: Property[];
     };
+  };
+}
+
+
+export interface PropertiesWishlistResponse extends Property {
+  data: {
+    property: Property[];
   };
 }

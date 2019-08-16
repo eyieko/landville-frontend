@@ -1,0 +1,39 @@
+<div class="col-empty" *ngIf="!properties.length; else noWishlistedPropeperties">
+    <div class="col-empty-transaction">
+  <i class="fas fa-frown"></i>
+  <h5 class="col-empty-transaction__text">
+    you don't have any wished property
+  </h5>
+</div>
+</div>
+  <ng-template #noWishlistedPropeperties>
+<div class="col-progress-transaction">
+      <div
+        class="col-progress-transaction"
+        *ngFor="let property of properties"
+      >
+        <div class="cardinp">
+          <app-card
+            class="cardinp__front cardinp__side"
+            [imageMain]="property.image_main"
+            [title]="property.title.slice(0, 26)"
+            [street]="property.address.Street"
+            [city]="property.address.City"
+            [price]="property.price"
+          ></app-card>
+          <div class="cardinp__back cardinp__side cardinp__back-1">
+            <div class="cardinp__back--rest">
+              <div class="cardinp__back--rest__amount">
+                <p class="cardinp__back--rest__naira">Amount</p>
+                <p class="cardinp__back--rest__value">
+                  &#8358;{{ property.price }}
+                </p>
+              </div>
+              <button type='submit' (click)="removeFromWishlist(property.slug)">remove</button>
+              <button type='submit' (click)="payProperty(property, 'Buying')" class="btn btn--white">Buy</button> 
+              <button type='submit' (click)="payProperty(property, 'Saving')">Save Toward Buying</button>
+            </div>
+          </div>
+        </div>
+      </div>
+

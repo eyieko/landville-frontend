@@ -286,5 +286,35 @@ export const clientsMockresponse = {
       }
     ],
     message: 'You have retrieved all clients'
+export const mockWishlistProperties = {
+  data: {
+    property: [
+      {
+        id: 7,
+        price: 20000000.0,
+        title: 'Gemini Court',
+        property_type: 'B',
+        description: 'Awesome property',
+        slug: 'g-c',
+        address: {
+          City: 'Kigali',
+          State: 'Rwanda',
+          Street: 'Burn'
+        },
+      },
+      {
+        id: 8,
+        price: 1000000.0,
+        title: 'A test property',
+        property_type: 'B',
+        description: 'This is a house I will buy once in bukavu',
+        slug: 'test-test',
+        address: {
+          Street: 'A test street',
+          City: ' A test city',
+          State: 'Nord Kivu'
+        }
+      }
+    ]
   }
 };
