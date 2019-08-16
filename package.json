@@ -32,6 +32,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "angularx-social-login": "^1.2.7",
+    "@auth0/angular-jwt": "^3.0.0",
     "bootstrap": "^4.3.1",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",

@@ -1,6 +1,6 @@
 export const resetSpies = (spies: any[]) => {
-  spies.forEach(spyObj => {
-    Object.keys(spyObj).forEach(prop => {
+  spies.forEach((spyObj) => {
+    Object.keys(spyObj).forEach((prop) => {
       if (typeof spyObj[prop] === 'function') {
         spyObj[prop].calls.reset();
       }

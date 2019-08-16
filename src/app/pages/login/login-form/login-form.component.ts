@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { LoginData } from 'src/app/models';
 import { LoginService } from 'src/app/services/login/login.service';
-import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,6 +12,7 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
+
   loginForm: FormGroup;
   submitted: boolean = false;
   success: boolean = false;
@@ -26,16 +26,9 @@ export class LoginFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private route: ActivatedRoute,
     private toastrService: ToastrService,
-    private spinner: NgxSpinnerService,
-    private profileService: ProfileService,
+    private spinner: NgxSpinnerService
   ) {
-    // redirect to home if already logged in
-    const currentUser = localStorage.getItem('token');
-    if (currentUser) {
-      this.router.navigate(['/']);
-    }
   }
 
   onLogin(loginData: LoginData) {
@@ -56,17 +49,14 @@ export class LoginFormComponent implements OnInit {
       this.spinner.hide();
       this.toastrService.success(response.data.message);
       this.notification = 'Login was succesful';
-      localStorage.setItem('token', response.data.user.token);
-
-      // Get User profile.
-      this.profileService.pushProfile();
-
-      this.router.navigate([this.returnUrl]);
-    }, () => {
+      localStorage.setItem('token', response.data.user.token)
+      const to = this.router['browserUrlTree']['queryParams'] ? this.router['browserUrlTree']['queryParams'].next : ''
+      this.router.navigate([`${to}`])
+    }, error => {
       this.spinner.hide();
       this.toastrService.error('Invalid email and password combination');
-      this.setErrorTimeout();
-    });
+      this.setErrorTimeout()
+    })
 
   }
 
@@ -84,8 +74,6 @@ export class LoginFormComponent implements OnInit {
       password: ['', Validators.required],
     });
 
-    // get return url from route parameters  or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
 }

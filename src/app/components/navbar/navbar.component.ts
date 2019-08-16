@@ -7,7 +7,7 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: [ './navbar.component.scss' ]
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   // Properties
@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.profileDetails();
   }
 
-  @HostListener('document:click', [ '$event' ])
+  @HostListener('document:click', ['$event'])
   clickout(event) {
     this.dropDownActive = false;
   }
