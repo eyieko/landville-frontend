@@ -19,6 +19,8 @@ import { PasswordResetComponent } from './pages/password-reset/password-reset.co
 import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
+import { PaymentModule } from './pages/payment/payment.module';
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { NoAuthGuard } from './guards/no-auth.guard';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-		NgxSpinnerModule
+		NgxSpinnerModule,
+		PaymentModule
   ],
   declarations: [
     AppComponent,
