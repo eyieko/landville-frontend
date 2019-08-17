@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TermsService } from '../../services/terms/terms.service'
-import { TermsComponent } from './terms.component';
+import { TermsPageComponent } from './terms.component';
 
-describe('TermsComponent', () => {
-  let component: TermsComponent;
-  let fixture: ComponentFixture<TermsComponent>;
+describe('TermsPageComponent', () => {
+  let component: TermsPageComponent;
+  let fixture: ComponentFixture<TermsPageComponent>;
   let MockTermService;
   beforeEach(async(() => {
     MockTermService = jasmine.createSpyObj(['getTerms']);
     TestBed.configureTestingModule({
-      declarations: [TermsComponent],
+      declarations: [TermsPageComponent],
       providers: [{ provide: TermsService, useValue: MockTermService }]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TermsComponent);
+    fixture = TestBed.createComponent(TermsPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

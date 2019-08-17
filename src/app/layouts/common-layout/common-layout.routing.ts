@@ -6,7 +6,7 @@ import { ProfileComponent } from 'src/app/pages/profile/profile.component';
 import { PropertiesComponent } from '../../pages/properties/properties.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { NoPropertiesComponent } from 'src/app/pages/properties/no-properties/no-properties.component';
-import { TermsComponent } from 'src/app/components/terms/terms.component';
+import { TermsPageComponent } from 'src/app/pages/terms/terms.component';
 
 
 export const CommonLayoutRoutes: Routes = [
@@ -18,5 +18,5 @@ export const CommonLayoutRoutes: Routes = [
   { path: 'no-properties', component: NoPropertiesComponent },
   { path: 'create-company', component: CompanyComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'terms-and-conditions', component: TermsComponent }
+  { path: 'terms-and-conditions', component: TermsPageComponent }
 ];

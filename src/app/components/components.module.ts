@@ -7,7 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { TermsComponent } from './terms/terms.component';
+import { TermsPageComponent } from '../pages/terms/terms.component';
 
 @NgModule({
   imports: [
@@ -23,8 +23,8 @@ import { TermsComponent } from './terms/terms.component';
   declarations: [
     FooterComponent,
     NavbarComponent,
-    TopbarComponent, TermsComponent],
-  exports: [NavbarComponent, FooterComponent, TopbarComponent, TermsComponent]
+    TopbarComponent, TermsPageComponent],
+  exports: [NavbarComponent, FooterComponent, TopbarComponent, TermsPageComponent]
 })
 export class ComponentsModule {
 }
