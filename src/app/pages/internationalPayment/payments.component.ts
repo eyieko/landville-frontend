@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from "@angular/core";
 import { InternationalPaymentService } from "../../services/internationalPayment/international-payment.service";
 import { ToastrService } from "ngx-toastr";
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Location } from "@angular/common";
 import {
   FormGroup,
@@ -30,22 +29,30 @@ export class PaymentsComponent implements OnInit {
   currentUrl: SafeUrl;
   iframeSrc: SafeUrl;
   shouldHide: boolean = true;
+  expectedMonths: any = [
+    "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"
+  ]
+
+  expectedYears: any;
 
   constructor(
     private internationalPaymentService: InternationalPaymentService,
     private toastrService: ToastrService,
     private _location: Location,
-    private router: Router,
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
-    private modalService: NgbModal,
     private sanitizer: DomSanitizer
 
   ) { }
 
+  generateYears() {
+    let thisYear = new Date().getFullYear();
+    this.expectedYears = Array.apply(0, Array(14))
+      .map((_element, index) => index + thisYear);
+  }
   ngOnInit() {
 
-
+    this.generateYears();
     this.form = this.fb.group({
       cardno: [
         null,
@@ -73,7 +80,7 @@ export class PaymentsComponent implements OnInit {
         null,
         [Validators.required, Validators.pattern("^[1-9]+[0-9]*$")]
       ],
-      billingzip: [null, [Validators.required]],
+      billingzip: [null, [Validators.required, Validators.pattern("^[1-9]+[0-9]*$")]],
       billingcity: [null, [Validators.required]],
       billingaddress: [null, [Validators.required]],
       billingstate: [null, [Validators.required]],
@@ -92,6 +99,7 @@ export class PaymentsComponent implements OnInit {
 
 
   onSubmitPaymentDetails({ value }) {
+    console.log(value);
 
     this.loading = true
     this.spinner.show();
@@ -99,7 +107,7 @@ export class PaymentsComponent implements OnInit {
       cardno: value.cardno,
       cvv: value.cvv,
       expirymonth: value.expirymonth,
-      expiryyear: value.expiryyear,
+      expiryyear: value.expiryyear.slice(-2),
       amount: value.amount,
       billingzip: value.billingzip,
       billingcity: value.billingcity,
@@ -118,8 +126,10 @@ export class PaymentsComponent implements OnInit {
           data => {
             this.spinner.hide();
             this.loading = false
-            this.toastrService.success("Your Payment has been placed");
-            this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(data.message);
+            this.toastrService.success("Your transaction has been initiated. "
+              + "Please ensure to enter the OTP sent to your phone");
+            this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(data.message + '&output=embed');
+
             console.log(this.iframeSrc);
 
             this.shouldHide = false;

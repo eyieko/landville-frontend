@@ -15,7 +15,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { DebugElement } from '@angular/core';
 import { throwError, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { PaymentsComponent } from '../payments/payments.component';
+import { PaymentsComponent } from '../internationalPayment/payments.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('PasswordResetComponent', () => {

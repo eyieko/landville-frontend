@@ -8,7 +8,7 @@ import { CommonLayoutComponent } from './layouts/common-layout/common-layout.com
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
 import { NoAuthGuard } from './guards/no-auth.guard';
-import { PaymentsComponent } from "./pages/payments/payments.component";
+import { PaymentsComponent } from "./pages/internationalPayment/payments.component";
 
 
 const routes: Routes = [

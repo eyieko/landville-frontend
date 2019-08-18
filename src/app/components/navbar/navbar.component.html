@@ -24,14 +24,7 @@
       <li class="nav-item"><a class="nav-link waves-effect waves-light" routerLink="/"
           routerLinkActive="active">Contact</a>
       </li>
-      <li class="nav-item dropdown">
-        <span class="nav-link dropbtn" data-toggle="dropdown">Make Payment <span class="caret"></span></span>
-        <div class="dropdown-content">
-          <a routerLink="#" routerLinkActive="active">PIN Card Payment</a>
-          <a routerLink="/international-payment" routerLinkActive="active">International Payment</a>
-          <a routerLink="#" routerLinkActive="active">Local Payment</a>
-        </div>
-      </li>
+
       <li *ngIf="!authenticated" class="nav-item"><a class="btn-auth" routerLink="/register"
           routerLinkActive="active">Sign
           up</a>

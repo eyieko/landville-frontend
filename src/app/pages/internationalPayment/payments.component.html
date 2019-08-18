@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="payment-form" [formGroup]="form" (ngSubmit)="onSubmitPaymentDetails(form)">
+  <form class="payment-form" [hidden]="!shouldHide" [formGroup]="form" (ngSubmit)="onSubmitPaymentDetails(form)">
     <ngx-spinner></ngx-spinner>
     <div class="heading">Pay with International Card</div>
     <div class="container">
@@ -82,18 +82,7 @@
               !form.get('expirymonth').valid
           }">
           <option value="" value="null" disabled="true" [selected]="true">Month</option>
-          <option value="01">01</option>
-          <option value="02">02</option>
-          <option value="03">03</option>
-          <option value="04">04</option>
-          <option value="05">05</option>
-          <option value="06">06</option>
-          <option value="07">07</option>
-          <option value="08">08</option>
-          <option value="09">09</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
+          <option *ngFor="let month of expectedMonths;" value="{{month}}">{{month}}</option>
         </select>
         <select formControlName="expiryyear" class="form-control right" placeholder="year" [ngClass]="{
             'is-invalid':
@@ -101,20 +90,9 @@
                 form.get('expiryyear').dirty) &&
               !form.get('expiryyear').valid
           }">
-          <option value="" value="null" disabled="true" [selected]="true">Year </option>
-          <option value="19">2019</option>
-          <option value="20">2020</option>
-          <option value="21">2021</option>
-          <option value="22">2022</option>
-          <option value="23">2023</option>
-          <option value="24">2024</option>
-          <option value="25">2025</option>
-          <option value="26">2026</option>
-          <option value="27">2027</option>
-          <option value="28">2028</option>
-          <option value="29">2029</option>
-          <option value="30">2030</option>
-          <option value="31">2031</option>
+          <option value="" [selected]="true">Year</option>
+          <option *ngFor="let year of expectedYears" value="{{year}}">{{year}}</option>
+
         </select>
         <span class="invalid-feedback">
           <span *ngIf="
@@ -191,6 +169,12 @@
             form.get('billingzip').errors?.required
           ">
           Billing zip is required
+        </span>
+        <span *ngIf="
+            (form.get('billingzip').touched || form.get('billingzip').dirty) &&
+            form.get('billingzip').errors?.pattern
+          ">
+          Billing zip should be a number
         </span>
       </span>
       <div>
@@ -301,15 +285,10 @@
         " />
     </div>
   </form>
-  <div>
-
+  <div class="container">
+    <!-- [src]="iframeSrc" [hidden]="shouldHide" -->
+    <iframe class="status" [hidden]="shouldHide" #confirmPayment [src]="iframeSrc">
+    </iframe>
   </div>
-  <iframe [hidden]="shouldHide" #confirmPayment style="width:600px;height:600px;" [src]="iframeSrc"></iframe>
-  <div>
-    <ng-template #content let-modal>
-
-    </ng-template>
-  </div>
-
   <ngx-spinner></ngx-spinner>
 </div>

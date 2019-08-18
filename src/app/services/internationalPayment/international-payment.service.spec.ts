@@ -7,7 +7,7 @@ import { ReactiveFormsModule, FormGroup, FormsModule } from "@angular/forms";
 import { environment } from "../../../environments/environment";
 
 import { InternationalPaymentService } from "./international-payment.service";
-import { PaymentsComponent } from "src/app/pages/payments/payments.component";
+import { PaymentsComponent } from "src/app/pages/internationalPayment/payments.component";
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe("InternationalPaymentService", () => {

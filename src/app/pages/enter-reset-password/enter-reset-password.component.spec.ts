@@ -15,7 +15,7 @@ import { AuthLayoutComponent } from 'src/app/layouts/auth-layout/auth-layout.com
 import { CommonLayoutComponent } from 'src/app/layouts/common-layout/common-layout.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { ToastrService } from 'ngx-toastr';
-import { PaymentsComponent } from '../payments/payments.component';
+import { PaymentsComponent } from '../internationalPayment/payments.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('EnterResetPasswordComponent', () => {

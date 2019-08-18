@@ -20,7 +20,6 @@ import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { TermsService } from './services/terms/terms.service';
 
-
 import { PaymentsComponent } from "./pages/payments/payments.component";
 
 @NgModule({

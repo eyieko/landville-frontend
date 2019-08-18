@@ -60,8 +60,8 @@ describe("PaymentsComponent", () => {
   it("should call submit", () => {
     const response = {
       message:
-        "https://ravesandboxapi.flutterwave.com/mockvbvpage?ref=FLW-MOCK-f3e901600b6dc73df17f7056a4f782de&code=00&message=Approved. Successful&receiptno=RN1565337244749",
-      txRef: "LANDVILLE-2019-08-09 07:54:01.760701"
+        "random-rave-link",
+      txRef: "reference-id"
     };
 
     internationalPaymentServiceSpy.createInternationalPayment.and.returnValue(
@@ -70,7 +70,8 @@ describe("PaymentsComponent", () => {
     const de = fixture.debugElement.query(By.css("form"));
     de.triggerEventHandler("ngSubmit", response);
     expect(toastServiceSpy.success).toHaveBeenCalledWith(
-      "Your Payment has been placed"
+      "Your transaction has been initiated. "
+      + "Please ensure to enter the OTP sent to your phone"
     );
   });
 
@@ -80,7 +81,8 @@ describe("PaymentsComponent", () => {
     };
 
     const value = {
-      amount: "44444"
+      amount: "44444",
+      expiryyear: "2022"
     };
     internationalPaymentServiceSpy.createInternationalPayment.and.returnValue(
       throwError(responseError)
