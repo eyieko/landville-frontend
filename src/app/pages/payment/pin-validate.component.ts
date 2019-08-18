@@ -26,7 +26,7 @@ export class PinValidateComponent implements OnInit {
 		private spinner: NgxSpinnerService,
 		private location: Location,
 		private titleService: Title 
-		) { this.titleService.setTitle("Card & Pin Deposit");}
+		) { this.titleService.setTitle("Pin Validate");}
 
   ngOnInit() {
 		this.flwRef = this.route.snapshot.paramMap.get('flwRef')
