@@ -13,13 +13,21 @@ label {
 }
 .card {
 	width: 400px;
-	margin-bottom: 20px;
-	margin-top: 20px;
+	margin-bottom: 40px;
+	margin-top: 40px;
 	padding-bottom: 20px;
 }
 .card-header {
 	background-color: #f8c302;
 	margin-bottom: 20px;
+}
+.card-holder {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-image: url('src/assets/img/HouseBG.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 input[type="checkbox"] {
 	margin-left: 2px;
