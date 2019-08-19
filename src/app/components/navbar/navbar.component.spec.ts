@@ -5,6 +5,9 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 
 import { NavbarComponent } from './navbar.component';
+import { resetSpies } from 'src/app/helpers/social.spies';
+import { mockProfileResponse } from 'src/app/shared/mocks';
+import { of } from 'rxjs';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -18,7 +21,12 @@ describe('NavbarComponent', () => {
       }
     }
   };
+	beforeAll(() => {
+		resetSpies([profileServiceSpy])
+		profileServiceSpy.userProfile$ = of(mockProfileResponse)
+	}
 
+	)
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -29,7 +37,7 @@ describe('NavbarComponent', () => {
       ],
       providers: [
         { provide: LocalStorageService, useValue: localStorageSpy },
-        { provide: ProfileService, useValue: profileServiceSpy },
+				{ provide: ProfileService, useValue: profileServiceSpy },
       ]
     })
       .compileComponents();
@@ -37,23 +45,12 @@ describe('NavbarComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NavbarComponent);
-    component = fixture.componentInstance;
-    inputEl = fixture.nativeElement.querySelector('dropdownToggle');
+		component = fixture.componentInstance;
+		profileServiceSpy.getProfile.and.returnValue(of(mockProfileResponse))
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should clickout elements', () => {
-    const event = new Event('click');
-    component.clickout(event);
-    expect(component.dropDownActive).toBeFalsy();
-  });
-
-  it('should handle Dropdown Display', () => {
-    component.handleDropdownDisplay();
-    expect(component.dropDownActive).toBeTruthy();
   });
 });

@@ -6,19 +6,19 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PinValidateComponent } from './pin-validate.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [PinPaymentComponent, PinValidateComponent],
   imports: [
-		CommonModule,
-		FormsModule,
-		ReactiveFormsModule,
-		RouterModule.forChild(paymentRoutes),
-		HttpClientModule,
-		NgxSpinnerModule,
-		AngularFontAwesomeModule,
-	]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(paymentRoutes),
+    HttpClientModule,
+    NgxSpinnerModule,
+    AngularFontAwesomeModule,
+  ]
 })
 export class PaymentModule { }

@@ -1,12 +1,13 @@
 span.error {
 	width: 100%;
-margin-top: 0.25rem;
-font-size: 80%;
-color: #dc3545;
+	margin-top: 0.25rem;
+	font-size: 80%;
+	color: #dc3545;
 }
-label, .form-control {
-	font-size: 13px;
+label, .form-control{
+	font-size: 15px;
 	height: 35px !important;
+	width: 100%;
 }
 label {
 	margin-bottom: 0 !important;
@@ -30,11 +31,9 @@ label {
   background-position: center;
 }
 input[type="checkbox"] {
-	margin-left: 2px;
+	margin-left: 5px;
 }
-input[type="radio"] {
-margin: 10px;
-}
+
 button {
 	background-color: #171039;
 	color: white;
