@@ -14,13 +14,13 @@ import { TokenizedCardComponent } from './tokenized-card.component';
 @NgModule({
   declarations: [PinPaymentComponent, PinValidateComponent, TokenizedCardComponent],
   imports: [
-		CommonModule,
-		FormsModule,
-		ReactiveFormsModule,
-		RouterModule.forChild(paymentRoutes),
-		HttpClientModule,
-		NgxSpinnerModule,
-		AngularFontAwesomeModule,
-	]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(paymentRoutes),
+    HttpClientModule,
+    NgxSpinnerModule,
+    AngularFontAwesomeModule,
+  ]
 })
 export class PaymentModule { }

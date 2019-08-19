@@ -11,19 +11,19 @@ import { TokenizedCardComponent } from './tokenized-card.component';
 
 describe('TokenizedCardComponent', () => {
   let component: TokenizedCardComponent;
-	let fixture: ComponentFixture<TokenizedCardComponent>;
-	let mockRouter = jasmine.createSpyObj(['navigate']);
-	let mockToastr = jasmine.createSpyObj(['error', 'success']);
-	let mockSpinner = jasmine.createSpyObj(['show', 'hide']);
-	let mockPaymentService = jasmine.createSpyObj(['payWithTokenizedCard']);
-	let mockLocation = jasmine.createSpyObj(['back']);
+  let fixture: ComponentFixture<TokenizedCardComponent>;
+  const mockRouter = jasmine.createSpyObj(['navigate']);
+  const mockToastr = jasmine.createSpyObj(['error', 'success']);
+  const mockSpinner = jasmine.createSpyObj(['show', 'hide']);
+  const mockPaymentService = jasmine.createSpyObj(['payWithTokenizedCard']);
+  const mockLocation = jasmine.createSpyObj(['back']);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-			declarations: [ TokenizedCardComponent ],
-			imports: [ HttpClientTestingModule, RouterTestingModule, 
-				BrowserAnimationsModule, CommonModule, ToastrModule.forRoot(), 
-				NgxSpinnerModule, ReactiveFormsModule]
+      declarations: [ TokenizedCardComponent ],
+      imports: [ HttpClientTestingModule, RouterTestingModule,
+        BrowserAnimationsModule, CommonModule, ToastrModule.forRoot(),
+        NgxSpinnerModule, ReactiveFormsModule]
     })
     .compileComponents();
   }));
@@ -36,37 +36,45 @@ describe('TokenizedCardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-	});
-	it('should call payWithTokenizedCard method without error', () => {
-		component = new TokenizedCardComponent(mockPaymentService, mockRouter, 
-			mockSpinner, mockToastr, mockLocation);
-		mockPaymentService.payWithTokenizedCard.and.returnValue(of(true))
-		component.onSubmit();
-		expect(mockPaymentService.payWithTokenizedCard).toHaveBeenCalled();
-	}
-	);
-	it('should call the navigate method', () => {
-		component = new TokenizedCardComponent(mockPaymentService, mockRouter, 
-			mockSpinner,  mockToastr, mockLocation);
-		mockRouter.navigate.and.returnValue(of(true))
-		component.onBack();
-		expect(mockRouter.navigate).toHaveBeenCalled();
-	}
-	);
-	it('should toast error if PaymentService returns error', () => {
-		component = new TokenizedCardComponent(mockPaymentService, mockRouter, 
-			mockSpinner, mockToastr, mockLocation);
-		mockPaymentService.payWithTokenizedCard.and.returnValue(throwError({status: 404, errors:{detail: undefined}}))
-		component.onSubmit();
-		expect(mockPaymentService.payWithTokenizedCard).toHaveBeenCalled();
-		expect(mockToastr.error).toHaveBeenCalled();
-	});
-	it('should toast error if PaymentService returns error for expired token', () => {
-		component = new TokenizedCardComponent(mockPaymentService, mockRouter, 
-			mockSpinner, mockToastr, mockLocation);
-		mockPaymentService.payWithTokenizedCard.and.returnValue(throwError({status: 404, errors:{detail: 'somemessage'}}))
-		component.onSubmit();
-		expect(mockToastr.error).toHaveBeenCalled();
-	}
-	);
+  });
+  it('should call payWithTokenizedCard method without error', () => {
+    component = new TokenizedCardComponent(mockPaymentService, mockRouter,
+      mockSpinner, mockToastr, mockLocation);
+    mockPaymentService.payWithTokenizedCard.and.returnValue(of(true));
+    component.onSubmit();
+    expect(mockPaymentService.payWithTokenizedCard).toHaveBeenCalled();
+  }
+  );
+  it('should call the navigate method', () => {
+    component = new TokenizedCardComponent(mockPaymentService, mockRouter,
+      mockSpinner,  mockToastr, mockLocation);
+    mockRouter.navigate.and.returnValue(of(true));
+    component.onBack();
+    expect(mockRouter.navigate).toHaveBeenCalled();
+  }
+  );
+  it('should toast error if PaymentService returns error', () => {
+    component = new TokenizedCardComponent(mockPaymentService, mockRouter,
+      mockSpinner, mockToastr, mockLocation);
+    mockPaymentService.payWithTokenizedCard.and.returnValue(throwError({status: 404, errors: {detail: undefined}}));
+    component.onSubmit();
+    expect(mockPaymentService.payWithTokenizedCard).toHaveBeenCalled();
+    expect(mockToastr.error).toHaveBeenCalled();
+  });
+  it('should toast error if PaymentService returns error for expired token', () => {
+    component = new TokenizedCardComponent(mockPaymentService, mockRouter,
+      mockSpinner, mockToastr, mockLocation);
+    mockPaymentService.payWithTokenizedCard.and.returnValue(throwError({status: 404, errors: {detail: 'somemessage'}}));
+    component.onSubmit();
+    expect(mockToastr.error).toHaveBeenCalled();
+  }
+  );
+  it('should toast error if PaymentService returns card error', () => {
+    component = new TokenizedCardComponent(mockPaymentService, mockRouter,
+      mockSpinner, mockToastr, mockLocation);
+    mockPaymentService.payWithTokenizedCard.and.returnValue(throwError({status: 404, message: 'somemessage'}));
+    component.onSubmit();
+    expect(mockToastr.error).toHaveBeenCalled();
+  }
+  );
 });
