@@ -274,9 +274,9 @@
         <span>
           Save Card:
         </span>
-        <input type="checkbox" formControlName="save_card" />
+        <input type="checkbox" formControlName="savecard" />
       </div>
-      <input type="button" class="btn btn-secondary" value="Back" (click)="backClicked()" />
+      <input type="button" id="backButton" class="btn btn-secondary" value="Back" (click)="backClicked()" />
       <input type="submit" class="btn btn-primary" value="Submit" [disabled]="!form.valid" [ngStyle]="
           form.invalid && {
             color: 'white',

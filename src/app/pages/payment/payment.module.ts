@@ -9,10 +9,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { TokenizedCardComponent } from './tokenized-card.component';
 import { PinValidateComponent } from './pin-validate.component';
+import { InternationalPaymentComponent } from './international-payment/international-payment.component';
 
 
 @NgModule({
-  declarations: [PinPaymentComponent, PinValidateComponent, TokenizedCardComponent],
+  declarations: [TokenizedCardComponent, PinValidateComponent, InternationalPaymentComponent],
   imports: [
     CommonModule,
     FormsModule,

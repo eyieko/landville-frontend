@@ -1,29 +1,28 @@
-import { TestBed, fakeAsync, inject, tick } from "@angular/core/testing";
+import { TestBed, fakeAsync, inject, tick } from '@angular/core/testing';
 import {
   HttpClientTestingModule,
   HttpTestingController
-} from "@angular/common/http/testing";
-import { ReactiveFormsModule, FormGroup, FormsModule } from "@angular/forms";
-import { environment } from "../../../environments/environment";
-
-import { InternationalPaymentService } from "./international-payment.service";
-import { PaymentsComponent } from "src/app/pages/internationalPayment/payments.component";
+} from '@angular/common/http/testing';
+import { ReactiveFormsModule, FormGroup, FormsModule } from '@angular/forms';
+import { InternationalPaymentService } from './international-payment.service';
+import { InternationalPaymentComponent } from 'src/app/pages/payment/international-payment/international-payment.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
-describe("InternationalPaymentService", () => {
+describe('InternationalPaymentService', () => {
   const payload = {
     cardno: 5399838383838381,
-    cvv: "470",
-    expirymonth: "01",
-    expiryyear: "21",
+    cvv: '470',
+    expirymonth: '01',
+    expiryyear: '21',
     amount: 8800,
-    billingzip: "07205",
-    billingcity: "billingcity",
-    billingaddress: "billingaddress",
-    billingstate: "NJ",
-    billingcountry: "UK",
+    billingzip: '07205',
+    billingcity: 'billingcity',
+    billingaddress: 'billingaddress',
+    billingstate: 'NJ',
+    billingcountry: 'UK',
     save_card: true,
-    purpose: "Saving"
+    purpose: 'Saving'
   };
 
   beforeEach(() =>
@@ -31,12 +30,12 @@ describe("InternationalPaymentService", () => {
       imports: [HttpClientTestingModule, ReactiveFormsModule, FormsModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
-      declarations: [PaymentsComponent],
+      declarations: [InternationalPaymentComponent],
       providers: [InternationalPaymentService]
     })
   );
 
-  it("should make international payment correctly", fakeAsync(
+  it('should make international payment correctly', fakeAsync(
     inject(
       [InternationalPaymentService, HttpTestingController],
       (
@@ -47,7 +46,7 @@ describe("InternationalPaymentService", () => {
         const url = `${environment.api_url}/transactions/card-foreign/`;
         const responseObject = {
           success: true,
-          message: "created was successful"
+          message: 'created was successful'
         };
         let response = null;
 
@@ -61,7 +60,7 @@ describe("InternationalPaymentService", () => {
 
         tick();
 
-        expect(requestWrapper.request.method).toEqual("POST");
+        expect(requestWrapper.request.method).toEqual('POST');
       }
     )
   ));

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -19,14 +19,14 @@ import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { TermsService } from './services/terms/terms.service';
+import { InternationalPaymentStatusComponent } from './pages/payment/international-payment-status/international-payment-status.component';
 
-import { PaymentsComponent } from "./pages/payments/payments.component";
 
 @NgModule({
   imports: [
-		AngularFontAwesomeModule,
-		FormsModule,
-		ReactiveFormsModule,
+    AngularFontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule,
@@ -35,7 +35,7 @@ import { PaymentsComponent } from "./pages/payments/payments.component";
     NgxSpinnerModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-		NgxSpinnerModule
+    NgxSpinnerModule
   ],
   declarations: [
     AppComponent,
@@ -43,7 +43,8 @@ import { PaymentsComponent } from "./pages/payments/payments.component";
     CommonLayoutComponent,
     PasswordResetComponent,
     EnterResetPasswordComponent,
-    
+    InternationalPaymentStatusComponent,
+
   ],
   providers: [
     LocalStorageService, AuthGuard, NoAuthGuard, TermsService,

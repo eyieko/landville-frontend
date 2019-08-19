@@ -5,7 +5,7 @@ import { PasswordResetComponent } from '../password-reset/password-reset.compone
 import { BrowserModule, By } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DebugElement, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppRoutingModule } from 'src/app/app.routing';
 import { EnterResetPasswordService } from 'src/app/services/password/enter-reset-password.service';
@@ -15,7 +15,6 @@ import { AuthLayoutComponent } from 'src/app/layouts/auth-layout/auth-layout.com
 import { CommonLayoutComponent } from 'src/app/layouts/common-layout/common-layout.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { ToastrService } from 'ngx-toastr';
-import { PaymentsComponent } from '../internationalPayment/payments.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('EnterResetPasswordComponent', () => {
@@ -30,7 +29,6 @@ describe('EnterResetPasswordComponent', () => {
         EnterResetPasswordComponent,
         AuthLayoutComponent,
         CommonLayoutComponent,
-        PaymentsComponent,
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [
