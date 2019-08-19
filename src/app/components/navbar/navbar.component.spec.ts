@@ -33,7 +33,7 @@ describe('NavbarComponent', () => {
         HttpClientTestingModule,
       ],
       declarations: [
-        NavbarComponent,
+				NavbarComponent
       ],
       providers: [
         { provide: LocalStorageService, useValue: localStorageSpy },

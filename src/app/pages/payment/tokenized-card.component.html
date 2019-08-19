@@ -1,0 +1,42 @@
+<div class="card shadow-lg mx-auto">
+		<ngx-spinner></ngx-spinner>
+    <div class="card-header text-center">
+			<h4>Pay with Saved Card</h4>
+		</div>
+    <div class="card-body, container">
+			<form [formGroup]='cardForm' (ngSubmit)='onSubmit()'>
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label>Amount:</label>
+						<input type="number" formControlName="amount" class="form-control"
+						[ngClass]="{'is-invalid':  (cardForm.controls['amount'].dirty || 
+						cardForm.controls['amount'].touched) 
+						&& cardForm.controls['amount'].invalid}"
+						/>
+						<span class="invalid-feedback">
+								Amount is required and must be greater than 0.
+							</span>
+					</div>				
+					<div class="form-group col-md-6">
+					<label>Purpose:</label>
+					<div>
+						<label class="form-check-inline">
+							<input class="mr-2" type="radio" value="Saving" 
+							formControlName="purpose"/>Saving
+						</label>
+						<label class="form-check-inline">
+							<input class="mr-2" type="radio" value="Buying" 
+							formControlName="purpose" disabled/>Buying
+						</label>
+					</div>
+					</div>
+			</div>
+			<hr>
+			<button class="btn" (click)='onBack()'>
+				<span class="fa fa-caret-left"></span>Back
+			</button>
+			<button type="submit" class="btn pull-right" 
+			[disabled]="cardForm.invalid">Submit</button>
+		</form>
+	</div>
+</div>
