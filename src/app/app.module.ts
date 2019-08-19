@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -19,7 +18,6 @@ import { PasswordResetComponent } from './pages/password-reset/password-reset.co
 import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
-import { PaymentModule } from './pages/payment/payment.module';
 
 
 
@@ -35,8 +33,7 @@ import { PaymentModule } from './pages/payment/payment.module';
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-		NgxSpinnerModule,
-		PaymentModule
+		NgxSpinnerModule
   ],
   declarations: [
     AppComponent,

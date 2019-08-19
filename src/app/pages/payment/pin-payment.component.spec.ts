@@ -12,20 +12,20 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('PinPaymentComponent', () => {
   let component: PinPaymentComponent;
-	let fixture: ComponentFixture<PinPaymentComponent>;
-	let mockRouter = jasmine.createSpyObj(['navigate']);
-	let mockToastr = jasmine.createSpyObj(['error']);
-	let mockSpinner = jasmine.createSpyObj(['show', 'hide']);
-	let mockPaymentService = jasmine.createSpyObj(['initiatePinPay', 'validatePinPay']);
-	let mockLocation = jasmine.createSpyObj(['back']);
-	let mockTitleSvc = jasmine.createSpyObj(['setTitle']);
+  let fixture: ComponentFixture<PinPaymentComponent>;
+  const mockRouter = jasmine.createSpyObj(['navigate']);
+  const mockToastr = jasmine.createSpyObj(['error']);
+  const mockSpinner = jasmine.createSpyObj(['show', 'hide']);
+  const mockPaymentService = jasmine.createSpyObj(['initiatePinPay', 'validatePinPay']);
+  const mockLocation = jasmine.createSpyObj(['back']);
+  const mockTitleSvc = jasmine.createSpyObj(['setTitle']);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-			declarations: [ PinPaymentComponent ],
-			imports: [ HttpClientTestingModule, RouterTestingModule, 
-				BrowserAnimationsModule, CommonModule, ToastrModule.forRoot(), 
-				NgxSpinnerModule, ReactiveFormsModule, FormsModule]
+      declarations: [ PinPaymentComponent ],
+      imports: [ HttpClientTestingModule, RouterTestingModule,
+        BrowserAnimationsModule, CommonModule, ToastrModule.forRoot(),
+        NgxSpinnerModule, ReactiveFormsModule, FormsModule]
     })
     .compileComponents();
   }));
@@ -38,46 +38,48 @@ describe('PinPaymentComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should call initiatePinPay method without error', () => {
+    component = new PinPaymentComponent(mockPaymentService, mockRouter,
+      mockSpinner, mockToastr, mockLocation, mockTitleSvc);
+    mockPaymentService.initiatePinPay.and.returnValue(of(true));
+    component.submitDetails();
+    expect(mockPaymentService.initiatePinPay).toHaveBeenCalled();
+  });
+  it('should call the navigate method', () => {
+    component = new PinPaymentComponent(mockPaymentService, mockRouter,
+      mockSpinner,  mockToastr, mockLocation, mockTitleSvc);
+    mockRouter.navigate.and.returnValue(of(true));
+    component.onBack();
+    expect(mockLocation.back).toHaveBeenCalled();
+  });
+  it('should toast error if PaymentService returns error', () => {
+    component = new PinPaymentComponent(mockPaymentService, mockRouter,
+      mockSpinner, mockToastr, mockLocation, mockTitleSvc);
+    mockPaymentService.initiatePinPay.and.returnValue(throwError({status: 404, errors: {detail: undefined}}));
+    component.submitDetails();
+    expect(mockPaymentService.initiatePinPay).toHaveBeenCalled();
+    expect(mockToastr.error).toHaveBeenCalled();
+  });
+  it('should toast error if PaymentService returns error for expired token', () => {
+    component = new PinPaymentComponent(mockPaymentService, mockRouter,
+      mockSpinner, mockToastr, mockLocation, mockTitleSvc);
+    mockPaymentService.initiatePinPay.and.returnValue(throwError({status: 404, errors: {detail: 'somemessage'}}));
+    component.submitDetails();
+    expect(mockToastr.error).toHaveBeenCalled();
+  });
+  it('should toast error if PaymentService returns card error', () => {
+    component = new PinPaymentComponent(mockPaymentService, mockRouter,
+      mockSpinner, mockToastr, mockLocation, mockTitleSvc);
+    mockPaymentService.initiatePinPay.and.returnValue(throwError({status: 404, message: 'somemessage'}));
+    component.submitDetails();
+    expect(mockToastr.error).toHaveBeenCalled();
 	});
-	it('should call initiatePinPay method without error', () => {
-		component = new PinPaymentComponent(mockPaymentService, mockRouter, 
-			mockSpinner, mockToastr, mockLocation, mockTitleSvc);
-		mockPaymentService.initiatePinPay.and.returnValue(of(true))
-		component.submitDetails();
-		expect(mockPaymentService.initiatePinPay).toHaveBeenCalled();
-	}
-	);
-	it('should call the navigate method', () => {
-		component = new PinPaymentComponent(mockPaymentService, mockRouter, 
-			mockSpinner,  mockToastr, mockLocation, mockTitleSvc);
-		mockRouter.navigate.and.returnValue(of(true))
-		component.onBack();
-		expect(mockLocation.back).toHaveBeenCalled();
-	}
-	);
-	it('should toast error if PaymentService returns error', () => {
-		component = new PinPaymentComponent(mockPaymentService, mockRouter, 
-			mockSpinner, mockToastr, mockLocation, mockTitleSvc);
-		mockPaymentService.initiatePinPay.and.returnValue(throwError({status: 404, errors:{detail: undefined}}))
-		component.submitDetails();
-		expect(mockPaymentService.initiatePinPay).toHaveBeenCalled();
-		expect(mockToastr.error).toHaveBeenCalled();
-	}
-	);
-	it('should toast error if PaymentService returns error for expired token', () => {
-		component = new PinPaymentComponent(mockPaymentService, mockRouter, 
-			mockSpinner, mockToastr, mockLocation, mockTitleSvc);
-		mockPaymentService.initiatePinPay.and.returnValue(throwError({status: 404, errors:{detail: 'somemessage'}}))
-		component.submitDetails();
-		expect(mockToastr.error).toHaveBeenCalled();
-	}
-	);
-	it('should toast error if PaymentService returns card error', () => {
-		component = new PinPaymentComponent(mockPaymentService, mockRouter, 
-			mockSpinner, mockToastr, mockLocation, mockTitleSvc);
-		mockPaymentService.initiatePinPay.and.returnValue(throwError({status: 404, message: 'somemessage'}))
-		component.submitDetails();
-		expect(mockToastr.error).toHaveBeenCalled();
-	}
-	);
+	it('should toast serialization errors', () => {
+    component = new PinPaymentComponent(mockPaymentService, mockRouter,
+      mockSpinner, mockToastr, mockLocation, mockTitleSvc);
+    mockPaymentService.initiatePinPay.and.returnValue(throwError({status: 404, cvv: ['somemessage']}));
+    component.submitDetails();
+    expect(mockToastr.error).toHaveBeenCalled();
+  });
 });

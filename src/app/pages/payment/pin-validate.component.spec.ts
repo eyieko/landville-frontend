@@ -10,21 +10,21 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 describe('PinValidateComponent', () => {
   let component: PinValidateComponent;
-	let fixture: ComponentFixture<PinValidateComponent>;
-	let mockRouter = jasmine.createSpyObj(['navigate']);
-	let mockRoute = jasmine.createSpyObj(['snapshot']);
-	let mockToastr = jasmine.createSpyObj(['success', 'error']);
-	let mockSpinner = jasmine.createSpyObj(['show', 'hide']);
-	let mockPaymentService = jasmine.createSpyObj(['initiatePinPay', 'validatePinPay'])
-	let mockLocation = jasmine.createSpyObj(['back']);
-	let mockTitleSvc = jasmine.createSpyObj(['setTitle']);
+  let fixture: ComponentFixture<PinValidateComponent>;
+  const mockRouter = jasmine.createSpyObj(['navigate']);
+  const mockRoute = jasmine.createSpyObj(['snapshot']);
+  const mockToastr = jasmine.createSpyObj(['success', 'error']);
+  const mockSpinner = jasmine.createSpyObj(['show', 'hide']);
+  const mockPaymentService = jasmine.createSpyObj(['initiatePinPay', 'validatePinPay']);
+  const mockLocation = jasmine.createSpyObj(['back']);
+  const mockTitleSvc = jasmine.createSpyObj(['setTitle']);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-			declarations: [ PinValidateComponent ],
-			imports: [ HttpClientTestingModule, RouterTestingModule, BrowserAnimationsModule,
-				ToastrModule.forRoot(), NgxSpinnerModule, ReactiveFormsModule, FormsModule],
-	
+      declarations: [ PinValidateComponent ],
+      imports: [ HttpClientTestingModule, RouterTestingModule, BrowserAnimationsModule,
+        ToastrModule.forRoot(), NgxSpinnerModule, ReactiveFormsModule, FormsModule],
+
     })
     .compileComponents();
   }));
@@ -37,28 +37,28 @@ describe('PinValidateComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-	});
-	it('should call validatePinPay method without error', () => {
-		component = new PinValidateComponent(mockRoute, mockRouter, 
-			mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc);
-		mockPaymentService.validatePinPay.and.returnValue(of(true))
-		component.onSubmit();
-		expect(mockPaymentService.validatePinPay).toHaveBeenCalled();
-	}
-	);
-	it('should call the navigate method', () => {
-		component = new PinValidateComponent(mockRoute, mockRouter, 
-			mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc);
-		mockRouter.navigate.and.returnValue(of(true))
-		component.onBack();
-		expect(mockRouter.navigate).toHaveBeenCalled();
-	}
-	);
-	it('should toast error if PaymentService returns error.', () => {
-		component = new PinValidateComponent(mockRoute, mockRouter, 
-			mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc);
-		mockPaymentService.validatePinPay.and.returnValue(throwError({status: 404, error: {message: 'somemessage'}}));
-		component.onSubmit();
-		expect(mockPaymentService.validatePinPay).toHaveBeenCalled();
-	});
+  });
+  it('should call validatePinPay method without error', () => {
+    component = new PinValidateComponent(mockRoute, mockRouter,
+      mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc);
+    mockPaymentService.validatePinPay.and.returnValue(of(true));
+    component.onSubmit();
+    expect(mockPaymentService.validatePinPay).toHaveBeenCalled();
+  }
+  );
+  it('should call the navigate method', () => {
+    component = new PinValidateComponent(mockRoute, mockRouter,
+      mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc);
+    mockRouter.navigate.and.returnValue(of(true));
+    component.onBack();
+    expect(mockRouter.navigate).toHaveBeenCalled();
+  }
+  );
+  it('should toast error if PaymentService returns error.', () => {
+    component = new PinValidateComponent(mockRoute, mockRouter,
+      mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc);
+    mockPaymentService.validatePinPay.and.returnValue(throwError({status: 404, error: {message: 'somemessage'}}));
+    component.onSubmit();
+    expect(mockPaymentService.validatePinPay).toHaveBeenCalled();
+  });
 });
