@@ -65,7 +65,6 @@
 					</span>
 					</label>
 				</div>
-
 					<div class="form-group">
 						<label>Amount:
 						<input type="number" formControlName="amount" class="form-control"
@@ -84,7 +83,7 @@
 							[ngClass]="isInvalid('purpose')">
 								<option value="Purpose">Purpose</option>
 								<option value="Saving">Saving</option>
-								<option value="Buying">Buying</option>  
+								<option value="Buying" disabled>Buying</option>  
 							</select>
 							<span class="invalid-feedback">
 								Select a valid purpose of payment.
@@ -98,7 +97,7 @@
 								</label>
 							</div>
 						</div>
-					</div>			
+					</div><hr>		
 				<button class="btn" (click)='onBack()'>
 					<span class="fa fa-caret-left"></span>	Back</button>
 				<button type="submit" class="btn pull-right" 

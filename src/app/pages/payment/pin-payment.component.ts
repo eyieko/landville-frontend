@@ -52,8 +52,8 @@ export class PinPaymentComponent implements OnInit {
     const yearList: number[] = [];
     const now = new Date();
     const currentYear = now.getFullYear();
-    const lastYear = currentYear + 10;
-    for (let i = currentYear; i <= lastYear; i++ ) {
+    const lastValidYear = currentYear + 10;
+    for (let i = currentYear; i <= lastValidYear; i++ ) {
       yearList.push(i);
     }
     this.validYears = yearList;
