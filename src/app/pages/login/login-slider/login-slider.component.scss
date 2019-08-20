@@ -152,3 +152,9 @@
       display: none;
     }
     }
+
+    @media only screen and (max-width: 790px) {
+      .login-slider {
+        display: none;
+      }
+    }
