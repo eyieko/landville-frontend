@@ -136,6 +136,10 @@
               routerLink="/create-company"
             ><i class="fa fa-plus"></i> Create Company</a
             >
+            <a 
+              *ngIf="userRole==='CA'" class="dropdown-item waves-effect waves-light"
+              routerLink="/property"
+              ><i class="fa fa-plus"></i>Add Property</a>
             <a
               class="dropdown-item waves-effect waves-light"
               routerLink="/reset-link"
