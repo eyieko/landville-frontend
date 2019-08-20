@@ -33,6 +33,9 @@ label {
 input[type="checkbox"] {
 	margin-left: 5px;
 }
+button[type="submit"] {
+	float: right;
+}
 
 button {
 	background-color: #171039;

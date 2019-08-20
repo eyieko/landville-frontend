@@ -25,9 +25,8 @@
 						[ngClass]="{'is-invalid':  (cardForm.controls['purpose'].dirty || 
 						cardForm.controls['purpose'].touched) 
 						&& cardForm.controls['purpose'].invalid}">
-							<option value="Purpose"></option>
 							<option value="Saving">Saving</option>
-							<option value="Buying">Buying</option>  
+							<option value="Buying" disabled>Buying</option>  
 						</select>
 						<span class="invalid-feedback">
 							Select a valid purpose of payment.
@@ -39,7 +38,7 @@
 			<button class="btn" (click)='onBack()'>
 				<span class="fa fa-caret-left"></span>Back
 			</button>
-			<button type="submit" class="btn pull-right" 
+			<button type="submit" class="btn" 
 			[disabled]="cardForm.invalid">Submit</button>
 		</form>
 	</div>
