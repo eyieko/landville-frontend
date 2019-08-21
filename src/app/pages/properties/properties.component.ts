@@ -38,7 +38,6 @@ export class PropertiesComponent implements OnInit {
   }
 
   setDocTitle(title: string) {
-    console.log('current title:::::' + this.titleService.getTitle());
     this.titleService.setTitle(title);
   }
   setProperties(url: string) {

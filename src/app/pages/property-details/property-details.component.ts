@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PropertyDetail } from 'src/app/models/property-detail/Property-detail';
+import { Subscription } from 'rxjs';
+import { removeSubscription } from 'src/app/helpers/unsubscribe';
 
 @Component({
   selector: 'app-property-details',
@@ -10,10 +12,10 @@ import { PropertyDetail } from 'src/app/models/property-detail/Property-detail';
   styleUrls: ['./property-details.component.scss']
 })
 
-export class PropertyDetailsComponent implements OnInit {
+export class PropertyDetailsComponent implements OnInit, OnDestroy {
   property: PropertyDetail;
   slug: string;
-  rooms: number;
+  bedrooms: number;
   bathrooms: number;
   garages: number;
   city: string;
@@ -35,11 +37,14 @@ export class PropertyDetailsComponent implements OnInit {
   clientStreet: string;
   clientState: string;
   clientCity: string;
+  purchasePlan: string;
+  subscribe: Subscription[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private propertyservice: PropertyDetailService,
     private spinner: NgxSpinnerService,
+    
   ) { }
 
   ngOnInit(): void {
@@ -49,42 +54,43 @@ export class PropertyDetailsComponent implements OnInit {
     });
   }
 
-
   viewProperty(slug) {
     this.spinner.show();
-    this.propertyservice.getProperty(slug).subscribe(
-      response => {
-        const priceHolder = response.data.property.price;
-        this.description = response.data.property.description;
-        this.title = response.data.property.title;
-        this.city = response.data.property.address.City;
-        this.state = response.data.property.address.State;
-        this.street = response.data.property.address.Street;
-        this.price = priceHolder.toString();
-        this.imageMain = response.data.property.image_main;
-        this.imageOthers = response.data.property.image_others;
-        this.lotSize = response.data.property.lot_size;
-        this.video = response.data.property.video;
-        this.property = response.data.property;
-        this.checkIfBuilding(response.data.property.property_type, response.data.property);
-        this.checkIfVideo(this.video);
-        this.clientName = response.data.property.client.client_name;
-        this.createdAt = response.data.property.created_at;
-        this.phone = response.data.property.client.phone;
-        this.email = response.data.property.client.email;
-        this.clientStreet = response.data.property.client.address.Street;
-        this.clientCity = response.data.property.client.address.City;
-        this.clientState = response.data.property.client.address.State;
-        this.spinner.hide();
-      }
-       
-    );
+    this.subscribe.push(
+      this.propertyservice.getProperty(slug).subscribe(
+        response => {
+          const priceHolder = response.data.property.price;
+          this.description = response.data.property.description;
+          this.title = response.data.property.title;
+          this.city = response.data.property.address.City;
+          this.state = response.data.property.address.State;
+          this.street = response.data.property.address.Street;
+          this.price = priceHolder.toString();
+          this.imageMain = response.data.property.image_main;
+          this.imageOthers = response.data.property.image_others;
+          this.lotSize = response.data.property.lot_size;
+          this.video = response.data.property.video;
+          this.property = response.data.property;
+          this.checkIfBuilding(response.data.property.property_type, response.data.property);
+          this.checkIfVideo(this.video);
+          this.clientName = response.data.property.client.client_name;
+          this.createdAt = response.data.property.created_at;
+          this.phone = response.data.property.client.phone;
+          this.email = response.data.property.client.email;
+          this.clientStreet = response.data.property.client.address.Street;
+          this.clientCity = response.data.property.client.address.City;
+          this.clientState = response.data.property.client.address.State;
+          this.purchasePlan = response.data.property.purchase_plan
+          this.spinner.hide();
+        }
 
+      )
+    );
   }
   checkIfBuilding(property, data) {
     if (property === 'Building') {
       this.ifBuilding = true;
-      this.rooms = data.bedrooms;
+      this.bedrooms = data.bedrooms;
       this.bathrooms = data.bathrooms;
       this.garages = data.garages;
     }
@@ -93,6 +99,9 @@ export class PropertyDetailsComponent implements OnInit {
     if (video) {
       this.ifVideo = true;
     }
+  }
+  ngOnDestroy(): void {
+    removeSubscription(this.subscribe);
   }
 
 }

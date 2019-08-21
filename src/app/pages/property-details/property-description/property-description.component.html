@@ -1,0 +1,13 @@
+<h6><b>ABOUT PROPERTY</b></h6>
+<p><small>Published on: {{createdAt | date: "dd/MM/yyyy"}}</small></p>
+
+<span><b>Lot size: {{lotSize}} sq. ft</b></span>
+<p>{{description}}</p>
+<p *ngIf="ifVideo"><span><a href="{{video}}" class="">Watch a video</a></span></p>
+<div>
+    <button class="btn btn-primary">Schedule an inspection</button>
+    <hr>
+    <div class="details-plans">
+        <p><b>Available Plans:</b> {{purchasePlan}}</p>
+    </div>
+</div>

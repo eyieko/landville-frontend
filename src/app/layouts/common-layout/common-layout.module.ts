@@ -23,6 +23,7 @@ import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 
 import { PropertyDetailsComponent } from 'src/app/pages/property-details/property-details.component'
+import { PropertyDetailsModule } from "src/app/pages/property-details/property-details.module"
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { PropertyDetailsComponent } from 'src/app/pages/property-details/propert
     ProfileModule,
     HttpClientModule,
 		PaymentModule
+    PropertyDetailsModule
   ],
   declarations: [
     HomeComponent,
@@ -44,7 +46,7 @@ import { PropertyDetailsComponent } from 'src/app/pages/property-details/propert
     PropertiesComponent,
     NoPropertiesComponent,
     CardComponent,
-    PropertyDetailsComponent
+
   ],
   providers: [ProfileService, LocalStorageService, Title],
 })

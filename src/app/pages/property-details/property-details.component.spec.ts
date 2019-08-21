@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { PropertyDetailsComponent } from './property-details.component';
+import { PropertyDetailsComponent } from 'src/app/pages/property-details/property-details.component';
+import { PropertyDetailComponent } from 'src/app/pages/property-details/property-detail/property-detail.component';
+import { PropertyDescriptionComponent } from 'src/app/pages/property-details/property-description/property-description.component';
+import { ClientAdminComponent } from 'src/app/pages/property-details/client-admin/client-admin.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
 import {
@@ -76,7 +79,10 @@ describe('Property detail', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
-                PropertyDetailsComponent
+                PropertyDetailsComponent,
+                PropertyDetailComponent,
+                PropertyDescriptionComponent,
+                ClientAdminComponent
             ],
             imports: [
                 HttpClientTestingModule,
