@@ -1,0 +1,106 @@
+<section class="company m-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9 col-sm-6">
+        <div class="company-details">
+          <h3 class="company-title">Add Property</h3>
+          <form [formGroup]="addPropertyForm">
+            <div class="form-row">
+              <div class="form-group col-md-6 p-2">
+                <label class="text-muted" for="propertyTitle">Title</label>
+                <input class="form-control" formControlName="propertyTitle" id="propertyTitle"
+                  placeholder="Property Title" type="text">
+              </div>
+              <div class="form-group col-md-6 p-2">
+                <label class="text-muted" for="email">Description</label>
+                <input class="form-control" formControlName="email" id="email" placeholder="Description"
+                  type="email">
+              </div>
+              <div class="form-group col-md-6  p-2">
+                <label for="phone">State</label>
+                <input class="form-control" formControlName="phone" id="phone" placeholder="State" type="tel">
+              </div>
+              <div class="form-group col-md-6  p-2">
+                <label for="phone">City</label>
+                <input class="form-control" formControlName="phone" id="phone" placeholder="City" type="tel">
+              </div>
+              <div class="form-group col-md-6 p-2">
+                <label class="text-muted" for="email">Street</label>
+                <input class="form-control" formControlName="email" id="email" placeholder="Street"
+                    type="email">
+              </div>
+              <div class="form-group col-md-6  p-2">
+                <label for="phone">coordinates Lattitude</label>
+                <input class="form-control" formControlName="phone" id="phone" placeholder="coordinates Lattitude" type="tel">
+              </div>
+              <div class="form-group col-md-6  p-2">
+                <label for="phone">coordinates Longitude</label>
+                <input class="form-control" formControlName="phone" id="phone" placeholder="coordinates Longitude" type="tel">
+              </div>
+              <div class="form-group col-md-6 p-2">
+                <label class="text-muted" for="companyName">price</label>
+                <input class="form-control" formControlName="companyName" id="companyName"
+                placeholder="price" type="text">
+              </div>
+              <div class="form-group col-md-6 p-2">
+                <label class="text-muted" for="email">Lot size</label>
+                <input class="form-control" formControlName="email" id="email" placeholder="Lot size"
+                    type="email">
+              </div>
+              <div class="form-group col-md-6  p-2">
+                <label for="phone">Main Image</label>
+                <input class="form-control" formControlName="phone" id="phone" placeholder="Main Image" type="tel">
+              </div>
+              <div class="form-group col-md-6  p-2">
+                <label for="phone">Video</label>
+                <input class="form-control" formControlName="phone" id="phone" placeholder="Video" type="tel">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="h5 text-muted">Rooms</label>
+            </div>
+            <div class="form-row">
+              <div class="form-group  col-md-6 p-2">
+                <label class="text-muted" for="state">Property Type</label>
+                <input class="form-control" formControlName="state" id="state" placeholder="Property Type" type="text">
+              </div>
+              <div class="form-group col-md-6 p-2">
+                <label class="text-muted" for="city">Purchase Plan</label>
+                <input class="form-control" formControlName="city" id="city" placeholder="Purchase Plan" type="text">
+              </div>
+              <div class="form-group  col-md-6 p-2">
+                <label class="text-muted" for="state">Others Images</label>
+                <input class="form-control" formControlName="state" id="state" placeholder="Others Images" type="text">
+              </div>
+              <div class="form-group col-md-6 p-2">
+                <label class="text-muted" for="city">Bedrooms</label>
+                <input class="form-control" formControlName="city" id="city" placeholder="Bedrooms" type="text">
+              </div>
+              <div class="form-group col-md-6 p-2">
+                <label class="text-muted" for="street">Bathrooms</label>
+                <input class="form-control" formControlName="street" id="street" placeholder="Bathrooms" type="text">
+              </div>
+              <div class="form-group col-md-6 p-2">
+                <label class="text-muted" for="street">Garages</label>
+                <input class="form-control" formControlName="street" id="street" placeholder="Garages" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <button [disabled]="addPropertyForm.invalid && loading"
+                class="btn btn-primary btn-form btn-form-blue float-right" type="submit">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Add Property
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card">
+          <img alt="Card image" class="card-img" src="assets/img/designs/Design.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
