@@ -10,10 +10,12 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { TokenizedCardComponent } from './tokenized-card.component';
 import { PinValidateComponent } from './pin-validate.component';
 import { InternationalPaymentComponent } from './international-payment/international-payment.component';
+import { InputErrorsComponent } from 'src/app/shared/input-errors/input-errors.component';
+
 
 
 @NgModule({
-  declarations: [TokenizedCardComponent, PinValidateComponent, InternationalPaymentComponent],
+  declarations: [TokenizedCardComponent, PinValidateComponent, InternationalPaymentComponent, InputErrorsComponent],
   imports: [
     CommonModule,
     FormsModule,

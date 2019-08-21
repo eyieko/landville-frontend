@@ -51,8 +51,8 @@ describe('InternationalPaymentComponent', () => {
   });
 
   it('should error if an invalid form is passed', () => {
-    const cardno = component.form.controls.cardno;
-    cardno.setValue('');
+    const cardNo = component.form.controls.cardNo;
+    cardNo.setValue('');
     expect(component.form.invalid).toBeTruthy();
   });
 
@@ -78,7 +78,7 @@ describe('InternationalPaymentComponent', () => {
 
     const value = {
       amount: '44444',
-      expiryyear: '2022'
+      expiryYear: '2022'
     };
     internationalPaymentServiceSpy.createInternationalPayment.and.returnValue(
       throwError(responseError)
@@ -96,17 +96,17 @@ describe('InternationalPaymentComponent', () => {
     };
 
     const value = {
-      cardno: '5399838383838381',
+      cardNo: '5399838383838381',
       cvv: '470',
-      expirymonth: '01',
-      expiryyear: '21',
+      expiryMonth: '01',
+      expiryYear: '21',
       amount: '20',
-      billingzip: '07205',
-      billingcity: 'billingcity',
-      billingaddress: 'billingaddress',
-      billingstate: 'NJ',
-      billingcountry: 'UK',
-      savecard: true,
+      billingZip: '07205',
+      billingCity: 'billingcity',
+      billingAddress: 'billingaddress',
+      billingState: 'NJ',
+      billingCountry: 'UK',
+      saveCard: true,
       purpose: 'Saving'
 
     };

@@ -47,14 +47,15 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
 
   generateYears() {
     const thisYear = new Date().getFullYear();
-    this.expectedYears = Array.apply(0, Array(14))
-      .map((element, index) => index + thisYear);
+    this.expectedYears = Array.from(Array(14).keys()).map((item) => item + thisYear);
   }
+
+
   ngOnInit() {
 
     this.generateYears();
     this.form = this.fb.group({
-      cardno: [
+      cardNo: [
         null,
         [
           Validators.required,
@@ -71,21 +72,21 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
           Validators.minLength(3)
         ]
       ],
-      expirymonth: [
+      expiryMonth: [
         null,
         [Validators.required, Validators.max(12), Validators.min(1)]
       ],
-      expiryyear: [null, [Validators.required, Validators.min(19)]],
+      expiryYear: [null, [Validators.required, Validators.min(19)]],
       amount: [
         null,
         [Validators.required, Validators.pattern('^[1-9]+[0-9]*$')]
       ],
-      billingzip: [null, [Validators.required, Validators.pattern('^[1-9]+[0-9]*$')]],
-      billingcity: [null, [Validators.required]],
-      billingaddress: [null, [Validators.required]],
-      billingstate: [null, [Validators.required]],
-      billingcountry: [null, [Validators.required]],
-      savecard: false,
+      billingZip: [null, [Validators.required, Validators.pattern('^[1-9]+[0-9]*$')]],
+      billingCity: [null, [Validators.required]],
+      billingAddress: [null, [Validators.required]],
+      billingState: [null, [Validators.required]],
+      billingCountry: [null, [Validators.required]],
+      saveCard: false,
       purpose: [null, [Validators.required]]
     });
   }
@@ -104,17 +105,17 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.spinner.show();
     this.payload = {
-      cardno: value.cardno,
+      cardno: value.cardNo,
       cvv: value.cvv,
-      expirymonth: value.expirymonth,
-      expiryyear: value.expiryyear.slice(-2),
+      expirymonth: value.expiryMonth,
+      expiryyear: value.expiryYear.slice(-2),
       amount: value.amount,
-      billingzip: value.billingzip,
-      billingcity: value.billingcity,
-      billingaddress: value.billingaddress,
-      billingstate: value.billingstate,
-      billingcountry: value.billingcountry,
-      save_card: value.savecard,
+      billingzip: value.billingZip,
+      billingcity: value.billingCity,
+      billingaddress: value.billingAddress,
+      billingstate: value.billingState,
+      billingcountry: value.billingCountry,
+      save_card: value.saveCard,
       purpose: value.purpose
     };
 
