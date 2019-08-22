@@ -1,3 +1,4 @@
+import { Term } from './../../models/Term';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +12,7 @@ export class TermsService {
 
   }
 
-  getTerms(): Observable<any> {
-    return this.http.get<any>(environment.api_url + '/terms/');
+  getTerms(): Observable<Term> {
+    return this.http.get<Term>(environment.api_url + '/terms/');
   }
 }
