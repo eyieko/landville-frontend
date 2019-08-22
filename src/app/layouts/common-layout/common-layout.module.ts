@@ -18,9 +18,6 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
 import { PropertiesComponent } from 'src/app/pages/properties/properties.component';
 import { CardComponent } from 'src/app/components/card/card.component';
 import { PaymentModule } from 'src/app/pages/payment/payment.module';
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
 
 import { PropertyDetailsComponent } from 'src/app/pages/property-details/property-details.component'
 import { PropertyDetailsModule } from "src/app/pages/property-details/property-details.module"
@@ -36,7 +33,7 @@ import { PropertyDetailsModule } from "src/app/pages/property-details/property-d
     ReactiveFormsModule,
     ProfileModule,
     HttpClientModule,
-		PaymentModule
+		PaymentModule,
     PropertyDetailsModule
   ],
   declarations: [

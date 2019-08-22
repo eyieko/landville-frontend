@@ -7,11 +7,12 @@ import { ClientAdminComponent } from 'src/app/pages/property-details/client-admi
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
 import {
-    resetSpies, propertyDetailSpy,
+    resetSpies, propertyDetailSpy, toastServiceSpy, routerSpy
 } from 'src/app/helpers/spies';
 import { of } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 describe('Property detail', () => {
     let component: PropertyDetailsComponent;
@@ -98,7 +99,15 @@ describe('Property detail', () => {
                 {
                     provide: ActivatedRoute,
                     useValue: mockActivateRouteParam
-                }
+                },
+                {
+                    provide: Router,
+                    useValue: routerSpy
+                },
+                {
+                    provide: ToastrService,
+                    useValue: toastServiceSpy
+                },
             ]
         }).compileComponents();
     }));

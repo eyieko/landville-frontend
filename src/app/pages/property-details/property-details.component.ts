@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PropertyDetail } from 'src/app/models/property-detail/Property-detail';
 import { Subscription } from 'rxjs';
 import { removeSubscription } from 'src/app/helpers/unsubscribe';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-property-details',
@@ -42,8 +43,10 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private propertyservice: PropertyDetailService,
     private spinner: NgxSpinnerService,
+    private toastrService: ToastrService
     
   ) { }
 
@@ -82,8 +85,12 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
           this.clientState = response.data.property.client.address.State;
           this.purchasePlan = response.data.property.purchase_plan
           this.spinner.hide();
+        }, error => {
+          this.toastrService.error(JSON.stringify(error.errors));
+          this.router.navigate(['/properties']);
+          this.spinner.hide();
+          
         }
-
       )
     );
   }
