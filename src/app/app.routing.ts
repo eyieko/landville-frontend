@@ -7,6 +7,8 @@ import { CommonLayoutComponent } from './layouts/common-layout/common-layout.com
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
 import { NoAuthGuard } from './guards/no-auth.guard';
+import { InternationalPaymentStatusComponent } from
+'src/app/pages/payment/international-payment-status/international-payment-status.component';
 
 
 const routes: Routes = [
@@ -46,6 +48,7 @@ const routes: Routes = [
     path: 'auth/password-reset',
     component: EnterResetPasswordComponent
   },
+  { path: 'international-payment/status', component: InternationalPaymentStatusComponent},
   {
     path: '**',
     redirectTo: 'home'

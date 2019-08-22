@@ -3,11 +3,13 @@ import { PinValidateComponent } from './pin-validate.component';
 import { PinPaymentComponent } from './pin-payment.component';
 import { Routes } from '@angular/router';
 import { InternationalPaymentComponent } from './international-payment/international-payment.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { InternationalPaymentStatusComponent } from './international-payment-status/international-payment-status.component';
 
 
 export const paymentRoutes: Routes = [
-    { path: 'payment/pin', component: PinPaymentComponent },
-    { path: 'validate-pin/:flwRef/:purpose', component: PinValidateComponent },
-    { path: 'payment/saved-card', component: TokenizedCardComponent },
-    { path: 'payment/international', component: InternationalPaymentComponent },
+    { path: 'payment/pin', component: PinPaymentComponent, canActivate: [AuthGuard] },
+    { path: 'validate-pin/:flwRef/:purpose', component: PinValidateComponent, canActivate: [AuthGuard] },
+    { path: 'payment/saved-card', component: TokenizedCardComponent, canActivate: [AuthGuard] },
+    { path: 'payment/international', component: InternationalPaymentComponent, canActivate: [AuthGuard] },
 ];

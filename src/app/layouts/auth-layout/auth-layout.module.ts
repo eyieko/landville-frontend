@@ -59,7 +59,8 @@ export function provideConfig() {
     RegistrationComponent,
     RegisterFormComponent,
     RegisterHeaderComponent,
-    SocialLoginComponentt
+    SocialLoginComponentt,
+
   ],
   providers: [
     AuthService,

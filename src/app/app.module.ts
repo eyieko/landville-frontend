@@ -43,7 +43,7 @@ import { InternationalPaymentStatusComponent } from './pages/payment/internation
     CommonLayoutComponent,
     PasswordResetComponent,
     EnterResetPasswordComponent,
-    InternationalPaymentStatusComponent,
+    InternationalPaymentStatusComponent
 
   ],
   providers: [
