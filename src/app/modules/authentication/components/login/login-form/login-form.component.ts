@@ -49,9 +49,15 @@ export class LoginFormComponent implements OnInit {
     this.loginService.login(loginData).subscribe(response => {
       this.spinner.hide();
       this.toastrService.success(response.data.message);
-      this.notification = 'Login was succesful';
+      this.notification = 'Login was successful';
       localStorage.setItem('token', response.data.user.token);
-      const to = this.route.snapshot.queryParams ? this.route.snapshot.queryParams.next : 'home';
+      let nextRoute = this.route.snapshot.queryParams.next 
+      if(((nextRoute).length) > 1){
+        nextRoute = nextRoute.join('/');
+      }
+      console.log(nextRoute);
+      const to = this.route.snapshot.queryParams ? nextRoute : 'home';
+ 
       this.router.navigate([`${to}`]);
     }, error => {
       this.spinner.hide();

@@ -53,8 +53,10 @@ export class PinValidateComponent implements OnInit {
         this.spinner.hide();
         this.router.navigate(['/home']);
         this.toastr.success(resp['message']);
+        console.log(resp);
       },
       error => {
+        console.log(error);
         this.spinner.hide();
         this.toastr.error(error['error']['message']);
       }

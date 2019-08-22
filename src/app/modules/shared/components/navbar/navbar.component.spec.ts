@@ -51,4 +51,18 @@ describe('NavbarComponent', () => {
       expect(component.handleLogout).toHaveBeenCalled();
     });
   });
+
+  it('should create the app scroll --', () => {
+    let spy = spyOn(component, 'navbar');
+    window.dispatchEvent(new Event('scroll'));
+    expect(spy).toHaveBeenCalledTimes(0);
+  });
+  
+  
+  it('should create app scroll to navbar top offset --', () => {
+    let spy = spyOn(component, 'navbar');
+    component.sticky = window.pageYOffset;
+    window.dispatchEvent(new Event('scroll'));
+    expect(spy).toHaveBeenCalledTimes(0);
+  });
 });
