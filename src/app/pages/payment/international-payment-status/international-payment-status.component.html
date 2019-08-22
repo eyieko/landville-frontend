@@ -1,14 +1,8 @@
 <div class="container">
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img [src]="imgSrc" class="card-img" alt="..." />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body text-{{status}}">
-          <h1 class="card-title">{{ message }}</h1>
-        </div>
-      </div>
+  <div class="card mb-3">
+    <img class="card-img-top" [src]="imgSrc" alt="Status" />
+    <div class="card-body">
+      <h2 class="card-title">{{ message }}</h2>
     </div>
   </div>
 </div>

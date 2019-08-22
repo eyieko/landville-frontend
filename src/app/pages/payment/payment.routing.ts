@@ -4,7 +4,6 @@ import { PinPaymentComponent } from './pin-payment.component';
 import { Routes } from '@angular/router';
 import { InternationalPaymentComponent } from './international-payment/international-payment.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { InternationalPaymentStatusComponent } from './international-payment-status/international-payment-status.component';
 
 
 export const paymentRoutes: Routes = [
