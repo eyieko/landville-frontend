@@ -80,7 +80,6 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "loader": "^2.1.1",
-    "node-sass": "^4.12.0",
     "protractor": "~5.4.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
