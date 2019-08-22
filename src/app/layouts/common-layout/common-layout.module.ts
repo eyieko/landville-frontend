@@ -1,6 +1,3 @@
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -14,22 +11,25 @@ import { NoPropertiesComponent } from 'src/app/pages/properties/no-properties/no
 import { RegistersuccessComponent } from 'src/app/pages/registration/registersuccess/registersuccess.component';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
-
-import { PropertiesComponent } from '../../pages/properties/properties.component';
-import { CardComponent } from './../../components/card/card.component';
+import { PropertiesComponent } from 'src/app/pages/properties/properties.component';
+import { CardComponent } from 'src/app/components/card/card.component';
+import { PaymentModule } from 'src/app/pages/payment/payment.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-    ProfileModule,
-    HttpClientModule,
     NgxPaginationModule,
     NgxSpinnerModule,
     RouterModule.forChild(CommonLayoutRoutes),
-    HttpClientModule,
     ComponentsModule,
+    ReactiveFormsModule,
+    ProfileModule,
+    HttpClientModule,
+		PaymentModule
   ],
   declarations: [
     HomeComponent,

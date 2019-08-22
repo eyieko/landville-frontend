@@ -24,7 +24,7 @@ import { RoleTransformPipe } from 'src/app/shared/pipes/role.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
-    AuthLayoutModule
+		AuthLayoutModule,
   ],
   providers: [],
   bootstrap: [ProfileComponent]

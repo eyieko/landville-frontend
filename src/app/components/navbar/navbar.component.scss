@@ -54,23 +54,7 @@ a.nav-link.waves-effect.waves-light {
     border-top: .2rem solid var(--color-primary-dark) !important;
   }
 
-  &:last-child {
-    float: left;
-    text-align: left;
-    width: 100%;
-    background: var(--color-primary-dark);
-
-    &, &:hover {
-      color: #fff;
-      border-bottom: none !important;
-      text-transform: uppercase;
-      background-color: var(--color-primary-dark) !important;
-    }
-
-    &:hover > i {
-      color: #fff;
-    }
-  }
+  
 
   & {
     border-bottom: .1rem solid #EBEBEB !important;
@@ -174,4 +158,21 @@ ul.top-menu > li > a:hover .caret {
   li.nav-item:last-child {
     margin-top: 0.5rem;
   }
+}
+.profileDropDown {
+	float: left;
+	text-align: left;
+	width: 100%;
+	background: var(--color-primary-dark);
+
+	&, &:hover {
+		color: #fff;
+		border-bottom: none !important;
+		text-transform: uppercase;
+		background-color: var(--color-primary-dark) !important;
+	}
+
+	&:hover > i {
+		color: #fff;
+	}
 }

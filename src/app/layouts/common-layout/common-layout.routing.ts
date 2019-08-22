@@ -7,6 +7,7 @@ import { RegistersuccessComponent } from 'src/app/pages/registration/registersuc
 import { PropertiesComponent } from '../../pages/properties/properties.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 
+
 export const CommonLayoutRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   {

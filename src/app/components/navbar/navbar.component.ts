@@ -11,13 +11,11 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   // Properties
-  dropDownActive: boolean;
   authenticated: boolean;
   firstName: string;
   lastName: string;
   profileImage: string;
 
-  //
   subscription = new Subscription();
 
 
@@ -27,7 +25,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private eRef: ElementRef,
   ) {
     this.authenticated = false;
-    this.dropDownActive = false;
     this.firstName = '';
     this.lastName = '';
     this.profileImage = 'assets/img/people.png';
@@ -41,15 +38,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.profileDetails();
-  }
-
-  @HostListener('document:click', ['$event'])
-  clickout(event) {
-    this.dropDownActive = false;
-  }
-
-  handleDropdownDisplay() {
-    this.dropDownActive = !this.dropDownActive;
   }
 
   profileDetails() {
