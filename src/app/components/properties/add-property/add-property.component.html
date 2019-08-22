@@ -49,11 +49,11 @@
               </div>
               <div class="form-group col-md-6  p-2">
                 <label for="phone">Main Image</label>
-                <input class="form-control" formControlName="phone" id="phone" placeholder="Main Image" type="tel">
+                <input type="file" name="mainImage" accept="image/*">
               </div>
               <div class="form-group col-md-6  p-2">
                 <label for="phone">Video</label>
-                <input class="form-control" formControlName="phone" id="phone" placeholder="Video" type="tel">
+                <input accept="video/*">
               </div>
             </div>
 
@@ -69,9 +69,9 @@
                 <label class="text-muted" for="city">Purchase Plan</label>
                 <input class="form-control" formControlName="city" id="city" placeholder="Purchase Plan" type="text">
               </div>
-              <div class="form-group  col-md-6 p-2">
-                <label class="text-muted" for="state">Others Images</label>
-                <input class="form-control" formControlName="state" id="state" placeholder="Others Images" type="text">
+              <div class="form-group col-md-6 p-2">
+                <label class="text-muted" for="state">Select others Images</label>
+                <input type="file" name="imageOthers" multiple>
               </div>
               <div class="form-group col-md-6 p-2">
                 <label class="text-muted" for="city">Bedrooms</label>
