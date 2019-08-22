@@ -9,13 +9,15 @@ import { PersonalInformationComponent } from 'src/app/pages/profile/personal-inf
 import { ProfileSidebarComponent } from 'src/app/pages/profile/profile-sidebar/profile-sidebar.component';
 import { ProfileComponent } from 'src/app/pages/profile/profile.component';
 import { RoleTransformPipe } from 'src/app/shared/pipes/role.pipe';
+import { ProfileSecurityComponent } from './profile-security/profile-security.component';
 
 @NgModule({
   declarations: [
     ProfileSidebarComponent,
     ProfileComponent,
     PersonalInformationComponent,
-    RoleTransformPipe
+    RoleTransformPipe,
+    ProfileSecurityComponent
   ],
   exports: [ProfileComponent],
   imports: [

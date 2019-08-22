@@ -1,0 +1,53 @@
+<p>profile-security works!</p>
+<h2>Set security question here</h2>
+<form [formGroup]="formData" (ngSubmit)="submitForm(formData)">
+  <div style="width:600px;">
+    <select  class="custom-select" formControlName="question">
+      <option value="0">Select security question:</option>
+      <option value="What is the name of your favorite childhood friend"
+        >What is the name of your favorite childhood friend?</option
+      >
+      <option value="What was your childhood nickname"
+        >What was your childhood nickname?</option
+      >
+      <option value="In what city or town did your mother and father meet"
+        >In what city or town did your mother and father meet?</option
+      >
+    </select>
+  </div>
+  <br />
+  <div>
+    <input
+      class="form-control"
+      placeholder="Type your answer here"
+      style="width:600px;"
+      formControlName="answer"
+      type="text"
+     
+    />
+    <div
+      *ngIf="
+        (formData.controls['answer'].touched || formData.controls['answer'].dirty) &&
+        formData.controls['answer'].invalid
+      "
+    >
+    <span class="text text-danger"  [hidden]="!formData.controls['answer'].errors.required">
+        This Field is required
+    </span>
+    </div>
+    <div
+      *ngIf="
+        (formData.controls['answer'].touched || formData.controls['answer'].dirty) &&
+        formData.controls['answer'].invalid
+      "
+    >
+    <span class="text text-danger"  [hidden]="!formData.controls['answer'].errors.maxlength">
+        This field must must have move than 5 characters
+      </span>
+    </div>
+  </div>
+  <br><br>
+  <button type="submit" [disabled]="formData.invalid" class="btn btn-primary">
+    Save
+  </button>
+</form>
