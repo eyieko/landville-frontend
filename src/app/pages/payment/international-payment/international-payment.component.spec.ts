@@ -12,7 +12,7 @@ import {
   routerSpy,
   toastServiceSpy,
   locationSpy
-} from '../../../helpers/spies';
+} from 'src/app/helpers/spies';
 import { InternationalPaymentService } from 'src/app/services/payment/international-payment.service';
 import { By } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';

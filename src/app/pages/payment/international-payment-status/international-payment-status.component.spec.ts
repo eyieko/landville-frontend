@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InternationalPaymentStatusComponent } from './international-payment-status.component';
+import { ActivatedRoute } from '@angular/router';
+import {activatedRouteSpy} from 'src/app/helpers/spies';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('InternationalPaymentStatusComponent', () => {
   let component: InternationalPaymentStatusComponent;
@@ -8,7 +11,10 @@ describe('InternationalPaymentStatusComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InternationalPaymentStatusComponent ]
+      imports: [RouterTestingModule],
+      declarations: [ InternationalPaymentStatusComponent ],
+      providers: []
+      //   { provide: ActivatedRoute, useValue: activatedRouteSpy }, ]
     })
     .compileComponents();
   }));

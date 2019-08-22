@@ -16,6 +16,8 @@ import { DebugElement } from '@angular/core';
 import { throwError, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { InternationalPaymentStatusComponent } from '../payment/international-payment-status/international-payment-status.component';
+import { AppModule } from 'src/app/app.module';
 
 describe('PasswordResetComponent', () => {
   let component: PasswordResetComponent;
@@ -29,7 +31,7 @@ describe('PasswordResetComponent', () => {
         EnterResetPasswordComponent,
         AuthLayoutComponent,
         CommonLayoutComponent,
-
+        InternationalPaymentStatusComponent
       ],
       imports: [
         BrowserModule,
@@ -39,7 +41,7 @@ describe('PasswordResetComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         ComponentsModule,
-        NgxSpinnerModule
+        NgxSpinnerModule,
 
       ],
       providers: [
