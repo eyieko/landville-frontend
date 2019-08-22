@@ -1,5 +1,5 @@
 .payment-form {
-  width: 50%;
+  width: 65%;
   min-width: 300px;
   margin-left: auto;
   margin-right: auto;
@@ -37,10 +37,21 @@
 .btn-secondary {
   background: #171039;
 }
-.status{
-  width:100%;
-  height:400px;
+.status {
+  width: 100%;
+  height: 400px;
   min-width: 280px;
   text-align: center;
   border: none;
+}
+.col {
+  float: none;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .col {
+    float: none;
+    width: 100%;
+  }
 }

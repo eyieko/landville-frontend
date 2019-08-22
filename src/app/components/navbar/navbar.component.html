@@ -79,7 +79,7 @@
 				<div aria-labelledby="navbarDropdownMenuLink-6"
 						class="dropdown-menu dropdown-menu-lg-right dropdown-secondary">
 						<a class="dropdown-item waves-effect waves-light eborder-top" routerLink="/payment/pin" routerLinkActive="active"> Card & PIN</a>
-						<a class="dropdown-item waves-effect waves-light" routerLink="">International Card</a>
+						<a class="dropdown-item waves-effect waves-light" routerLink="/payment/international">International Card</a>
 						<a class="dropdown-item waves-effect waves-light" routerLink="/payment/saved-card">Saved Card</a>
 				</div>
 			</li>
@@ -123,18 +123,7 @@
             routerLink="/reset-link"
             ><i class="fa fa-plus"></i> Password Reset</a
           >
-          <div class="dropdown-item waves-effect waves-light dropdown-payments">
-            <div class="nav-link dropbtn" data-toggle="dropdown-payments">
-              Make Payment
-            </div>
-            <div class="dropdown-content">
-              <a routerLink="#" routerLinkActive="active">PIN Card Payment</a>
-              <a routerLink="/payment/international" routerLinkActive="active"
-                >International Payment</a
-              >
-              <a routerLink="#" routerLinkActive="active">Tokenized Card</a>
-            </div>
-          </div>
+
           <a
             (click)="handleLogout()"
             class="dropdown-item waves-effect waves-light"

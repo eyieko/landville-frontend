@@ -9,14 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 export class InternationalPaymentStatusComponent implements OnInit {
   imgSrc: any;
   message: any;
+  status: any;
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.imgSrc = 'assets/img/ICON/' + params.status + '.png';
       this.message = params.message;
-      console.log(this.imgSrc);
-      console.log(this.message);
+      this.status = params.status;
+
     });
   }
 
