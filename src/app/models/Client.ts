@@ -1,6 +1,7 @@
 import { Address } from './Address';
 
 export interface Client {
+  [x: string]: any;
   clientName: string;
   phone: string;
   email: string;

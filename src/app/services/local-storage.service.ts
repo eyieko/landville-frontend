@@ -16,6 +16,7 @@ export class LocalStorageService {
   set(key: string, value: any) {
 
     if (isPlatformBrowser(this.platformId)) {
+      console.log('hello')
       localStorage.setItem(key, value);
     }
   }

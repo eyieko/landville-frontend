@@ -24,6 +24,7 @@ import { NoPropertiesComponent } from 'src/app/components/properties/no-properti
 import { configureTestSuite } from 'ng-bullet';
 import { passwordResetMock, passwordResetResponse } from 'src/app/helpers/tests/mocks';
 import { resetSpies } from 'src/app/helpers/tests/social.spies';
+import {CheckProperty} from 'src/app/pipes/checkProperty.pipe';
 
 describe('PasswordResetComponent', () => {
   let component: PasswordResetComponent;
@@ -45,6 +46,7 @@ describe('PasswordResetComponent', () => {
         PropertiesComponent,
         PropertyDetailsComponent,
         NoPropertiesComponent,
+        CheckProperty,
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [

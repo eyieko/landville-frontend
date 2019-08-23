@@ -2,7 +2,7 @@ import { environment } from 'src/environments/environment.prod';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PropertiesService } from 'src/app/services/properties/properties.service';
 import { AppModule } from 'src/app/app.module';
-import { resetSpies, propertiesServiceSpy } from 'src/app/helpers/tests/spies';
+import { resetSpies, propertiesServiceSpy, localStorageSpy } from 'src/app/helpers/tests/spies';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { PropertiesComponent } from 'src/app/components/properties/properties.component';
@@ -11,7 +11,9 @@ import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import {configureTestSuite} from 'ng-bullet';
-
+import {LocalStorageService} from 'src/app/services/local-storage.service';
+import { decodedToken } from 'src/app/helpers/tokenDecoder';
+ 
 describe('PropertiesComponent', () => {
   let component: PropertiesComponent;
   let fixture: ComponentFixture<PropertiesComponent>;
@@ -29,7 +31,11 @@ describe('PropertiesComponent', () => {
     }
   };
 
-  beforeAll(() => resetSpies([propertiesServiceSpy]));
+  beforeAll(() => {
+    localStorage.setItem('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwiZW1haWwiOiJjbGllbnRAdm1haWxjbG91ZC5jb20iLCJleHAiOjE1Njg5ODIwNjl9.W6ifRWLr8xYBsMjKGwhjP3IJEnwurbWt-iP1bql-H3A')
+    resetSpies([propertiesServiceSpy]);
+
+  });
   afterEach(() => resetSpies([propertiesServiceSpy]));
 
   configureTestSuite(() => {
@@ -39,12 +45,15 @@ describe('PropertiesComponent', () => {
         AppModule,
         HttpClientModule,
         NgxSpinnerModule,
-        RouterModule
+        RouterModule,
       ],
       providers: [
         {
           provide: PropertiesService,
           useValue: propertiesServiceSpy
+        },
+        {
+          provide: LocalStorageService
         }
       ]
     }).compileComponents();
@@ -115,7 +124,7 @@ describe('PropertiesComponent', () => {
     expect(component.next).toEqual(response.data.properties.next);
   });
 
-  it('should set the components next property when properties exist', () => {
+  fit('should set the components next property when properties exist', () => {
     const url = 'http://127.0.0.1:8000/api/v1/properties/';
     const response = {
       data: {

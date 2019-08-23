@@ -6,6 +6,8 @@ import { Property } from 'src/app/models/Property';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment.prod';
+import { first } from 'rxjs/operators';
+import { decodedToken } from 'src/app/helpers/tokenDecoder';
 
 @Component({
   selector: 'app-properties',
@@ -24,6 +26,9 @@ export class PropertiesComponent implements OnInit {
   listToggle = false;
   gridToggle = true;
   count = 0;
+  myProperties: any;
+  isMine = true;
+  client = 0;
 
   constructor(
     private propertiesServices: PropertiesService,
@@ -32,7 +37,7 @@ export class PropertiesComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private metaService: Meta,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -46,8 +51,10 @@ export class PropertiesComponent implements OnInit {
   setDocTitle(title: string) {
     this.titleService.setTitle(title);
   }
+
   setProperties(url: string) {
     this.spinner.show();
+    this.client = decodedToken();
     this.propertiesServices.getProperties(url).subscribe(response => {
       this.results = response.data.properties.results;
       this.count = response.data.properties.count;
@@ -58,7 +65,8 @@ export class PropertiesComponent implements OnInit {
         );
       } else {
         this.properties = this.results;
-
+        // this.client = decodedToken();
+        this.myProperties = this.properties.filter(({client: {admin_id}}) => admin_id === this.client);
         if (response.data.properties.next) {
           this.next = response.data.properties.next;
         } else {
@@ -74,7 +82,6 @@ export class PropertiesComponent implements OnInit {
       this.spinner.hide();
     });
   }
-
   fetchNext() {
     this.disabledNext = false;
     this.disabledPrevious = false;

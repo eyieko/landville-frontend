@@ -14,9 +14,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { JwtInterceptor } from 'src/app/interceptors/jwt/jwt.interceptor';
 import { ErrorInterceptor } from 'src/app/interceptors/error/error.interceptor';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import {
-  EnterResetPasswordComponent
-} from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { NoAuthGuard } from 'src/app/guards/no-auth.guard';
 import { TermsService } from 'src/app/services/terms/terms.service';
@@ -33,6 +30,7 @@ import { ClientAdminComponent } from 'src/app/components/property-details/client
 import {
   PropertyDescriptionComponent
 } from 'src/app/components/property-details/property-description/property-description.component';
+import { CheckProperty } from 'src/app/pipes/checkProperty.pipe';
 
 @NgModule({
   imports: [
@@ -55,7 +53,6 @@ import {
     AppComponent,
     AuthenticationComponent,
     FeaturesComponent,
-    EnterResetPasswordComponent,
     TermsPageComponent,
     PropertiesComponent,
     NoPropertiesComponent,
@@ -63,6 +60,7 @@ import {
     PropertyDetailComponent,
     ClientAdminComponent,
     PropertyDescriptionComponent,
+    CheckProperty,
   ],
   providers: [
     LocalStorageService,

@@ -30,11 +30,13 @@ import { HomeComponent } from 'src/app/components/home/home.component';
 import { PropertiesComponent } from 'src/app/components/properties/properties.component';
 import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
 import { NoPropertiesComponent } from 'src/app/components/properties/no-properties/no-properties.component';
+import {CheckProperty} from 'src/app/pipes/checkProperty.pipe';
 
 describe('EnterResetPasswordComponent', () => {
   let component: EnterResetPasswordComponent;
   let fixture: ComponentFixture<EnterResetPasswordComponent>;
   let el: DebugElement;
+  let pipe: CheckProperty;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -50,6 +52,7 @@ describe('EnterResetPasswordComponent', () => {
         PropertiesComponent,
         PropertyDetailsComponent,
         NoPropertiesComponent,
+        CheckProperty,
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [
@@ -73,11 +76,23 @@ describe('EnterResetPasswordComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EnterResetPasswordComponent);
     component = fixture.componentInstance;
+    pipe = new CheckProperty();
     fixture.detectChanges();
   });
 
   it('should create EnterResetPasswordComponent', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should', () => {
+    expect(pipe.transform).toBeTruthy();
+  });
+
+  it('should', () => {
+    expect(pipe.transform('hello', [{title: 'hello'}])).toBe(false);
+  });
+  it('should', () => {
+    expect(pipe.transform('1', [{id: '1', title:'hello'}])).toBe(true);
   });
 
   it('Should call the onSubmit method when the button is clicked', async(() => {
