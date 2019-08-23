@@ -8,7 +8,6 @@ import { Location } from '@angular/common';
 
 import {
   internationalPaymentServiceSpy,
-  resetSpies,
   routerSpy,
   toastServiceSpy,
   locationSpy

@@ -14,7 +14,6 @@ describe('InternationalPaymentStatusComponent', () => {
       imports: [RouterTestingModule],
       declarations: [ InternationalPaymentStatusComponent ],
       providers: []
-      //   { provide: ActivatedRoute, useValue: activatedRouteSpy }, ]
     })
     .compileComponents();
   }));

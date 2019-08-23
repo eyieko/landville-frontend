@@ -6,14 +6,12 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  ReactiveFormsModule,
-  AbstractControl
 } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
 import { removeSubscription } from 'src/app/helpers/unsubscribe';
+
 
 @Component({
   selector: 'app-payments',
@@ -87,7 +85,8 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
       billingState: [null, [Validators.required]],
       billingCountry: [null, [Validators.required]],
       saveCard: false,
-      purpose: [null, [Validators.required]]
+      purpose: [null, [Validators.required]],
+      propertyId: [null, Validators.pattern('^[1-9]+[0-9]*$')]
     });
   }
 
@@ -116,8 +115,10 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
       billingstate: value.billingState,
       billingcountry: value.billingCountry,
       save_card: value.saveCard,
-      purpose: value.purpose
+      purpose: value.purpose,
     };
+
+    value.propertyId ? this.payload.property_id = value.property_id : null;
 
 
     this.subscription.push(

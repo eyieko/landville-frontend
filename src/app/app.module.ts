@@ -35,7 +35,6 @@ import { InternationalPaymentStatusComponent } from './pages/payment/internation
     NgxSpinnerModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    NgxSpinnerModule
   ],
   declarations: [
     AppComponent,
