@@ -13,6 +13,7 @@ import {
 import {
   InternationalPaymentStatusComponent
 } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
+import { UpdatePropertyComponent } from 'src/app/modules/features/components/update-property/updateProperty.component';
 
 export const CommonLayoutRoutes: Routes = [
   {
@@ -72,5 +73,9 @@ export const CommonLayoutRoutes: Routes = [
   {
     path: 'payment/international/status',
     component: InternationalPaymentStatusComponent,
+  },
+  {
+    path: 'update/:slug',
+    component: UpdatePropertyComponent,
   },
 ];

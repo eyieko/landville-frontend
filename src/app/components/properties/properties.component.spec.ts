@@ -11,7 +11,7 @@ import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import {configureTestSuite} from 'ng-bullet';
-
+ 
 describe('PropertiesComponent', () => {
   let component: PropertiesComponent;
   let fixture: ComponentFixture<PropertiesComponent>;

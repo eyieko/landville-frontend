@@ -1,0 +1,184 @@
+<div class="container full-width">
+  <div class="row-header">
+    <h2>Update Property Details</h2>
+  </div>
+  <form [formGroup]="updatePropertyForm">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-7">
+          <div class="input-wrapper">
+            <label>Title:</label>
+            <input
+              class="form-control"
+              formControlName="title"
+              type="text"
+              placeholder="{{ this.currentProperty.title }}"
+            />
+          </div>
+          <div class="input-wrapper">
+            <label>Price</label>
+            <input
+              class="form-control"
+              formControlName="price"
+              type="number"
+              placeholder="{{ this.currentProperty.price }}"
+            />
+          </div>
+          <div class="input-wrapper half-input-table">
+            <div>
+              <label>Size</label>
+              <input
+                class="form-control"
+                formControlName="lot_size"
+                type="number"
+                placeholder="{{ this.currentProperty.size }}"
+              />
+            </div>
+            <div>
+              <label>Type</label>
+              <select
+                class="form-control select"
+                name="type"
+                formControlName="type"
+              >
+                <option selected="true">{{ this.currentProperty.type }}</option>
+                <option>{{
+                  this.currentProperty.type === "Building"
+                    ? "Land"
+                    : this.currentProperty.type
+                }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-wrapper half-input-table">
+            <div>
+              <label>Bedrooms</label>
+              <input
+                class="form-control"
+                type="number"
+                placeholder="{{
+                  this.currentProperty.bedrooms === null
+                    ? 0
+                    : this.currentProperty.bedrooms
+                }}"
+                formControlName="bedrooms"
+              />
+            </div>
+            <div>
+              <label>Bathrooms</label>
+              <input
+                class="form-control"
+                type="number"
+                placeholder="{{
+                  this.currentProperty.bathrooms === null
+                    ? 0
+                    : this.currentProperty.bathrooms
+                }}"
+                formControlName="bathrooms"
+              />
+            </div>
+          </div>
+          <div class="form-group input-wrapper eric">
+            <label for="exampleFormControlTextarea3">Description</label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea3"
+              rows="7"
+              placeholder="{{ this.currentProperty.description }}"
+              formControlName="description"
+            ></textarea>
+          </div>
+        </div>
+        <hr>
+        <div class="col-lg-4 col-sm-5">
+          <div class="img-wrapper">
+            <div class="add-img">
+              <input
+                type="file"
+                class="upload w180"
+                name="file[]"
+                (change)="fileProgress($event)"
+                formControlName="image_main"
+              />
+            </div>
+            <i class="fa fa-camera"></i>
+            <img
+              class="img-thumbnail"
+              [src]="
+                previewUrl === null
+                  ? this.currentProperty.imageMain
+                  : previewUrl
+              "
+              alt=""
+            />
+            <div *ngIf="fileUploadProgress">
+              Upload progress: {{ fileUploadProgress }}
+            </div>
+          </div>
+          <div class="mult-img">
+            <label for="file-upload" class="custom-file-upload">
+              <i class="fa fa-cloud-upload"></i> Upload Other Images
+            </label>
+            <input
+              id="file-upload"
+              type="file"
+              name="file[]"
+              formControlName="image_others"
+              multiple
+              (change)="uploadMultiple($event)"
+            />
+            <label></label>
+            <div class="view-img">
+              <app-view-pictures
+                [images]="this.currentProperty.imageOthers"
+                [mainImage]="this.currentProperty.imageMain"
+              ></app-view-pictures>
+            </div>
+          </div>
+          <hr>
+          <div class="prop-info">
+            <p>
+              Last Reviewed on:
+              <strong>{{
+                this.currentProperty.lastViewedOn | date: "dd/MM/yyyy"
+              }}</strong>
+            </p>
+            <p>
+              Views: <strong>{{ this.currentProperty.viewers }}</strong>
+            </p>
+          </div>
+          <hr />
+          <div class="location-wrapper">
+            <div class="loc-title">
+              <h5>Property Location</h5>
+            </div>
+            <agm-map
+              [latitude]="this.currentProperty.lat"
+              [longitude]="this.currentProperty.long"
+            >
+              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+            <div class="location-cont">
+              <p>
+                City: <strong>{{ this.currentProperty.city }}</strong>
+              </p>
+              <p>
+                State: <strong>{{ this.currentProperty.state }}</strong>
+              </p>
+              <p>
+                Street: <strong>{{ this.currentProperty.street }}</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sub-btn">
+        <a [routerLink]="['/properties', this.currentProperty.slug]" class="back"><i class="fas fa-arrow-left"></i>Back</a>
+      <a href=""></a>
+      <button type="button" class="btn btn-dark" (click)="updateProperty()">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,7 +1,7 @@
-import { environment } from 'src/environments/environment';
-import { image_urls } from 'src/assets/img/image_urls';
+import { environment } from '../environments/environment';
+import { image_urls } from 'src/assets/img/image_urls'
 
-function appConfig() {
+function appConfigs() {
   return {
     base_url: environment.api_url,
     visa_card_url: image_urls.visa_card_url,
@@ -10,7 +10,8 @@ function appConfig() {
     paypal_card: image_urls.paypal_card,
     facebookId: '1782833315349267',
     googleId:
-      '315082406739-imasn7gsabthac3uaer84oqmp1g2780p.apps.googleusercontent.com'
+      '315082406739-imasn7gsabthac3uaer84oqmp1g2780p.apps.googleusercontent.com',
+    google_api_key: 'AIzaSyDZOLeLuWo6tcsYLMhPTNVXtRXJfnX8Bt8',
   };
 }
 
@@ -22,4 +23,4 @@ export enum HttpMethods {
   PATCH = 'patch'
 }
 
-export const APPCONFIG = appConfig();
+export const APPCONFIG = appConfigs();

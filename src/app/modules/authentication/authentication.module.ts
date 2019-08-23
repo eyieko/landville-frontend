@@ -26,6 +26,7 @@ import { PasswordResetComponent } from 'src/app/modules/authentication/component
 import {
   RegistersuccessComponent
 } from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
+import { EnterResetPasswordComponent } from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
 
 // configs
 const config = new AuthServiceConfig([
@@ -63,6 +64,7 @@ export function provideConfig() {
     SocialLoginComponentt,
     PasswordResetComponent,
     RegistersuccessComponent,
+    EnterResetPasswordComponent,
   ],
   providers: [
     AuthService,

@@ -1,0 +1,263 @@
+.full-width {
+  background-color: #fffce7;
+  padding: 0px 0px 10px 0;
+  display: block;
+}
+
+.row-header {
+  background-color: #e7e8ed;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.row-header h2 {
+  font-family: "Raleway", sans-serif;
+  padding: 1rem 0 1rem 2rem;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2f2f2d9c;
+}
+
+.update-wrapper {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.input-wrapper {
+  width: 80%;
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-wrapper label {
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.input-wrapper input {
+  width: 100%;
+}
+
+.height {
+  margin-bottom: 4rem;
+  margin-top: 2.5rem;
+}
+
+.half-input-table {
+  justify-content: space-between;
+  display: flex;
+}
+
+.select {
+  width: 40px;
+  width: 12.3rem;
+}
+
+.image-cont {
+  width: 100%;
+}
+
+.img-wrapper {
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  border: 1px solid #bbb;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-wrapper:hover input.upload {
+  display: block;
+}
+
+.img-wrapper:hover .add-img {
+    display:inline-block;
+  }
+
+.img-wrapper .fa {
+    margin: auto;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    text-align: center;
+    right: 0;
+    padding: 6px;
+   opacity:1;
+  transition:opacity 1s linear;
+}
+
+.img-wrapper:hover .fa {
+    opacity:1;
+    background-color: white;
+}
+
+.img-wrapper:hover input.upload {
+    z-index:1;
+    left: 0;
+    margin: 0;
+    bottom: 0;
+    top: 0;
+    padding: 0;
+    opacity: 0;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    width:100%;
+    height: 100% !important;
+}
+
+.img-wrapper .add-img {
+    width:100%;
+  height:100%;
+  display: none;
+  position:absolute;
+  vertical-align: middle;
+  position: relative;
+  background: transparent;
+}
+
+.img-wrapper:hover .fa:after {
+    content: "";
+    position:absolute;
+    bottom:0; left:0;
+    width:100%; height:0px;
+    background:rgba(0,0,0,0.3);
+    z-index:-1;
+    transition: height 0.3s;
+}
+
+.img-wrapper .fa:after {
+    height:100%;
+}
+
+.prop-info {
+  margin-top: 1rem;
+}
+
+.prop-info p {
+  margin: 0;
+}
+
+.location-wrapper {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.loc-title {
+  text-align: center;
+}
+
+.location-cont p {
+  margin: 0;
+}
+
+agm-map {
+  margin-top: 1rem;
+  width: 100%;
+  height: 11.3rem;
+}
+
+.img-thumbnail {
+  width: 100%;
+  height: 100%;
+}
+
+.mult-img {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  background: #fffce7;
+  color: #ccc;
+  border-radius: 0.5rem;
+  border: 0.5px solid #bbb7b7;
+}
+
+input[type="file"] {
+  z-index:1;
+  margin-left:-111px;
+  margin-top: 12px;
+  color: #2f2f2d9c;
+  width: 100%;
+}
+
+input[type="file"]:focus {
+  outline: none;
+}
+.custom-file-upload {
+  font-size: 18px;
+  margin-top: 6px;
+  border: none;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  position:relative;
+  z-index:2;
+  background:#fffce7;
+  
+}
+
+.custom-file-upload:hover {
+  color: black;
+}
+
+.view-img {
+  width: 3rem;
+    height: 3rem;
+    padding-top: 14px;
+    padding-left: 9px;
+}
+
+.fa.fa-picture-o {
+  font-size: 25px;
+}
+
+.fa.fa-picture-o:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.location-cont {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 1px solid black;
+    border: 1px solid #bbb2b2;
+    padding: 7px;
+    border-radius: 4px;
+}
+
+.eric {
+ label {
+   margin-bottom: 24px;
+ }
+}
+
+.sub-btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  .btn {
+    width: 8rem;
+    background-color: #171039;
+    border-radius: 40rem;
+  }
+  .back {
+    background-color: #171039;
+    color: white;
+    width: 5rem;
+    border-radius: 40rem;
+    margin-right: 1rem;
+    text-align: center;
+    padding-top: 5px;
+  }
+  i {
+    margin-right: 3px;
+  }
+}
+
+textarea.form-control {
+  height: 14rem !important;
+}

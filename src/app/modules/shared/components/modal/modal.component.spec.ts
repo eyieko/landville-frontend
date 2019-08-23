@@ -1,22 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CardComponent } from 'src/app/modules/shared/components/card/card.component';
 import { By, BrowserModule } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('CardComponent', () => {
-  let component: CardComponent;
-  let fixture: ComponentFixture<CardComponent>;
+import { ModalViewComponent } from 'src/app/modules/shared/components/modal/modal.component';
+
+describe('ModalComponent', () => {
+  let component: ModalViewComponent;
+  let fixture: ComponentFixture<ModalViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ CardComponent ]
+      declarations: [ ModalViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardComponent);
+    fixture = TestBed.createComponent(ModalViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

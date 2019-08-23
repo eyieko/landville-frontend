@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from 'src/app/modules/shared/components/card/card.component';
 import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-errors.component';
+import { ModalViewComponent } from 'src/app/modules/shared/components/modal/modal.component';
+import { APPCONFIG } from 'src/app/config';
 
 @NgModule({
   imports: [
@@ -16,7 +18,7 @@ import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     LocalStorageService,
@@ -26,6 +28,7 @@ import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-
     NavbarComponent,
     TopbarComponent,
     CardComponent,
+    ModalViewComponent,
     InputErrorsComponent,
   ],
   exports: [
@@ -33,6 +36,7 @@ import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-
     NavbarComponent,
     TopbarComponent,
     CardComponent,
+    ModalViewComponent,
     InputErrorsComponent,
   ],
 })

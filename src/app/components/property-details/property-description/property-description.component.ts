@@ -11,7 +11,7 @@ export class PropertyDescriptionComponent implements OnInit {
   @Input() description: string;
   @Input() video: string;
   @Input() purchasePlan: string;
-  @Input() ifVideo: boolean
+  @Input() ifVideo: boolean;
 
   constructor() { }
 
