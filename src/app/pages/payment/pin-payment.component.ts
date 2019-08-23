@@ -1,7 +1,7 @@
 import { validateInput } from 'src/app/validators/payment-validators';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { PaymentService } from 'src/app/services/payment-service';
+import { PaymentService } from 'src/app/services/payment/payment-service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';

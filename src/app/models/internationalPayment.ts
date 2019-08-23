@@ -1,9 +1,9 @@
 export interface InternationalPayment {
-  cardno: number;
+  cardno: string;
   cvv: string;
   expirymonth: string;
   expiryyear: string;
-  amount: number;
+  amount: string;
   billingzip: string;
   billingcity: string;
   billingaddress: string;
@@ -11,4 +11,6 @@ export interface InternationalPayment {
   billingcountry: string;
   save_card: boolean;
   purpose: string;
+  propertyId?: number;
+  message?: string;
 }

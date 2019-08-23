@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { InternationalPaymentService } from '../../../services/payment/international-payment.service';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import {
@@ -11,6 +10,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
 import { removeSubscription } from 'src/app/helpers/unsubscribe';
+import { PaymentService } from 'src/app/services/payment/payment-service';
 
 
 @Component({
@@ -30,11 +30,12 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
   expectedMonths: any = [
     '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
   ];
+  propertyId: any;
 
   expectedYears: any;
 
   constructor(
-    private internationalPaymentService: InternationalPaymentService,
+    private internationalPaymentService: PaymentService,
     private toastrService: ToastrService,
     private location: Location,
     private fb: FormBuilder,
@@ -86,7 +87,6 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
       billingCountry: [null, [Validators.required]],
       saveCard: false,
       purpose: [null, [Validators.required]],
-      propertyId: [null, Validators.pattern('^[1-9]+[0-9]*$')]
     });
   }
 
@@ -118,7 +118,7 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
       purpose: value.purpose,
     };
 
-    value.propertyId ? this.payload.property_id = value.property_id : null;
+    value.propertyId ? this.payload.property_id = this.propertyId : null;
 
 
     this.subscription.push(

@@ -12,11 +12,11 @@ import {
   toastServiceSpy,
   locationSpy
 } from 'src/app/helpers/spies';
-import { InternationalPaymentService } from 'src/app/services/payment/international-payment.service';
 import { By } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { PaymentService } from 'src/app/services/payment/payment-service';
 
 describe('InternationalPaymentComponent', () => {
   let component: InternationalPaymentComponent;
@@ -32,7 +32,7 @@ describe('InternationalPaymentComponent', () => {
         { provide: Router, useValue: routerSpy },
         { provide: Location, useValue: locationSpy },
         {
-          provide: InternationalPaymentService,
+          provide: PaymentService,
           useValue: internationalPaymentServiceSpy
         }
       ]
