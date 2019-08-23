@@ -116,12 +116,13 @@
                 {{ property.address.City }}.
               </p>
               <p class="card-text">
-                <b aria-hidden="true">&#8358; </b> {{property.price}}
+                <b aria-hidden="true">&#8358; </b> {{ property.price }}
               </p>
-              <a [routerLink]="['/properties', property.slug]">
-                <button class="btn btn-warning" style="font-weight: 500">
-                  View
-                </button>
+              <a
+                [routerLink]="['/properties', property.slug]"
+                class="btn btn-warning"
+              >
+                View
               </a>
             </div>
           </div>
@@ -332,11 +333,7 @@
               <div class="row">
                 <div class="col-md-7 ml-auto">
                   <br />
-                  <button
-                    class="btn btn-warning"
-                    style="font-weight: 500"
-                    type="submit"
-                  >
+                  <button class="btn btn-warning" type="submit">
                     Send
                   </button>
                 </div>
