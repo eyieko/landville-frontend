@@ -59,7 +59,7 @@ describe('HomeComponent', () => {
     component.ngOnInit();
     fixture.detectChanges();
     expect(toastServiceSpy.error).toHaveBeenCalledWith(
-      'Something went wrong, we couldnt load the trending properties'
+      'Something went wrong, we could not load the trending properties'
     );
   });
 });
