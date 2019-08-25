@@ -1,5 +1,5 @@
 ## Description ##
-<!--- Tell us what this pull request does in a most simple to understand way  -->
+<!--- Tell us what this pull request does in the most simple to understand way  -->
 
 ## Type of change ##
 Please select the relevant option
