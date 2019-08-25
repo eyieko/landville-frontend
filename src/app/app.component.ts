@@ -18,8 +18,13 @@ export class AppComponent implements OnInit {
   }
   setPageMetaData() {
     this.metaService.addTags([
+      // Open Graph
       { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Bitly' },
+      { property: 'og:site_name', content: 'LandVille' },
+
+      //Twitter
+      { name: 'twitter:card', content: 'LandVille' },
+      { name: 'twitter:image', content: '../../../assets/img/ICON/Logo.png' }
     ]);
   }
 

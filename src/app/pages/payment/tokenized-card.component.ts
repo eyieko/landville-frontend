@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   templateUrl: './tokenized-card.component.html',
@@ -22,9 +23,13 @@ export class TokenizedCardComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     private location: Location
+    ,
+    private titleService: Title
     ) { }
 
-  ngOnInit() {	}
+  ngOnInit() {
+    this.titleService.setTitle('Make Deposit | Tokenized Card');
+  }
   onSubmit(): void {
     const payload = {
       amount: this.cardForm.value.amount,

@@ -4,7 +4,7 @@ import { PropertiesService } from './../../services/properties/properties.servic
 import { Component, OnInit } from '@angular/core';
 import { Property } from '../../models/Property';
 import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-properties',
@@ -30,11 +30,13 @@ export class PropertiesComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private toastrService: ToastrService,
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    private metaService: Meta
   ) { }
 
   ngOnInit(): void {
     this.setProperties(this.propertiesUrl);
+    this.setPageMetaData();
   }
 
   setDocTitle(title: string) {
@@ -85,5 +87,21 @@ export class PropertiesComponent implements OnInit {
     this.toggle = !this.toggle;
     this.listToggle = !this.listToggle;
     this.gridToggle = !this.gridToggle;
+  }
+
+  private setPageMetaData() {
+    this.titleService.setTitle('All Properties | Acquire your dream property with ease today');
+    this.metaService.addTags(
+      [
+        // Open Graph Data
+        { property: 'og:title', content: 'All Properties | Acquire your dream property with ease today' },
+        {
+          property: 'og:description',
+          content: 'Browse a wide range of the best property across Nigeria'
+        },
+        // Twitter
+        { name: 'twitter:title', content: 'All Properties | Acquire your dream property with ease today' },
+        { name: 'twitter:description', content: 'Browse a wide range of the best property across Nigeria' },
+      ]);
   }
 }

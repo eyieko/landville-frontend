@@ -42,10 +42,11 @@ export class PinPaymentComponent implements OnInit {
     private toastr: ToastrService,
     private location: Location,
     private titleService: Title
-    ) {this.titleService.setTitle('Card & Pin Deposit'); }
+    ) { }
 
   ngOnInit(): void {
     this.generateValidYears();
+    this.titleService.setTitle('Make Deposit | Card & Pin');
   }
 
   generateValidYears() {

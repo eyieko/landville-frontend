@@ -38,8 +38,7 @@ import { BrowserModule } from '@angular/platform-browser';
     NgxSpinnerModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    NgxSpinnerModule,
-    BrowserModule
+    NgxSpinnerModule
   ],
   declarations: [
     AppComponent,

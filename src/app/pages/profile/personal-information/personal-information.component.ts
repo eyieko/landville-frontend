@@ -7,6 +7,7 @@ import { removeSubscription } from 'src/app/helpers/unsubscribe';
 
 import { UserProfileUpdateErrorResponse } from 'src/app/models/Profile';
 import { ProfileService } from 'src/app/services/profile/profile.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-personal-information',
@@ -49,7 +50,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private profileService: ProfileService,
     private toasterService: ToastrService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private titleService:Title
   ) {
     this.profileForm = fb.group({
       firstName: this.firstName,
@@ -77,6 +79,9 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
       this.profileService.userProfile$.subscribe(
         response => {
           const { profile } = response.data;
+
+          this.titleService.setTitle(`${profile.user.first_name} ${profile.user.last_name}`);
+
           // we use `patchValue` because the response from the server might not have prefilled address information
           this.profileForm.patchValue({
             firstName: profile.user.first_name,
