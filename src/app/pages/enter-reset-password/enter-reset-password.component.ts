@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -25,19 +26,21 @@ export class EnterResetPasswordComponent implements OnInit {
     private changePasswordService: EnterResetPasswordService,
     private fb: FormBuilder,
     private toastrService: ToastrService,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.token = params.token;
     });
+    this.titleService.setTitle('Change Password');
 
     this.enterPasswordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     });
 
-    this.enterPasswordForm.valueChanges.subscribe( value => {
+    this.enterPasswordForm.valueChanges.subscribe(value => {
 
       if (value.newPassword === value.confirmPassword) {
         this.passwordError = false;
@@ -55,10 +58,10 @@ export class EnterResetPasswordComponent implements OnInit {
 
     this.changePasswordService.changePassword(this.token, this.password).subscribe(res => {
       const { data: { message } } = res;
-      this.toastrService.success(message,'', {timeOut: 3000});
+      this.toastrService.success(message, '', { timeOut: 3000 });
       this.success = true;
       this.loading = false;
-      
+
 
     }, err => {
       this.loading = false;
@@ -68,9 +71,9 @@ export class EnterResetPasswordComponent implements OnInit {
       } else {
         this.message = err.errors.token
       }
-      this.toastrService.error(this.message,'', {timeOut: 3000});
+      this.toastrService.error(this.message, '');
     });
-    
+
     this.disabled = true;
   }
 

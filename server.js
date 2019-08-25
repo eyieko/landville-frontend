@@ -8,7 +8,7 @@ const app = express();
 app.use(express.static(__dirname + '/dist/landville-frontend'));
 
 app.get('/*', function(req,res) {
-    
+
 res.sendFile(path.join(__dirname+'/dist/landville-frontend/index.html'));
 });
 

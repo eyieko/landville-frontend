@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import {CompanyService} from '../../services/company/company.service';
-import {Company} from '../../models';
-import {first} from 'rxjs/operators';
-import {ToastrService} from 'ngx-toastr';
+import { Meta, Title } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CompanyService } from '../../services/company/company.service';
+import { Company } from '../../models';
+import { first } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-company',
@@ -19,35 +20,37 @@ export class CompanyComponent implements OnInit {
   // Validation messages.
   validationMessages = {
     companyName: [
-      {type: 'required', message: 'Company Name required.'}
+      { type: 'required', message: 'Company Name required.' }
     ],
     phone: [
-      {type: 'required', message: 'Phone Number required.'},
-      {type: 'minlength', message: 'Phone Number must be at least 5 characters long.'},
+      { type: 'required', message: 'Phone Number required.' },
+      { type: 'minlength', message: 'Phone Number must be at least 5 characters long.' },
     ],
     email: [
-      {type: 'required', message: 'Email is required.'},
-      {type: 'email', message: 'Email is invalid.'},
+      { type: 'required', message: 'Email is required.' },
+      { type: 'email', message: 'Email is invalid.' },
     ],
     street: [
-      {type: 'required', message: 'Street is required.'},
-      {type: 'minlength', message: 'Street must be at least 2 characters long.'},
+      { type: 'required', message: 'Street is required.' },
+      { type: 'minlength', message: 'Street must be at least 2 characters long.' },
     ],
     state: [
-      {type: 'required', message: 'State is required.'},
-      {type: 'minlength', message: 'Street must be at least 2 characters long.'},
+      { type: 'required', message: 'State is required.' },
+      { type: 'minlength', message: 'Street must be at least 2 characters long.' },
     ],
     city: [
-      {type: 'required', message: 'City is required.'},
-      {type: 'minlength', message: 'Street must be at least 2 characters long.'},
+      { type: 'required', message: 'City is required.' },
+      { type: 'minlength', message: 'Street must be at least 2 characters long.' },
     ],
   };
   private payload: Company;
 
-  constructor(private fb: FormBuilder,
-              private router: Router,
-              private companyService: CompanyService,
-              private toastrService: ToastrService) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private companyService: CompanyService,
+    private toastrService: ToastrService,
+    private titleService: Title) {
   }
 
   // Convenience getter for easy access to form fields
@@ -58,6 +61,7 @@ export class CompanyComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.loadClientCompany();
+    this.titleService.setTitle('Create Partner Company');
   }
 
   createForm() {
@@ -86,7 +90,7 @@ export class CompanyComponent implements OnInit {
     });
   }
 
-  onSubmitCompanyDetails({value, invalid}) {
+  onSubmitCompanyDetails({ value, invalid }) {
     this.submitted = true;
 
     if (invalid) {
@@ -105,7 +109,7 @@ export class CompanyComponent implements OnInit {
     };
     this.companyService.createCompany(this.payload as Company)
       .pipe(first())
-      .subscribe(data => {
+      .subscribe(_ => {
         this.loading = false;
         this.toastrService.success('Company registered successfully.');
         this.router.navigate(['/']);

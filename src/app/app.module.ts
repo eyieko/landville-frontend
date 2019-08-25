@@ -22,6 +22,7 @@ import { TermsService } from './services/terms/terms.service';
 import {
   InternationalPaymentStatusComponent
 } from 'src/app/pages/payment/international-payment-status/international-payment-status.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -37,6 +38,8 @@ import {
     NgxSpinnerModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    NgxSpinnerModule,
+    BrowserModule
   ],
   declarations: [
     AppComponent,
