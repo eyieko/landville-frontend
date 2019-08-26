@@ -39,6 +39,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   clientState: string;
   clientCity: string;
   purchasePlan: string;
+  clientId: number
   subscribe: Subscription[] = [];
 
   constructor(
@@ -83,7 +84,8 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
           this.clientStreet = response.data.property.client.address.Street;
           this.clientCity = response.data.property.client.address.City;
           this.clientState = response.data.property.client.address.State;
-          this.purchasePlan = response.data.property.purchase_plan
+          this.purchasePlan = response.data.property.purchase_plan;
+          this.clientId = response.data.property.client.id;
           this.spinner.hide();
         }, error => {
           this.toastrService.error(JSON.stringify(error.errors));
