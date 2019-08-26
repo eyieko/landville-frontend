@@ -11,6 +11,7 @@ export class CardComponent implements OnInit {
   @Input() street: string;
   @Input() city: string;
   @Input() price: string;
+  @Input() slug: string;
 
   constructor() {}
 

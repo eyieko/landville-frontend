@@ -4,6 +4,7 @@ import { PropertiesService } from './../../services/properties/properties.servic
 import { Component, OnInit } from '@angular/core';
 import { Property } from '../../models/Property';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-properties',
@@ -28,13 +29,17 @@ export class PropertiesComponent implements OnInit {
     private propertiesServices: PropertiesService,
     private spinner: NgxSpinnerService,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) { }
 
   ngOnInit(): void {
     this.setProperties(this.propertiesUrl);
   }
 
+  setDocTitle(title: string) {
+    this.titleService.setTitle(title);
+  }
   setProperties(url: string) {
     this.spinner.show();
     this.propertiesServices.getProperties(url).subscribe(response => {

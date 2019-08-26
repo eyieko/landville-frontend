@@ -1,3 +1,7 @@
+import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -14,9 +18,9 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
 import { PropertiesComponent } from 'src/app/pages/properties/properties.component';
 import { CardComponent } from 'src/app/components/card/card.component';
 import { PaymentModule } from 'src/app/pages/payment/payment.module';
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
+
+import { PropertyDetailsComponent } from 'src/app/pages/property-details/property-details.component'
+import { PropertyDetailsModule } from "src/app/pages/property-details/property-details.module"
 
 @NgModule({
   imports: [
@@ -29,7 +33,8 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     ProfileModule,
     HttpClientModule,
-		PaymentModule
+		PaymentModule,
+    PropertyDetailsModule
   ],
   declarations: [
     HomeComponent,
@@ -37,9 +42,10 @@ import {HttpClientModule} from '@angular/common/http';
     CompanyComponent,
     PropertiesComponent,
     NoPropertiesComponent,
-    CardComponent
+    CardComponent,
+
   ],
-  providers: [ProfileService, LocalStorageService],
+  providers: [ProfileService, LocalStorageService, Title],
 })
 export class CommonLayoutModule {
 }
