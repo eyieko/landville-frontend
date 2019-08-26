@@ -1,3 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistersuccessComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private metaService: Meta,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title) { }
 
   ngOnInit() {
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+      this.metaService.addTags(data.tags);
+    });
   }
 
 }

@@ -7,12 +7,12 @@ import { removeSubscription } from 'src/app/helpers/unsubscribe';
 
 import { UserProfileUpdateErrorResponse } from 'src/app/models/Profile';
 import { ProfileService } from 'src/app/services/profile/profile.service';
-import {Title} from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-personal-information',
   templateUrl: './personal-information.component.html',
-  styleUrls: [ './personal-information.component.scss' ]
+  styleUrls: ['./personal-information.component.scss']
 })
 export class PersonalInformationComponent implements OnInit, OnDestroy {
   subscribe: Subscription[] = [];
@@ -37,7 +37,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
   street = new FormControl('', Validators.required);
   city = new FormControl('', Validators.required);
   state = new FormControl('', Validators.required);
-  phone = new FormControl('', [ Validators.required, Validators.minLength(14) ]);
+  phone = new FormControl('', [Validators.required, Validators.minLength(14)]);
   employer = new FormControl('');
   designation = new FormControl('');
   // tslint:disable-next-line: variable-name
@@ -51,7 +51,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
     private profileService: ProfileService,
     private toasterService: ToastrService,
     private spinner: NgxSpinnerService,
-    private titleService:Title
+    private titleService: Title
   ) {
     this.profileForm = fb.group({
       firstName: this.firstName,
@@ -154,10 +154,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
         error => {
           this.spinner.hide();
           this.formErrors = error.error;
-          for (const [ key, value ] of Object.entries(this.formErrors.errors)) {
+          for (const [key, value] of Object.entries(this.formErrors.errors)) {
             this.toasterService.error(
               `Could not update your profile.
-              ${ key }: ${ value }`
+              ${ key}: ${value}`
             );
           }
         }

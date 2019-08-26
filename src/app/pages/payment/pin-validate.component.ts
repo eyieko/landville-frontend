@@ -25,17 +25,21 @@ export class PinValidateComponent implements OnInit {
     private toastr: ToastrService,
     private spinner: NgxSpinnerService,
     private location: Location,
-    private titleService: Title
-    ) { this.titleService.setTitle('Pin Validate'); }
+    private titleService: Title,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+    });
     this.flwRef = this.route.snapshot.paramMap.get('flwRef');
     this.purpose = this.route.snapshot.paramMap.get('purpose');
   }
 
   onBack(): void {
     this.location.back();
-    }
+  }
 
   onSubmit(): void {
     const payload = {

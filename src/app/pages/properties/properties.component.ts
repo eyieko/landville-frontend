@@ -3,8 +3,14 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { PropertiesService } from './../../services/properties/properties.service';
 import { Component, OnInit } from '@angular/core';
 import { Property } from '../../models/Property';
-import { Router } from '@angular/router';
+<<<<<<< HEAD
+import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
+=======
+import { Router, ActivatedRoute } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment.prod';
+>>>>>>> Set Page Title to existing Pages
 
 @Component({
   selector: 'app-properties',
@@ -13,8 +19,12 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class PropertiesComponent implements OnInit {
   properties: Property[] = [];
+<<<<<<< HEAD
   propertiesUrl =
     'https://landville-backend-web-api.herokuapp.com/api/v1/properties';
+=======
+  propertiesUrl = `${environment.api_url}/properties`;
+>>>>>>> Set Page Title to existing Pages
   next = '';
   previous = '';
   toggle = true;
@@ -31,12 +41,16 @@ export class PropertiesComponent implements OnInit {
     private toastrService: ToastrService,
     private router: Router,
     private titleService: Title,
-    private metaService: Meta
+    private metaService: Meta,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+      this.metaService.addTags(data.tags, true);
+    });
     this.setProperties(this.propertiesUrl);
-    this.setPageMetaData();
   }
 
   setDocTitle(title: string) {
@@ -50,7 +64,7 @@ export class PropertiesComponent implements OnInit {
       if (this.results.length === 0) {
         this.router.navigate(['no-properties']);
         this.toastrService.success(
-          'Sorry, No properties available now. Kindly Come back later'
+          'Sorry, No properties available now. Kindly check back later'
         );
       } else {
         this.properties = this.results;
@@ -87,21 +101,5 @@ export class PropertiesComponent implements OnInit {
     this.toggle = !this.toggle;
     this.listToggle = !this.listToggle;
     this.gridToggle = !this.gridToggle;
-  }
-
-  private setPageMetaData() {
-    this.titleService.setTitle('All Properties | Acquire your dream property with ease today');
-    this.metaService.addTags(
-      [
-        // Open Graph Data
-        { property: 'og:title', content: 'All Properties | Acquire your dream property with ease today' },
-        {
-          property: 'og:description',
-          content: 'Browse a wide range of the best property across Nigeria'
-        },
-        // Twitter
-        { name: 'twitter:title', content: 'All Properties | Acquire your dream property with ease today' },
-        { name: 'twitter:description', content: 'Browse a wide range of the best property across Nigeria' },
-      ]);
   }
 }

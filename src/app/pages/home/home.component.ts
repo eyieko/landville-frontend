@@ -4,6 +4,7 @@ import { PropertiesService } from 'src/app/services/properties/properties.servic
 import { Property } from 'src/app/models/Property';
 import { environment } from 'src/environments/environment';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private propertiesService: PropertiesService,
     private toastService: ToastrService,
-    private titleService: Title, private metaService: Meta
+    private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -36,26 +37,12 @@ export class HomeComponent implements OnInit, OnDestroy {
             'Something went wrong, we could not load the trending properties'
           );
 
-          this.titleService.setTitle('Home | Make that Property yours Today');
-          this.metaService.addTags([
-            // Open Graph Data
-            { property: 'og:title', content: 'Home | Make that Property yours Today' },
-            {
-              property: 'og:description',
-              content: 'We help you invest your money in real estate with the best and the safest technology means'
-            },
-            { property: 'og:image', content: '../../../assets/img/ICON/Logo.png' },
-            // Twitter
-            { name: 'twitter:card', content: 'LandVille' },
-            { name: 'twitter:title', content: 'Home | Make that Property yours Today' },
-            {
-              name: 'twitter:description',
-              content: 'We help you invest your money in real estate with the best and the safest technology means'
-            },
-            { name: 'twitter:image', content: '../../../assets/img/ICON/Logo.png' }
-          ]);
-        });
+          this.activatedRoute.data.subscribe(data => {
+            this.titleService.setTitle(data.title);
+            this.metaService.addTags(data.tags, true);
+          });
 
+        });
   }
 
   ngOnDestroy() {

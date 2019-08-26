@@ -40,11 +40,13 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'reset-link',
+    path: 'reset-link', data: { title: 'Reset your Password', tags: [] },
     component: PasswordResetComponent
   },
   {
-    path: 'auth/password-reset',
+    path: 'auth/password-reset', data: {
+      title: 'Choose a new password', tags: []
+    },
     component: EnterResetPasswordComponent
   },
   { path: 'payment/international/status', component: InternationalPaymentStatusComponent},

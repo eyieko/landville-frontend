@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {RegisterServiceService} from '../../services/register/register-service.service';
-import {User} from '../../models/register/user';
-import {ToastrService} from 'ngx-toastr';
-import {NgxSpinnerService} from 'ngx-spinner';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Meta, Title} from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { RegisterServiceService } from '../../services/register/register-service.service';
+import { User } from '../../models/register/user';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-registration',
@@ -16,20 +16,24 @@ export class RegistrationComponent implements OnInit {
   returnUrl: string;
 
 
-  constructor(private registerServiceService: RegisterServiceService,
-              private toastrService: ToastrService,
-              private spinner: NgxSpinnerService,
-              private router: Router,
-              private route: ActivatedRoute,
-              private titleService: Title,
-              private metaService: Meta
+  constructor(
+    private registerServiceService: RegisterServiceService,
+    private toastrService: ToastrService,
+    private spinner: NgxSpinnerService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private titleService: Title,
+    private metaService: Meta,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
-    // get return url from route parameters  or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
-    this.setPageMetaData();
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+      this.metaService.addTags(data.tags);
+    });
+
   }
 
   registerUser(register: User) {
@@ -48,17 +52,4 @@ export class RegistrationComponent implements OnInit {
 
   }
 
-  private setPageMetaData() {
-    this.titleService.setTitle('Register | Create a free account today!');
-    this.metaService.addTags(
-      [
-        // Open Graph Data
-        { property: 'og:title' , content: 'Register | Create a free account today!'  },
-        {property: 'og:description',
-          content: 'Create an access so you can can get access to a wide range of property investment options'},
-        // Twitter
-        {name: 'twitter:title', content: 'Register | Create a free account today!'},
-        {name: 'twitter:description', content: 'Create an access so you can can get access to a wide range of property investment options'},
-      ]);
-  }
 }

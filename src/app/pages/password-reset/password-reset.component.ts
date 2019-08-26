@@ -1,8 +1,9 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { PasswordResetService } from 'src/app/services/password/password-reset.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import {Title} from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-password-reset',
@@ -19,35 +20,37 @@ export class PasswordResetComponent implements OnInit {
   constructor(
     private resetService: PasswordResetService,
     private fb: FormBuilder,
-    private titleService:Title,
+    private titleService: Title,
     private toastrService: ToastrService,
-    ) {}
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.resetForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });
-    this.resetForm.valueChanges.subscribe( value => {
+    this.resetForm.valueChanges.subscribe(value => {
       this.disabled = this.resetForm.invalid;
     });
-
-    this.titleService.setTitle('Recover your Account');
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+    });
   }
 
   onSubmit() {
-    this.loading  = true;
+    this.loading = true;
     this.email = this.resetForm.get('email').value;
 
     this.resetService.getResetLink(this.email).subscribe(res => {
-      this.loading  = false;
+      this.loading = false;
       this.success = true;
       this.toastrService.success(res.data.message, '');
 
     }, err => {
-      this.loading  = false;
+      this.loading = false;
       this.success = false;
       if (err.errors) {
-        this.toastrService.error(err.errors.email, '' );
+        this.toastrService.error(err.errors.email, '');
       }
     }
     );

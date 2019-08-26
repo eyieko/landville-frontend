@@ -1,7 +1,7 @@
 import { Meta, Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../../services/company/company.service';
 import { Company } from '../../models';
 import { first } from 'rxjs/operators';
@@ -50,7 +50,9 @@ export class CompanyComponent implements OnInit {
     private router: Router,
     private companyService: CompanyService,
     private toastrService: ToastrService,
-    private titleService: Title) {
+    private titleService: Title,
+    private metaService: Meta,
+    private activatedRoute: ActivatedRoute) {
   }
 
   // Convenience getter for easy access to form fields
@@ -61,7 +63,12 @@ export class CompanyComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.loadClientCompany();
-    this.titleService.setTitle('Create Partner Company');
+
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+      this.metaService.addTags(data.tags);
+    });
+
   }
 
   createForm() {

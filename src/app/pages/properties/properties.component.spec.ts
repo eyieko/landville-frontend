@@ -1,4 +1,5 @@
-import { AuthLayoutModule } from 'src/app/layouts/auth-layout/auth-layout.module';
+import { environment } from './../../../environments/environment.prod';
+import { AuthLayoutModule } from './../../layouts/auth-layout/auth-layout.module';
 import { CardComponent } from './../../components/card/card.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PropertiesService } from './../../services/properties/properties.service';
@@ -16,8 +17,7 @@ describe('PropertiesComponent', () => {
   let component: PropertiesComponent;
   let fixture: ComponentFixture<PropertiesComponent>;
   let debugElement: DebugElement;
-  const url =
-    'https://landville-backend-web-api.herokuapp.com/api/v1/properties/';
+  const url = `${environment.api_url}/properties`;
 
   const Mockresponse = {
     data: {

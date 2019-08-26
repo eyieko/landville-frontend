@@ -16,7 +16,7 @@ export class EnterResetPasswordComponent implements OnInit {
   token: string;
   password: string;
   passwordError: boolean;
-  disabled: boolean = true;
+  disabled = true;
   success: boolean;
   loading: boolean;
   message: string;
@@ -26,14 +26,18 @@ export class EnterResetPasswordComponent implements OnInit {
     private changePasswordService: EnterResetPasswordService,
     private fb: FormBuilder,
     private toastrService: ToastrService,
-    private titleService: Title
+    private titleService: Title,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.token = params.token;
+      this.activatedRoute.data.subscribe(data => {
+        this.titleService.setTitle(data.title);
+      });
+
     });
-    this.titleService.setTitle('Change Password');
 
     this.enterPasswordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
