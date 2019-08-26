@@ -5,5 +5,5 @@ import { RegistrationComponent } from '../../pages/registration/registration.com
 
 export const AuthLayoutRoutes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'LandVille | Make it yours Today' } },
-  { path: 'register', component: RegistrationComponent },
+  { path: 'register', component: RegistrationComponent, data: { title: 'Register | Create a free account today!' } },
 ];

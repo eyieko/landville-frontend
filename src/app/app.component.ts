@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setPageMetaData();
+    // this.setPageMetaData();
   }
   setPageMetaData() {
     this.metaService.addTags([
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'LandVille' },
 
-      //Twitter
+      // Twitter
       { name: 'twitter:card', content: 'LandVille' },
       { name: 'twitter:image', content: '../../../assets/img/ICON/Logo.png' }
     ]);

@@ -26,7 +26,7 @@ const routes: Routes = [
           './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
       }
     ],
-    canActivate: [NoAuthGuard]
+    canActivate: []
   },
   {
     path: '',

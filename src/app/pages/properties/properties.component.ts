@@ -15,15 +15,15 @@ export class PropertiesComponent implements OnInit {
   properties: Property[] = [];
   propertiesUrl =
     'https://landville-backend-web-api.herokuapp.com/api/v1/properties';
-  next: string = '';
-  previous: string = '';
-  toggle: boolean = true;
+  next = '';
+  previous = '';
+  toggle = true;
   results: any[] = [];
-  disabledNext: boolean = false;
-  disabledPrevious: boolean = false;
-  listToggle: boolean = false;
-  gridToggle: boolean = true;
-  count: number = 0;
+  disabledNext = false;
+  disabledPrevious = false;
+  listToggle = false;
+  gridToggle = true;
+  count = 0;
 
   constructor(
     private propertiesServices: PropertiesService,
