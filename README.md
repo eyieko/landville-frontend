@@ -1,4 +1,4 @@
-# Landville Frontend [![CircleCI](https://circleci.com/gh/landvilleng/landville-frontend.svg?style=svg)](https://circleci.com/gh/landvilleng/landville-frontend) [![Coverage Status](https://coveralls.io/repos/github/landvilleng/landville-frontend/badge.svg)](https://coveralls.io/github/landvilleng/landville-frontend)
+# LandvilleFrontend [![CircleCI](https://circleci.com/gh/landvilleng/landville-frontend.svg?style=svg)](https://circleci.com/gh/landvilleng/landville-frontend) [![Coverage Status](https://coveralls.io/repos/github/landvilleng/landville-frontend/badge.svg)](https://coveralls.io/github/landvilleng/landville-frontend)  <a href="https://codeclimate.com/github/landvilleng/landville-frontend/maintainability"><img src="https://api.codeclimate.com/v1/badges/63814c9811ef8dde1aeb/maintainability" /></a>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
@@ -35,7 +35,6 @@ Run `install:clean` to execute a clean installation and starting the the applica
 At present, we officially aim to support the last two versions of the following browsers::
 
 <img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/chrome-logo.png?raw=true" width="64" height="64"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/firefox-logo.png" width="64" height="64"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/edge-logo.png" width="64" height="64"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/safari-logo.png" width="64" height="64"> <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/opera-logo.png" width="64" height="64">
-
 
 ## Further help
 
