@@ -10,12 +10,12 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: ActivatedRoute) {
   }
-  
+
   ngOnInit() {
 
     this.router.data.subscribe(data => {
       document.title = data['title']
-    })
+    });
   }
 
 }

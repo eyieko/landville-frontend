@@ -15,7 +15,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   firstName: string;
   lastName: string;
   profileImage: string;
-
   subscription = new Subscription();
 
 

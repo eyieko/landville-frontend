@@ -4,7 +4,6 @@ import { LoginFormComponent } from 'src/app/pages/login/login-form/login-form.co
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
 import { LoginService } from 'src/app/services/login/login.service';
 import { AppModule } from 'src/app/app.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -22,7 +21,7 @@ describe('LoginService', () => {
       NgxSpinnerModule
     ],
     declarations: [LoginFormComponent],
-    providers: [ LoginService, {provide: ToastrService, useValue: toastServiceSpy} ]
+    providers: [LoginService, { provide: ToastrService, useValue: toastServiceSpy }]
   }));
 
   function setup() {
@@ -31,14 +30,14 @@ describe('LoginService', () => {
     return { fixture, userService };
   }
   it('it should be initialized', inject([LoginService], (loginService: LoginService) => {
-       expect(loginService).toBeTruthy()
+    expect(loginService).toBeTruthy()
   }));
 
   it('should use the service', () => {
-    const { fixture, userService } = setup();
+    const { userService } = setup();
     const mockUser = { name: 'Serem' };
     spyOn(userService, 'login').and.returnValue(
-      Observable.create((observer: Observer<{ name: string}>) => {
+      Observable.create((observer: Observer<{ name: string }>) => {
         observer.next(mockUser);
         return observer;
       })
@@ -57,12 +56,12 @@ describe('LoginService', () => {
         (loginService: LoginService, backend: HttpTestingController) => {
 
           // Set up
-          const url =APPCONFIG.base_url + loginService.loginUrl;
+          const url = APPCONFIG.base_url + loginService.loginUrl;
           const responseObject = {
             success: true,
             message: 'login was successful'
           };
-          const user = {email:'test@example.com', password:'testpassword'}
+          const user = { email: 'test@example.com', password: 'testpassword' }
           let response = null;
           // End Setup
 
@@ -70,16 +69,16 @@ describe('LoginService', () => {
             (receivedResponse: any) => {
               response = receivedResponse;
             },
-            (error: any) => {}
+            (error: any) => { }
           );
 
-          const requestWrapper = backend.expectOne({url: url});
+          const requestWrapper = backend.expectOne({ url: url });
           requestWrapper.flush(responseObject);
 
           tick();
 
           expect(requestWrapper.request.method).toEqual('POST');
-        
+
         }
       )
     )

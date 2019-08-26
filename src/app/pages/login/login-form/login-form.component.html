@@ -1,18 +1,18 @@
 <div class='login-form'>
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
-      <div class="input" [ngStyle]="{'border': inputError ? '1px solid #f00': 'none'}">
-        <img src="../../../assets/img/ICON/Email.png"/>
-        <input class="email" formControlName="email"  type='email' email="email" placeholder="email@domain.com"/>
-      </div>
-      <div class="input" [ngStyle]="{'border': inputError ? '1px solid #f00': 'none'}">
-        <img src="../../../assets/img/ICON/Login.png"/>
-        <input class="password" formControlName="password"  type="password" password="password" placeholder="password"/>
-      </div>
-      <p class="notification">{{ notification }}</p>
-      <div>
-        <button class='launch' type='Submit'>Sign in</button>
-        <a routerLink='/reset-link'>Forgot Password?</a>
-      </div>
-      <ngx-spinner></ngx-spinner>
-    </form>
-  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+    <div class="input" [ngStyle]="{'border': inputError ? '1px solid #f00': 'none'}">
+      <img src="assets/img/ICON/Email.png" />
+      <input class="email" formControlName="email" type='email' email="email" placeholder="email@domain.com" />
+    </div>
+    <div class="input" [ngStyle]="{'border': inputError ? '1px solid #f00': 'none'}">
+      <img src="assets/img/ICON/Login.png" />
+      <input class="password" formControlName="password" type="password" password="password" placeholder="password" />
+    </div>
+    <p class="notification">{{ notification }}</p>
+    <div>
+      <button class='launch' type='Submit'>Sign in</button>
+      <a routerLink='/reset-link'>Forgot Password?</a>
+    </div>
+    <ngx-spinner></ngx-spinner>
+  </form>
+</div>
