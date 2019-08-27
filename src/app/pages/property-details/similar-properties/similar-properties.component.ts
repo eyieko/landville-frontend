@@ -26,7 +26,7 @@ export class SimilarPropertiesComponent implements OnInit, OnChanges {
 
   filterOptions: any = [
     {text: 'In the same location', value: 'state'},
-    {text: 'With the same price', value: 'price'},
+    {text: 'In a similar price range', value: 'price'},
     {text: 'With the same number of bedrooms', value: 'bedrooms'},
     {text: 'With the same number of bathrooms', value: 'bathrooms'},
   ];
