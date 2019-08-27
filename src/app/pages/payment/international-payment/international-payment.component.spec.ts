@@ -7,10 +7,8 @@ import { of, throwError } from 'rxjs';
 import { Location } from '@angular/common';
 
 import {
-  internationalPaymentServiceSpy,
   routerSpy,
   toastServiceSpy,
-  locationSpy
 } from 'src/app/helpers/spies';
 import { By } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
@@ -21,6 +19,8 @@ import { PaymentService } from 'src/app/services/payment/payment-service';
 describe('InternationalPaymentComponent', () => {
   let component: InternationalPaymentComponent;
   let fixture: ComponentFixture<InternationalPaymentComponent>;
+  const locationSpy = jasmine.createSpyObj(['back']);
+  const internationalPaymentServiceSpy = jasmine.createSpyObj(['createInternationalPayment']);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

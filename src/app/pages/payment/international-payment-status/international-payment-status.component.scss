@@ -1,15 +1,18 @@
-.text-failure {
-  color: #800000;
-}
-.text-success {
-  color: #006600;
-}
-.card {
-  min-width: 220px;
-  width: 50%;
-  max-height: 360px;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: centre;
+.container{
+  background: inherit;
+  .card {
+    min-width: 220px;
+    width: 50%;
+    max-height: 360px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: centre;
+    .text-failure {
+      color: #800000;
+    }
+    .text-success {
+      color: #006600;
+    }
+  }  
 }

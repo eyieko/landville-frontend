@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck, ViewChild, ElementRef, } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import {
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
 import { removeSubscription } from 'src/app/helpers/unsubscribe';
 import { PaymentService } from 'src/app/services/payment/payment-service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { PaymentService } from 'src/app/services/payment/payment-service';
   templateUrl: './international-payment.component.html',
   styleUrls: ['./international-payment.component.scss']
 })
-export class InternationalPaymentComponent implements OnInit, OnDestroy {
+export class InternationalPaymentComponent implements OnInit, OnDestroy, DoCheck {
   loading: boolean;
   payload: any;
   form: FormGroup;
@@ -33,6 +34,9 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
   propertyId: any;
 
   expectedYears: any;
+  @ViewChild('confirmPayment', { static: false }) confirmPayment: ElementRef;
+  @ViewChild('transactionStatus', { static: false }) status: ElementRef;
+  @ViewChild('transactionMessage', { static: false }) message: ElementRef;
 
   constructor(
     private internationalPaymentService: PaymentService,
@@ -40,7 +44,8 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
     private location: Location,
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router,
 
   ) { }
 
@@ -131,7 +136,6 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
             this.toastrService.success('Your transaction has been initiated. '
               + 'Please ensure to enter the OTP sent to your phone');
             this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(data.message + '&output=embed');
-
             this.shouldHide = false;
           },
           error => {
@@ -149,4 +153,16 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
     );
 
   }
+
+  ngDoCheck() {
+
+    this.currentUrl = this.confirmPayment ? this.sanitizer
+    .bypassSecurityTrustResourceUrl(this.confirmPayment.nativeElement.contentWindow.location.href) : null;
+    if (this.currentUrl !== null) {
+
+      this.currentUrl.toString().includes('landville-frontend') ?
+        this.router.navigate(['/home']) : null;
+    }
+  }
+
 }

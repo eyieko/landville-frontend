@@ -3,51 +3,48 @@
   background-image: url('src/assets/img/HouseBG.jpg');
   padding-top:20px;
   padding-bottom:20px;
-}
-.payment-form {
-  background:white;
-  width: 65%;
-  min-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  box-shadow: 0 0 5px black;
-  > .container {
-    margin-bottom: 1em;
+  .payment-form {
+    background:white;
+    width: 65%;
+    min-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    box-shadow: 0 0 5px black;
+    .heading {
+      background: #ffa500;
+      font-size: 2em;
+      text-align: center;
+    }
+    > .container {
+      margin-bottom: 1em;
+      .btn {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        background-color: #171039;
+        color: white;
+        border-radius: 40rem;
+      }
+      .btn-primary {
+        float: right;
+        background: #ffa500;
+      }
+      .btn-secondary {
+        background: #171039;
+      }
+    }
   }
 }
-.heading {
-  background: #ffa500;
-  font-size: 2em;
-  text-align: center;
-}
-.left {
-  float: left;
-  margin-right: 10%;
-}
-.right {
-  float: left;
-  margin-left: 10%;
-}
-.right,
-.left {
-  width: 40%;
-}
-.btn {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-.btn-primary {
-  float: right;
-  background: #ffa500;
-}
-.btn-secondary {
-  background: #171039;
-}
+
+
+
+
+
 .status {
   width: 100%;
   height: 400px;
   min-width: 280px;
   text-align: center;
   border: none;
+  background: white;
 }
