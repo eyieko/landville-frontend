@@ -18,46 +18,44 @@ describe('PinValidateComponent', () => {
   const mockPaymentService = jasmine.createSpyObj(['initiatePinPay', 'validatePinPay']);
   const mockLocation = jasmine.createSpyObj(['back']);
   const mockTitleSvc = jasmine.createSpyObj(['setTitle']);
+  const mockActivatedRoute = jasmine.createSpyObj(of({ data: { title: '' } }));
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PinValidateComponent ],
-      imports: [ HttpClientTestingModule, RouterTestingModule, BrowserAnimationsModule,
+      declarations: [PinValidateComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule, BrowserAnimationsModule,
         ToastrModule.forRoot(), NgxSpinnerModule, ReactiveFormsModule, FormsModule],
 
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PinValidateComponent );
+    fixture = TestBed.createComponent(PinValidateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    component = new PinValidateComponent(mockRoute, mockRouter,
+      mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc, mockActivatedRoute);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
   it('should call validatePinPay method without error', () => {
-    component = new PinValidateComponent(mockRoute, mockRouter,
-      mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc);
     mockPaymentService.validatePinPay.and.returnValue(of(true));
     component.onSubmit();
     expect(mockPaymentService.validatePinPay).toHaveBeenCalled();
   }
   );
   it('should call the navigate method', () => {
-    component = new PinValidateComponent(mockRoute, mockRouter,
-      mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc);
     mockRouter.navigate.and.returnValue(of(true));
     component.onBack();
     expect(mockRouter.navigate).toHaveBeenCalled();
   }
   );
   it('should toast error if PaymentService returns error.', () => {
-    component = new PinValidateComponent(mockRoute, mockRouter,
-      mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc);
-    mockPaymentService.validatePinPay.and.returnValue(throwError({status: 404, error: {message: 'somemessage'}}));
+    mockPaymentService.validatePinPay.and.returnValue(throwError({ status: 404, error: { message: 'somemessage' } }));
     component.onSubmit();
     expect(mockPaymentService.validatePinPay).toHaveBeenCalled();
   });
