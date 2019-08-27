@@ -14,17 +14,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.setPageMetaData();
   }
   setPageMetaData() {
     this.metaService.addTags([
       // Open Graph
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'LandVille' },
-
-      // Twitter
-      { name: 'twitter:card', content: 'LandVille' },
-      { name: 'twitter:image', content: '../../../assets/img/ICON/Logo.png' }
     ]);
   }
 

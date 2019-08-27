@@ -13,7 +13,7 @@ import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
 export const CommonLayoutRoutes: Routes = [
   {
     path: 'home', component: HomeComponent, data: {
-      title: 'Home | Find your dream Property today', tags:
+      title: 'Find your dream Property today', tags:
         [
           // Open Graph Data
           { property: 'og:title', content: 'LandVille | Find your dream Property today' },
@@ -21,13 +21,16 @@ export const CommonLayoutRoutes: Routes = [
             property: 'og:description',
             content: 'Make that property yours today'
           },
-
           // Twitter
+
+          { name: 'twitter:card', content: 'summary' },
+          { name: 'twitter:image', content: '../../../assets/img/ICON/Logo.png' },
           { name: 'twitter:title', content: 'LandVille | Find your dream Property today' },
           {
             name: 'twitter:description', content:
               'Make that property yours today'
           },
+
 
         ]
     }

@@ -26,7 +26,7 @@ const routes: Routes = [
           './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
       }
     ],
-    canActivate: []
+    canActivate: [NoAuthGuard]
   },
   {
     path: '',
@@ -41,18 +41,18 @@ const routes: Routes = [
   },
   {
     path: 'reset-link', data: { title: 'Reset your Password', tags: [] },
-    component: PasswordResetComponent
+    component: PasswordResetComponent, canActivate: [NoAuthGuard]
   },
   {
     path: 'auth/password-reset', data: {
       title: 'Choose a new password', tags: []
     },
-    component: EnterResetPasswordComponent
+    component: EnterResetPasswordComponent, canActivate: [NoAuthGuard]
   },
   { path: 'payment/international/status', component: InternationalPaymentStatusComponent},
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: ''
   }
 ];
 @NgModule({

@@ -3,14 +3,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { PropertiesService } from './../../services/properties/properties.service';
 import { Component, OnInit } from '@angular/core';
 import { Property } from '../../models/Property';
-<<<<<<< HEAD
-import { Router, ActivatedRoute } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
-=======
 import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment.prod';
->>>>>>> Set Page Title to existing Pages
 
 @Component({
   selector: 'app-properties',
@@ -19,12 +14,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class PropertiesComponent implements OnInit {
   properties: Property[] = [];
-<<<<<<< HEAD
-  propertiesUrl =
-    'https://landville-backend-web-api.herokuapp.com/api/v1/properties';
-=======
   propertiesUrl = `${environment.api_url}/properties`;
->>>>>>> Set Page Title to existing Pages
   next = '';
   previous = '';
   toggle = true;

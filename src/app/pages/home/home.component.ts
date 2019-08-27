@@ -26,6 +26,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+      this.metaService.addTags(data.tags, true);
+    });
+
+
     this.subscription = this.propertiesService
       .getProperties(this.trendingPropertiesUrl)
       .subscribe(
@@ -34,13 +40,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         },
         _ => {
           this.toastService.error(
-            'Something went wrong, we could not load the trending properties'
+            'Something went wrong, we could not load the trending properties', ''
           );
-
-          this.activatedRoute.data.subscribe(data => {
-            this.titleService.setTitle(data.title);
-            this.metaService.addTags(data.tags, true);
-          });
 
         });
   }

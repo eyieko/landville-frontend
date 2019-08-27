@@ -1,15 +1,18 @@
-import { Injectable } from '@angular/core';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class AuthService {
-	constructor() { }
+	constructor(private localStorage: LocalStorageService) { }
 
 	isLoggedIn(): boolean {
 		const helper = new JwtHelperService();
-		const token = localStorage.getItem('token');
+		const token = this.localStorage.get('token', '');
 		let decodedToken = null;
 		try {
 			decodedToken = helper.decodeToken(token);
@@ -18,4 +21,8 @@ export class AuthService {
 		}
 		return decodedToken && !helper.isTokenExpired(token);
 	}
+
+
+
+
 }
