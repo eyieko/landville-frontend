@@ -20,4 +20,7 @@ export class CompanyService {
   getCompanyDetails() {
     return this.http.get<Company>(`${environment.api_url}/auth/client/`);
   }
+  fetchClientCompanies(){
+    return this.http.get<Company>(`localhost:8000/auth/clients/`);
+  }
 }

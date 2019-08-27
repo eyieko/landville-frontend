@@ -38,7 +38,8 @@ import { BrowserModule } from '@angular/platform-browser';
     HttpClientModule,
     NgxSpinnerModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxSpinnerModule
   ],
   declarations: [
     AppComponent,
@@ -49,9 +50,12 @@ import { BrowserModule } from '@angular/platform-browser';
     InternationalPaymentStatusComponent,
   ],
   providers: [
-    LocalStorageService, AuthGuard, NoAuthGuard, TermsService,
+    LocalStorageService,
+    AuthGuard,
+    NoAuthGuard,
+    TermsService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
