@@ -42,11 +42,36 @@
           >Services</a
         >
       </li>
-      <li class="nav-item"><a class="nav-link waves-effect waves-light" routerLink="/clients"
-        routerLinkActive="active">Clients</a>
-    </li>
-      <li class="nav-item"><a class="nav-link waves-effect waves-light" routerLink="/"
-          routerLinkActive="active">Contact</a>
+
+      <li *ngIf="authenticated" class="nav-item avatar dropdown">
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="nav-link dropdown-toggle waves-effect waves-light"
+          data-toggle="dropdown"
+          id="navbarDropdownMenuLink-6"
+        >
+          <span>Properties</span>
+          <b class="caret"></b>
+        </a>
+        <div
+          aria-labelledby="navbarDropdownMenuLink-6"
+          class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+        >
+          <a
+            class="dropdown-item waves-effect waves-light eborder-top"
+            routerLink="/properties"
+            routerLinkActive="active"
+          >
+            <i class="fas fa-city"></i>
+            Properties</a
+          >
+          <a
+            class="dropdown-item waves-effect waves-light"
+            routerLink="/clients"
+            ><i class="fas fa-user-friends"></i> Clients</a
+          >
+        </div>
       </li>
       <li class="nav-item">
         <a
@@ -74,20 +99,38 @@
           >Log in
         </a>
       </li>
-			<li *ngIf="authenticated" class="nav-item avatar dropdown">
-				<a aria-expanded="false" aria-haspopup="true"
-					class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown"
-					id="navbarDropdownMenuLink-6">
-						<span class="username">Make Payment</span>
-						<b class="caret"></b>
-				</a>
-				<div aria-labelledby="navbarDropdownMenuLink-6"
-						class="dropdown-menu dropdown-menu-lg-right dropdown-secondary">
-						<a class="dropdown-item waves-effect waves-light eborder-top" routerLink="/payment/pin" routerLinkActive="active"> Card & PIN</a>
-						<a class="dropdown-item waves-effect waves-light" routerLink="/payment/international">International Card</a>
-						<a class="dropdown-item waves-effect waves-light" routerLink="/payment/saved-card">Saved Card</a>
-				</div>
-			</li>
+      <li *ngIf="authenticated" class="nav-item avatar dropdown">
+        <a
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="nav-link dropdown-toggle waves-effect waves-light"
+          data-toggle="dropdown"
+          id="navbarDropdownMenuLink-6"
+        >
+          <span class="username">Make Payment</span>
+          <b class="caret"></b>
+        </a>
+        <div
+          aria-labelledby="navbarDropdownMenuLink-6"
+          class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+        >
+          <a
+            class="dropdown-item waves-effect waves-light eborder-top"
+            routerLink="/payment/pin"
+            routerLinkActive="active"
+          >
+            <i class="fas fa-credit-card"></i>Card & PIN</a
+          >
+          <a class="dropdown-item waves-effect waves-light" routerLink=""
+            ><i class="far fa-credit-card"></i>International Card</a
+          >
+          <a
+            class="dropdown-item waves-effect waves-light"
+            routerLink="/payment/saved-card"
+            ><i class="fas fa-id-card"></i>Saved Card</a
+          >
+        </div>
+      </li>
 
         <li *ngIf="authenticated" class="nav-item avatar dropdown">
           <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle waves-effect waves-light"

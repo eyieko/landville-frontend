@@ -1,1 +1,50 @@
-<p>clients works!</p>
+<div>
+<div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+      <div class="col-md-6" *ngFor="let client of clients">
+        <div class="card listview">
+          <div class="row no-gutters">
+            <div class="col">
+              <div class="card-block px-2">
+                <h4>
+                  <b class="card-title"> {{ client.client_name }}</b>
+                </h4>
+
+                <ul class="list-unstyled fa-ul">
+                  <li>
+                    <i class="fa fa-street-view"></i>
+                    <span
+                      >{{ client.address.Street }}, {{ client.address.City }},
+                      {{ client.address.State }}
+                    </span>
+                  </li>
+                  <li>
+                    <i class="fa fa-phone"></i>
+                    <span>{{ client.phone }}</span>
+                  </li>
+                  <li>
+                    <i class="fa fa-envelope"></i
+                    ><span>{{ client.email }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <img
+        alt="Card image"
+        class="card-img"
+        src="assets/img/designs/Design-min.jpg"
+      />
+    </div>
+  </div>
+</div>
+<ngx-spinner></ngx-spinner>
+
+</div>
