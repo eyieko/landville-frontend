@@ -19,7 +19,9 @@ import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { TermsService } from './services/terms/terms.service';
-import { InternationalPaymentStatusComponent } from './pages/payment/international-payment-status/international-payment-status.component';
+import {
+  InternationalPaymentStatusComponent
+} from 'src/app/pages/payment/international-payment-status/international-payment-status.component';
 
 
 @NgModule({
@@ -43,7 +45,6 @@ import { InternationalPaymentStatusComponent } from './pages/payment/internation
     PasswordResetComponent,
     EnterResetPasswordComponent,
     InternationalPaymentStatusComponent
-
   ],
   providers: [
     LocalStorageService, AuthGuard, NoAuthGuard, TermsService,

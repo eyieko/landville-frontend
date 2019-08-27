@@ -18,33 +18,51 @@
     }
     > .container {
       margin-bottom: 1em;
-      .btn {
-        margin-top: 1em;
-        margin-bottom: 1em;
-        background-color: #171039;
-        color: white;
-        border-radius: 40rem;
-      }
-      .btn-primary {
-        float: right;
-        background: #ffa500;
-      }
-      .btn-secondary {
-        background: #171039;
-      }
+      padding-top: 15px;
     }
   }
 }
-
-
-
-
-
+.btn {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: #171039;
+  color: white;
+  border-radius: 40rem;
+}
+.btn-primary {
+  float: right;
+  background: #ffa500;
+  color: white;
+}
+.btn-secondary {
+  background: #171039;
+}
+.form-control{
+  margin-bottom: 10px;
+}
+.buttons{
+  width: 100%;
+  background: white;
+  margin-top: -1em;
+  border: none;
+}
+a{
+  color:white;
+}
+.form-check-input {   
+  overflow: auto;	  
+  margin:9px 20px;
+}	
+.form-check-label{
+  margin: 20px -12px;
+}
 .status {
   width: 100%;
-  height: 400px;
-  min-width: 280px;
+  height:400px;
   text-align: center;
   border: none;
   background: white;
+}
+.iframeContent{
+  height:600px;
 }

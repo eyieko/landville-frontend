@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { InternationalPaymentComponent } from './international-payment.component';
-import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ToastrService } from 'ngx-toastr';
 import { of, throwError } from 'rxjs';
@@ -11,7 +11,7 @@ import {
   toastServiceSpy,
 } from 'src/app/helpers/spies';
 import { By } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PaymentService } from 'src/app/services/payment/payment-service';
@@ -118,6 +118,37 @@ describe('InternationalPaymentComponent', () => {
     expect(component.loading).toEqual(false);
   });
 
+  it('should call submit and successfully create payment with property id', () => {
+    const response = {
+      message: 'https://random.com',
+      txRef: 'receiptno'
+    };
+
+    const value = {
+      cardNo: '5399838383838381',
+      cvv: '470',
+      expiryMonth: '01',
+      expiryYear: '21',
+      amount: '20',
+      billingZip: '07205',
+      billingCity: 'billingcity',
+      billingAddress: 'billingaddress',
+      billingState: 'NJ',
+      billingCountry: 'UK',
+      saveCard: true,
+      purpose: 'Buying'
+
+    };
+    internationalPaymentServiceSpy.createInternationalPayment.and.returnValue(
+      of(response)
+    );
+    component.propertyId = '12';
+    component.onSubmitPaymentDetails({
+      value
+    });
+    expect(component.loading).toEqual(false);
+  });
+
 
   it('should call backClicked Method', () => {
     const el = fixture.nativeElement.querySelector('#backButton');
@@ -125,6 +156,15 @@ describe('InternationalPaymentComponent', () => {
     component.backClicked();
     fixture.whenStable().then(() => {
       expect(component.backClicked).toHaveBeenCalled();
+    });
+  });
+
+  it('should call resubmit Method', () => {
+    const el = fixture.nativeElement.querySelector('#resubmit');
+    el.dispatchEvent(new Event('click'));
+    component.resubmit();
+    fixture.whenStable().then(() => {
+      expect(component.resubmit).toHaveBeenCalled();
     });
   });
 });

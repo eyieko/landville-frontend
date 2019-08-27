@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, DoCheck, ViewChild, ElementRef, } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import {
@@ -11,7 +11,6 @@ import { Subscription } from 'rxjs';
 import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
 import { removeSubscription } from 'src/app/helpers/unsubscribe';
 import { PaymentService } from 'src/app/services/payment/payment-service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,13 +18,11 @@ import { Router } from '@angular/router';
   templateUrl: './international-payment.component.html',
   styleUrls: ['./international-payment.component.scss']
 })
-export class InternationalPaymentComponent implements OnInit, OnDestroy, DoCheck {
+export class InternationalPaymentComponent implements OnInit, OnDestroy {
   loading: boolean;
   payload: any;
   form: FormGroup;
-  formData;
   subscription: Subscription[] = [];
-  currentUrl: SafeUrl;
   iframeSrc: SafeUrl;
   shouldHide = true;
   expectedMonths: any = [
@@ -34,9 +31,6 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy, DoCheck
   propertyId: any;
 
   expectedYears: any;
-  @ViewChild('confirmPayment', { static: false }) confirmPayment: ElementRef;
-  @ViewChild('transactionStatus', { static: false }) status: ElementRef;
-  @ViewChild('transactionMessage', { static: false }) message: ElementRef;
 
   constructor(
     private internationalPaymentService: PaymentService,
@@ -45,8 +39,6 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy, DoCheck
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
     private sanitizer: DomSanitizer,
-    private router: Router,
-
   ) { }
 
   generateYears() {
@@ -123,8 +115,9 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy, DoCheck
       purpose: value.purpose,
     };
 
-    value.propertyId ? this.payload.property_id = this.propertyId : null;
-
+    if (this.propertyId) {
+      this.payload.property_id = this.propertyId;
+    }
 
     this.subscription.push(
       this.internationalPaymentService
@@ -141,12 +134,12 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy, DoCheck
           error => {
             this.spinner.hide();
             this.loading = false;
-
             let errors = '';
-            for (const key in error) {
+
+            Object.keys(error).map((key) => {
               const msg = String(error[key]);
-              errors += `${key}: ${msg}`;
-            }
+              errors += `${key}: ${msg}\n`;
+            });
             this.toastrService.error(errors);
           }
         )
@@ -154,15 +147,7 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy, DoCheck
 
   }
 
-  ngDoCheck() {
-
-    this.currentUrl = this.confirmPayment ? this.sanitizer
-    .bypassSecurityTrustResourceUrl(this.confirmPayment.nativeElement.contentWindow.location.href) : null;
-    if (this.currentUrl !== null) {
-
-      this.currentUrl.toString().includes('landville-frontend') ?
-        this.router.navigate(['/home']) : null;
-    }
+  resubmit() {
+    this.shouldHide = true;
   }
-
 }

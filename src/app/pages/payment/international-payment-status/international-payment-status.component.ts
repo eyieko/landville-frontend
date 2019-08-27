@@ -7,9 +7,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./international-payment-status.component.scss']
 })
 export class InternationalPaymentStatusComponent implements OnInit {
-  imgSrc: any;
-  message: any;
-  status: any;
+  imgSrc: string;
+  message: string;
+  status: string;
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {

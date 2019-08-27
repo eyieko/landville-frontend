@@ -8,7 +8,7 @@
 			<form [formGroup]='cardForm' (ngSubmit)='onSubmit()'>
 			<div class="row">
 						<div class="form-group col-md-6">
-						<label>Amount:
+						<label>Amount <strong>(NGN)</strong>:
 						<input type="number" formControlName="amount" class="form-control"
 						[ngClass]="{'is-invalid':  (cardForm.controls['amount'].dirty || 
 						cardForm.controls['amount'].touched) 

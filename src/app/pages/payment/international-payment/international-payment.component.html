@@ -55,6 +55,7 @@
               CVV Number:
             </div>
             <input
+              maxlength="4"
               formControlName="cvv"
               class="form-control"
               [ngClass]="{
@@ -167,7 +168,7 @@
         <div class="row">
           <div class="col-md-6">
             <div>
-              Amount:
+              Amount <strong>(NGN)</strong>:
             </div>
             <input
               formControlName="amount"
@@ -347,7 +348,7 @@
                     !form.get('purpose').valid
                 }"
               >
-                <option value="" value="null" disabled="true" [selected]="true"
+                <option value="" disabled="true" [selected]="true"
                   >Purpose</option
                 >
                 <option value="Buying" disabled>Buying</option>
@@ -362,9 +363,13 @@
               >
               </app-input-errors>
             </div>
-            <div class="col-md-6 checkbox">
-              <label>Save Card</label>
-              <input type="checkbox" formControlName="saveCard" />
+            <div class="col-md-6">
+              <label class="form-check-label">Save Card</label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                formControlName="saveCard"
+              />
             </div>
           </div>
         </div>
@@ -390,16 +395,35 @@
         />
       </div>
     </form>
-    <div class="container">
-      <iframe
-        class="status"
-        [hidden]="shouldHide"
-        #confirmPayment
-        [src]="iframeSrc"
-      >
-        <button class="btn btn-secondary">Back to Transaction</button>
-        <button class="btn btn-secondary">View All transactions</button>
-      </iframe>
+    <div class="container" [hidden]="shouldHide">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 iframeContent">
+          <iframe
+            class="status"
+            #confirmPayment
+            [src]="iframeSrc"
+          >
+          </iframe>
+          <div class="buttons" >
+            <div class="container">
+              <input
+                type="button"
+                id="resubmit"
+                class="btn btn-secondary"
+                value="Resubmit"
+                (click)="resubmit()"
+              />
+              <a
+                type="button"
+                class="btn btn-primary"
+                routerLink="/transactions"
+              >Your Deposits</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
     </div>
     <ngx-spinner></ngx-spinner>
   </div>

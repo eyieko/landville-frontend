@@ -7,9 +7,9 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { TokenizedCardComponent } from './tokenized-card.component';
-import { PinValidateComponent } from './pin-validate.component';
-import { InternationalPaymentComponent } from './international-payment/international-payment.component';
+import { TokenizedCardComponent } from 'src/app/pages/payment/tokenized-card.component';
+import { PinValidateComponent } from 'src/app/pages/payment/pin-validate.component';
+import { InternationalPaymentComponent } from 'src/app/pages/payment/international-payment/international-payment.component';
 import { InputErrorsComponent } from 'src/app/shared/input-errors/input-errors.component';
 
 

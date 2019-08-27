@@ -16,7 +16,9 @@ import { DebugElement } from '@angular/core';
 import { throwError, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { InternationalPaymentStatusComponent } from '../payment/international-payment-status/international-payment-status.component';
+import {
+  InternationalPaymentStatusComponent
+} from 'src/app/pages/payment/international-payment-status/international-payment-status.component';
 import { AppModule } from 'src/app/app.module';
 
 describe('PasswordResetComponent', () => {
@@ -82,7 +84,7 @@ describe('PasswordResetComponent', () => {
   it('Should get a backend response when a valid email is provided', async(() => {
     const response = {
       data: {
-        message: "If you have an account with us we have sent an email to reset your password"
+        message: 'If you have an account with us we have sent an email to reset your password'
       }
     };
     resetLinkService.getResetLink.and.returnValue(of(response));
@@ -96,7 +98,7 @@ describe('PasswordResetComponent', () => {
     const errorResponse = {
       errors: {
         email: [
-          "Enter a valid email address."
+          'Enter a valid email address.'
         ]
       }
     };
