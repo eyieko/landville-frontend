@@ -58,3 +58,14 @@ h6 {
   margin: 0 0 20px 0;
   padding: 0;
 }
+
+image,
+img {
+  pointer-events: none;
+}
+
+@media print {
+  html, body {
+     display: none;
+  }
+}
