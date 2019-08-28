@@ -40,9 +40,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         },
         _ => {
           this.toastService.error(
-            'Something went wrong, we could not load the trending properties', ''
+            'Something went wrong, we could not load the trending properties'
           );
-
         });
   }
 

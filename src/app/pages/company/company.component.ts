@@ -50,9 +50,7 @@ export class CompanyComponent implements OnInit {
     private router: Router,
     private companyService: CompanyService,
     private toastrService: ToastrService,
-    private titleService: Title,
-    private metaService: Meta,
-    private activatedRoute: ActivatedRoute) {
+    private titleService: Title) {
   }
 
   // Convenience getter for easy access to form fields
@@ -63,11 +61,8 @@ export class CompanyComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.loadClientCompany();
+    this.titleService.setTitle('Create client company');
 
-    this.activatedRoute.data.subscribe(data => {
-      this.titleService.setTitle(data.title);
-      this.metaService.addTags(data.tags);
-    });
 
   }
 

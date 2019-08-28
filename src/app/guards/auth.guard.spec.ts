@@ -1,9 +1,9 @@
-import { localStorageSpy } from 'src/app/helpers/spies';
 import { TestBed, inject } from '@angular/core/testing';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from 'src/app/services/auth.service';
 import {LocalStorageService} from 'src/app/services/local-storage.service';
+import { localStorageSpy } from 'src/app/helpers/spies';
+import {RouterTestingModule} from '@angular/router/testing';
 
 class MockRouter {
   navigate(path) { }
@@ -13,22 +13,17 @@ describe('AuthGuard', () => {
 let MockAuthService;
 let router;
 let authGuard;
-let MockLocalStorageService;
 beforeEach(() => {
     MockAuthService = jasmine.createSpyObj(['isLoggedIn']);
-    MockLocalStorageService = jasmine.createSpyObj(['get', 'set', 'clear']);
     router = new MockRouter();
     TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    providers: [{
-      provide: {AuthService, useValue: MockAuthService}
-    },
-      {provide: {LocalStorageService, useValue: MockLocalStorageService}}
-    ,
-      AuthGuard,
+      imports: [RouterTestingModule],
+      providers: [
+        LocalStorageService,
+      {provide: {AuthService, useValue: MockAuthService}},
     ]
     });
-  authGuard = new AuthGuard(MockAuthService, router);
+    authGuard = new AuthGuard(MockAuthService, router);
     });
 
 it(

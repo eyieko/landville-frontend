@@ -58,7 +58,7 @@ export const CommonLayoutRoutes: Routes = [
     },
   },
   { path: 'no-properties', component: NoPropertiesComponent },
-  { path: 'registersuccess', component: RegistersuccessComponent, data: { title: 'Regitration successfull' } },
+  { path: 'registersuccess', component: RegistersuccessComponent, data: { title: 'Regitration successfull', tags:[] } },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { title: 'User Profile' } },
   { path: 'terms-and-conditions', component: TermsPageComponent, data: { title: 'LandVille Terms and Conditions of Use', tags: [] } },
   { path: 'properties/:slug', component: PropertyDetailsComponent }

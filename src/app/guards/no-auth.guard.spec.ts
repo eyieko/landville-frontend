@@ -17,8 +17,9 @@ describe('NoAuthGuard', () => {
   TestBed.configureTestingModule({
     imports: [RouterTestingModule],
     providers: [NoAuthGuard,
+      LocalStorageService,
       { provide: { AuthService, useValue: MockAuthService } },
-      { provide: { LocalStorageService, useValue: localStorageSpy  } }]
+     ]
   });
   router = new MockRouter();
   MockAuthService = jasmine.createSpyObj(['isLoggedIn']);

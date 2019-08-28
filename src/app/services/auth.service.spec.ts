@@ -1,10 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { AuthService } from './auth.service';
+import {LocalStorageService} from './local-storage.service';
+import {localStorageSpy} from '../helpers/spies';
 
 describe('AuthService', () => {
   let service: AuthService;
   beforeEach(() => {
-  TestBed.configureTestingModule({});
+  TestBed.configureTestingModule({
+    providers: [
+      {provide: LocalStorageService, useValue: localStorageSpy}
+      ]
+  });
   service = TestBed.get(AuthService);
   });
 
