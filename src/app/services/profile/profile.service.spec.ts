@@ -1,29 +1,20 @@
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import {
-  HttpTestingController,
-  HttpClientTestingModule
-} from '@angular/common/http/testing';
+import { environment } from 'src/environments/environment';
+import { mockProfileResponse, mockUpdatedProfileResponse } from '../../shared/mocks';
 
 import { ProfileService } from './profile.service';
-import {
-  mockProfileResponse,
-  mockUpdatedProfileResponse
-} from '../../shared/mocks';
-import { LocalStorageService } from '../local-storage.service';
-import { APPCONFIG } from 'src/app/config';
 
 describe('ProfileService', () => {
   let httpMock: HttpTestingController;
   let service: ProfileService;
-  let storage: LocalStorageService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [ProfileService, LocalStorageService]
+      imports: [ HttpClientTestingModule ],
+      providers: [ ProfileService ]
     });
     service = TestBed.get(ProfileService);
     httpMock = TestBed.get(HttpTestingController);
-    storage = TestBed.get(LocalStorageService);
   });
   afterEach(() => {
     // no HTTP requests should be pending/unhandled after the tests
@@ -38,14 +29,14 @@ describe('ProfileService', () => {
       done();
     });
     const request = httpMock.expectOne(
-      `${APPCONFIG.base_url}${service.profileUrl}`
+      `${ environment.apiUrl }${ service.profileUrl }`
     );
     request.flush(mockProfileResponse);
   });
   it('Should use the GET method', () => {
     service.getProfile().subscribe();
     const req = httpMock.expectOne(
-      `${APPCONFIG.base_url}${service.profileUrl}`
+      `${ environment.apiUrl }${ service.profileUrl }`
     );
     expect(req.request.method).toBe('GET');
   });
@@ -55,16 +46,16 @@ describe('ProfileService', () => {
         mockUpdatedProfileResponse.data.profile.user.first_name
       );
     });
-    storage.set('token', 'dummyAuthenticationToken');
+    localStorage.setItem('token', 'dummyAuthenticationToken');
     const request = httpMock.expectOne(
-      `${APPCONFIG.base_url}${service.profileUrl}`
+      `${ environment.apiUrl }${ service.profileUrl }`
     );
     request.flush(mockUpdatedProfileResponse);
   });
   it('pushProfile should push the most recent profile to the userProfile$ subject', () => {
     service.pushProfile();
     const req = httpMock.expectOne(
-      `${APPCONFIG.base_url}${service.profileUrl}`
+      `${ environment.apiUrl }${ service.profileUrl }`
     );
     expect(req.request.method).toBe('GET');
     expect(service.userProfile$).toBeDefined();

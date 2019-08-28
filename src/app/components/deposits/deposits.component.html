@@ -1,0 +1,71 @@
+<div class="container" >
+  <h3 class="title" >Deposits</h3 >
+  <div class="row" >
+    <div class="col-md-8" >
+      <div *ngIf="transactions.length !== 0; else none" class="container" >
+        <div class="row filter pl-3" >
+          <input [(ngModel)]="startDateVal" class="form-control" placeholder="Select Start Date"
+                 type="datetime-local" />
+          <input [(ngModel)]="endDateVal" class="form-control" placeholder="Select End Date" type="datetime-local" />
+          
+          <button (click)="onFilter()" class="btn filter-btn" color="primary" >
+            Search
+          </button >
+          
+          <button (click)="clear()" class="btn clear-btn" color="primary" >
+            Reset
+          </button >
+        </div >
+        
+        <div class="table-responsive " >
+          <table class="table table-bordered table-striped table-hover fixed_header" >
+            <thead class="thead-dark" >
+            <tr >
+              <th *ngFor="let head of headElements" scope="col" >
+                {{ head }}
+              </th >
+            </tr >
+            </thead >
+            <tbody >
+            <tr *ngIf="newResults; else not" >
+              <div *ngFor="let deposit of newResults" >
+                <th *ngIf="deposit" scope="row" >
+                  {{ deposit.references.txRef }}
+                </th >
+                <th *ngIf="deposit" class="fontTable" scope="row" >
+                  {{ deposit.created_at | date: 'dd/MM/yyyy' }}
+                </th >
+                <td *ngIf="deposit" >
+                  &#8358; {{ deposit.amount | number }}
+                </td >
+              </div >
+            </tr >
+            <ng-template #not >
+              <tr *ngFor="let transaction of transactions" >
+                <th *ngIf="transaction" scope="row" >
+                  {{ transaction.references.txRef }}
+                </th >
+                <th *ngIf="transaction" scope="row" >
+                  {{ transaction.created_at | date: 'dd/MM/yyyy' }}
+                </th >
+                <td *ngIf="transaction" >
+                  &#8358; {{ transaction.amount | number }}
+                </td >
+              </tr >
+            </ng-template >
+            </tbody >
+          </table >
+        </div >
+      </div >
+      <ng-template #none >
+        <div class="title" >
+          You currently have no deposits right now!
+        </div >
+      </ng-template >
+    </div >
+    <div class="col-md-4" >
+      <img alt="Card image" class="card-img" src="assets/img/designs/Design-min.jpg" />
+    </div >
+  </div >
+  <ngx-spinner ></ngx-spinner >
+</div >

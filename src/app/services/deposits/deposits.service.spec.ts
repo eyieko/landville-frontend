@@ -1,10 +1,6 @@
-import { DepositsService } from 'src/app/services/deposits/deposits.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-
-import {
-  HttpTestingController,
-  HttpClientTestingModule
-} from '@angular/common/http/testing';
+import { DepositsService } from 'src/app/services/deposits/deposits.service';
 import { environment } from 'src/environments/environment';
 
 describe('DepositsService', () => {
@@ -12,7 +8,7 @@ describe('DepositsService', () => {
   let service: DepositsService;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [ HttpClientTestingModule ],
       providers: []
     });
     httpMock = TestBed.get(HttpTestingController);
@@ -24,7 +20,7 @@ describe('DepositsService', () => {
   });
 
   it('should send a GET method', () => {
-    const mockUrl = `${environment.api_url}/transactions/my-deposit/`;
+    const mockUrl = `${ environment.apiUrl }/transactions/my-deposit/`;
     service.getDeposits().subscribe();
     const req = httpMock.expectOne(mockUrl);
     expect(req.request.method).toBe('GET');

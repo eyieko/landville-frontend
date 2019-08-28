@@ -1,12 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import {
-  UserProfileResponse,
-  UserProfileUpdatedResponse
-} from 'src/app/models/Profile';
-import { LocalStorageService } from '../local-storage.service';
-import { APPCONFIG } from 'src/app/config';
+import { UserProfileResponse, UserProfileUpdatedResponse } from 'src/app/models/Profile';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,30 +12,31 @@ export class ProfileService {
   depositeUrl = '/transactions/';
   userProfile$: Subject<any> = new Subject<any>();
   getDep$: Subject<any> = new Subject<any>();
-  userToken = this.localStorageService.get('token', '');
+  userToken = localStorage.getItem('token');
   httpOptions = {
     headers: new HttpHeaders({
-      Authorization: `Bearer ${this.userToken}`
+      Authorization: `Bearer ${ this.userToken }`
     })
   };
   httpFormHeaders = {
     headers: new HttpHeaders({
-      Authorization: `Bearer ${this.userToken}`,
+      Authorization: `Bearer ${ this.userToken }`,
       'Content-Type': 'multipart/form-data'
     })
   };
 
   constructor(
     private http: HttpClient,
-    private localStorageService: LocalStorageService
-  ) {}
+  ) {
+  }
 
   getProfile(): Observable<UserProfileResponse> {
     return this.http.get<UserProfileResponse>(
-      `${APPCONFIG.base_url}${this.profileUrl}`,
+      `${ environment.apiUrl }${ this.profileUrl }`,
       this.httpOptions
     );
   }
+
   pushProfile() {
     this.getProfile().subscribe(
       response => {
@@ -50,9 +47,10 @@ export class ProfileService {
       }
     );
   }
+
   updateProfile(profileData: any): Observable<UserProfileUpdatedResponse> {
     return this.http.patch<UserProfileUpdatedResponse>(
-      `${APPCONFIG.base_url}${this.profileUrl}`,
+      `${ environment.apiUrl }${ this.profileUrl }`,
       profileData,
       this.httpOptions
     );
@@ -60,7 +58,7 @@ export class ProfileService {
 
   getDeposits(): Observable<any> {
     return this.http.get<any>(
-      `${APPCONFIG.base_url}${this.depositeUrl}`,
+      `${ environment.apiUrl }${ this.depositeUrl }`,
       this.httpOptions
     );
   }

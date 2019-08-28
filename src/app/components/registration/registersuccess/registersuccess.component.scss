@@ -1,0 +1,237 @@
+.bigger-container {
+  background-color: #FFFEF0;
+  width: 100%;
+}
+
+.lower-container {
+  width: 100%
+}
+
+.inner-container {
+  background: inherit;
+  width: 80%;
+  margin: auto;
+}
+
+.left-section {
+  float: left;
+  width: 40%;
+}
+
+.left-section img {
+  margin-bottom: -60px;
+  margin-left: -20px;
+  height: 50px;
+  width: 50px;
+}
+
+.left-section h2 {
+  color: #EBB43E;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 80%;
+}
+
+.left-section h4 {
+  color: black;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: grey;
+}
+
+.right-details {
+  overflow: auto;
+  margin: 10px 10px 30px 10px;
+}
+
+.right-details img {
+  width: 100%;
+  height: 100%;
+}
+
+.container-border {
+  padding-left: 400px;
+
+}
+
+.first-text {
+  width: 100%;
+  overflow: auto;
+}
+
+.first-text > div {
+  background: rgba(0, 0, 0, 0.2);
+  width: 30%;
+  float: left;
+  margin-right: 3%;
+
+}
+
+.first-text > div > div {
+  float: left;
+}
+
+.number {
+  width: 30%;
+  font-size: 3em;
+  margin: 0 0 0 14px;
+}
+
+.text {
+
+  margin-top: 1.5em;
+  font-size: 15px;
+  width: 50%;
+  margin-top: 15px;
+
+}
+
+.text, .number {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.h4-class {
+  font-size: 1.1em;
+  color: gray;
+}
+
+.container p.confirm {
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.info {
+  margin-top: 50px;
+}
+
+.info p {
+  margin: 0px;
+  font-weight: bold;
+}
+
+.info h4 {
+  font-size: 1.1em;
+  width: 25%;
+  color: gray;
+}
+
+@media screen and (max-width: 380px) {
+  .container {
+    padding: 15px;
+  }
+  .information {
+    overflow: auto;
+  }
+  .left-section {
+    width: 100%;
+  }
+  .left-section img {
+    display: none;
+  }
+  .left-section h2 {
+    font-size: 0.8em;
+    margin-bottom: 8px;
+    text-align: unset;
+  }
+  .left-section h4 {
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    text-align: unset;
+  }
+  .right-details {
+    z-index: 3;
+    width: 95%;
+    position: absolute;
+    overflow: auto;
+    margin: 0px;
+  }
+  .right-details img {
+    width: 100px;
+    float: right;
+  }
+  .h4-class, .info p, .info h4 {
+    font-size: 0.8em;
+  }
+  .container p.confirm {
+    font-size: 0.8em;
+    margin: 10px 0px;
+
+  }
+  .first-text > div {
+    width: 100%;
+    margin-bottom: 13px;
+  }
+  .info {
+    margin-top: 0px;
+  }
+  .info h4 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .left-section img {
+    margin-left: -40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .left-section h4 {
+
+    font-size: 17px;
+  }
+  .left-section h2 {
+    font-size: 23px;
+
+  }
+  .left-section img {
+    width: 35px;
+    height: 35px;
+    margin-left: -25px;
+    margin-top: -10px;
+  }
+  .first-text > div {
+    width: 30%;
+    height: 25%;
+  }
+  .number {
+    width: 40%;
+    font-size: 2em;
+    margin: 0 0 0 14px;
+  }
+  .text {
+
+    margin-top: 1.5em;
+    font-size: 12px;
+    width: 50%;
+    margin-top: 7px;
+
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .first-text > div {
+    width: 100%;
+
+  }
+  .number {
+    width: 40%;
+    font-size: 1.8em;
+    margin: 0 0 0 14px;
+  }
+  .left-section h4 {
+
+    font-size: 14px;
+  }
+  .left-section h2 {
+    font-size: 18px;
+
+  }
+  .text {
+    font-size: 15px;
+    width: 50%;
+    margin-top: 5px;
+
+  }
+}

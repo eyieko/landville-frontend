@@ -191,7 +191,6 @@ export const mockProfileResponse3 = {
 };
 
 
-
 export const mockProfileResponseNoAddress = {
   data: {
     profile: {
@@ -219,7 +218,7 @@ export const mockProfileResponseNoAddress = {
 export const mockProfileFormErrorResponse = {
   error: {
     errors: {
-      phone: ['Phone number must be of the format +234 123 4567890']
+      phone: [ 'Phone number must be of the format +234 123 4567890' ]
     }
   }
 };

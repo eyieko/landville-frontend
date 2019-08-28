@@ -1,9 +1,9 @@
-import {TestBed} from '@angular/core/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {ErrorInterceptor} from './error.interceptor';
-import {httpHandlerSpy, httpRequestSpy, localStorageSpy, routerSpy} from './spies';
-import {HttpHandler, HttpRequest} from '@angular/common/http';
-import {throwError} from 'rxjs';
+import { HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { throwError } from 'rxjs';
+import { ErrorInterceptor } from './error.interceptor';
+import { httpHandlerSpy, httpRequestSpy, routerSpy } from './spies';
 
 describe('ErrorInterceptor', () => {
   let errorInterceptor: ErrorInterceptor;
@@ -12,15 +12,15 @@ describe('ErrorInterceptor', () => {
   beforeEach(() => {
     MockLoginService = jasmine.createSpyObj([ 'logoutUser' ]);
 
-    errorInterceptor = new ErrorInterceptor(MockLoginService, routerSpy, localStorageSpy);
+    errorInterceptor = new ErrorInterceptor(MockLoginService, routerSpy);
 
     TestBed.configureTestingModule({
       providers: [
         ErrorInterceptor,
-        {provide: HttpRequest, useValue: httpRequestSpy},
-        {provide: HttpHandler, useValue: httpHandlerSpy},
+        { provide: HttpRequest, useValue: httpRequestSpy },
+        { provide: HttpHandler, useValue: httpHandlerSpy },
       ],
-      imports: [HttpClientTestingModule]
+      imports: [ HttpClientTestingModule ]
     });
   });
 
@@ -40,7 +40,6 @@ describe('ErrorInterceptor', () => {
       .subscribe(
         result => console.log('good', result),
         err => {
-          console.log('error', err);
           expect(err).toEqual({
             message: 'test-error'
           });

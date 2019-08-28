@@ -1,0 +1,112 @@
+<div class="card-holder" >
+  <div class="card shadow-lg mx-auto" >
+    <ngx-spinner ></ngx-spinner >
+    <div class="card-header text-center" >
+      <h4 >Pay with Card and PIN</h4 >
+    </div >
+    <div class="card-body container" >
+      <form [formGroup]='cardForm' >
+        <div class="form-group" >
+          <label >Card Number:
+            <input [ngClass]="isInvalid('cardNumber')" class="form-control form-control-sm" formControlName="cardNumber"
+                   name="cardNo" type="number"
+            />
+            <span class="invalid-feedback" >
+						Card Number is required.
+					</span >
+          </label >
+        </div >
+        <div class="row" >
+          <div class="col-md-6 form-group" >
+            <label >Security Number:
+              <input [ngClass]="isInvalid('securityNumber')" class="form-control form-control-sm"
+                     formControlName="securityNumber" type="number"
+              />
+              <span class="invalid-feedback" >
+							Card cvv is required.
+						</span >
+            </label >
+          </div >
+          <div class="col-md-6 form-group" >
+            <label >PIN:
+              <input [ngClass]="isInvalid('pin')" class="form-control
+						form-control-sm" formControlName="pin" type="number" />
+              <span class="invalid-feedback" >
+							Card PIN is required.
+						</span >
+            </label >
+          </div >
+        </div >
+        <div class="form-group" formGroupName="cardExpiry" >
+          <label >Card Expiry:
+            <div class="row" >
+              <div class="col-md-6" >
+                <select [ngClass]="isInvalid('expiryMonth')" class="form-control"
+                        formControlName="expiryMonth" name="expiry-month" >
+                  <option value="MM" >Expiry Month</option >
+                  <option *ngFor="let month of validMonths;"
+                          value={{month}} >{{ month }}</option >
+                </select >
+              </div >
+              <div class="col-md-6" >
+                <select [ngClass]="isInvalid('expiryYear')" class="form-control"
+                        formControlName="expiryYear"
+                        name="expiry-year" >
+                  <option value="YYYY" >Expiry Year</option >
+                  <option *ngFor="let year of validYears;"
+                          value={{year}} >{{year}}</option >
+                </select >
+              </div >
+            </div >
+            <span *ngIf="(cardForm.controls['cardExpiry'].dirty
+					|| cardForm.controls['cardExpiry'].touched) &&
+					cardForm.controls['cardExpiry'].invalid" class="error" >
+							Select valid month and year for card expiry
+					</span >
+          </label >
+        </div >
+        
+        <div class="form-group" >
+          <label >Amount <strong >(NGN)</strong >:
+            <input [ngClass]="{'is-invalid':  (cardForm.controls['amount'].dirty ||
+						cardForm.controls['amount'].touched)
+						&& cardForm.controls['amount'].invalid}" class="form-control" formControlName="amount"
+                   type="number"
+            />
+            <span class="invalid-feedback" >
+							Amount is required and must be greater than 0.
+						</span >
+          </label >
+        </div >
+        <div class="row" >
+          <div class="col-md-6" >
+            <select [ngClass]="isInvalid('purpose')" class="form-control"
+                    formControlName="purpose" >
+              <option value="Purpose" >Purpose</option >
+              <option value="Saving" >Saving</option >
+              <option disabled value="Buying" >Buying</option >
+            </select >
+            <span class="invalid-feedback" >
+								Select a valid purpose of payment.
+							</span >
+          </div >
+          <div class="col-md-6" >
+            <div class="form-check form-group" >
+              <label class="form-check-label form-check-inline" >Save Card:
+                <input class="form-check-input" formControlName="saveCard"
+                       type="checkbox" />
+              </label >
+            </div >
+          </div >
+        </div >
+        <hr >
+        <button (click)='onBack()' class="btn" >
+          <span class="fa fa-caret-left" ></span > Back
+        </button >
+        <button (click)="submitDetails()" [disabled]="!cardForm.valid"
+                class="btn" type="submit" >Submit
+        </button >
+      </form >
+    </div >
+  </div >
+</div >

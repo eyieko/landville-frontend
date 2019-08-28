@@ -1,0 +1,24 @@
+<div class="card-holder" >
+  <div class="card shadow-lg mx-auto" >
+    <ngx-spinner ></ngx-spinner >
+    <div class="card-header text-center" ><h4 >Card PIN Validation</h4 ></div >
+    <div class="card-body container" >
+      <h5 class="text-center" >Please Input the OTP sent to your phone:</h5 >
+      <form >
+        <div class="form-group" >
+          <label >OTP:</label >
+          <input [formControl]="otp" [ngClass]="{'is-invalid':  (otp.dirty || otp.touched) && otp.invalid}"
+                 class="form-control" name="otp"
+                 type="number"
+          />
+          <span class="invalid-feedback" >
+						Please input the OTP.
+					</span >
+        </div >
+        <hr >
+        <button (click)='onBack()' class="btn" ><span class="fa fa-caret-left" ></span > Back</button >
+        <button (click)='onSubmit()' [disabled]="!otp.valid" class="btn" type="submit" >Submit</button >
+      </form >
+    </div >
+  </div >
+</div >

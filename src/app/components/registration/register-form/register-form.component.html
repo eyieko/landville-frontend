@@ -1,0 +1,142 @@
+<form (ngSubmit)="onSubmit(registerForm.value)" [formGroup]="registerForm" >
+  <div class="row" >
+    <div class="col" >
+      <div class="form-group" >
+        <input
+          [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('first_name').touched ||
+                      registerForm.get('first_name').dirty) &&
+                    !registerForm.get('first_name').valid
+                }" class="form-control" formControlName="first_name" placeholder="First Name"
+          placeholder="First name" type="text" type="text" />
+        <span class="invalid-feedback" >
+                    <span *ngIf="registerForm.get('first_name').errors?.required" >
+                      first name is required
+                    </span >
+                  </span >
+      </div >
+    </div >
+    <div class="col" >
+      <div class="form-group" >
+        <input
+          [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('last_name').touched ||
+                      registerForm.get('last_name').dirty) &&
+                    !registerForm.get('last_name').valid
+                }" class="form-control" formControlName="last_name" placeholder="Last Name"
+          type="text" type="text" />
+        <span class="invalid-feedback" >
+                    <span *ngIf="registerForm.get('last_name').errors?.required" >
+                      Last name is required
+                    </span >
+                  </span >
+      </div >
+    </div >
+  </div >
+  <div class="form-group" >
+    <input [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('email').touched ||
+                      registerForm.get('email').dirty) &&
+                    !registerForm.get('email').valid
+                }" class="form-control" formControlName="email" placeholder="Email address" type="text" />
+    <span class="invalid-feedback" >
+                <span *ngIf="registerForm.get('email').errors?.required" >
+                  Email is required
+                </span >
+                <span *ngIf="registerForm.get('email').errors?.email" >
+                  Email must be avalid email
+                </span >
+              </span >
+  </div >
+  
+  <div class="form-group" >
+    <select [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('role').touched ||
+                      registerForm.get('role').dirty) &&
+                    !registerForm.get('role').valid
+                }" class="custom-select form-control" formControlName="role"
+            id="inlineFormCustomSelectPref" >
+      <option [selected]="true" disabled="true" value="" value="null" >Select a role</option >
+      <option value="CA" >Client Admin</option >
+      <option value="BY" >Buyer</option >
+    </select >
+    <span class="invalid-feedback" >
+                <span *ngIf="registerForm.get('role').errors?.required" >
+                  Role is required
+                </span >
+              </span >
+  </div >
+  
+  <div class="form-group" >
+    <input [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('password').touched ||
+                      registerForm.get('password').dirty) &&
+                    !registerForm.get('password').valid
+                }" class="form-control" formControlName="password" placeholder="Create Password"
+           type="password" />
+    <span class="invalid-feedback" >
+                <span *ngIf="registerForm.get('password').errors?.required" >
+                  Password is required
+                </span >
+                <span *ngIf="registerForm.get('password').errors?.minlength" >
+                  Password must contain an uppercase, number and a character
+                </span >
+              </span >
+  </div >
+  
+  <div class="form-group" >
+    <input [ngClass]="{
+                  'is-invalid':
+                    (registerForm.get('confirmed_password').touched ||
+                      registerForm.get('confirmed_password').dirty) &&
+                    !registerForm.get('confirmed_password').valid
+                }" class="form-control" formControlName="confirmed_password"
+           placeholder="Confirm password" type="password" />
+    <span class="invalid-feedback" >
+                <span *ngIf="
+                    registerForm.get('confirmed_password').errors?.required
+                  " >
+                  confirmed Password is required
+                </span >
+                <span *ngIf="
+                    registerForm.get('confirmed_password').errors?.mustMatch
+                  " >
+                  Passwords Must Match
+                </span >
+              </span >
+  </div >
+  
+  <div class="form-group" >
+    <div class="form-check" >
+      <input [ngClass]="{
+      'is-invalid':
+        (registerForm.get('userAccepts').touched ||
+          registerForm.get('userAccepts').dirty) &&
+        !registerForm.get('userAccepts').valid
+    }" class="form-check-input" formControlName="userAccepts" type="checkbox" />
+      <label class="form-check-label" >
+        I Accept <a class="form-check-label" routerLink="/terms-and-conditions"
+                    target="_blank" ><strong ><u >terms and
+        conditions of
+        LandVille</u ></strong ></a ></label >
+      
+      <div class="invalid-feedback" >
+        You must accept terms and conditions of use.
+      </div >
+    </div >
+  </div >
+  
+  <button [disabled]="!registerForm.valid" [ngStyle]="
+              registerForm.valid && {
+                color: 'white',
+                backgroundColor: '#FFA500'
+              }
+            " class="btn btn-block" type="submit" >
+    Create Account
+  </button >
+</form >

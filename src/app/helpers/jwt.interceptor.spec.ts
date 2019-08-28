@@ -1,11 +1,11 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { httpHandlerSpy, httpRequestSpy } from './spies';
 import { HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { JwtInterceptor } from './jwt.interceptor';
+import { httpHandlerSpy, httpRequestSpy } from './spies';
 
-const mockAuthService = jasmine.createSpyObj(['isLoggedIn']);
+const mockAuthService = jasmine.createSpyObj([ 'isLoggedIn' ]);
 
 describe('JWTInterceptor', () => {
   let jwtInterceptor: JwtInterceptor;
@@ -20,7 +20,7 @@ describe('JWTInterceptor', () => {
         { provide: HttpRequest, useValue: httpRequestSpy },
         { provide: HttpHandler, useValue: httpHandlerSpy },
       ],
-      imports: [HttpClientTestingModule]
+      imports: [ HttpClientTestingModule ]
     });
   });
 

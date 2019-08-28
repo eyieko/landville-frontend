@@ -1,6 +1,6 @@
-import { Client } from "./Client";
-import { Coordinates } from "./Coordinates";
-import { Address } from "./Address";
+import { Address } from './Address';
+import { Client } from './Client';
+import { Coordinates } from './Coordinates';
 
 export interface Property {
   id?: number;

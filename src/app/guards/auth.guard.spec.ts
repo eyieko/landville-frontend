@@ -1,20 +1,18 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { AuthGuard } from 'src/app/guards/auth.guard';
-import { AuthService } from 'src/app/services/auth.service';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 import { routerSpy } from 'src/app/helpers/spies';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 
 describe('AuthGuard', () => {
   let MockAuthService;
   let guard;
   beforeEach(() => {
-    MockAuthService = jasmine.createSpyObj(['isLoggedIn']);
+    MockAuthService = jasmine.createSpyObj([ 'isLoggedIn' ]);
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [ RouterTestingModule ],
       providers: [
-        LocalStorageService,
         { provide: { AuthService, useValue: MockAuthService } },
       ]
     });
@@ -23,7 +21,7 @@ describe('AuthGuard', () => {
 
   it(
     'should setup the guard correctly',
-    inject([AuthGuard], (guard: AuthGuard) => {
+    inject([ AuthGuard ], (guard: AuthGuard) => {
       expect(guard).toBeTruthy();
     })
   );

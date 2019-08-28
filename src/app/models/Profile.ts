@@ -1,5 +1,5 @@
-import { User } from './User';
 import { Address } from './Address';
+import { User } from './User';
 
 export interface UserProfile {
   user: User;
@@ -29,6 +29,7 @@ export interface UserProfileForm {
   nextOfKinContact?: string;
   bio?: string;
 }
+
 export interface UserProfileResponse {
   data: {
     profile: UserProfile;

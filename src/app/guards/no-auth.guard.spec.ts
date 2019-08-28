@@ -1,9 +1,8 @@
-import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoAuthGuard } from 'src/app/guards/no-auth.guard';
-import { AuthService } from 'src/app/services/auth.service';
 import { routerSpy } from 'src/app/helpers/spies';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 
 describe('NoAuthGuard', () => {
@@ -12,19 +11,18 @@ describe('NoAuthGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      providers: [NoAuthGuard,
-        LocalStorageService,
+      imports: [ RouterTestingModule ],
+      providers: [ NoAuthGuard,
         { provide: { AuthService, useValue: MockAuthService } },
       ]
     });
-    MockAuthService = jasmine.createSpyObj(['isLoggedIn']);
+    MockAuthService = jasmine.createSpyObj([ 'isLoggedIn' ]);
     authGuard = new NoAuthGuard(MockAuthService, routerSpy);
   });
 
   it(
     'should setup the guard correctly',
-    inject([NoAuthGuard], (guard: NoAuthGuard) => {
+    inject([ NoAuthGuard ], (guard: NoAuthGuard) => {
       expect(guard).toBeTruthy();
     })
   );

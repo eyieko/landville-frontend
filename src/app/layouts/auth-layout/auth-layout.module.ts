@@ -11,27 +11,27 @@ import {
   SocialLoginModule
 } from 'angularx-social-login';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { APPCONFIG } from 'src/app/config';
-import { LoginFormComponent } from 'src/app/pages/login/login-form/login-form.component';
-import { LoginHeaderComponent } from 'src/app/pages/login/login-header/login-header.component';
-import { LoginSliderComponent } from 'src/app/pages/login/login-slider/login-slider.component';
-import { LoginComponent } from 'src/app/pages/login/login.component';
-import { RegisterFormComponent } from 'src/app/pages/registration/register-form/register-form.component';
-import { RegisterHeaderComponent } from 'src/app/pages/registration/register-header/register-header.component';
-import { RegistrationComponent } from 'src/app/pages/registration/registration.component';
-import { SocialLoginComponentt } from 'src/app/pages/SocialAuth/socialauth.component';
+import { EnterResetPasswordComponent } from 'src/app/components/enter-reset-password/enter-reset-password.component';
+import { LoginFormComponent } from 'src/app/components/login/login-form/login-form.component';
+import { LoginSliderComponent } from 'src/app/components/login/login-slider/login-slider.component';
+import { LoginComponent } from 'src/app/components/login/login.component';
+import { PasswordResetComponent } from 'src/app/components/password-reset/password-reset.component';
+import { RegisterFormComponent } from 'src/app/components/registration/register-form/register-form.component';
+import { RegistrationComponent } from 'src/app/components/registration/registration.component';
+import { SocialLoginComponent } from 'src/app/components/SocialAuth/socialauth.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { environment } from 'src/environments/environment';
 import { AuthLayoutRoutes } from './auth-layout.routing';
 
 // configs
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider(APPCONFIG.googleId)
+    provider: new GoogleLoginProvider(environment.googleId)
   },
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider(APPCONFIG.facebookId)
+    provider: new FacebookLoginProvider(environment.facebookId)
   }
 ]);
 
@@ -47,19 +47,18 @@ export function provideConfig() {
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ComponentsModule,
-    SocialLoginModule
+    SharedModule,
+    SocialLoginModule,
   ],
   declarations: [
+    PasswordResetComponent,
+    EnterResetPasswordComponent,
+    SocialLoginComponent,
     LoginComponent,
     LoginFormComponent,
-    LoginHeaderComponent,
     LoginSliderComponent,
-    LoginComponent,
     RegistrationComponent,
     RegisterFormComponent,
-    RegisterHeaderComponent,
-    SocialLoginComponentt
   ],
   providers: [
     AuthService,
