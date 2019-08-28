@@ -13,14 +13,18 @@ import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
 export const CommonLayoutRoutes: Routes = [
   {
     path: 'home', component: HomeComponent, data: {
-      title: 'Find your dream Property today', tags:
+      title: 'LandVille helps you access real estate and property investing in Nigeria.' +
+        ' Make the best and safest decision. ' +
+        'Let tech help you find your dream Property today', tags:
         [
           // Open Graph Data
-          { property: 'og:title', content: 'LandVille | Find your dream Property today' },
+          { property: 'og:title', content: 'LandVille | Find your dream property today' },
           {
             property: 'og:description',
             content: 'Make that property yours today'
           },
+          { name: 'og:image', content: '../../../assets/img/ICON/Logo.png' },
+
           // Twitter
           { name: 'twitter:card', content: 'summary' },
           { name: 'twitter:image', content: '../../../assets/img/ICON/Logo.png' },
@@ -50,9 +54,12 @@ export const CommonLayoutRoutes: Routes = [
           property: 'og:description',
           content: 'Browse a wide range of the best property across Nigeria'
         },
-        // Twitter
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'LandVille' },
+        { name: 'og:image', content: '../../../assets/img/ICON/Logo.png' },
+        // Twitter
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:image', content: '../../../assets/img/ICON/Logo.png' },
         { name: 'twitter:title', content: 'All Properties | Acquire your dream property with ease today' },
         { name: 'twitter:description', content: 'Browse a wide range of the best property across Nigeria' },
       ]
@@ -73,6 +80,9 @@ export const CommonLayoutRoutes: Routes = [
         // Twitter
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'LandVille' },
+        // Twitter
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:image', content: '../../../assets/img/ICON/Logo.png' },
         { name: 'twitter:title', content: 'All Properties | Acquire your dream property with ease today' },
         { name: 'twitter:description', content: 'Browse a wide range of the best property across Nigeria' },
       ]
