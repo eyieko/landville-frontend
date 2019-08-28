@@ -13,7 +13,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "heroku-postbuild": "npm run build:client-and-server-bundles && npm run compile:server",
-    "serve": "node serve-script",
+    "serve": "node dist/server",
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build": "npm run build:client-and-server-bundles && npm run compile:server",
