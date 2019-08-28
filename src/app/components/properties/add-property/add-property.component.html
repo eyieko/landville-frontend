@@ -4,7 +4,7 @@
       <div class="col-md-9 col-sm-6">
         <div class="company-details">
           <h3 class="company-title">Add Property</h3>
-          <form [formGroup]="addPropertyForm" autocomplete="off" (onSubmit)="addNewProperty(addPropertyForm.value)">
+          <form [formGroup]="addPropertyForm" autocomplete="off" (onSubmit)="addNewProperty(addPropertyForm.value)" enctype="multipart/form-data">
 
             {{addPropertyForm.value | json}}
             <div class="md-form">
@@ -48,42 +48,53 @@
                   </div>
                 </div>
                 <div class="form-group col-md-6 p-2">
-                  <label class="text-muted" for="lotSize">Lot size</label>
-                  <input class="form-control" fformControlName="lotSize" id="lotSize" placeholder="Lot size"
+                  <label class="text-muted" for="lot_size">Lot size</label>
+                  <input class="form-control" formControlName="lot_size" id="lot_size" placeholder="Lot size"
                     type="number">
-                  <div *ngIf="addPropertyForm.get('lotSize').touched && addPropertyForm.get('lotSize').errors 
-                      && addPropertyForm.get('lotSize').errors?.required ">
+                  <div *ngIf="addPropertyForm.get('lot_size').touched && addPropertyForm.get('lot_size').errors 
+                      && addPropertyForm.get('lot_size').errors?.required ">
                     Lot size is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('lotSize').touched && addPropertyForm.get('lotSize').errors 
-                    && addPropertyForm.get('lotSize').errors?.maxLen ">
+                  <div *ngIf="addPropertyForm.get('lot_size').touched && addPropertyForm.get('lot_size').errors 
+                    && addPropertyForm.get('lot_size').errors?.maxLen ">
                     Lot size should be atmost 14 chars Long
                   </div>
                 </div>
                 <div class="form-group col-md-6 p-2">
-                  <label class="text-muted" for="propertyType">Property Type</label>
-                  <input class="form-control" formControlName="propertyType"
-                    (blur)="changedTo(addPropertyForm.get('propertyType').value)" id="propertyType"
-                    placeholder="Property Type" type="text">
-                  <div *ngIf="addPropertyForm.get('propertyType').touched && addPropertyForm.get('propertyType').errors 
-                    && addPropertyForm.get('propertyType').errors?.required ">
+
+                  <label class="text-muted" for="property_type">Property Type</label>
+                  <input class="form-control" formControlName="property_type"
+                    (blur)="changedTo(addPropertyForm.get('property_type').value)" id="property_type" type="radio"
+                    value="B">Building
+                  <input class="form-control" formControlName="property_type"
+                    (blur)="changedTo(addPropertyForm.get('property_type').value)" id="property_type" type="radio"
+                    value="L"> Lot
+
+                  <div *ngIf="addPropertyForm.get('property_type').touched && addPropertyForm.get('property_type').errors 
+                    && addPropertyForm.get('property_type').errors?.required ">
                     Property Type is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('propertyType').touched && addPropertyForm.get('propertyType').errors 
-                    && addPropertyForm.get('propertyType').errors?.maxlength ">
+                  <div *ngIf="addPropertyForm.get('property_type').touched && addPropertyForm.get('property_type').errors 
+                    && addPropertyForm.get('property_type').errors?.maxlength ">
                     Property Type should be atleast
                   </div>
                 </div>
                 <div class="form-group col-md-6 p-2">
-                  <label class="text-muted" for="purchasePlan">Purchase Plan</label>
-                  <input class="form-control" formControlName="purchasePlan" id="purchasePlan"
-                    placeholder="Purchase Plan" type="text">
-                  <div *ngIf="addPropertyForm.get('purchasePlan').touched && addPropertyForm.get('purchasePlan').errors 
-                    && addPropertyForm.get('purchasePlan').errors?.required ">
+                  <label class="text-muted" for="purchase_plan">Purchase Plan</label>
+                  <input class="form-control" formControlName="purchase_plan"
+                    (blur)="changedTo(addPropertyForm.get('purchase_plan').value)" id="purchase_plan" type="radio"
+                    value="I">Installments
+                  <input class="form-control" formControlName="purchase_plan"
+                    (blur)="changedTo(addPropertyForm.get('purchase_plan').value)" id="purchase_plan" type="radio"
+                    value="F">Full Payment
+                  <!-- <input class="form-control" formControlName="purchase_plan" id="purchase_plan"
+                    placeholder="Purchase Plan" type="text"> -->
+                  <div *ngIf="addPropertyForm.get('purchase_plan').touched && addPropertyForm.get('purchase_plan').errors 
+                    && addPropertyForm.get('purchase_plan').errors?.required ">
                     Purchase Plan is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('purchasePlan').touched && addPropertyForm.get('purchasePlan').errors 
-                    && addPropertyForm.get('purchasePlan').errors?.maxlength ">
+                  <div *ngIf="addPropertyForm.get('purchase_plan').touched && addPropertyForm.get('purchase_plan').errors 
+                    && addPropertyForm.get('purchase_plan').errors?.maxlength ">
                     Purchase Plan should be only one character.
                   </div>
                 </div>
@@ -162,7 +173,7 @@
                   <!-- Custom bootstrap upload file-->
                   <label for="fileUpload" class="file-upload btn btn-primary btn-block rounded-pill shadow"><i
                       class="fa fa-upload mr-2"></i>Browse for file ...
-                    <input id="fileUpload" type="file" formControlName="mainImage">
+                    <input id="fileUpload" type="file" formControlName="image_main">
                   </label>
                 </div>
                 <div class="form-group col-md-6  p-2">
@@ -174,7 +185,7 @@
                 <div class="form-group col-md-6 p-2">
                   <label for="fileUpload" class="file-upload btn btn-primary btn-block rounded-pill shadow">
                     <i class="fa fa-upload mr-2"></i>Add other images
-                    <input id="otherImages" formControlName="otherImages" type="file" multiple>
+                    <input id="otherImages" formControlName="image_others" type="file" multiple>
                   </label>
                 </div>
               </div>
@@ -224,8 +235,8 @@
               </div>
             </div>
             <div class="form-group">
-              <input [disabled]="!addPropertyForm.valid" value=" Add Property"
-                class="btn btn-primary btn-form btn-form-blue float-right" type="submit" />
+              <input type="submit" (click)="addNewProperty(addPropertyForm.value)" value=" Add Property"
+                class="btn btn-primary btn-form btn-form-blue float-right" />
               <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
 
             </div>
