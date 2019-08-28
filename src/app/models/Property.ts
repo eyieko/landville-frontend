@@ -40,3 +40,20 @@ export interface PropertiesResponse extends Property {
     };
   };
 }
+
+export interface AddProperty {
+  title: string;
+  description: string;
+  address: Address;
+  coordinates: Coordinates;
+  price: number;
+  lotSize: number;
+  imageMain: string;
+  video: string;
+  propertyType: string;
+  purchasePlan: string;
+  imageOthers: string[];
+  bedrooms: number;
+  bathrooms: number;
+  garages: number;
+}
