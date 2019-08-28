@@ -13,7 +13,7 @@ export class RegistersuccessComponent implements OnInit {
     private titleService: Title) { }
 
   ngOnInit() {
-      this.titleService.setTitle('Registration Successfull');
+      this.titleService.setTitle('Registration Successful');
   }
 
 }

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:dev": "ng serve -o",
+    "start:dev": "npm run serve",
     "start": "node serve-script",
     "build:browser": "ng build",
     "test": "ng test",
@@ -12,7 +12,7 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "heroku-postbuild": "ng build --prod",
+    "heroku-postbuild": "npm run build:client-and-server-bundles && npm run compile:server",
     "serve": "node serve-script",
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
@@ -104,5 +104,10 @@
     "loader": "^2.1.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1"
+  },
+  ,
+  "engines": {
+    "node": "11.13.0",
+    "npm": "6.7.0"
   }
 }

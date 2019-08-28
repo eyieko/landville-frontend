@@ -22,7 +22,6 @@ export const CommonLayoutRoutes: Routes = [
             content: 'Make that property yours today'
           },
           // Twitter
-
           { name: 'twitter:card', content: 'summary' },
           { name: 'twitter:image', content: '../../../assets/img/ICON/Logo.png' },
           { name: 'twitter:title', content: 'LandVille | Find your dream Property today' },
@@ -52,15 +51,31 @@ export const CommonLayoutRoutes: Routes = [
           content: 'Browse a wide range of the best property across Nigeria'
         },
         // Twitter
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'LandVille' },
         { name: 'twitter:title', content: 'All Properties | Acquire your dream property with ease today' },
         { name: 'twitter:description', content: 'Browse a wide range of the best property across Nigeria' },
       ]
     },
   },
   { path: 'no-properties', component: NoPropertiesComponent },
-  { path: 'registersuccess', component: RegistersuccessComponent, data: { title: 'Regitration successfull', tags:[] } },
+  { path: 'registersuccess', component: RegistersuccessComponent, data: { title: 'Registration successful', tags: [] } },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { title: 'User Profile' } },
   { path: 'terms-and-conditions', component: TermsPageComponent, data: { title: 'LandVille Terms and Conditions of Use', tags: [] } },
-  { path: 'properties/:slug', component: PropertyDetailsComponent }
+  { path: 'properties/:slug', component: PropertyDetailsComponent, data: {
+      title: 'All Properties | Acquire your dream property with ease today', tags: [
+        // Open Graph Data
+        { property: 'og:title', content: 'All Properties | Acquire your dream property with ease today' },
+        {
+          property: 'og:description',
+          content: 'Browse a wide range of the best property across Nigeria'
+        },
+        // Twitter
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'LandVille' },
+        { name: 'twitter:title', content: 'All Properties | Acquire your dream property with ease today' },
+        { name: 'twitter:description', content: 'Browse a wide range of the best property across Nigeria' },
+      ]
+    }, }
 
 ];

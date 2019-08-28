@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: 'payment/international/status', component: InternationalPaymentStatusComponent},
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'home'
   }
 ];
 @NgModule({
