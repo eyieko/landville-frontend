@@ -1,6 +1,6 @@
 export const resetSpies = (spies: any[]) => {
-  spies.forEach((spyObj) => {
-    Object.keys(spyObj).forEach((prop) => {
+  spies.forEach(spyObj => {
+    Object.keys(spyObj).forEach(prop => {
       if (typeof spyObj[prop] === 'function') {
         spyObj[prop].calls.reset();
       }
@@ -70,6 +70,8 @@ export const activatedRoutespy = jasmine.createSpyObj('ActivatedRoute', [
   'snapshot',
   'paramMap'
 ]);
+
+export const DepositsSpy = createSpyObj('DepositsService', ['getDeposits']);
 
 export const httpHandlerSpy = jasmine.createSpyObj('HttpHandler', ['handle']);
 

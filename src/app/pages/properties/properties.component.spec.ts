@@ -1,4 +1,4 @@
-import { AuthLayoutModule } from './../../layouts/auth-layout/auth-layout.module';
+import { AuthLayoutModule } from 'src/app/layouts/auth-layout/auth-layout.module';
 import { CardComponent } from './../../components/card/card.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PropertiesService } from './../../services/properties/properties.service';

@@ -53,12 +53,19 @@
       <li class="nav-item">
         <a
           class="nav-link waves-effect waves-light"
+          routerLink="/user/deposits"
+          routerLinkActive="active"
+          >My Deposits</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link waves-effect waves-light"
           routerLink="/"
           routerLinkActive="active"
           >Contact</a
         >
       </li>
-
       <li *ngIf="!authenticated" class="nav-item">
         <a class="btn-auth" routerLink="/register" routerLinkActive="active"
           >Sign up</a
@@ -124,7 +131,6 @@
             routerLink="/reset-link"
             ><i class="fa fa-plus"></i> Password Reset</a
           >
-
           <a
             (click)="handleLogout()"
             class="dropdown-item waves-effect waves-light profileDropDown"

@@ -10,7 +10,6 @@ import { NoAuthGuard } from './guards/no-auth.guard';
 import { InternationalPaymentStatusComponent } from
 'src/app/pages/payment/international-payment-status/international-payment-status.component';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -58,4 +57,4 @@ const routes: Routes = [
   imports: [CommonModule, BrowserModule, RouterModule.forRoot(routes)],
   exports: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

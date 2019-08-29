@@ -1,0 +1,106 @@
+.container {
+  background-color: #ffff;
+  border-radius: calc(0.55rem - 1px);
+  padding-top: 2rem;
+  margin-left: 1rem;
+  margin-bottom: 3rem;
+}
+
+.body {
+  padding-top: 3rem;
+}
+
+.container:hover {
+  background-color: #ffff !important;
+}
+
+th {
+  font-weight: 400 !important;
+}
+
+.card-title {
+  font-size: x-large;
+  color: #431c53;
+  text-decoration: none;
+}
+
+.info {
+  color: grey;
+}
+
+.fromDate {
+  max-width: 20%;
+}
+
+.toDate {
+  max-width: 20%;
+}
+
+.row-detailes {
+  padding-bottom: 2rem;
+}
+
+.filter {
+  float: right !important;
+}
+
+.p-info {
+  color: #ee9619;
+}
+
+.fixed_header {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.fixed_header tbody {
+  display: block;
+  overflow: auto;
+  height: 200px;
+}
+
+.fixed_header thead tr {
+  display: block;
+}
+
+.fixed_header th,
+.fixed_header td {
+  padding: 5px;
+  width: 29rem;
+}
+
+.form-control {
+  width: 10rem;
+  margin: 0 1rem 1rem 0;
+}
+
+.btn {
+  background-color: #ee9619;
+  margin: 0 1rem 1rem 0;
+}
+
+.clear-btn {
+  background-color: #ee9619;
+  height: 2.99rem;
+}
+
+.filter-btn {
+  background-color: #ee9619;
+  height: 2.99rem;
+}
+
+.col {
+  flex-grow: 0;
+}
+
+.title {
+  margin-left: 1.5rem;
+}
+
+.center {
+  width: 10%;
+  margin-top: 7%;
+  margin-left: 45%;
+  font-family: 'Mukta', sans-serif;
+  padding-bottom: 17%;
+}
