@@ -49,7 +49,7 @@ export class ReviewComponent implements OnInit {
         if (!error.errors) {
           toastMessage = 'Unexpected error occured!';
         } else {
-          toastMessage = typeof error.errors.detail === 'undefined' ? error.errors : error.errors.detail;
+          toastMessage = error.errors.detail ? error.errors.detail : error.errors;
         }
         this.toastrService.error(toastMessage);
       }

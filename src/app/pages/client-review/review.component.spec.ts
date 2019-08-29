@@ -1,37 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { ReactiveFormsModule, FormsModule, NgForm } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { throwError, of, Subject } from 'rxjs';
+import { throwError, of } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { routerSpy, toastServiceSpy, spinnerSpy, clientReviewService } from 'src/app/helpers/spies';
 
-import { ReviewComponent } from './review.component';
+import { ReviewComponent } from 'src/app/pages/client-review/review.component';
 
-class RouterStub {
-  navigate(params) {
-  }
-}
-class ActivatedRouterStub {
-  private subject = new Subject();
 
-  push(value) {
-    this.subject.next(value);
-  }
-  get params() {
-    return this.subject.asObservable();
-  }
-}
 
 describe('ReviewComponent', () => {
   let component: ReviewComponent;
   let fixture: ComponentFixture<ReviewComponent>;
-  const mockRouter = jasmine.createSpyObj(['navigate']);
-  const mockToastr = jasmine.createSpyObj(['error']);
-  const mockSpinner = jasmine.createSpyObj(['show', 'hide']);
-  const mockreviewService = jasmine.createSpyObj(['createClientReview']);
-  const mockactivatedRoute = jasmine.createSpyObj(['route']);
+  const mockRouter = routerSpy;
+  const mockToastr = toastServiceSpy;
+  const mockSpinner = spinnerSpy;
+  const mockreviewService = clientReviewService;
+  const mockactivatedRoute = routerSpy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -41,8 +29,8 @@ describe('ReviewComponent', () => {
         HttpClientTestingModule, ToastrModule.forRoot(), BrowserAnimationsModule
       ],
       providers: [
-        { provide: Router, useClass: RouterStub },
-        { provide: ActivatedRoute, useClass: ActivatedRouterStub },
+        { provide: Router, useValue: routerSpy },
+        { provide: ActivatedRoute, useValue: routerSpy },
       ]
     })
       .compileComponents();
@@ -56,11 +44,7 @@ describe('ReviewComponent', () => {
   it('should create review component successfully', () => {
     expect(component).toBeTruthy();
   });
-  it('should be able to get client ID from URL', () => {
-    const route: ActivatedRouterStub = TestBed.get(ActivatedRoute);
-    route.push({ clientId: 1 });
-    expect(route).toBeTruthy();
-  });
+
   it('should have a review field', () => {
     expect(component.review).toBeTruthy();
   });

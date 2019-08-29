@@ -17,7 +17,7 @@ export const toastServiceSpy = createSpyObj('ToastrService', [
   'success',
   'error',
   'info',
-  'warning'
+  'warning',
 ]);
 
 export const profileServiceSpy = createSpyObj('ProfileService', [
@@ -59,7 +59,7 @@ export const resetLinkServiceSpy = createSpyObj('PasswordResetService', [
 export const resetPassordService = createSpyObj('EnterResetPasswordService', [
   'changePassword'
 ]);
-
+ 
 export const propertiesServiceSpy = createSpyObj('PropertiesService', [
   'getProperties'
 ]);
@@ -92,6 +92,12 @@ export const httpClientSpy = jasmine.createSpyObj('HttpClient', [
   'put',
   'delete',
   'request'
+  ]
+);
+export const spinnerSpy = jasmine.createSpyObj(['show', 'hide']);
+
+export const clientReviewService = createSpyObj('ClientReviewServive', [
+  'createClientReview'
 ]);
 
 export const httpServiceSpy = jasmine.createSpyObj('HttpService', [

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { environment } from 'src/environments/environment';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ClientReviewService } from './client-review.service';
+import { ClientReviewService } from 'src/app/services/client-review.service';
 
 describe('ClientReviewService', () => {
   let httpTestingController: HttpTestingController;
@@ -23,7 +23,7 @@ describe('ClientReviewService', () => {
   it('should call createClientReview with the correct URL', () => {
     service.createClientReview(10, { review: 'Feedback' }).subscribe();
     const req = httpTestingController.expectOne(`${environment.api_url}/auth/10/reviews/`);
-    req.flush({ 'message': 'success' });
+    req.flush({ message: 'success' });
   });
   it('should throw an unexpected error', () => {
     let response: any;
