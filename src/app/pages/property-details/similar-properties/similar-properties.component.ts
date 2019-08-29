@@ -76,7 +76,7 @@ export class SimilarPropertiesComponent implements OnInit, OnChanges {
     this.search.searchProperties(searchQuery).subscribe(
       response => {
         this.similarProperties = response.data.properties.results.filter(  // filter out the current property
-          property => property.title !== this.propertyDetails.title
+          ({title}) => title !== this.propertyDetails.title
         );
         this.spinner.hide();
       }
