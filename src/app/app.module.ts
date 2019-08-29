@@ -47,7 +47,7 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonLayoutComponent,
     PasswordResetComponent,
     EnterResetPasswordComponent,
-    InternationalPaymentStatusComponent
+    InternationalPaymentStatusComponent,
   ],
   providers: [
     LocalStorageService, AuthGuard, NoAuthGuard, TermsService,

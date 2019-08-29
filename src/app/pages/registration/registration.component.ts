@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterServiceService } from '../../services/register/register-service.service';
-import { User } from '../../models/register/user';
+import { RegisterServiceService } from 'src/app/services/register/register-service.service';
+import { User } from 'src/app/models/register/user';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,7 +21,6 @@ export class RegistrationComponent implements OnInit {
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService,
     private router: Router,
-    private route: ActivatedRoute,
     private titleService: Title,
     private metaService: Meta,
     private activatedRoute: ActivatedRoute

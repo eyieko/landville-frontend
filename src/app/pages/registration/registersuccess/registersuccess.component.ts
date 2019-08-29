@@ -9,11 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class RegistersuccessComponent implements OnInit {
 
   constructor(
-    private metaService: Meta,
     private titleService: Title) { }
 
   ngOnInit() {
-      this.titleService.setTitle('Registration Successful');
+    this.titleService.setTitle('Registration Successful');
   }
 
 }

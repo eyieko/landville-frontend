@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start:dev": "npm run serve",
     "start": "node serve-script",
     "build:browser": "ng build",
     "test": "ng test",

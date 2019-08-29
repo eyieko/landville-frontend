@@ -12,7 +12,7 @@ Navigate to `https://landville-frontend.herokuapp.com/` and you'll be served wit
 
 ## Code scaffolding
 
-Run `ng generate component component-name --m = app` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name --m app` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
