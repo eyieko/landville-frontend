@@ -1,4 +1,4 @@
-import { PaymentService } from 'src/app/services/payment-service';
+import { PaymentService } from 'src/app/services/payment/payment-service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';

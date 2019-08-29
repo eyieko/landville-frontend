@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -19,29 +19,32 @@ import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { TermsService } from './services/terms/terms.service';
-
+import {
+  InternationalPaymentStatusComponent
+} from 'src/app/pages/payment/international-payment-status/international-payment-status.component';
 
 
 @NgModule({
   imports: [
-		AngularFontAwesomeModule,
-		FormsModule,
-		ReactiveFormsModule,
+    AngularFontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule,
     ComponentsModule,
     HttpClientModule,
+    NgxSpinnerModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-		NgxSpinnerModule
   ],
   declarations: [
     AppComponent,
     AuthLayoutComponent,
     CommonLayoutComponent,
     PasswordResetComponent,
-    EnterResetPasswordComponent
+    EnterResetPasswordComponent,
+    InternationalPaymentStatusComponent
   ],
   providers: [
     LocalStorageService, AuthGuard, NoAuthGuard, TermsService,

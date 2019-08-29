@@ -16,7 +16,7 @@ describe('Test for Loginservice', () => {
       imports: [HttpClientTestingModule],
       providers: [LoginService]
     });
-    //inject service
+    // inject service
     service = TestBed.get(LoginService);
     httpMock = TestBed.get(HttpTestingController);
     googleUrl = APPCONFIG.base_url + '/auth/google/';

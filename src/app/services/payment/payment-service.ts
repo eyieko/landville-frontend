@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError} from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
+import { InternationalPayment } from 'src/app/models';
 
 @Injectable({ providedIn: 'root' })
 export class PaymentService {
@@ -25,6 +26,12 @@ export class PaymentService {
     return this.http.post<any>(
       `${environment.api_url}/transactions/tokenized-card/`,
       data).pipe(catchError(this.handleError));
+  }
+  createInternationalPayment(payment: InternationalPayment): Observable<InternationalPayment> {
+    return this.http.post<InternationalPayment>(
+      `${environment.api_url}/transactions/card-foreign/`,
+      payment
+    );
   }
 
   private handleError(err: HttpResponse<object>) {

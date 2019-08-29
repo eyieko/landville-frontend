@@ -1,18 +1,36 @@
 import { PaymentService } from './payment-service';
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync, inject, tick } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('PaymentService', () => {
   let httpTestingController: HttpTestingController;
   let service: PaymentService;
+  const payload = {
+    cardno: '5399838383838381',
+    cvv: '470',
+    expirymonth: '01',
+    expiryyear: '21',
+    amount: '8800',
+    billingzip: '07205',
+    billingcity: 'billingcity',
+    billingaddress: 'billingaddress',
+    billingstate: 'NJ',
+    billingcountry: 'UK',
+    save_card: true,
+    purpose: 'Saving'
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
         providers: [
         PaymentService,
       ],
-      imports: [ HttpClientTestingModule ]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [ HttpClientTestingModule, ReactiveFormsModule, FormsModule ],
+
     });
     httpTestingController = TestBed.get(HttpTestingController);
     service = TestBed.get(PaymentService);
@@ -31,13 +49,13 @@ describe('PaymentService', () => {
   it('should call validatePinPay with the correct URL', () => {
     service.validatePinPay({otp: 111}).subscribe();
     const req = httpTestingController.expectOne(`${environment.api_url}/transactions/validate-card/`);
-    req.flush({message: 'success'})
+    req.flush({message: 'success'});
   });
 
   it('should call payWithTokenized with the correct URL', () => {
     service.payWithTokenizedCard({otp: 111}).subscribe();
     const req = httpTestingController.expectOne(`${environment.api_url}/transactions/tokenized-card/`);
-    req.flush({'message': 'success'});
+    req.flush({message: 'success'});
   });
 
   it('should throw an error if error is returned from the http call', () => {
@@ -48,4 +66,34 @@ describe('PaymentService', () => {
     const req = httpTestingController.expectOne(`${environment.api_url}/transactions/validate-card/`);
     req.flush({message: 'success'}, mockErrorResponse);
   });
+
+  it('should make international payment correctly', fakeAsync(
+    inject(
+      [PaymentService, HttpTestingController],
+      (
+        service: PaymentService,
+        backend: HttpTestingController
+      ) => {
+        // Set up
+        const url = `${environment.api_url}/transactions/card-foreign/`;
+        const responseObject = {
+          success: true,
+          message: 'created was successful'
+        };
+        let response = null;
+
+        service
+          .createInternationalPayment(payload)
+          .subscribe((receivedResponse: any) => {
+            response = receivedResponse;
+          });
+        const requestWrapper = backend.expectOne({ url });
+        requestWrapper.flush(responseObject);
+
+        tick();
+
+        expect(requestWrapper.request.method).toEqual('POST');
+      }
+    )
+  ));
 });
