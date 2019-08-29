@@ -11,4 +11,4 @@ import { join } from 'path';
     })
   ]
 })
-export class ApplicationModule {}
+export class ApplicationModule { }
