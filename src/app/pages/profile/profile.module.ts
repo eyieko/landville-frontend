@@ -5,16 +5,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AuthLayoutModule } from 'src/app/layouts/auth-layout/auth-layout.module';
 import { PersonalInformationComponent } from 'src/app/pages/profile/personal-information/personal-information.component';
-
 import { ProfileSidebarComponent } from 'src/app/pages/profile/profile-sidebar/profile-sidebar.component';
 import { ProfileComponent } from 'src/app/pages/profile/profile.component';
 import { RoleTransformPipe } from 'src/app/shared/pipes/role.pipe';
+import { FinancialInformationComponent } from 'src/app/pages/profile/financial-information/financial-information.component';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 @NgModule({
   declarations: [
     ProfileSidebarComponent,
     ProfileComponent,
     PersonalInformationComponent,
+    FinancialInformationComponent,
     RoleTransformPipe
   ],
   exports: [ProfileComponent],
@@ -24,7 +26,8 @@ import { RoleTransformPipe } from 'src/app/shared/pipes/role.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
-		AuthLayoutModule,
+    AuthLayoutModule,
+    RoundProgressModule
   ],
   providers: [],
   bootstrap: [ProfileComponent]
