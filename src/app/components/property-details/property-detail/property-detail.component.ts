@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
 
 @Component({
   selector: 'app-property-detail',
@@ -18,9 +19,7 @@ export class PropertyDetailComponent implements OnInit {
   @Input() bedrooms: string;
   @Input() ifBuilding: boolean;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

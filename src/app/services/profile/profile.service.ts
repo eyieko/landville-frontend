@@ -5,7 +5,7 @@ import {
   UserProfileResponse,
   UserProfileUpdatedResponse
 } from 'src/app/models/Profile';
-import { LocalStorageService } from '../local-storage.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { APPCONFIG } from 'src/app/config';
 
 @Injectable({
@@ -17,6 +17,7 @@ export class ProfileService {
   userProfile$: Subject<any> = new Subject<any>();
   getDep$: Subject<any> = new Subject<any>();
   userToken = this.localStorageService.get('token', '');
+  clientUrl = '/auth/client';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -62,6 +63,12 @@ export class ProfileService {
   getDeposits(): Observable<any> {
     return this.http.get<any>(
       `${APPCONFIG.base_url}${this.depositeUrl}`,
+      this.httpOptions
+    );
+  }
+  getClients(): Observable<any> {
+    return this.http.get<any>(
+      `${APPCONFIG.base_url}${this.clientUrl}`,
       this.httpOptions
     );
   }
