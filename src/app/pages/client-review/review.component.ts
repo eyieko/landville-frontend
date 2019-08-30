@@ -4,6 +4,7 @@ import { ClientReviewService } from 'src/app/services/client-review.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
+import { noWhitespaceValidator } from 'src/app/helpers/no-whitespace-validator'
 
 @Component({
   selector: 'app-review',
@@ -12,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ReviewComponent implements OnInit {
   reviewForm = new FormGroup({
-    review: new FormControl('', Validators.required)
+    review: new FormControl('', [Validators.required, noWhitespaceValidator])
   });
   clientID;
 
@@ -47,7 +48,7 @@ export class ReviewComponent implements OnInit {
         this.spinner.hide();
         let toastMessage = '';
         if (!error.errors) {
-          toastMessage = 'Unexpected error occured!';
+          toastMessage = 'Server or network error happened!';
         } else {
           toastMessage = error.errors.detail ? error.errors.detail : error.errors;
         }
@@ -55,5 +56,4 @@ export class ReviewComponent implements OnInit {
       }
     );
   }
-
 }
