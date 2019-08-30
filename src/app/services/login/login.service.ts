@@ -4,6 +4,7 @@ import { HttpMethods } from '../../config';
 import { HttpService } from '../http.service';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,13 +15,12 @@ export class LoginService {
   constructor(private http: HttpService) {
   }
 
-  static logout() {
-    // removes user from local storage to log user out
-    localStorage.clear();
-    location.reload(true);
-  }
-
   login(loginData: any): Observable<any> {
     return this.http.makeRequestWithData(this.loginUrl, loginData, HttpMethods.POST);
+  }
+
+  logoutUser() {
+    return this.http.makeRequestWithData('/auth/logout/', null, HttpMethods.POST);
+
   }
 }

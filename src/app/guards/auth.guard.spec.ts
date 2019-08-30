@@ -3,18 +3,14 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { routerSpy } from 'src/app/helpers/spies';
 
-class MockRouter {
-  navigate(path) { }
-}
 
 describe('AuthGuard', () => {
   let MockAuthService;
-  let router;
   let guard;
   beforeEach(() => {
     MockAuthService = jasmine.createSpyObj(['isLoggedIn']);
-    router = new MockRouter();
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [
@@ -22,7 +18,7 @@ describe('AuthGuard', () => {
         { provide: { AuthService, useValue: MockAuthService } },
       ]
     });
-    guard = new AuthGuard(MockAuthService, router);
+    guard = new AuthGuard(MockAuthService, routerSpy);
   });
 
   it(

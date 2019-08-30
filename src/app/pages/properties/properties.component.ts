@@ -1,8 +1,8 @@
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { PropertiesService } from './../../services/properties/properties.service';
+import { PropertiesService } from 'src/app/services/properties/properties.service';
 import { Component, OnInit } from '@angular/core';
-import { Property } from '../../models/Property';
+import { Property } from 'src/app/models/Property';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment.prod';

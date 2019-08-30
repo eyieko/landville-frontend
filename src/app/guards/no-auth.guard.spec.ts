@@ -3,15 +3,13 @@ import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoAuthGuard } from 'src/app/guards/no-auth.guard';
 import { AuthService } from 'src/app/services/auth.service';
+import { routerSpy } from 'src/app/helpers/spies';
 
-class MockRouter {
-  navigate(path) { }
-}
 
 describe('NoAuthGuard', () => {
   let authGuard: NoAuthGuard;
   let MockAuthService;
-  let router;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
@@ -20,9 +18,8 @@ describe('NoAuthGuard', () => {
         { provide: { AuthService, useValue: MockAuthService } },
       ]
     });
-    router = new MockRouter();
     MockAuthService = jasmine.createSpyObj(['isLoggedIn']);
-    authGuard = new NoAuthGuard(MockAuthService, router);
+    authGuard = new NoAuthGuard(MockAuthService, routerSpy);
   });
 
   it(

@@ -7,11 +7,11 @@ import { of, throwError } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { routerSpy } from 'src/app/helpers/spies';
 
 describe('PinValidateComponent', () => {
   let component: PinValidateComponent;
   let fixture: ComponentFixture<PinValidateComponent>;
-  const mockRouter = jasmine.createSpyObj(['navigate']);
   const mockRoute = jasmine.createSpyObj(['snapshot']);
   const mockToastr = jasmine.createSpyObj(['success', 'error']);
   const mockSpinner = jasmine.createSpyObj(['show', 'hide']);
@@ -35,7 +35,7 @@ describe('PinValidateComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    component = new PinValidateComponent(mockRoute, mockRouter,
+    component = new PinValidateComponent(mockRoute, routerSpy,
       mockPaymentService, mockToastr, mockSpinner, mockLocation, mockTitleSvc, mockActivatedRoute);
   });
 
@@ -49,9 +49,9 @@ describe('PinValidateComponent', () => {
   }
   );
   it('should call the navigate method', () => {
-    mockRouter.navigate.and.returnValue(of(true));
+    routerSpy.navigate.and.returnValue(of(true));
     component.onBack();
-    expect(mockRouter.navigate).toHaveBeenCalled();
+    expect(routerSpy.navigate).toHaveBeenCalled();
   }
   );
   it('should toast error if PaymentService returns error.', () => {

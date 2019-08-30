@@ -48,7 +48,7 @@
             >Partners</a
           >
         </li>
-        <li class="nav-item">
+        <li *ngIf="authenticated" class="nav-item">
           <a
             class="nav-link waves-effect waves-light"
             routerLink="/user/deposits"
@@ -144,8 +144,7 @@
             <a
               (click)="handleLogout()"
               class="dropdown-item waves-effect waves-light profileDropDown"
-              routerLink="/logout"
-              routerLinkActive="active"
+              id="logoutBtn"
             >
               <i class="fa fa-sign-out"></i> Log Out</a
             >
