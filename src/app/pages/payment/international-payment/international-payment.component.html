@@ -1,11 +1,6 @@
 <div class="payment">
   <div class="container">
-    <form
-      class="payment-form"
-      [hidden]="!shouldHide"
-      [formGroup]="form"
-      (ngSubmit)="onSubmitPaymentDetails(form)"
-    >
+    <form class="payment-form" [hidden]="!shouldHide" [formGroup]="form" (ngSubmit)="onSubmitPaymentDetails(form)">
       <ngx-spinner></ngx-spinner>
       <div class="heading">Pay with International Card</div>
       <div class="container">
@@ -15,38 +10,25 @@
               Card Number:
             </div>
 
-            <input
-              formControlName="cardNo"
-              class="form-control"
-              [ngClass]="{
+            <input formControlName="cardNo" class="form-control" [ngClass]="{
                 'is-invalid':
                   (form.get('cardNo').touched || form.get('cardNo').dirty) &&
                   !form.get('cardNo').valid
-              }"
-            />
-            <app-input-errors
-              error="Your Card Number is required"
-              *ngIf="
+              }" />
+            <app-input-errors error="Your Card Number is required" *ngIf="
                 (form.get('cardNo').touched || form.get('cardNo').dirty) &&
                 form.get('cardNo').errors?.required
-              "
-            >
+              ">
             </app-input-errors>
-            <app-input-errors
-              error="Card number should not be less than 8 integers"
-              *ngIf="
+            <app-input-errors error="Card number should not be less than 8 integers" *ngIf="
                 (form.get('cardNo').touched || form.get('cardNo').dirty) &&
                 form.get('cardNo').errors?.minlength
-              "
-            >
+              ">
             </app-input-errors>
-            <app-input-errors
-              error="Card number should be an integer"
-              *ngIf="
+            <app-input-errors error="Card number should be an integer" *ngIf="
                 (form.get('cardNo').touched || form.get('cardNo').dirty) &&
                 form.get('cardNo').errors?.pattern
-              "
-            >
+              ">
             </app-input-errors>
           </div>
 
@@ -54,47 +36,30 @@
             <div>
               CVV Number:
             </div>
-            <input
-              maxlength="4"
-              formControlName="cvv"
-              class="form-control"
-              [ngClass]="{
+            <input maxlength="4" formControlName="cvv" class="form-control" [ngClass]="{
                 'is-invalid':
                   (form.get('cvv').touched || form.get('cvv').dirty) &&
                   !form.get('cvv').valid
-              }"
-            />
-            <app-input-errors
-              error="CVV should be a number"
-              *ngIf="
+              }" />
+            <app-input-errors error="CVV should be a number" *ngIf="
                 (form.get('cvv').touched || form.get('cvv').dirty) &&
                 form.get('cvv').errors?.pattern
-              "
-            >
+              ">
             </app-input-errors>
-            <app-input-errors
-              error="CVV is required"
-              *ngIf="
+            <app-input-errors error="CVV is required" *ngIf="
                 (form.get('cvv').touched || form.get('cvv').dirty) &&
                 form.get('cvv').errors?.required
-              "
-            >
+              ">
             </app-input-errors>
-            <app-input-errors
-              error="CVV number should not be less than 3 integers"
-              *ngIf="
+            <app-input-errors error="CVV number should not be less than 3 integers" *ngIf="
                 (form.get('cvv').touched || form.get('cvv').dirty) &&
                 form.get('cvv').errors?.minlength
-              "
-            >
+              ">
             </app-input-errors>
-            <app-input-errors
-              error="CVV number should not be more than 4 integers"
-              *ngIf="
+            <app-input-errors error="CVV number should not be more than 4 integers" *ngIf="
                 (form.get('cvv').touched || form.get('cvv').dirty) &&
                 form.get('cvv').errors?.maxlength
-              "
-            >
+              ">
             </app-input-errors>
           </div>
         </div>
@@ -103,65 +68,43 @@
             <div>
               Card Expiry Month:
             </div>
-            <select
-              formControlName="expiryMonth"
-              class="form-control"
-              placeholder="month"
-              [ngClass]="{
+            <select formControlName="expiryMonth" class="form-control" placeholder="month" [ngClass]="{
                 'is-invalid':
                   (form.get('expiryMonth').touched ||
                     form.get('expiryMonth').dirty) &&
                   !form.get('expiryMonth').valid
-              }"
-            >
-              <option value="" value="null" disabled="true" [selected]="true"
-                >Month</option
-              >
-              <option
-                *ngFor="let month of expectedMonths"
-                value="{{ month }}"
-                >{{ month }}</option
-              >
+              }">
+              <option value="" value="null" disabled="true" [selected]="true">Month</option>
+              <option *ngFor="let month of expectedMonths" value="{{ month }}">{{ month }}</option>
             </select>
-            <app-input-errors
-              error="Expiry Month of your card is required"
-              *ngIf="
+            <app-input-errors error="Expiry Month of your card is required" *ngIf="
                 (form.get('expiryMonth').touched ||
                   form.get('expiryMonth').dirty) &&
                 form.get('expiryMonth').errors?.required
-              "
-            >
+              ">
             </app-input-errors>
           </div>
           <div class="col-md-6">
             <div>
               Expiry Year:
             </div>
-            <select
-              formControlName="expiryYear"
-              class="form-control"
-              placeholder="year"
-              [ngClass]="{
+            <select formControlName="expiryYear" class="form-control" placeholder="year" [ngClass]="{
                 'is-invalid':
                   (form.get('expiryYear').touched ||
                     form.get('expiryYear').dirty) &&
                   !form.get('expiryYear').valid
-              }"
-            >
+              }">
               <option value="" [selected]="true">Year</option>
               <option *ngFor="let year of expectedYears" value="{{ year }}">{{
                 year
               }}</option>
             </select>
 
-            <app-input-errors
-              error="Expiry Year of your card is required"
-              *ngIf="
+            <app-input-errors error="Expiry Year of your card is required" *ngIf="
                 (form.get('expiryYear').touched ||
                   form.get('expiryYear').dirty) &&
                 form.get('expiryYear').errors?.required
-              "
-            >
+              ">
             </app-input-errors>
           </div>
         </div>
@@ -170,63 +113,43 @@
             <div>
               Amount <strong>(NGN)</strong>:
             </div>
-            <input
-              formControlName="amount"
-              class="form-control"
-              [ngClass]="{
+            <input formControlName="amount" class="form-control" [ngClass]="{
                 'is-invalid':
                   (form.get('amount').touched || form.get('amount').dirty) &&
                   !form.get('amount').valid
-              }"
-            />
-            <app-input-errors
-              error="Amount being paid for this transaction is required"
-              *ngIf="
+              }" />
+            <app-input-errors error="Amount being paid for this transaction is required" *ngIf="
                 (form.get('amount').touched || form.get('amount').dirty) &&
                 form.get('amount').errors?.required
-              "
-            >
+              ">
             </app-input-errors>
-            <app-input-errors
-              error="Amount being paid for this transaction should be a number"
-              *ngIf="
+            <app-input-errors error="Amount being paid for this transaction should be a number" *ngIf="
                 (form.get('amount').touched || form.get('amount').dirty) &&
                 form.get('amount').errors?.pattern
-              "
-            >
+              ">
             </app-input-errors>
           </div>
           <div class="col-md-6">
             <div>
               Billing zip:
             </div>
-            <input
-              formControlName="billingZip"
-              class="form-control"
-              [ngClass]="{
+            <input formControlName="billingZip" class="form-control" [ngClass]="{
                 'is-invalid':
                   (form.get('billingZip').touched ||
                     form.get('billingZip').dirty) &&
                   !form.get('billingZip').valid
-              }"
-            />
-            <app-input-errors
-              error="Billing zip is required"
-              *ngIf="
+              }" />
+            <app-input-errors error="Billing zip is required" *ngIf="
                 (form.get('billingZip').touched ||
                   form.get('billingZip').dirty) &&
                 form.get('billingZip').errors?.required
-              "
-            >
+              ">
             </app-input-errors>
-            <app-input-errors
-              error="Billing zip should be a number"
-              *ngIf="
+            <app-input-errors error="Billing zip should be a number" *ngIf="
                 (form.get('billingZip').touched ||
                   form.get('billingZip').dirty) &&
                 form.get('billingZip').errors?.pattern
-              "
-            >
+              ">
             </app-input-errors>
           </div>
         </div>
@@ -235,24 +158,17 @@
             <div>
               Billing City:
             </div>
-            <input
-              formControlName="billingCity"
-              class="form-control"
-              [ngClass]="{
+            <input formControlName="billingCity" class="form-control" [ngClass]="{
                 'is-invalid':
                   (form.get('billingCity').touched ||
                     form.get('billingCity').dirty) &&
                   !form.get('billingCity').valid
-              }"
-            />
-            <app-input-errors
-              error="Billing City is required"
-              *ngIf="
+              }" />
+            <app-input-errors error="Billing City is required" *ngIf="
                 (form.get('billingCity').touched ||
                   form.get('billingCity').dirty) &&
                 form.get('billingCity').errors?.required
-              "
-            >
+              ">
             </app-input-errors>
           </div>
           <div class="col-md-6">
@@ -260,24 +176,17 @@
               Billing Address:
             </div>
             <div>
-              <input
-                formControlName="billingAddress"
-                class="form-control"
-                [ngClass]="{
+              <input formControlName="billingAddress" class="form-control" [ngClass]="{
                   'is-invalid':
                     (form.get('billingAddress').touched ||
                       form.get('billingAddress').dirty) &&
                     !form.get('billingAddress').valid
-                }"
-              />
-              <app-input-errors
-                error="Billing address is required"
-                *ngIf="
+                }" />
+              <app-input-errors error="Billing address is required" *ngIf="
                   (form.get('billingAddress').touched ||
                     form.get('billingAddress').dirty) &&
                   form.get('billingAddress').errors?.required
-                "
-              >
+                ">
               </app-input-errors>
             </div>
           </div>
@@ -287,48 +196,34 @@
             <div>
               Billing State:
             </div>
-            <input
-              formControlName="billingState"
-              class="form-control"
-              [ngClass]="{
+            <input formControlName="billingState" class="form-control" [ngClass]="{
                 'is-invalid':
                   (form.get('billingState').touched ||
                     form.get('billingState').dirty) &&
                   !form.get('billingState').valid
-              }"
-            />
-            <app-input-errors
-              error="Billing state is required"
-              *ngIf="
+              }" />
+            <app-input-errors error="Billing state is required" *ngIf="
                 (form.get('billingState').touched ||
                   form.get('billingState').dirty) &&
                 form.get('billingState').errors?.required
-              "
-            >
+              ">
             </app-input-errors>
           </div>
           <div class="col-md-6">
             <div>
               Billing Country:
             </div>
-            <input
-              formControlName="billingCountry"
-              class="form-control"
-              [ngClass]="{
+            <input formControlName="billingCountry" class="form-control" [ngClass]="{
                 'is-invalid':
                   (form.get('billingCountry').touched ||
                     form.get('billingCountry').dirty) &&
                   !form.get('billingCountry').valid
-              }"
-            />
-            <app-input-errors
-              error="Billing country is required"
-              *ngIf="
+              }" />
+            <app-input-errors error="Billing country is required" *ngIf="
                 (form.get('billingCountry').touched ||
                   form.get('billingCountry').dirty) &&
                 form.get('billingCountry').errors?.required
-              "
-            >
+              ">
             </app-input-errors>
           </div>
         </div>
@@ -337,88 +232,49 @@
           <div class="col-md-6">
             <div>
               Purpose
-              <select
-                class="custom-select"
-                formControlName="purpose"
-                placeholder="Select the purpose for this payment"
+              <select class="custom-select" formControlName="purpose" placeholder="Select the purpose for this payment"
                 [ngClass]="{
                   'is-invalid':
                     (form.get('purpose').touched ||
                       form.get('purpose').dirty) &&
                     !form.get('purpose').valid
-                }"
-              >
-                <option value="" disabled="true" [selected]="true"
-                  >Purpose</option
-                >
+                }">
+                <option value="" disabled="true" [selected]="true">Purpose</option>
                 <option value="Buying" disabled>Buying</option>
                 <option value="Saving">Saving</option>
               </select>
-              <app-input-errors
-                error="Purpose of this transaction is required"
-                *ngIf="
+              <app-input-errors error="Purpose of this transaction is required" *ngIf="
                   (form.get('purpose').touched || form.get('purpose').dirty) &&
                   form.get('purpose').errors?.required
-                "
-              >
+                ">
               </app-input-errors>
             </div>
             <div class="col-md-6">
               <label class="form-check-label">Save Card</label>
-              <input
-                class="form-check-input"
-                type="checkbox"
-                formControlName="saveCard"
-              />
+              <input class="form-check-input" type="checkbox" formControlName="saveCard" />
             </div>
           </div>
         </div>
 
-        <input
-          type="button"
-          id="backButton"
-          class="btn btn-secondary"
-          value="Back"
-          (click)="backClicked()"
-        />
-        <input
-          type="submit"
-          class="btn btn-primary"
-          value="Submit"
-          [disabled]="!form.valid"
-          [ngStyle]="
+        <input type="button" id="backButton" class="btn btn-secondary" value="Back" (click)="backClicked()" />
+        <input type="submit" class="btn btn-primary" value="Submit" [disabled]="!form.valid" [ngStyle]="
             form.invalid && {
               color: 'white',
               backgroundcolor: '#171039'
             }
-          "
-        />
+          " />
       </div>
     </form>
     <div class="container" [hidden]="shouldHide">
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6 iframeContent">
-          <iframe
-            class="status"
-            #confirmPayment
-            [src]="iframeSrc"
-          >
+          <iframe class="status" #confirmPayment [src]="iframeSrc">
           </iframe>
-          <div class="buttons" >
+          <div class="buttons">
             <div class="container">
-              <input
-                type="button"
-                id="resubmit"
-                class="btn btn-secondary"
-                value="Resubmit"
-                (click)="resubmit()"
-              />
-              <a
-                type="button"
-                class="btn btn-primary"
-                routerLink="/transactions"
-              >Your Deposits</a>
+              <input type="button" id="resubmit" class="btn btn-secondary" value="Resubmit" (click)="resubmit()" />
+              <a type="button" class="btn btn-primary" routerLink="/user/deposits">Your Deposits</a>
             </div>
           </div>
         </div>
