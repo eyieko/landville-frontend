@@ -40,11 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         ({ data: { property } }) => {
           this.trendingProperties = property.slice(0, 6);
         },
-        _ => {
-          this.toastService.error(
-            'Something went wrong, we could not load the trending properties'
-          );
-        });
+        _ => { });
   }
 
   ngOnDestroy() {
