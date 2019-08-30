@@ -1,17 +1,18 @@
-import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
+
+import { Router, RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
-import { of, throwError } from 'rxjs';
+import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { HttpClientModule } from '@angular/common/http';
+import { of, throwError } from 'rxjs';
+import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
 import { DepositsService } from 'src/app/services/deposits/deposits.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
 import { resetSpies } from 'src/app/helpers/social.spies';
 import { DepositsSpy, toastServiceSpy, routerSpy } from 'src/app/helpers/spies';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
 
 describe('DepositsComponent', () => {
   let component: DepositsComponent;
@@ -62,10 +63,10 @@ describe('DepositsComponent', () => {
       declarations: [DepositsComponent],
       imports: [
         HttpClientModule,
-        OwlDateTimeModule,
-        OwlNativeDateTimeModule,
         NgxSpinnerModule,
-        FormsModule
+        FormsModule,
+        RouterTestingModule,
+        RouterModule.forRoot([])
       ],
       providers: [
         {

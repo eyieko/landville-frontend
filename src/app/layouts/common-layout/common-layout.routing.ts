@@ -88,6 +88,12 @@ export const CommonLayoutRoutes: Routes = [
         { name: 'twitter:description', content: 'Browse a wide range of the best property across Nigeria' },
       ]
     },
+  },
+  {
+    path: 'user/deposits',
+    component: DepositsComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'My Deposits', tags: [] }
   }
 
 ];

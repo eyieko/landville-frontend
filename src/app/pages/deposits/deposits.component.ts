@@ -1,11 +1,12 @@
-import { Deposit } from 'src/app/models/Deposit';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
+import { Deposit } from 'src/app/models/Deposit';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Subscription } from 'rxjs';
-
 import { DepositsService } from 'src/app/services/deposits/deposits.service';
 import { removeSubscription } from 'src/app/helpers/unsubscribe';
+
 
 @Component({
   selector: 'app-deposits',
@@ -16,15 +17,17 @@ export class DepositsComponent implements OnInit, OnDestroy {
   subscribe: Subscription[] = [];
   headElements = ['Reference', 'Date', 'Amount'];
   transactions: Deposit[] = [];
-  startDateVal: string = '';
-  endDateVal: string = '';
+  startDateVal = '';
+  endDateVal = '';
   newResults: any[];
 
   constructor(
     private depositsService: DepositsService,
     private spinner: NgxSpinnerService,
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService,
+    private titleService: Title,
+    private metaService: Meta
+  ) { }
 
   onFilter() {
     const filteredTransactions = [];
@@ -49,6 +52,8 @@ export class DepositsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('My Deposits');
+    this.metaService.addTags([]);
     this.setTransactions();
   }
 
