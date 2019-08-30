@@ -13,8 +13,6 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class RegistrationComponent implements OnInit {
   registeruser: User[];
-  returnUrl: string;
-
 
   constructor(
     private registerServiceService: RegisterServiceService,
@@ -41,7 +39,7 @@ export class RegistrationComponent implements OnInit {
       response => {
         this.toastrService.success(response.data.message);
         this.spinner.hide();
-        this.router.navigate([this.returnUrl]);
+        this.router.navigate(['registersuccess']);
       },
       error => {
         this.toastrService.error(error.error.errors.email[0]);

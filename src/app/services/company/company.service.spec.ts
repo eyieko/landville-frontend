@@ -1,8 +1,7 @@
-import {fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
-
-import {CompanyService} from './company.service';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {environment} from '../../../environments/environment';
+import { fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { CompanyService } from 'src/app/services/company/company.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { environment } from 'src/environments/environment';
 
 describe('CompanyService', () => {
   const payload = {
@@ -43,7 +42,7 @@ describe('CompanyService', () => {
         service.createCompany(payload).subscribe((receivedResponse: any) => {
           response = receivedResponse;
         });
-        const requestWrapper = backend.expectOne({url});
+        const requestWrapper = backend.expectOne({ url });
         requestWrapper.flush(responseObject);
 
         tick();
@@ -67,7 +66,7 @@ describe('CompanyService', () => {
         service.getCompanyDetails().subscribe((receivedResponse: any) => {
           response = receivedResponse;
         });
-        const requestWrapper = backend.expectOne({url});
+        const requestWrapper = backend.expectOne({ url });
         requestWrapper.flush(responseObject);
 
         tick();

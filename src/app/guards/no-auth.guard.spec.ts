@@ -1,8 +1,8 @@
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NoAuthGuard } from './no-auth.guard';
-import { AuthService } from '../services/auth.service';
+import { NoAuthGuard } from 'src/app/guards/no-auth.guard';
+import { AuthService } from 'src/app/services/auth.service';
 
 class MockRouter {
   navigate(path) { }

@@ -22,7 +22,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private propertiesService: PropertiesService,
     private toastService: ToastrService,
-    private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute
+    private titleService: Title,
+    private metaService: Meta,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {

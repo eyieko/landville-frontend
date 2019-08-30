@@ -15,7 +15,6 @@ export const AuthLayoutRoutes: Routes = [
             property: 'og:description',
             content: 'Create an access so you can can get access to a wide range of property investment options'
           },
-
           // Twitter
           { name: 'twitter:title', content: 'Register | Create a free account today!' },
           {

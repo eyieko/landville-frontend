@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { environment } from '../environments/environment';
 import { image_urls } from 'src/assets/img/image_urls'
+=======
+import { environment } from 'src/environments/environment';
+>>>>>>> Refactor Un necessary files and fix Routing problem
 
 function appConfig() {
   return {
