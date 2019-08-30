@@ -4,33 +4,33 @@
       <div class="col-md-9 col-sm-6">
         <div class="company-details">
           <h3 class="company-title">Add Property</h3>
-          <form [formGroup]="addPropertyForm" autocomplete="off" (onSubmit)="addNewProperty(addPropertyForm.value)" enctype="multipart/form-data">
 
-            {{addPropertyForm.value | json}}
+          <form [formGroup]="addPropertyForm" autocomplete="off" enctype="multipart/form-data">
             <div class="md-form">
               <div class="form-row">
                 <div class="form-group col-md-6 p-2">
-                  <label class="text-muted" for="propertyTitle">Title</label>
-                  <input class="form-control" formControlName="propertyTitle" id="propertyTitle" placeholder="Title"
+                  <label class="text-muted" for="title">Title</label>
+                  <input class="form-control" formControlName="title" id="propertyTitle" placeholder="Title"
                     type="text">
-                  <div
-                    *ngIf="addPropertyForm.get('propertyTitle').touched && addPropertyForm.get('propertyTitle').errors && addPropertyForm.get('propertyTitle').errors?.required ">
+                  <div class="alert alert-danger"
+                    *ngIf="addPropertyForm.get('title').touched && addPropertyForm.get('title').errors && addPropertyForm.get('title').errors?.required ">
                     Property Title is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('propertyTitle').touched && addPropertyForm.get('propertyTitle').errors 
-                    && addPropertyForm.get('propertyTitle').errors?.minlength ">
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('title').touched && addPropertyForm.get('title').errors 
+                    && addPropertyForm.get('title').errors?.minlength ">
                     Property should be atleast 5 characters long
                   </div>
                 </div>
+
                 <div class="form-group col-md-6 p-2">
                   <label class="text-muted" for="description">Description</label>
                   <input class="form-control" formControlName="description" id="description" placeholder="Description"
                     type="text">
-                  <div *ngIf="addPropertyForm.get('description').touched && addPropertyForm.get('description').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('description').touched && addPropertyForm.get('description').errors 
                     && addPropertyForm.get('description').errors?.required ">
                     Property Description is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('description').touched && addPropertyForm.get('description').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('description').touched && addPropertyForm.get('description').errors 
                     && addPropertyForm.get('description').errors?.minlength ">
                     Property Description should be atleast 3 characters long
                   </div>
@@ -38,11 +38,11 @@
                 <div class="form-group col-md-6 p-2">
                   <label class="text-muted" for="price">Price</label>
                   <input class="form-control" formControlName="price" id="price" placeholder="price" type="number">
-                  <div *ngIf="addPropertyForm.get('price').touched && addPropertyForm.get('price').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('price').touched && addPropertyForm.get('price').errors 
                     && addPropertyForm.get('price').errors?.required ">
                     Property Price is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('price').touched && addPropertyForm.get('price').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('price').touched && addPropertyForm.get('price').errors 
                     && addPropertyForm.get('price').errors?.maxLen">
                     Property Price should be atmost 14 numbers
                   </div>
@@ -51,52 +51,30 @@
                   <label class="text-muted" for="lot_size">Lot size</label>
                   <input class="form-control" formControlName="lot_size" id="lot_size" placeholder="Lot size"
                     type="number">
-                  <div *ngIf="addPropertyForm.get('lot_size').touched && addPropertyForm.get('lot_size').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('lot_size').touched && addPropertyForm.get('lot_size').errors 
                       && addPropertyForm.get('lot_size').errors?.required ">
                     Lot size is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('lot_size').touched && addPropertyForm.get('lot_size').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('lot_size').touched && addPropertyForm.get('lot_size').errors 
                     && addPropertyForm.get('lot_size').errors?.maxLen ">
                     Lot size should be atmost 14 chars Long
                   </div>
                 </div>
                 <div class="form-group col-md-6 p-2">
-
-                  <label class="text-muted" for="property_type">Property Type</label>
-                  <input class="form-control" formControlName="property_type"
-                    (blur)="changedTo(addPropertyForm.get('property_type').value)" id="property_type" type="radio"
-                    value="B">Building
-                  <input class="form-control" formControlName="property_type"
-                    (blur)="changedTo(addPropertyForm.get('property_type').value)" id="property_type" type="radio"
-                    value="L"> Lot
-
-                  <div *ngIf="addPropertyForm.get('property_type').touched && addPropertyForm.get('property_type').errors 
-                    && addPropertyForm.get('property_type').errors?.required ">
-                    Property Type is required.
-                  </div>
-                  <div *ngIf="addPropertyForm.get('property_type').touched && addPropertyForm.get('property_type').errors 
-                    && addPropertyForm.get('property_type').errors?.maxlength ">
-                    Property Type should be atleast
-                  </div>
+                  <select class="form-control browser-default custom-select custom-select-lg mb-3"
+                    formControlName="property_type" id="property_type" style="display: block;">
+                    <option value="" disabled selected>Choose Property Type</option>
+                    <option value="B">Building</option>
+                    <option value="L">Lot</option>
+                  </select>
                 </div>
                 <div class="form-group col-md-6 p-2">
-                  <label class="text-muted" for="purchase_plan">Purchase Plan</label>
-                  <input class="form-control" formControlName="purchase_plan"
-                    (blur)="changedTo(addPropertyForm.get('purchase_plan').value)" id="purchase_plan" type="radio"
-                    value="I">Installments
-                  <input class="form-control" formControlName="purchase_plan"
-                    (blur)="changedTo(addPropertyForm.get('purchase_plan').value)" id="purchase_plan" type="radio"
-                    value="F">Full Payment
-                  <!-- <input class="form-control" formControlName="purchase_plan" id="purchase_plan"
-                    placeholder="Purchase Plan" type="text"> -->
-                  <div *ngIf="addPropertyForm.get('purchase_plan').touched && addPropertyForm.get('purchase_plan').errors 
-                    && addPropertyForm.get('purchase_plan').errors?.required ">
-                    Purchase Plan is required.
-                  </div>
-                  <div *ngIf="addPropertyForm.get('purchase_plan').touched && addPropertyForm.get('purchase_plan').errors 
-                    && addPropertyForm.get('purchase_plan').errors?.maxlength ">
-                    Purchase Plan should be only one character.
-                  </div>
+                  <select class="form-control browser-default custom-select custom-select-lg mb-3"
+                    formControlName="purchase_plan" id="purchase_plan">
+                    <option value="" disabled selected>Choose Purchase Plan</option>
+                    <option value="I">Installments</option>
+                    <option value="F">Full Payment</option>
+                  </select>
                 </div>
 
               </div>
@@ -107,11 +85,11 @@
                 <div class="form-group col-md-6 p-2">
                   <label for="state">State</label>
                   <input class="form-control" formControlName="state" id="state" placeholder="State" type="text">
-                  <div *ngIf="addPropertyForm.get('state').touched && addPropertyForm.get('state').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('state').touched && addPropertyForm.get('state').errors 
                     && addPropertyForm.get('state').errors?.required ">
                     State is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('state').touched && addPropertyForm.get('state').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('state').touched && addPropertyForm.get('state').errors 
                     && addPropertyForm.get('state').errors?.minlength ">
                     State should be atleast 3 characters long.
                   </div>
@@ -119,11 +97,11 @@
                 <div class="form-group col-md-6 p-2">
                   <label class="text-muted" for="street">Street</label>
                   <input class="form-control" formControlName="street" id="street" placeholder="Street" type="text">
-                  <div *ngIf="addPropertyForm.get('street').touched && addPropertyForm.get('street').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('street').touched && addPropertyForm.get('street').errors 
                     && addPropertyForm.get('street').errors?.required ">
                     Street is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('street').touched && addPropertyForm.get('street').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('street').touched && addPropertyForm.get('street').errors 
                     && addPropertyForm.get('street').errors?.minlength ">
                     Street should be atleast 3 characters long.
                   </div>
@@ -131,11 +109,11 @@
                 <div class="form-group col-md-6 p-2">
                   <label class="text-muted" for="city">City</label>
                   <input class="form-control" formControlName="city" id="city" placeholder="City" type="text">
-                  <div *ngIf="addPropertyForm.get('city').touched && addPropertyForm.get('city').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('city').touched && addPropertyForm.get('city').errors 
                     && addPropertyForm.get('city').errors?.required ">
                     City is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('city').touched && addPropertyForm.get('city').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('city').touched && addPropertyForm.get('city').errors 
                     && addPropertyForm.get('city').errors?.minlength ">
                     City should be atleast 3 characters long.
                   </div>
@@ -146,10 +124,10 @@
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6 p-2">
-                  <label ffor="latitude">Latitude</label>
+                  <label for="latitude">Latitude</label>
                   <input class="form-control" formControlName="latitude" id="latitude" placeholder="Latitude"
                     type="number">
-                  <div *ngIf="addPropertyForm.get('latitude').touched && addPropertyForm.get('latitude').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('latitude').touched && addPropertyForm.get('latitude').errors 
                     && addPropertyForm.get('latitude').errors?.required ">
                     Latitude is required.
                   </div>
@@ -158,7 +136,7 @@
                   <label class="text-muted" for="longitude">Longitude</label>
                   <input class="form-control" formControlName="longitude" id="longitude"
                     placeholder="Coordinates Longitude" type="number">
-                  <div *ngIf="addPropertyForm.get('longitude').touched && addPropertyForm.get('longitude').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('longitude').touched && addPropertyForm.get('longitude').errors 
                     && addPropertyForm.get('longitude').errors?.required ">
                     Longitude is required.
                   </div>
@@ -169,23 +147,22 @@
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6  p-2">
-
-                  <!-- Custom bootstrap upload file-->
-                  <label for="fileUpload" class="file-upload btn btn-primary btn-block rounded-pill shadow"><i
-                      class="fa fa-upload mr-2"></i>Browse for file ...
-                    <input id="fileUpload" type="file" formControlName="image_main">
-                  </label>
+                  <input type='file' id='image_main' name="file" formControlName="image_main"
+                    placeholder="Upload an Image" class="btn btn-block rounded-pill shadow" required
+                    (change)="onFileSelect($event)" />
                 </div>
                 <div class="form-group col-md-6  p-2">
                   <label for="fileUpload" class="file-upload btn btn-primary btn-block rounded-pill shadow">
                     <i class="fa fa-upload mr-2"></i>Add Video
-                    <input id="video" formControlName="video" type="file" accept="video/*">
+                    <input id="video" formControlName="video" type="file" accept="video/*"
+                      (change)="onVideoSelect($event)">
                   </label>
                 </div>
                 <div class="form-group col-md-6 p-2">
                   <label for="fileUpload" class="file-upload btn btn-primary btn-block rounded-pill shadow">
                     <i class="fa fa-upload mr-2"></i>Add other images
-                    <input id="otherImages" formControlName="image_others" type="file" multiple>
+                    <input id="otherImages" formControlName="image_others" type="file" multiple
+                      (change)="uploadMaximumFive($event)">
                   </label>
                 </div>
               </div>
@@ -197,11 +174,11 @@
                   <label class="text-muted" for="bedrooms">Bedrooms</label>
                   <input class="form-control" formControlName="bedrooms" id="bedrooms" placeholder="Bedrooms"
                     type="number">
-                  <div *ngIf="addPropertyForm.get('bedrooms').touched && addPropertyForm.get('bedrooms').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('bedrooms').touched && addPropertyForm.get('bedrooms').errors 
                     && addPropertyForm.get('bedrooms').errors?.required">
                     Number of bedrooms is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('bedrooms').touched && addPropertyForm.get('bedrooms').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('bedrooms').touched && addPropertyForm.get('bedrooms').errors 
                     && addPropertyForm.get('bedrooms').errors?.max">
                     Number of bedrooms should be atmost 500 rooms.
                   </div>
@@ -210,11 +187,11 @@
                   <label class="text-muted" for="bathrooms">Bathrooms</label>
                   <input class="form-control" formControlName="bathrooms" id="bathrooms" placeholder="Bathrooms"
                     type="number">
-                  <div *ngIf="addPropertyForm.get('bathrooms').touched && addPropertyForm.get('bathrooms').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('bathrooms').touched && addPropertyForm.get('bathrooms').errors 
                     && addPropertyForm.get('bathrooms').errors?.required ">
                     Number of bathrooms is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('bathrooms').touched && addPropertyForm.get('bathrooms').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('bathrooms').touched && addPropertyForm.get('bathrooms').errors 
                     && addPropertyForm.get('bathrooms').errors?.maxlength ">
                     Number of bathrooms should be atleast 3 characters long.
                   </div>
@@ -223,11 +200,11 @@
                   <label class="text-muted" for="garages">Garages</label>
                   <input class="form-control" formControlName="garages" id="garages" placeholder="Garages"
                     type="number">
-                  <div *ngIf="addPropertyForm.get('garages').touched && addPropertyForm.get('garages').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('garages').touched && addPropertyForm.get('garages').errors 
                     && addPropertyForm.get('garages').errors?.required ">
                     Number of garages is required.
                   </div>
-                  <div *ngIf="addPropertyForm.get('garages').touched && addPropertyForm.get('garages').errors 
+                  <div class="alert alert-danger" *ngIf="addPropertyForm.get('garages').touched && addPropertyForm.get('garages').errors 
                     && addPropertyForm.get('garages').errors?.maxlength ">
                     Number of garages should be atleast 3 characters long.
                   </div>
@@ -235,12 +212,12 @@
               </div>
             </div>
             <div class="form-group">
-              <input type="submit" (click)="addNewProperty(addPropertyForm.value)" value=" Add Property"
-                class="btn btn-primary btn-form btn-form-blue float-right" />
-              <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
-
+              <button class="btn btn-primary btn-form btn-form-blue float-right" [disabled]="!addPropertyForm.valid"
+                value="Submit" type="submit" (click)="addNewProperty(addPropertyForm.value)">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+                Submit
+              </button>
             </div>
-            <!-- </div> -->
           </form>
         </div>
       </div>

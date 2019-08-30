@@ -14,6 +14,7 @@ import {
   InternationalPaymentStatusComponent
 } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
 import { ReviewComponent } from 'src/app/modules/features/components/client-review/review.component';
+import { AddPropertyComponent } from 'src/app/components/properties/add-property/add-property.component';
 
 export const CommonLayoutRoutes: Routes = [
   {
@@ -82,5 +83,10 @@ export const CommonLayoutRoutes: Routes = [
       title: 'Review client',
       tags: []
     }
-  }
+  },
+  {
+    path: 'property',
+    component: AddPropertyComponent,
+    canActivate: [AuthGuard],
+  },
 ];

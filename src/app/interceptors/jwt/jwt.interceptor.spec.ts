@@ -3,13 +3,12 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { httpHandlerSpy, httpRequestSpy } from 'src/app/helpers/tests/spies';
 import { HttpHandler, HttpRequest } from '@angular/common/http';
 import { of } from 'rxjs';
-import { JwtInterceptor } from 'src/app/interceptors/jwt/jwt.interceptor';
+import { JwtInterceptor } from './jwt.interceptor';
 
 const mockAuthService = jasmine.createSpyObj(['isLoggedIn']);
 
 describe('JWTInterceptor', () => {
   let jwtInterceptor: JwtInterceptor;
-
 
   beforeEach(() => {
     jwtInterceptor = new JwtInterceptor(mockAuthService);
@@ -30,11 +29,13 @@ describe('JWTInterceptor', () => {
 
   it('should auto populate jwt headers in the request', () => {
     // arrange
-    httpHandlerSpy.handle.and.returnValue(of({
-      data: {
-        message: 'data'
-      }
-    }));
+    httpHandlerSpy.handle.and.returnValue(
+      of({
+        data: {
+          message: 'data'
+        }
+      })
+    );
     // act
     jwtInterceptor.intercept(httpRequestSpy, httpHandlerSpy)
       .subscribe(
@@ -43,5 +44,4 @@ describe('JWTInterceptor', () => {
         },
       );
   });
-
 });

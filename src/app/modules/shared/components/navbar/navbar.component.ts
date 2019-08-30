@@ -19,7 +19,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
   userRole: string = 'BY';
 
-
   constructor(
     private profileService: ProfileService,
     private localStorageService: LocalStorageService,
