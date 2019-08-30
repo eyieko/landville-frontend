@@ -7,6 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from 'src/app/app.component';
 import { AppRoutingModule } from 'src/app/app.routing';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { RouterModule } from '@angular/router';
 import { FeaturesComponent } from 'src/app/modules/features/features.component';
@@ -33,6 +34,8 @@ import {
   PropertyDescriptionComponent
 } from 'src/app/components/property-details/property-description/property-description.component';
 import { ClientReviewsComponent } from 'src/app/components/client-reviews/client-reviews.component';
+import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   imports: [
@@ -49,7 +52,8 @@ import { ClientReviewsComponent } from 'src/app/components/client-reviews/client
     HttpClientModule,
     NgxSpinnerModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   declarations: [
     AppComponent,
