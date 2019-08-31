@@ -4,20 +4,20 @@ import { ClientsComponent } from './clients.component';
 import { DebugElement } from '@angular/core';
 import { CardComponent } from 'src/app/components/card/card.component';
 import { AppModule } from 'src/app/app.module';
-import { clientsServiceSpy, resetSpies } from './../../helpers/spies';
+import {
+  clientsServiceSpy,
+  resetSpies,
+  toastServiceSpy
+} from './../../helpers/spies';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { AuthLayoutModule } from 'src/app/layouts/auth-layout/auth-layout.module';
 import { ClientsService } from 'src/app/services/clients/clients.service';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 describe('ClientsComponent', () => {
   let component: ClientsComponent;
   let fixture: ComponentFixture<ClientsComponent>;
-  let debugElement: DebugElement;
-
-  const clients_url =
-    'https://landville-backend-web-api.herokuapp.com/api/v1/auth/clients/';
 
   const Mockresponse = {
     data: {
@@ -34,17 +34,17 @@ describe('ClientsComponent', () => {
       message: 'You have retrieved all clients'
     }
   };
-  // beforeAll(() => resetSpies([ClientsService]));
-  // afterEach(() => resetSpies([ClientsService]));
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ClientsComponent, CardComponent],
-      imports: [AppModule, NgxSpinnerModule, AuthLayoutModule],
+      declarations: [ClientsComponent],
+      imports: [AppModule, NgxSpinnerModule],
       providers: [
         {
           provide: ClientsService,
           useValue: clientsServiceSpy
-        }
+        },
+        { provide: ToastrService, useValue: toastServiceSpy }
       ]
     }).compileComponents();
   });
@@ -59,5 +59,14 @@ describe('ClientsComponent', () => {
 
   it('should create user interface', () => {
     expect(component).toBeTruthy();
+  });
+  it('should throw a toast error when error occurs', () => {
+    clientsServiceSpy.fetchClientCompanies.and.returnValue(
+      throwError({ errors: { details: 'error' } })
+    );
+    component.displayClients();
+    expect(toastServiceSpy.error).toHaveBeenCalledWith(
+      Object({ details: 'error' })
+    );
   });
 });

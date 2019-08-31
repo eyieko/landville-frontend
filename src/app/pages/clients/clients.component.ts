@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientsService } from 'src/app/services/clients/clients.service';
 import { Client } from 'src/app/models/Client';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-clients',
@@ -13,7 +14,8 @@ export class ClientsComponent implements OnInit {
 
   constructor(
     private clientsServices: ClientsService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit() {
@@ -24,14 +26,12 @@ export class ClientsComponent implements OnInit {
     this.spinner.show();
     this.clientsServices.fetchClientCompanies().subscribe(
       response => {
-        console.log(response, 'clients new');
-        console.log(response.data, 'revamped ');
         this.clients = response.data.client_companies;
-
         this.spinner.hide();
       },
       err => {
-        console.log(err);
+        this.toastrService.error(err.errors.detail || err.errors);
+        this.spinner.hide();
       }
     );
   }

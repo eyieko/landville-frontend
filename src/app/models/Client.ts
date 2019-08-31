@@ -5,6 +5,7 @@ export interface Client {
   phone: string;
   email: string;
   address: Address;
+  id:Number;
 }
 export interface ClientCompanies {
   data: ClientResponse;

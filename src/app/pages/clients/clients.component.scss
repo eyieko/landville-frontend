@@ -1,18 +1,31 @@
-span{
-    padding: 4px;
-    margin-left:4px;
-    color:gray;
+span {
+  padding: 4px;
+  margin-left: 4px;
+  color: gray;
 }
-.col-md-6{
-    padding:8px;
+.col-md-6 {
+  padding: 8px;
 }
-.card-title{
-    margin-left: 10px;
-    color: orange;
-    font-size:20px;
+.card-title {
+  margin-left: 10px;
+  color: goldenrod;
+  font-size: 20px;
 }
-.card{
-    border:none !important;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08) !important;
-    padding: 15px;
+.card {
+  border: none !important;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08) !important;
+  padding: 15px;
+}
+.card-link {
+  margin-left: 40px !important;
+  box-shadow: 0px 2px 10px rgba(51, 50, 50, 0.041);
+  padding: 4px;
+}
+.client-reviews {
+  margin-left: 18px;
+  font-size: 18px;
+  color: rgb(148, 146, 146);
+}
+.reviews{
+    float: right;
 }
