@@ -3,7 +3,7 @@
     padding-left: 100px;
 }
 .card-text {
-    padding-top: 12px;
+    padding-top: 2rem;
 }
 .btn {
     float: right;
@@ -24,10 +24,12 @@ small, .small{
 h6 {
     margin-bottom: auto;
 }
-
+.btn .btn-primary {
+    margin-bottom: 0.85rem;
+}
 .profilepic {
-    max-width: 30%;
-    height: 30px;
+    max-width: 25%;
+    height: 70px;
     border-radius: 50%;
     float: left;
 }

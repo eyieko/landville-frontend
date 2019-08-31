@@ -1,16 +1,23 @@
 <div class="card bg-light mt-3" style="max-width: 30rem;">
     <div class="card-header"><b>{{count}} Reviews</b></div>
-    <div class="card-body" *ngFor="let review of results">
-        <div class="reviewer">
-            <img src="../../../../assets/img/House Architecture 4.jpg" class="d-block w-100 img-fluid profilepic" alt="Image">
-            <div class="card-title">
-                <h6 class="name">{{review.reviewer.first_name}} {{review.reviewer.last_name}}</h6>
-                <small>{{review.created_at| date: "MMMM yyyy"}}</small>
+    <div class="reviews" *ngIf="results?.length>0; else noreviews">
+        <div class="card-body" >
+            <div class="reviewer">
+                <img src="{{oneReview.reviewer.image}}" class="profilepic" alt="Image">
+                <div class="card-title">
+                    <h6 class="name">{{oneReview.reviewer.first_name}} {{oneReview.reviewer.last_name}}</h6>
+                    <small>{{oneReview.created_at| date: "MMMM yyyy"}}</small>
+                </div>
             </div>
+            <div>
+                <p class="card-text">{{oneReview.review }}</p>
+            </div>
+            <hr>
+            <a [routerLink]="['/auth',oneReview.client ,'reviews']" routerLinkActive="active"><button class="btn btn primary " (click)=getMoreReviews()>See All Reviews</button></a>
+                    
         </div>
-        <div>
-            <p class="card-text">{{review.review }}</p>
-        </div>
-        <button class="btn btn primary">More Reviews</button>
     </div>
 </div>
+<ng-template #noreviews>
+    <p class="text-center">No review yet</p>
+</ng-template>
