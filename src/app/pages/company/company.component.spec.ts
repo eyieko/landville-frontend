@@ -1,13 +1,12 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-
-import {CompanyComponent} from './company.component';
+import {CompanyComponent} from 'src/app/pages/company/company.component';
 import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {companyServiceSpy, resetSpies, routerSpy, toastServiceSpy} from '../../helpers/spies';
+import {companyServiceSpy, resetSpies, routerSpy, toastServiceSpy} from 'src/app/helpers/spies';
 import {of, throwError} from 'rxjs';
-import {CompanyService} from '../../services/company/company.service';
+import {CompanyService} from 'src/app/services/company/company.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {Meta, Title} from '@angular/platform-browser';
 
