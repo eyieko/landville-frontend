@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { Component, OnInit, ɵConsole, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
@@ -25,12 +25,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
         setTimeout(() => {
           this.hideSpinner = false;
         }, 2000);
-       
       },
         err => {
           console.log(err);
         })
-    )
+    );
   }
 
   ngOnDestroy(): void {

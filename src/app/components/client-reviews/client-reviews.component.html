@@ -1,0 +1,46 @@
+<div class="container reviews">
+    <div class="row">
+        <div class="col-md-8">
+            <div>
+                <h2>Client Details</h2>
+            </div>
+        </div>
+        <div class="example-container mt-3 col-md-4">
+
+            <div class="reviews" *ngIf="results?.length>0 else noReviews">
+                <hr>
+                <div class="text-center title"><b>Reviews: {{count}}</b></div>
+                <hr>
+                <div class="mt-3" *ngFor="let review of results">
+                    <div class="reviewer">
+                        <img *ngIf="review.reviewer.image; else noImage" src={{review.reviewer.image}} class="profilepic" alt="avatar image">
+                        <ng-template #noImage>
+                            <img [src]="profileImage" class="profilepic"
+                                alt="avatar image">
+                        </ng-template>
+                        <div class="body">
+                            <h6 class="name">{{review.reviewer.first_name}} {{review.reviewer.last_name}}</h6>
+                            <small>{{review.created_at| date: "dd MMMM yyyy, h:mm a"}}</small>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text">{{review.review}}</p>
+                    </div>
+                    <hr>
+                </div>
+                <div class="container" *ngIf="count>10">
+                    <button class="btn prev" (click)="fetchPrev()" [disabled]="disabledPrev">Prev</button>
+                    <button class="btn next" (click)="fetchNext()" [disabled]="disabledNext">next</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+        <ng-template #noReviews>
+            <hr>
+            <div class="text-center"><b>Reviews</b></div>
+            <hr>
+            <p class="text-center">No review yet</p>
+        </ng-template>
+</div>
+<ngx-spinner></ngx-spinner>

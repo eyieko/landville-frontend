@@ -12,6 +12,7 @@ import { PropertiesComponent } from 'src/app/components/properties/properties.co
 import { RegistersuccessComponent } from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { ClientReviewsComponent } from 'src/app/components/client-reviews/client-reviews.component';
 
 const routes: Routes = [
   {
@@ -137,6 +138,7 @@ const routes: Routes = [
     },
   },
   { path: 'no-properties', component: NoPropertiesComponent },
+  { path: 'auth/:clientId/reviews', component: ClientReviewsComponent },
   {
     path: '**',
     redirectTo: 'home'

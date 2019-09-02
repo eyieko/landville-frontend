@@ -1,4 +1,4 @@
-import { ReviewsComponent } from './reviews/reviews.component';
+import { ReviewsComponent } from 'src/app/components/property-details/reviews/reviews.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';

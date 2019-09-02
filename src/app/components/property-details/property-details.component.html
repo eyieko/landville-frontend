@@ -19,6 +19,9 @@
                           [clientState]="clientState" [clientCity]="clientCity" [phone]="phone" [email]="email">
         </app-client-admin>
       </div>
+      <div>
+        <app-reviews *ngIf="clientId" [clientId]="clientId"></app-reviews>
+      </div>
       <img alt="Card image" class="card-img mt-5" src="assets/img/designs/Design.jpg">
     </div>
   </div>

@@ -1,0 +1,31 @@
+<div class="card bg-light mt-3">
+    <div class="card-header">
+        <b>Reviews</b>
+        <span *ngIf="count" class="count text-center">{{count}}</span>
+    </div>
+    <div class="reviews" *ngIf="results?.length>0; else noReviews">
+        <div class="card-body">
+            <div class="reviewer">
+                <img *ngIf="oneReview.reviewer.image; else not" src="{{oneReview.reviewer.image}}" class="profilepic"
+                    alt="Image">
+                <ng-template #not>
+                    <img [src]="profileImage" class="profilepic" alt="Image">
+                </ng-template>
+                <div class="card-title">
+                    <h6 class="name">{{oneReview.reviewer.first_name}} {{oneReview.reviewer.last_name}}</h6>
+                    <small>{{oneReview.created_at| date: "MMMM yyyy, h:mm a"}}</small>
+                </div>
+            </div>
+            <div>
+                <p class="card-text">{{oneReview.review }}</p>
+            </div>
+            <hr>
+            <a routerLinkActive="active" [routerLink]="['/auth', oneReview.client, 'reviews']"><button
+                    class="btn btn-primary" id="review-btn" *ngIf="count>1">More Reviews</button></a>
+            <ngx-spinner></ngx-spinner>
+        </div>
+    </div>
+</div>
+<ng-template #noReviews>
+    <p class="text-center">No review yet</p>
+</ng-template>

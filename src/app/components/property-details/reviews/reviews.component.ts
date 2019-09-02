@@ -1,9 +1,9 @@
 import { Subscription } from 'rxjs';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ClientReviewsService } from 'src/app/services/client-reviews/client-reviews.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { APPCONFIG } from 'src/app/config';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -12,45 +12,46 @@ import { APPCONFIG } from 'src/app/config';
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.scss']
 })
-export class ReviewsComponent implements OnInit {
+export class ReviewsComponent implements OnInit, OnDestroy {
   @Input() clientId: number;
   subscription: Subscription = new Subscription();
-  id: number;
   count: number;
-  review: string;
-  reviewer: any;
-  createdAt: string;
-  replies: Array<any>[];
   results: any[];
   url: string;
-  image: string;
   oneReview: any;
+  profileImage: string;
 
   constructor(
     private reviewsService: ClientReviewsService,
     private router: Router,
-    private spinner: NgxSpinnerService,
+    public spinner: NgxSpinnerService,
 
-  ) { }
+  ) {
+    this.profileImage = 'assets/img/people.png';
+   }
 
   ngOnInit() {
     this.fetchReviews();
   }
   fetchReviews() {
+    this.spinner.show();
     const clientId = this.clientId;
-    this.url = `${APPCONFIG.base_url}/auth/${clientId}/reviews/`;
     this.subscription.add(
-      this.reviewsService.getReviews(this.url).subscribe(response => {
+      this.reviewsService.getReviews(clientId).subscribe(response => {
         this.results = response.results;
         this.oneReview = response.results[0];
+        this.count = response.count;
+        this.spinner.hide();
+      },
+       _ => {
+          this.spinner.hide();
       })
-    )
+    );
   }
-  getMoreReviews() {
+  getMoreReviews(client: number) {
     this.spinner.show();
-    console.log(this.results);
-    this.router.navigate(['auth', this.oneReview.client, 'reviews']);
-
+    this.router.navigate(['/auth', client, 'reviews']);
+    this.spinner.hide();
   }
 
   ngOnDestroy(): void {

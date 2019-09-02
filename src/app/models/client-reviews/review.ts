@@ -1,16 +1,16 @@
 export interface Review {
     id: number;
-    created_at: string;
-    updated_at: string;
+    createdAt: string;
+    updatedAt: string;
     review: string;
-    reviewer: Reviewer; 
+    reviewer: Reviewer;
     client: number;
     replies: string[];
 
 }
-export interface Reviewer { 
+export interface Reviewer {
     email: string;
-    first_name: string;
-    last_name: string;
+    firstName: string;
+    lastName: string;
     role: string;
 }

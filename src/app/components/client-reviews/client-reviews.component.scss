@@ -23,3 +23,21 @@ small, .small{
 h6 {
     margin-bottom: auto;
 }
+.next {
+    float: right;
+}
+.prev {
+    float: left;;
+}
+
+.company {
+    float: left;
+}
+
+.example-container {
+  max-width: 30rem;
+  max-height: 600px;
+  overflow: auto;
+  margin: 0 0 100px 0;
+  padding: 0 15px;
+}

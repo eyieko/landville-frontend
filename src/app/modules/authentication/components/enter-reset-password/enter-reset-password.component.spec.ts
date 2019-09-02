@@ -1,3 +1,4 @@
+import { ClientReviewsComponent } from 'src/app/components/client-reviews/client-reviews.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   EnterResetPasswordComponent
@@ -50,6 +51,7 @@ describe('EnterResetPasswordComponent', () => {
         PropertiesComponent,
         PropertyDetailsComponent,
         NoPropertiesComponent,
+        ClientReviewsComponent
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [

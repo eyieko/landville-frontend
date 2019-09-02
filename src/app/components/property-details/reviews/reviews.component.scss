@@ -20,12 +20,14 @@ small, .small{
 }
 .card{
     border-color: transparent;
+    max-width: 30rem;
 }
 h6 {
     margin-bottom: auto;
 }
-.btn .btn-primary {
+.btn {
     margin-bottom: 0.85rem;
+    border-style: none; 
 }
 .profilepic {
     max-width: 25%;
@@ -33,5 +35,13 @@ h6 {
     border-radius: 50%;
     float: left;
 }
-
+.count{
+    float: right;
+    color: #ee9619;
+    border: solid;
+    border-width: thin;
+    border-radius: 50px;
+    width: 30px;
+    border-color: #ee9619;
+}
 
