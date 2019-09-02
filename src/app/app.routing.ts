@@ -7,8 +7,9 @@ import { CommonLayoutComponent } from './layouts/common-layout/common-layout.com
 import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
 import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
 import { NoAuthGuard } from './guards/no-auth.guard';
-import { InternationalPaymentStatusComponent } from
-'src/app/pages/payment/international-payment-status/international-payment-status.component';
+import {
+  InternationalPaymentStatusComponent
+} from 'src/app/pages/payment/international-payment-status/international-payment-status.component';
 
 const routes: Routes = [
   {
@@ -40,14 +41,16 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'reset-link',
-    component: PasswordResetComponent
+    path: 'reset-link', data: { title: 'Reset your Password', tags: [] },
+    component: PasswordResetComponent, canActivate: [NoAuthGuard]
   },
   {
-    path: 'auth/password-reset',
-    component: EnterResetPasswordComponent
+    path: 'auth/password-reset', data: {
+      title: 'Choose a new password', tags: []
+    },
+    component: EnterResetPasswordComponent, canActivate: [NoAuthGuard]
   },
-  { path: 'payment/international/status', component: InternationalPaymentStatusComponent},
+  { path: 'payment/international/status', component: InternationalPaymentStatusComponent },
   {
     path: '**',
     redirectTo: 'home'

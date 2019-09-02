@@ -54,12 +54,5 @@ describe('HomeComponent', () => {
   it('should create the component successfully', () => {
     expect(component).toBeTruthy();
   });
-  it('should call the toaster service with error message when an error is obtained', () => {
-    propertiesServiceSpy.getProperties.and.returnValue(throwError('error'));
-    component.ngOnInit();
-    fixture.detectChanges();
-    expect(toastServiceSpy.error).toHaveBeenCalledWith(
-      'Something went wrong, we could not load the trending properties'
-    );
-  });
+
 });

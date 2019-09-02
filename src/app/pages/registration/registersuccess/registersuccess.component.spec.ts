@@ -1,14 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RegistersuccessComponent } from './registersuccess.component';
+import {ActivatedRoute} from '@angular/router';
+
 
 describe('RegistersuccessComponent', () => {
   let component: RegistersuccessComponent;
   let fixture: ComponentFixture<RegistersuccessComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistersuccessComponent ]
+      declarations: [ RegistersuccessComponent ],
+      providers: [],
     })
     .compileComponents();
   }));

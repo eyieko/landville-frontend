@@ -22,10 +22,12 @@ import { TermsService } from './services/terms/terms.service';
 import {
   InternationalPaymentStatusComponent
 } from 'src/app/pages/payment/international-payment-status/international-payment-status.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
   imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AngularFontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
@@ -36,7 +38,7 @@ import {
     HttpClientModule,
     NgxSpinnerModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
@@ -44,7 +46,7 @@ import {
     CommonLayoutComponent,
     PasswordResetComponent,
     EnterResetPasswordComponent,
-    InternationalPaymentStatusComponent
+    InternationalPaymentStatusComponent,
   ],
   providers: [
     LocalStorageService, AuthGuard, NoAuthGuard, TermsService,

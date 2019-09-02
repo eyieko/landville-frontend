@@ -1,39 +1,24 @@
-<div class="body">
+<div class="container">
   <h3 class="title">Deposits</h3>
   <div class="row">
     <div class="col-md-8">
       <div *ngIf="transactions.length !== 0; else none" class="container">
         <div class="row filter pl-3">
-            <input
-              [owlDateTime]="dt1"
-              [owlDateTimeTrigger]="dt1"
-              placeholder="Select Start Date"
-              class="form-control"
-              [(ngModel)]="startDateVal"
-            />
-            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
-            <input
-              [owlDateTime]="dt2"
-              [owlDateTimeTrigger]="dt2"
-              placeholder="Select End Date"
-              class="form-control"
-              [(ngModel)]="endDateVal"
-            />
-            <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+          <input type="datetime-local" placeholder="Select Start Date" class="form-control"
+            [(ngModel)]="startDateVal" />
+          <input type="datetime-local" placeholder="Select End Date" class="form-control" [(ngModel)]="endDateVal" />
 
-            <button color="primary" (click)="onFilter()" class="btn filter-btn">
-              Search
-            </button>
+          <button color="primary" (click)="onFilter()" class="btn filter-btn">
+            Search
+          </button>
 
-            <button color="primary" (click)="clear()" class="btn clear-btn">
-              Reset
-            </button>
+          <button color="primary" (click)="clear()" class="btn clear-btn">
+            Reset
+          </button>
         </div>
 
         <div class="table-responsive ">
-          <table
-            class="table table-bordered table-striped table-hover fixed_header"
-          >
+          <table class="table table-bordered table-striped table-hover fixed_header">
             <thead class="thead-dark">
               <tr>
                 <th *ngFor="let head of headElements" scope="col">
@@ -79,11 +64,7 @@
       </ng-template>
     </div>
     <div class="col-md-4">
-      <img
-        alt="Card image"
-        class="card-img"
-        src="assets/img/designs/Design-min.jpg"
-      />
+      <img alt="Card image" class="card-img" src="assets/img/designs/Design-min.jpg" />
     </div>
   </div>
   <ngx-spinner></ngx-spinner>

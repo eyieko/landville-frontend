@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {RegisterServiceService} from '../../services/register/register-service.service';
-import {User} from '../../models/register/user';
-import {ToastrService} from 'ngx-toastr';
-import {NgxSpinnerService} from 'ngx-spinner';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RegisterServiceService } from 'src/app/services/register/register-service.service';
+import { User } from 'src/app/models/register/user';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-registration',
@@ -12,20 +13,24 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
   registeruser: User[];
-  returnUrl: string;
 
-
-  constructor(private registerServiceService: RegisterServiceService,
-              private toastrService: ToastrService,
-              private spinner: NgxSpinnerService,
-              private router: Router,
-              private route: ActivatedRoute,
+  constructor(
+    private registerServiceService: RegisterServiceService,
+    private toastrService: ToastrService,
+    private spinner: NgxSpinnerService,
+    private router: Router,
+    private titleService: Title,
+    private metaService: Meta,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
-    // get return url from route parameters  or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+      this.metaService.addTags(data.tags);
+    });
+
   }
 
   registerUser(register: User) {
@@ -34,7 +39,7 @@ export class RegistrationComponent implements OnInit {
       response => {
         this.toastrService.success(response.data.message);
         this.spinner.hide();
-        this.router.navigate([this.returnUrl]);
+        this.router.navigate(['registersuccess']);
       },
       error => {
         this.toastrService.error(error.error.errors.email[0]);
@@ -43,4 +48,5 @@ export class RegistrationComponent implements OnInit {
     );
 
   }
+
 }

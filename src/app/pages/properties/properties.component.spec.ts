@@ -1,12 +1,13 @@
+import { environment } from 'src/environments/environment.prod';
 import { AuthLayoutModule } from 'src/app/layouts/auth-layout/auth-layout.module';
-import { CardComponent } from './../../components/card/card.component';
+import { CardComponent } from 'src/app/components/card/card.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { PropertiesService } from './../../services/properties/properties.service';
-import { AppModule } from './../../app.module';
-import { resetSpies, propertiesServiceSpy } from './../../helpers/spies';
+import { PropertiesService } from 'src/app/services/properties/properties.service';
+import { AppModule } from 'src/app/app.module';
+import { resetSpies, propertiesServiceSpy } from 'src/app/helpers/spies';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
-import { PropertiesComponent } from '../properties/properties.component';
+import { PropertiesComponent } from 'src/app/pages/properties/properties.component';
 import { HttpClientModule } from '@angular/common/http';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
@@ -16,8 +17,7 @@ describe('PropertiesComponent', () => {
   let component: PropertiesComponent;
   let fixture: ComponentFixture<PropertiesComponent>;
   let debugElement: DebugElement;
-  const url =
-    'https://landville-backend-web-api.herokuapp.com/api/v1/properties/';
+  const url = `${environment.api_url}/properties`;
 
   const Mockresponse = {
     data: {

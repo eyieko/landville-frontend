@@ -12,11 +12,17 @@ Navigate to `https://landville-frontend.herokuapp.com/` and you'll be served wit
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name --m app` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+Serve the client side Vesion of the app using.
+`npm run serve:browser`
+
+Serve the SSR Version of the website using.
+`npm run serve:ssr`
 
 ## Running unit tests
 

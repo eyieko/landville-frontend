@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PaymentService } from 'src/app/services/payment/payment-service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   templateUrl: './tokenized-card.component.html',
@@ -22,9 +23,16 @@ export class TokenizedCardComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     private location: Location
-    ) { }
+    ,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title
+  ) { }
 
-  ngOnInit() {	}
+  ngOnInit() {
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+    });
+  }
   onSubmit(): void {
     const payload = {
       amount: this.cardForm.value.amount,
@@ -41,7 +49,7 @@ export class TokenizedCardComponent implements OnInit {
         this.spinner.hide();
         let toastMessage = '';
         if (error.message) {
-        toastMessage = error.message;
+          toastMessage = error.message;
         } else {
           toastMessage = typeof error.errors.detail === 'undefined' ? error.errors : error.errors.detail;
         }
@@ -50,6 +58,6 @@ export class TokenizedCardComponent implements OnInit {
     );
   }
   onBack(): void {
-  this.location.back();
+    this.location.back();
   }
 }

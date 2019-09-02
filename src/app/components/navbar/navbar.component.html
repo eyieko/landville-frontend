@@ -1,146 +1,74 @@
-<nav
-  class="mb-1 navbar navbar-expand-lg navbar-light secondary-color lighten-1"
->
-  <a class="navbar-brand" routerLink="/">
-    <img alt="landville logo" height="30" src="https://res.cloudinary.com/landville/image/upload/v1564556647/FRONTEND_ASSETS/ICON/bwy9wvyy6riwrdu0576n.png" title="" />
-  </a>
-  <button
-    aria-controls="navbarSupportedContent-5"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-    class="navbar-toggler collapsed"
-    data-target="#navbarSupportedContent-5"
-    data-toggle="collapse"
-    type="button"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="navbar-collapse collapse" id="navbarSupportedContent-5">
-    <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item active">
-        <a
-          class="nav-link waves-effect waves-light"
-          routerLink="/"
-          routerLinkActive="active"
-          >Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link waves-effect waves-light"
-          routerLink="/"
-          routerLinkActive="active"
-          >About Us</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link waves-effect waves-light"
-          routerLink="/"
-          routerLinkActive="active"
-          >Services</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link waves-effect waves-light"
-          routerLink="/properties"
-          routerLinkActive="active"
-          >Properties</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link waves-effect waves-light"
-          routerLink="/user/deposits"
-          routerLinkActive="active"
-          >My Deposits</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link waves-effect waves-light"
-          routerLink="/"
-          routerLinkActive="active"
-          >Contact</a
-        >
-      </li>
-      <li *ngIf="!authenticated" class="nav-item">
-        <a class="btn-auth" routerLink="/register" routerLinkActive="active"
-          >Sign up</a
-        >
-      </li>
-      <li *ngIf="!authenticated" class="nav-item">
-        <a class="btn-auth" routerLink="/login" routerLinkActive="active"
-          >Log in
-        </a>
-      </li>
-			<li *ngIf="authenticated" class="nav-item avatar dropdown">
-				<a aria-expanded="false" aria-haspopup="true"
-					class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown"
-					id="navbarDropdownMenuLink-6">
-						<span class="username">Make Payment</span>
-						<b class="caret"></b>
-				</a>
-				<div aria-labelledby="navbarDropdownMenuLink-6"
-						class="dropdown-menu dropdown-menu-lg-right dropdown-secondary">
-						<a class="dropdown-item waves-effect waves-light eborder-top" routerLink="/payment/pin" routerLinkActive="active"> Card & PIN</a>
-						<a class="dropdown-item waves-effect waves-light" routerLink="/payment/international">International Card</a>
-						<a class="dropdown-item waves-effect waves-light" routerLink="/payment/saved-card">Saved Card</a>
-				</div>
-			</li>
+<nav class="mb-1 navbar navbar-expand-lg navbar-light secondary-color lighten-1">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <img alt="landville logo" height="30"
+        src="https://res.cloudinary.com/landville/image/upload/v1564556647/FRONTEND_ASSETS/ICON/bwy9wvyy6riwrdu0576n.png"
+        title="" />
+    </a>
+    <button aria-controls="navbarSupportedContent-5" aria-expanded="false" aria-label="Toggle navigation"
+      class="navbar-toggler collapsed" data-target="#navbarSupportedContent-5" data-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarSupportedContent-5">
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item active">
+          <a class="nav-link waves-effect waves-light" routerLink="/" routerLinkActive="active">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" routerLink="/properties" routerLinkActive="active">Properties</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light" routerLink="/user/deposits" routerLinkActive="active">My
+            Deposits</a>
+        </li>
+        <li *ngIf="!authenticated" class="nav-item">
+          <a class="btn-auth" routerLink="/register" routerLinkActive="active">Sign up</a>
+        </li>
+        <li *ngIf="!authenticated" class="nav-item">
+          <a class="btn-auth" routerLink="/login" routerLinkActive="active">Log in
+          </a>
+        </li>
+        <li *ngIf="authenticated" class="nav-item avatar dropdown">
+          <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle waves-effect waves-light"
+            data-toggle="dropdown" id="navbarDropdownMenuLink-6">
+            <span class="username">Make Payment</span>
+            <b class="caret"></b>
+          </a>
+          <div aria-labelledby="navbarDropdownMenuLink-6"
+            class="dropdown-menu dropdown-menu-lg-right dropdown-secondary">
+            <a class="dropdown-item waves-effect waves-light eborder-top" routerLink="/payment/pin"
+              routerLinkActive="active"> Card & PIN</a>
+            <a class="dropdown-item waves-effect waves-light" routerLink="/payment/international">International Card</a>
+            <a class="dropdown-item waves-effect waves-light" routerLink="/payment/saved-card">Saved Card</a>
+          </div>
+        </li>
 
-      <li *ngIf="authenticated" class="nav-item avatar dropdown">
-        <a
-          aria-expanded="false"
-          aria-haspopup="true"
-          class="nav-link dropdown-toggle waves-effect waves-light"
-          data-toggle="dropdown"
-          id="navbarDropdownMenuLink-6"
-        >
-          <span class="profile-ava">
-            <img
-              [src]="profileImage"
-              alt="avatar image"
-              class="rounded-circle z-depth-0"
-              height="35"
-              alt=""
-            />
-          </span>
-          <span class="username">{{ firstName }} {{ lastName }}</span>
-          <b class="caret"></b>
-        </a>
-        <div
-          aria-labelledby="navbarDropdownMenuLink-6"
-          class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
-        >
-          <a
-            class="dropdown-item waves-effect waves-light eborder-top"
-            routerLink="/profile"
-            routerLinkActive="active"
-            ><i class="fa fa-user"></i> My Profile</a
-          >
-          <a
-            class="dropdown-item waves-effect waves-light"
-            routerLink="/create-company"
-            ><i class="fa fa-plus"></i> Create Company</a
-          >
-          <a
-            class="dropdown-item waves-effect waves-light"
-            routerLink="/reset-link"
-            ><i class="fa fa-plus"></i> Password Reset</a
-          >
-          <a
-            (click)="handleLogout()"
-            class="dropdown-item waves-effect waves-light profileDropDown"
-            routerLink="/logout"
-            routerLinkActive="active"
-          >
-            <i class="fa fa-sign-out"></i> Log Out</a
-          >
-        </div>
-      </li>
-    </ul>
+        <li *ngIf="authenticated" class="nav-item avatar dropdown">
+          <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle waves-effect waves-light"
+            data-toggle="dropdown" id="navbarDropdownMenuLink-6">
+            <span class="profile-ava">
+              <img [src]="profileImage" alt="avatar image" class="rounded-circle z-depth-0" height="35" alt="" />
+            </span>
+            <span class="username">{{ firstName }} {{ lastName }}</span>
+            <b class="caret"></b>
+          </a>
+          <div aria-labelledby="navbarDropdownMenuLink-6"
+            class="dropdown-menu dropdown-menu-lg-right dropdown-secondary">
+            <a class="dropdown-item waves-effect waves-light eborder-top" routerLink="/profile"
+              routerLinkActive="active"><i class="fa fa-user"></i> My Profile</a>
+            <a class="dropdown-item waves-effect waves-light" routerLink="/create-company"><i class="fa fa-plus"></i>
+              Create Company</a>
+            <a class="dropdown-item waves-effect waves-light" routerLink="/reset-link"><i class="fa fa-plus"></i>
+              Password
+              Reset</a>
+            <a (click)="handleLogout()" class="dropdown-item waves-effect waves-light profileDropDown"
+              routerLink="/logout" routerLinkActive="active">
+              <i class="fa fa-sign-out"></i> Log Out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

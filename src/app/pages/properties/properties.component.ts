@@ -3,8 +3,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { PropertiesService } from './../../services/properties/properties.service';
 import { Component, OnInit } from '@angular/core';
 import { Property } from '../../models/Property';
-import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-properties',
@@ -13,27 +14,32 @@ import { Title } from '@angular/platform-browser';
 })
 export class PropertiesComponent implements OnInit {
   properties: Property[] = [];
-  propertiesUrl =
-    'https://landville-backend-web-api.herokuapp.com/api/v1/properties';
-  next: string = '';
-  previous: string = '';
-  toggle: boolean = true;
+  propertiesUrl = `${environment.api_url}/properties`;
+  next = '';
+  previous = '';
+  toggle = true;
   results: any[] = [];
-  disabledNext: boolean = false;
-  disabledPrevious: boolean = false;
-  listToggle: boolean = false;
-  gridToggle: boolean = true;
-  count: number = 0;
+  disabledNext = false;
+  disabledPrevious = false;
+  listToggle = false;
+  gridToggle = true;
+  count = 0;
 
   constructor(
     private propertiesServices: PropertiesService,
     private spinner: NgxSpinnerService,
     private toastrService: ToastrService,
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    private metaService: Meta,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+      this.metaService.addTags(data.tags, true);
+    });
     this.setProperties(this.propertiesUrl);
   }
 
@@ -48,7 +54,7 @@ export class PropertiesComponent implements OnInit {
       if (this.results.length === 0) {
         this.router.navigate(['no-properties']);
         this.toastrService.success(
-          'Sorry, No properties available now. Kindly Come back later'
+          'Sorry, No properties available now. Kindly check back later'
         );
       } else {
         this.properties = this.results;

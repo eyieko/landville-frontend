@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute) {
+  constructor(private router: ActivatedRoute, private titleService: Title, private meta: Meta) {
+
   }
 
   ngOnInit() {
-
     this.router.data.subscribe(data => {
-      document.title = data['title']
+      this.titleService.setTitle(data.title);
     });
+    this.meta.addTag({ property: 'og: title', content: 'Home | Make that Property yours Today' });
   }
 
 }

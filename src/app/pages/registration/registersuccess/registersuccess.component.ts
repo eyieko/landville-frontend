@@ -1,3 +1,4 @@
+import { Meta, Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistersuccessComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle('Registration Successful');
   }
 
 }

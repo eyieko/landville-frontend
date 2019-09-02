@@ -1,22 +1,24 @@
-import {TestBed} from '@angular/core/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {httpHandlerSpy, httpRequestSpy} from './spies';
-import {HttpHandler, HttpRequest} from '@angular/common/http';
-import {of} from 'rxjs';
-import {JwtInterceptor} from './jwt.interceptor';
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { httpHandlerSpy, httpRequestSpy } from './spies';
+import { HttpHandler, HttpRequest } from '@angular/common/http';
+import { of } from 'rxjs';
+import { JwtInterceptor } from './jwt.interceptor';
 
+const mockAuthService = jasmine.createSpyObj(['isLoggedIn']);
 
 describe('JWTInterceptor', () => {
   let jwtInterceptor: JwtInterceptor;
 
+
   beforeEach(() => {
-    jwtInterceptor = new JwtInterceptor();
+    jwtInterceptor = new JwtInterceptor(mockAuthService);
 
     TestBed.configureTestingModule({
       providers: [
         JwtInterceptor,
-        {provide: HttpRequest, useValue: httpRequestSpy},
-        {provide: HttpHandler, useValue: httpHandlerSpy},
+        { provide: HttpRequest, useValue: httpRequestSpy },
+        { provide: HttpHandler, useValue: httpHandlerSpy },
       ],
       imports: [HttpClientTestingModule]
     });
@@ -37,7 +39,7 @@ describe('JWTInterceptor', () => {
     jwtInterceptor.intercept(httpRequestSpy, httpHandlerSpy)
       .subscribe(
         result => {
-          console.log('good', result);
+
         },
       );
   });

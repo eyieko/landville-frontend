@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +16,7 @@ export class EnterResetPasswordComponent implements OnInit {
   token: string;
   password: string;
   passwordError: boolean;
-  disabled: boolean = true;
+  disabled = true;
   success: boolean;
   loading: boolean;
   message: string;
@@ -25,11 +26,17 @@ export class EnterResetPasswordComponent implements OnInit {
     private changePasswordService: EnterResetPasswordService,
     private fb: FormBuilder,
     private toastrService: ToastrService,
+    private titleService: Title,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.token = params.token;
+      this.activatedRoute.data.subscribe(data => {
+        this.titleService.setTitle(data.title);
+      });
+
     });
 
     this.enterPasswordForm = this.fb.group({
@@ -37,7 +44,7 @@ export class EnterResetPasswordComponent implements OnInit {
       confirmPassword: ['', Validators.required]
     });
 
-    this.enterPasswordForm.valueChanges.subscribe( value => {
+    this.enterPasswordForm.valueChanges.subscribe(value => {
 
       if (value.newPassword === value.confirmPassword) {
         this.passwordError = false;
@@ -55,10 +62,10 @@ export class EnterResetPasswordComponent implements OnInit {
 
     this.changePasswordService.changePassword(this.token, this.password).subscribe(res => {
       const { data: { message } } = res;
-      this.toastrService.success(message,'', {timeOut: 3000});
+      this.toastrService.success(message, '', { timeOut: 3000 });
       this.success = true;
       this.loading = false;
-      
+
 
     }, err => {
       this.loading = false;
@@ -68,9 +75,9 @@ export class EnterResetPasswordComponent implements OnInit {
       } else {
         this.message = err.errors.token
       }
-      this.toastrService.error(this.message,'', {timeOut: 3000});
+      this.toastrService.error(this.message, '');
     });
-    
+
     this.disabled = true;
   }
 

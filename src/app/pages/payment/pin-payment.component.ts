@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { PaymentService } from 'src/app/services/payment/payment-service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import { Title } from '@angular/platform-browser';
@@ -24,10 +24,10 @@ export class PinPaymentComponent implements OnInit {
     cardExpiry: new FormGroup({
       expiryMonth: new FormControl(
         'MM', [Validators.required, validateInput('MM')]
-        ),
+      ),
       expiryYear: new FormControl(
         'YYYY', [Validators.required, validateInput('YYYY')]
-        )
+      )
     }),
     amount: new FormControl('', [Validators.required, Validators.min(0)]),
     pin: new FormControl('', Validators.required),
@@ -41,11 +41,15 @@ export class PinPaymentComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     private location: Location,
-    private titleService: Title
-    ) {this.titleService.setTitle('Card & Pin Deposit'); }
+    private titleService: Title,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.generateValidYears();
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+    });
   }
 
   generateValidYears() {
@@ -53,7 +57,7 @@ export class PinPaymentComponent implements OnInit {
     const now = new Date();
     const currentYear = now.getFullYear();
     const lastValidYear = currentYear + 10;
-    for (let i = currentYear; i <= lastValidYear; i++ ) {
+    for (let i = currentYear; i <= lastValidYear; i++) {
       yearList.push(i);
     }
     this.validYears = yearList;
@@ -76,18 +80,18 @@ export class PinPaymentComponent implements OnInit {
       resp => {
         this.spinner.hide();
         this.router.navigate(['/validate-pin', resp['flwRef'],
-        formValue.purpose]);
+          formValue.purpose]);
       },
       error => {
         this.spinner.hide();
-				let toastMessage = '';
-				if (!(error.message || error.errors || error.detail)) { //Serialization errors
-					for (const [key, message] of Object.entries(error)) {
-						toastMessage += `${key}: ${message}\n`;
-					}
-				}
+        let toastMessage = '';
+        if (!(error.message || error.errors || error.detail)) { //Serialization errors
+          for (const [key, message] of Object.entries(error)) {
+            toastMessage += `${key}: ${message}\n`;
+          }
+        }
         else if (error.message) {
-        toastMessage = error.message;
+          toastMessage = error.message;
         } else {
           toastMessage = typeof error.errors.detail === 'undefined' ? error.errors : error.errors.detail;
         }
@@ -97,11 +101,11 @@ export class PinPaymentComponent implements OnInit {
   }
   isInvalid(controlName: string) {
     const ctrl = this.cardForm.controls[controlName] ?
-    this.cardForm.controls[controlName] :
-    this.cardForm.controls['cardExpiry'].get(controlName);
-    return {'is-invalid':  (ctrl.dirty || ctrl.touched) &&  ctrl.invalid};
+      this.cardForm.controls[controlName] :
+      this.cardForm.controls['cardExpiry'].get(controlName);
+    return { 'is-invalid': (ctrl.dirty || ctrl.touched) && ctrl.invalid };
   }
   onBack(): void {
-  this.location.back();
+    this.location.back();
   }
 }

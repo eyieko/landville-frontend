@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { LoginData } from 'src/app/models';
@@ -14,18 +14,19 @@ import { LoginService } from 'src/app/services/login/login.service';
 export class LoginFormComponent implements OnInit {
 
   loginForm: FormGroup;
-  submitted: boolean = false;
-  success: boolean = false;
-  inputError: boolean = false;
+  submitted = false;
+  success = false;
+  inputError = false;
   returnUrl: string;
-  notification: string = 'Provide your email and password';
-  email: boolean = true;
-  password: boolean = true;
+  notification = 'Provide your email and password';
+  email = true;
+  password = true;
 
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private router: Router,
+    private route: ActivatedRoute,
     private toastrService: ToastrService,
     private spinner: NgxSpinnerService
   ) {
@@ -49,14 +50,14 @@ export class LoginFormComponent implements OnInit {
       this.spinner.hide();
       this.toastrService.success(response.data.message);
       this.notification = 'Login was succesful';
-      localStorage.setItem('token', response.data.user.token)
-      const to = this.router['browserUrlTree']['queryParams'] ? this.router['browserUrlTree']['queryParams'].next : ''
-      this.router.navigate([`${to}`])
+      localStorage.setItem('token', response.data.user.token);
+      const to = this.route.snapshot.queryParams ? this.route.snapshot.queryParams.next : 'home';
+      this.router.navigate([`${to}`]);
     }, error => {
       this.spinner.hide();
       this.toastrService.error('Invalid email and password combination');
-      this.setErrorTimeout()
-    })
+      this.setErrorTimeout();
+    });
 
   }
 

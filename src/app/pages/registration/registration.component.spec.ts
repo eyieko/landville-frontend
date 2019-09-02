@@ -2,20 +2,18 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegistrationComponent } from './registration.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { RegisterHeaderComponent } from './register-header/register-header.component';
-import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
-import { ReactiveFormsModule, NgForm } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { RegisterServiceService } from 'src/app/services/register/register-service.service';
-import { User } from 'src/app/models/register/user';
-import { HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RegistersuccessComponent } from './registersuccess/registersuccess.component';
 import {
   registerServiceSpy,
   resetSpies,
   toastServiceSpy
-} from '../../helpers/spies';
+} from 'src/app/helpers/spies';
 import { of, throwError } from 'rxjs';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 

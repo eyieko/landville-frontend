@@ -7,7 +7,7 @@ import { PropertiesResponse } from 'src/app/models/Property';
   providedIn: 'root'
 })
 export class PropertiesService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getProperties(propertiesUrl: string): Observable<any> {
     return this.http.get<PropertiesResponse>(propertiesUrl);
