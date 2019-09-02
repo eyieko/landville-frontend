@@ -1,14 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClientsComponent } from './clients.component';
-import { DebugElement } from '@angular/core';
-import { CardComponent } from 'src/app/components/card/card.component';
 import { AppModule } from 'src/app/app.module';
-import {
-  clientsServiceSpy,
-  resetSpies,
-  toastServiceSpy
-} from './../../helpers/spies';
+import { clientsServiceSpy, toastServiceSpy } from 'src/app/helpers/spies';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ClientsService } from 'src/app/services/clients/clients.service';
@@ -23,12 +17,10 @@ describe('ClientsComponent', () => {
     data: {
       client_companies: [
         {
-          address: { City: 'Mawokota', State: 'Uganda', Street: 'Kamwokya' },
-          client_admin: 47,
+          address: { City: 'TestCity', State: 'Nigeria', Street: 'TestStreet' },
           client_name: 'company',
-          email: 'landvilleadmin03@doc-mail.net',
-          id: 4,
-          phone: '+256 736 3232234'
+          email: 'landproperty@mail.net',
+          phone: '+256 123 3232234'
         }
       ],
       message: 'You have retrieved all clients'

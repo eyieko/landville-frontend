@@ -19,13 +19,12 @@ describe('ClientsService', () => {
     httpMock = TestBed.get(HttpTestingController);
   });
 
-  it('should be created=>', () => {
+  it('should use a Get method', () => {
     const service: ClientsService = TestBed.get(ClientsService);
     service.fetchClientCompanies().subscribe();
 
     const req = httpMock.expectOne(`${environment.api_url}/auth/clients/`);
     req.flush({});
     expect(req.request.method).toBe('GET');
-    // expect(service).toBeTruthy();
   });
 });

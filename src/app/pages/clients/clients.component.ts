@@ -3,6 +3,8 @@ import { ClientsService } from 'src/app/services/clients/clients.service';
 import { Client } from 'src/app/models/Client';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
+import { removeSubscription } from 'src/app/helpers/unsubscribe';
 
 @Component({
   selector: 'app-clients',
@@ -11,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ClientsComponent implements OnInit {
   clients: Client[] = [];
+  subscribe: Subscription[] = [];
 
   constructor(
     private clientsServices: ClientsService,
@@ -34,5 +37,8 @@ export class ClientsComponent implements OnInit {
         this.spinner.hide();
       }
     );
+  }
+  ngOnDestroy(): void {
+    removeSubscription(this.subscribe);
   }
 }
