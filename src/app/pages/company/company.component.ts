@@ -1,9 +1,9 @@
-import { Meta, Title } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CompanyService } from '../../services/company/company.service';
-import { Company } from '../../models';
+import { Router } from '@angular/router';
+import { CompanyService } from 'src/app/services/company/company.service';
+import { Company } from 'src/app/models';
 import { first } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
