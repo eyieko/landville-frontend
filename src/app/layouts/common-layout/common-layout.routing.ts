@@ -106,6 +106,7 @@ export const CommonLayoutRoutes: Routes = [
   {
     path: 'client/:clientId/review',
     component: ReviewComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { title: 'Review client', tags: [] }
   }
 ];

@@ -42,7 +42,7 @@ export class ReviewComponent implements OnInit {
       response => {
         this.spinner.hide();
         this.toastrService.success('Review added.', '', { timeOut: 3000 });
-        this.router.navigate(['/client']);
+        this.router.navigate(['/auth', this.clientID, '/reviews']);
       },
       error => {
         this.spinner.hide();
