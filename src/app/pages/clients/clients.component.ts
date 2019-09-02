@@ -5,6 +5,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { removeSubscription } from 'src/app/helpers/unsubscribe';
+import { ActivatedRoute } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-clients',
@@ -18,11 +20,18 @@ export class ClientsComponent implements OnInit {
   constructor(
     private clientsServices: ClientsService,
     private spinner: NgxSpinnerService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title,
+    private metaService: Meta
   ) {}
 
   ngOnInit() {
     this.displayClients();
+    this.activatedRoute.data.subscribe(data => {
+      this.titleService.setTitle(data.title);
+      this.metaService.addTags(data.tags);
+    });
   }
 
   displayClients() {

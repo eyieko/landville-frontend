@@ -7,7 +7,7 @@ export interface Client {
   address: Address;
   id:Number;
 }
-export interface ClientCompanies {
+export interface ClientCompany {
   data: ClientResponse;
 }
 export interface ClientResponse {

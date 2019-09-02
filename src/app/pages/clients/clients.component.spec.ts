@@ -39,9 +39,6 @@ describe('ClientsComponent', () => {
         { provide: ToastrService, useValue: toastServiceSpy }
       ]
     }).compileComponents();
-  });
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(ClientsComponent);
     component = fixture.componentInstance;
 
@@ -52,6 +49,7 @@ describe('ClientsComponent', () => {
   it('should create user interface', () => {
     expect(component).toBeTruthy();
   });
+
   it('should throw a toast error when error occurs', () => {
     clientsServiceSpy.fetchClientCompanies.and.returnValue(
       throwError({ errors: { details: 'error' } })

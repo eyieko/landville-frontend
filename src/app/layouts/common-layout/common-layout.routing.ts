@@ -96,5 +96,9 @@ export const CommonLayoutRoutes: Routes = [
     canActivate: [AuthGuard],
     data: { title: 'My Deposits', tags: [] }
   },
-  { path: 'clients', component: ClientsComponent }
+  {
+    path: 'clients', component: ClientsComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'Client companies', tags: [] }
+  }
 ];

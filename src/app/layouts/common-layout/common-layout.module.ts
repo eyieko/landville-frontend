@@ -19,10 +19,8 @@ import { PropertiesComponent } from 'src/app/pages/properties/properties.compone
 import { CardComponent } from 'src/app/components/card/card.component';
 import { PaymentModule } from 'src/app/pages/payment/payment.module';
 
-import { PropertyDetailsComponent } from 'src/app/pages/property-details/property-details.component';
 import { PropertyDetailsModule } from 'src/app/pages/property-details/property-details.module';
 import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { ClientsComponent } from 'src/app/pages/clients/clients.component';
 
 @NgModule({
@@ -38,7 +36,7 @@ import { ClientsComponent } from 'src/app/pages/clients/clients.component';
     HttpClientModule,
     PaymentModule,
     PropertyDetailsModule,
-    PaymentModule,
+    PaymentModule
   ],
   declarations: [
     HomeComponent,
@@ -52,4 +50,4 @@ import { ClientsComponent } from 'src/app/pages/clients/clients.component';
   ],
   providers: [ProfileService, LocalStorageService, Title]
 })
-export class CommonLayoutModule { }
+export class CommonLayoutModule {}
