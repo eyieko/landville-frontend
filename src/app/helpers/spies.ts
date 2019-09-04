@@ -86,3 +86,8 @@ export const httpClientSpy = jasmine.createSpyObj('HttpClient', [
   'delete',
   'request'
 ]);
+
+export const httpServiceSpy = jasmine.createSpyObj('HttpService', [
+  'makeRequestWithData',
+  'getRequestWithParams'
+]);

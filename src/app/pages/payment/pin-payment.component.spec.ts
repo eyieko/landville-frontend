@@ -8,12 +8,12 @@ import { of, throwError } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { routerSpy } from 'src/app/helpers/spies';
 
 
 describe('PinPaymentComponent', () => {
   let component: PinPaymentComponent;
   let fixture: ComponentFixture<PinPaymentComponent>;
-  const mockRouter = jasmine.createSpyObj(['navigate']);
   const mockToastr = jasmine.createSpyObj(['error']);
   const mockSpinner = jasmine.createSpyObj(['show', 'hide']);
   const mockPaymentService = jasmine.createSpyObj(['initiatePinPay', 'validatePinPay']);
@@ -36,7 +36,7 @@ describe('PinPaymentComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    component = new PinPaymentComponent(mockPaymentService, mockRouter,
+    component = new PinPaymentComponent(mockPaymentService, routerSpy,
       mockSpinner, mockToastr, mockLocation, mockTitleSvc, mockActivatedRoute);
   });
 
@@ -49,7 +49,7 @@ describe('PinPaymentComponent', () => {
     expect(mockPaymentService.initiatePinPay).toHaveBeenCalled();
   });
   it('should call the navigate method', () => {
-    mockRouter.navigate.and.returnValue(of(true));
+    routerSpy.navigate.and.returnValue(of(true));
     component.onBack();
     expect(mockLocation.back).toHaveBeenCalled();
   });

@@ -1,16 +1,18 @@
 import {TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ErrorInterceptor} from './error.interceptor';
-import {httpHandlerSpy, httpRequestSpy} from './spies';
+import {httpHandlerSpy, httpRequestSpy, localStorageSpy, routerSpy} from './spies';
 import {HttpHandler, HttpRequest} from '@angular/common/http';
 import {throwError} from 'rxjs';
 
-
 describe('ErrorInterceptor', () => {
   let errorInterceptor: ErrorInterceptor;
+  let MockLoginService;
 
   beforeEach(() => {
-    errorInterceptor = new ErrorInterceptor();
+    MockLoginService = jasmine.createSpyObj([ 'logoutUser' ]);
+
+    errorInterceptor = new ErrorInterceptor(MockLoginService, routerSpy, localStorageSpy);
 
     TestBed.configureTestingModule({
       providers: [

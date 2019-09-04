@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { TermsService } from '../../services/terms/terms.service'
-import { TermsPageComponent } from './terms.component';
+import { TermsService } from 'src/app/services/terms/terms.service';
+import { TermsPageComponent } from 'src/app/pages/terms/terms.component';
 
 describe('TermsPageComponent', () => {
   let component: TermsPageComponent;

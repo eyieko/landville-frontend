@@ -8,11 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TokenizedCardComponent } from './tokenized-card.component';
+import { routerSpy } from 'src/app/helpers/spies';
 
 describe('TokenizedCardComponent', () => {
   let component: TokenizedCardComponent;
   let fixture: ComponentFixture<TokenizedCardComponent>;
-  const mockRouter = jasmine.createSpyObj(['navigate']);
   const mockToastr = jasmine.createSpyObj(['error', 'success']);
   const mockSpinner = jasmine.createSpyObj(['show', 'hide']);
   const mockPaymentService = jasmine.createSpyObj(['payWithTokenizedCard']);
@@ -34,7 +34,7 @@ describe('TokenizedCardComponent', () => {
     fixture = TestBed.createComponent(TokenizedCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    component = new TokenizedCardComponent(mockPaymentService, mockRouter,
+    component = new TokenizedCardComponent(mockPaymentService, routerSpy,
       mockSpinner, mockToastr, mockLocation, mockActivatedRoute, mockTitle);
   });
 
@@ -48,9 +48,9 @@ describe('TokenizedCardComponent', () => {
   }
   );
   it('should call the navigate method', () => {
-    mockRouter.navigate.and.returnValue(of(true));
+    routerSpy.navigate.and.returnValue(of(true));
     component.onBack();
-    expect(mockRouter.navigate).toHaveBeenCalled();
+    expect(routerSpy.navigate).toHaveBeenCalled();
   }
   );
   it('should toast error if PaymentService returns error', () => {
