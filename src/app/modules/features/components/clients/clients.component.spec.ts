@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClientsComponent } from 'src/app/modules/features/components/clients/clients.component';
-import { clientsServiceSpy, toastServiceSpy } from 'src/app/helpers/tests/spies';
+import { ClientsComponent } from './clients.component';
+import { AppModule } from 'src/app/app.module';
+import { clientsServiceSpy, toastServiceSpy } from 'src/app/helpers/spies';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ClientsService } from 'src/app/services/clients/clients.service';
@@ -13,6 +15,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { resetSpies } from 'src/app/helpers/tests/social.spies';
 
 describe('ClientsComponent', () => {
+
   let component: ClientsComponent;
   let fixture: ComponentFixture<ClientsComponent>;
 
@@ -21,16 +24,14 @@ describe('ClientsComponent', () => {
 
   configureTestSuite(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        ClientsComponent,
-      ],
-      imports: [
-        RouterTestingModule,
-        NgxSpinnerModule
-      ],
+      declarations: [ClientsComponent],
+      imports: [AppModule, NgxSpinnerModule, RouterTestingModule.withRoutes([])],
       providers: [
-        { provide: ClientsService, useValue: clientsServiceSpy },
-        { provide: ToastrService, useValue: toastServiceSpy }
+        {
+          provide: ClientsService,
+          useValue: clientsServiceSpy
+        },
+        { provide: ToastrService, useValue: toastServiceSpy },
       ]
     }).compileComponents().then(r => {});
   });
