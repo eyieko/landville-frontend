@@ -18,8 +18,10 @@ import { ProfileService } from 'src/app/services/profile/profile.service';
 import { PropertiesComponent } from 'src/app/pages/properties/properties.component';
 import { CardComponent } from 'src/app/components/card/card.component';
 import { PaymentModule } from 'src/app/pages/payment/payment.module';
+
 import { PropertyDetailsModule } from 'src/app/pages/property-details/property-details.module';
 import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
+import { ClientsComponent } from 'src/app/pages/clients/clients.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,7 @@ import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
     HttpClientModule,
     PaymentModule,
     PropertyDetailsModule,
-    PaymentModule,
+    PaymentModule
   ],
   declarations: [
     HomeComponent,
@@ -43,8 +45,9 @@ import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
     PropertiesComponent,
     NoPropertiesComponent,
     CardComponent,
-    DepositsComponent
+    DepositsComponent,
+    ClientsComponent
   ],
   providers: [ProfileService, LocalStorageService, Title]
 })
-export class CommonLayoutModule { }
+export class CommonLayoutModule {}

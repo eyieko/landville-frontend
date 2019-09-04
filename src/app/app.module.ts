@@ -19,11 +19,8 @@ import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { TermsService } from './services/terms/terms.service';
-import {
-  InternationalPaymentStatusComponent
-} from 'src/app/pages/payment/international-payment-status/international-payment-status.component';
+import { InternationalPaymentStatusComponent } from 'src/app/pages/payment/international-payment-status/international-payment-status.component';
 import { BrowserModule } from '@angular/platform-browser';
-
 
 @NgModule({
   imports: [
@@ -46,12 +43,15 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonLayoutComponent,
     PasswordResetComponent,
     EnterResetPasswordComponent,
-    InternationalPaymentStatusComponent,
+    InternationalPaymentStatusComponent
   ],
   providers: [
-    LocalStorageService, AuthGuard, NoAuthGuard, TermsService,
+    LocalStorageService,
+    AuthGuard,
+    NoAuthGuard,
+    TermsService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

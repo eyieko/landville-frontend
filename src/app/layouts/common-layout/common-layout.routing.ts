@@ -9,6 +9,7 @@ import { NoPropertiesComponent } from 'src/app/pages/properties/no-properties/no
 import { TermsPageComponent } from 'src/app/pages/terms/terms.component';
 import { PropertyDetailsComponent } from 'src/app/pages/property-details/property-details.component';
 import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
+import { ClientsComponent } from 'src/app/pages/clients/clients.component';
 
 export const CommonLayoutRoutes: Routes = [
   {
@@ -94,6 +95,10 @@ export const CommonLayoutRoutes: Routes = [
     component: DepositsComponent,
     canActivate: [AuthGuard],
     data: { title: 'My Deposits', tags: [] }
+  },
+  {
+    path: 'clients', component: ClientsComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'Client companies', tags: [] }
   }
-
 ];

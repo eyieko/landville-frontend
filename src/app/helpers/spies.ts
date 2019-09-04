@@ -61,10 +61,11 @@ export const resetPassordService = createSpyObj('EnterResetPasswordService', [
 ]);
 
 export const propertiesServiceSpy = createSpyObj('PropertiesService', [
-  'getProperties']);
+  'getProperties'
+]);
 
 export const propertyDetailSpy = jasmine.createSpyObj('PropertyDetailService', [
-  'getProperty', 
+  'getProperty'
 ]);
 export const activatedRoutespy = jasmine.createSpyObj('ActivatedRoute', [
   'snapshot',
@@ -73,13 +74,15 @@ export const activatedRoutespy = jasmine.createSpyObj('ActivatedRoute', [
 
 export const DepositsSpy = createSpyObj('DepositsService', ['getDeposits']);
 
+export const clientsServiceSpy = createSpyObj('ClientsService', [
+  'fetchClientCompanies'
+]);
 export const httpHandlerSpy = jasmine.createSpyObj('HttpHandler', ['handle']);
 
 export const httpClientSpy = jasmine.createSpyObj('HttpClient', [
-    'post',
-    'get',
-    'put',
-    'delete',
-    'request'
-  ]
-)
+  'post',
+  'get',
+  'put',
+  'delete',
+  'request'
+]);
