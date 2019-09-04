@@ -11,6 +11,7 @@ import { TokenizedCardComponent } from 'src/app/pages/payment/tokenized-card.com
 import { PinValidateComponent } from 'src/app/pages/payment/pin-validate.component';
 import { InternationalPaymentComponent } from 'src/app/pages/payment/international-payment/international-payment.component';
 import { InputErrorsComponent } from 'src/app/shared/input-errors/input-errors.component';
+import { DigitOnlyModule } from '@uiowa/digit-only';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { InputErrorsComponent } from 'src/app/shared/input-errors/input-errors.c
     HttpClientModule,
     NgxSpinnerModule,
     AngularFontAwesomeModule,
+    DigitOnlyModule
   ],
   declarations:
     [TokenizedCardComponent,

@@ -8,7 +8,7 @@
 			<form [formGroup]='cardForm'>
 				<div class="form-group">
 					<label >Card Number:
-					<input type="number" formControlName="cardNumber" name="cardNo" 
+					<input type="text" formControlName="cardNumber" name="cardNo" digitOnly
 					class="form-control form-control-sm" [ngClass]="isInvalid('cardNumber')"
 					/>
 					<span class="invalid-feedback">
@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-md-6 form-group">
 						<label>Security Number:
-						<input type="number" formControlName="securityNumber" 
+						<input type="text" formControlName="securityNumber" digitOnly
 						class="form-control form-control-sm" [ngClass]="isInvalid('securityNumber')"
 						/>
 						<span class="invalid-feedback">
@@ -29,8 +29,8 @@
 					</div>
 					<div class="col-md-6 form-group">
 						<label>PIN:
-						<input type="number" formControlName="pin" class="form-control 
-						form-control-sm" [ngClass]="isInvalid('pin')"/>
+						<input type="text" formControlName="pin" class="form-control
+						form-control-sm pin" [ngClass]="isInvalid('pin')" digitOnly/>
 						<span class="invalid-feedback">
 							Card PIN is required.
 						</span>
@@ -41,25 +41,25 @@
 					<label>Card Expiry:
 					<div class="row">
 						<div class="col-md-6">
-							<select formControlName="expiryMonth" name="expiry-month" 
+							<select formControlName="expiryMonth" name="expiry-month"
 							class="form-control" [ngClass]="isInvalid('expiryMonth')">
 								<option value="MM">Expiry Month</option>
-								<option *ngFor="let month of validMonths;" 
+								<option *ngFor="let month of validMonths;"
 								value={{month}}>{{ month }}</option>
 							</select>
 						</div>
 						<div class="col-md-6">
-							<select formControlName="expiryYear" name="expiry-year" 
+							<select formControlName="expiryYear" name="expiry-year"
 							class="form-control"
 							[ngClass]="isInvalid('expiryYear')">
 								<option value="YYYY">Expiry Year</option>
-								<option *ngFor="let year of validYears;" 
+								<option *ngFor="let year of validYears;"
 								value={{year}}>{{year}}</option>
 							</select>
 						</div>
 					</div>
-					<span class="error" *ngIf="(cardForm.controls['cardExpiry'].dirty 
-					|| cardForm.controls['cardExpiry'].touched) && 
+					<span class="error" *ngIf="(cardForm.controls['cardExpiry'].dirty
+					|| cardForm.controls['cardExpiry'].touched) &&
 					cardForm.controls['cardExpiry'].invalid">
 							Select valid month and year for card expiry
 					</span>
@@ -68,10 +68,10 @@
 
 					<div class="form-group">
 						<label>Amount <strong>(NGN)</strong>:
-						<input type="number" formControlName="amount" class="form-control"
-						[ngClass]="{'is-invalid':  (cardForm.controls['amount'].dirty || 
-						cardForm.controls['amount'].touched) 
-						&& cardForm.controls['amount'].invalid}"
+						<input type="text" formControlName="amount" class="form-control"
+						[ngClass]="{'is-invalid':  (cardForm.controls['amount'].dirty ||
+						cardForm.controls['amount'].touched)
+						&& cardForm.controls['amount'].invalid}" digitOnly
 						/>
 						<span class="invalid-feedback" >
 							Amount is required and must be greater than 0.
@@ -84,7 +84,7 @@
 							[ngClass]="isInvalid('purpose')">
 								<option value="Purpose">Purpose</option>
 								<option value="Saving">Saving</option>
-								<option value="Buying" disabled>Buying</option>  
+								<option value="Buying" disabled>Buying</option>
 							</select>
 							<span class="invalid-feedback">
 								Select a valid purpose of payment.
@@ -94,14 +94,14 @@
 							<div class="form-check form-group">
 								<label class="form-check-label form-check-inline">Save Card:
 									<input class="form-check-input" type="checkbox"
-									formControlName="saveCard"/> 
+									formControlName="saveCard"/>
 								</label>
 							</div>
 						</div>
-					</div>	<hr>		
+					</div>	<hr>
 				<button class="btn" (click)='onBack()'>
 					<span class="fa fa-caret-left"></span>	Back</button>
-				<button type="submit" class="btn" 
+				<button type="submit" class="btn"
 				[disabled]="!cardForm.valid" (click)="submitDetails()">Submit</button>
 			</form>
 		</div>
