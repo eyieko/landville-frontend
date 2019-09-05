@@ -1,6 +1,8 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, OnDestroy} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Subscription} from 'rxjs';
 import {NgxSpinnerService} from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 import {PropertyDetail} from 'src/app/models/property-detail/Property-detail';
 import {SearchService} from 'src/app/services/search/search.service';
@@ -10,11 +12,16 @@ import {SearchService} from 'src/app/services/search/search.service';
   templateUrl: './similar-properties.component.html',
   styleUrls: ['./similar-properties.component.scss']
 })
-export class SimilarPropertiesComponent implements OnInit, OnChanges {
+export class SimilarPropertiesComponent implements OnInit, OnChanges, OnDestroy {
 
-  constructor(private search: SearchService, private spinner: NgxSpinnerService) { }
+  constructor(
+    private search: SearchService,
+    private spinner: NgxSpinnerService,
+    private toastrService: ToastrService,
+  ) {}
 
   similarProperties: PropertyDetail[] = [];
+  subscription: Subscription;
 
   @Input() propertyDetails: {
     title: string,
@@ -73,11 +80,15 @@ export class SimilarPropertiesComponent implements OnInit, OnChanges {
       const upperRange = currentPrice + (currentPrice * 0.1);
       searchQuery = `price_min=${lowerRange}&price_max=${upperRange}`;
     }
-    this.search.searchProperties(searchQuery).subscribe(
+    this.subscription = this.search.searchProperties(searchQuery).subscribe(
       response => {
         this.similarProperties = response.data.properties.results.filter(  // filter out the current property
           ({title}) => title !== this.propertyDetails.title
         );
+        this.spinner.hide();
+      },
+      _ => {
+        this.toastrService.error('An error occurred when getting similar properties');
         this.spinner.hide();
       }
     );
@@ -92,6 +103,10 @@ export class SimilarPropertiesComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     this.getSimilarProperties(this.selectedOption);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

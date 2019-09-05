@@ -10,6 +10,8 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {SimilarPropertiesComponent} from './similar-properties.component';
 import {PropertyDetailsComponent} from '../property-details.component';
 import {environment} from 'src/environments/environment';
+import {ToastrService} from 'ngx-toastr';
+import {toastServiceSpy} from '../../../helpers/spies';
 
 describe('SimilarPropertiesComponent', () => {
   let component: SimilarPropertiesComponent;
@@ -30,6 +32,12 @@ describe('SimilarPropertiesComponent', () => {
         RouterTestingModule.withRoutes([{ path: '**', component: PropertyDetailsComponent }, ]),
         NgxSpinnerModule,
         ReactiveFormsModule,
+      ],
+      providers: [
+        {
+          provide: ToastrService,
+          useValue: toastServiceSpy
+        },
       ],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA,
@@ -99,5 +107,10 @@ describe('SimilarPropertiesComponent', () => {
     fixture.detectChanges();
     const noSimilarProperty = fixture.debugElement.query(By.css('#noSimilar')).nativeElement;
     expect(noSimilarProperty.textContent).toContain('No similar properties were found.');
+  });
+
+  it('should show toaster message in case of errors', () => {
+    mockReq.error(new ErrorEvent('fail'));
+    expect(toastServiceSpy.error).toHaveBeenCalled();
   });
 });
