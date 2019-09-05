@@ -1,0 +1,340 @@
+.big-container {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  margin: 10em;
+  border-radius: 16px;
+  background: white;
+  height: 33.7em;
+  width: 56em;
+  box-shadow: -5px 5px 20px 3px #bdbaba;
+  padding-left: -3px;
+}
+
+.login-slider {
+  border-radius: 16px 0 0 16px;
+}
+
+.login-section {
+  border-radius: 0 16px 16px 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../../../assets/img/House Architecture 4.jpg");
+  background-size: 50em;
+  background-position: center;
+  background-clip: border-box;
+  width: 110%;
+}
+
+img.bg {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  opacity: 0.3;
+}
+
+@media screen and (max-width: 1024px) {
+  img.bg {
+    left: 50%;
+    margin-left: -512px;
+  }
+}
+
+@media (min-width: 600px) {
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .big-container {
+    display: flex;
+    width: 104%;
+    height: 32em;
+  }
+
+  .container {
+    background-image: none;
+    margin: 0em;
+    height: 38em;
+    position: fixed;
+    padding-left: 2px;
+    background-repeat: no-repeat;
+  }
+
+  img.bg {
+    display: none;
+  }
+
+  .login-section {
+    width: 100%;
+    border-radius: 0 4px 2px 0;
+    height: 865px;
+    background-size: cover;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .container {
+    display: -webkit-box;
+    padding-left: -15px;
+    padding-right: 63px;
+  }
+}
+
+.social {
+  margin-left: 30px !important;
+  color: white;
+}
+
+/* css for the header */
+.logo img {
+  width: 120px;
+  margin: 1rem 10rem 1rem 13rem;
+}
+
+.logo p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 25px;
+  font-weight: lighter;
+  margin: 1px 10rem 1rem 13.5rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .logo {
+    transform: scale(0.9);
+    padding-top: 72px;
+    padding-left: 169px;
+  }
+}
+
+/* css for the slider */
+.login-slider {
+  width: 500px;
+  display: block;
+}
+
+.login-slider p {
+  margin: 3rem 1rem 1rem 8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: yellow;
+}
+
+.carousel {
+  margin-left: 6%;
+  margin-right: 9%;
+  margin-top: 10%;
+}
+
+ul.slides {
+  display: block;
+  height: 262px;
+  width: 450px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+}
+
+.slides * {
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+ul.slides input {
+  display: none;
+}
+
+.slide-container {
+  display: block;
+}
+
+.slide-image {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 113%;
+  top: 0;
+  opacity: 0;
+  transition: all 0.7s ease-in-out;
+}
+
+.slide-image img {
+  width: auto;
+  min-width: 100%;
+  height: 100%;
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  font-size: 100px;
+  line-height: 600px;
+  color: #f0a311;
+}
+
+.carousel-controls label {
+  display: none;
+  position: absolute;
+  padding: 0 20px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+
+.slide-image:hover + .carousel-controls label {
+  opacity: 0.5;
+}
+
+.carousel-controls label:hover {
+  opacity: 1;
+}
+
+.carousel-controls .prev-slide {
+  width: 49%;
+  text-align: left;
+  left: 0;
+}
+
+.carousel-controls .next-slide {
+  width: 49%;
+  text-align: right;
+  right: 0;
+}
+
+.carousel-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -193px;
+  z-index: 999;
+  text-align: center;
+}
+
+.carousel-dots .carousel-dot {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #f0a311;
+  opacity: 0.3;
+  margin: 10px;
+}
+
+input:checked + .slide-container .slide-image {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1s ease-in-out;
+}
+
+input:checked + .slide-container .carousel-controls label {
+  display: block;
+}
+
+input#img-1:checked ~ .carousel-dots label#img-dot-1,
+input#img-2:checked ~ .carousel-dots label#img-dot-2,
+input#img-3:checked ~ .carousel-dots label#img-dot-3,
+input#img-4:checked ~ .carousel-dots label#img-dot-4,
+input#img-5:checked ~ .carousel-dots label#img-dot-5,
+input#img-6:checked ~ .carousel-dots label#img-dot-6 {
+  opacity: 1;
+}
+
+input:checked + .slide-container .nav label {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .login-slider {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .login-slider {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .login-slider {
+    display: none;
+  }
+}
+
+/* css for the social login buttons */
+
+.social-section p {
+  margin: -0.5rem 5rem 0.5rem 10.7rem;
+  color: white;
+}
+
+.social-section {
+  margin: 1rem 2rem 1rem 2rem;
+  align-content: center;
+  border-radius: 16px;
+}
+
+.social-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 4rem;
+}
+.social-facebook {
+  width: 10rem;
+  float: left;
+}
+
+.social-linkedin {
+  width: 10rem;
+}
+.social-facebook img {
+  width: 10rem;
+  height: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.social-linkedin img {
+  width: 10rem;
+  height: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
+  border-bottom: 0px solid #000;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+}
+
+h2 span {
+  background: #fff;
+  padding: 0 10px;
+}
+
+@media only screen and (max-width: 480px) {
+  .social-section {
+    transform: scale(0.82);
+    margin: 1rem 9rem 1rem 10rem;
+  }
+  .social-section p {
+    margin: -0.5rem 17rem 0.5rem 10.7rem;
+  }
+}

@@ -1,4 +1,5 @@
 import { UserProfileUpdatedResponse } from 'src/app/models/Profile';
+import {SocialUser} from 'angularx-social-login';
 
 export const mockUpdatedProfileResponse: UserProfileUpdatedResponse = {
   data: {
@@ -245,4 +246,45 @@ export const mockDepositsResponse = {
     ]
   },
   message: 'Transaction(s) retrieved successfully'
+};
+
+export const passwordResetMock = {
+  errors: {
+    email: [
+      'Enter a valid email address.'
+    ]
+  }
+};
+
+export const passwordResetResponse = {
+  data: {
+    message: 'If you have an account with us we have sent an email to reset your password'
+  }
+};
+
+export const userData: SocialUser = {
+  id: '123',
+  name: 'Kelvin Onkundi',
+  email: 'kelvin.onkundi@andela.com',
+  photoUrl: 'www.photo.com',
+  firstName: 'Kelvin',
+  authToken: 'a29',
+  idToken: 'eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0ZjI5NGM0NTE2MDA4OGQwNzlmZWU2ODEzOGY1MjEzM2QzZTIyOGMiLCJ0eXAiOiJKV1QifQ.',
+  lastName: 'Onkundi',
+  provider: 'GOOGLE',
+  authorizationCode: 'sjsksj'
+};
+
+export const clientsMockresponse = {
+  data: {
+    client_companies: [
+      {
+        address: { City: 'TestCity', State: 'Nigeria', Street: 'TestStreet' },
+        client_name: 'company',
+        email: 'landproperty@mail.net',
+        phone: '+256 123 3232234'
+      }
+    ],
+    message: 'You have retrieved all clients'
+  }
 };
