@@ -1,11 +1,11 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { localStorageSpy, profileServiceSpy, routerSpy } from 'src/app/helpers/spies';
+import { localStorageSpy, profileServiceSpy, routerSpy } from 'src/app/helpers/tests/spies';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
-import { resetSpies } from 'src/app/helpers/social.spies';
-import { mockProfileResponse } from 'src/app/shared/mocks';
+import { resetSpies } from 'src/app/helpers/tests/social.spies';
+import { mockProfileResponse } from 'src/app/helpers/tests/mocks';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 

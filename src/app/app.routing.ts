@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { CommonLayoutComponent } from './layouts/common-layout/common-layout.component';
-import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
-import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { FeaturesComponent } from './features/features.component';
+import { PasswordResetComponent } from './authentication/components/password-reset/password-reset.component';
+import { EnterResetPasswordComponent } from './authentication/components/enter-reset-password/enter-reset-password.component';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import {
   InternationalPaymentStatusComponent
-} from 'src/app/pages/payment/international-payment-status/international-payment-status.component';
+} from 'src/app/features/components/payment/international-payment-status/international-payment-status.component';
 
 const routes: Routes = [
   {
@@ -19,37 +19,37 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: AuthLayoutComponent,
+    component: AuthenticationComponent,
     children: [
       {
         path: '',
         loadChildren:
-          './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
+          './authentication/authentication.module#AuthenticationModule'
       }
     ],
     canActivate: [NoAuthGuard]
   },
   {
     path: '',
-    component: CommonLayoutComponent,
+    component: FeaturesComponent,
     children: [
       {
         path: '',
         loadChildren:
-          './layouts/common-layout/common-layout.module#CommonLayoutModule'
+          './features/features.module#FeaturesModule'
       }
-    ]
+    ],
   },
-  {
-    path: 'reset-link', data: { title: 'Reset your Password', tags: [] },
-    component: PasswordResetComponent, canActivate: [NoAuthGuard]
-  },
-  {
-    path: 'auth/password-reset', data: {
-      title: 'Choose a new password', tags: []
-    },
-    component: EnterResetPasswordComponent, canActivate: [NoAuthGuard]
-  },
+  // {
+  //   path: 'reset-link', data: { title: 'Reset your Password', tags: [] },
+  //   component: PasswordResetComponent, canActivate: [NoAuthGuard]
+  // },
+  // {
+  //   path: 'auth/password-reset', data: {
+  //     title: 'Choose a new password', tags: []
+  //   },
+  //   component: EnterResetPasswordComponent, canActivate: [NoAuthGuard]
+  // },
   { path: 'payment/international/status', component: InternationalPaymentStatusComponent },
   {
     path: '**',

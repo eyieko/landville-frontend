@@ -3,7 +3,7 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { routerSpy } from 'src/app/helpers/spies';
+import { routerSpy } from 'src/app/helpers/tests/spies';
 
 
 describe('AuthGuard', () => {

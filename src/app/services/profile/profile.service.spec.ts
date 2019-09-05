@@ -8,7 +8,7 @@ import { ProfileService } from './profile.service';
 import {
   mockProfileResponse,
   mockUpdatedProfileResponse
-} from '../../shared/mocks';
+} from '../../helpers/tests/mocks';
 import { LocalStorageService } from '../local-storage.service';
 import { APPCONFIG } from 'src/app/config';
 

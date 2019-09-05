@@ -4,7 +4,7 @@ import { PropertyDetailService } from 'src/app/services/property-detail/property
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { httpClientSpy, resetSpies } from 'src/app/helpers/spies';
+import { httpClientSpy, resetSpies } from 'src/app/helpers/tests/spies';
 
 describe('PropertyDetailService', () => {
     let propertyDetailService: PropertyDetailService;
@@ -20,7 +20,7 @@ describe('PropertyDetailService', () => {
                     provide: HttpClient, useValue: httpClientSpy
                 }
             ]
-        });       
+        });
         propertyDetailService = TestBed.get(PropertyDetailService);
     }
     );
@@ -31,7 +31,7 @@ describe('PropertyDetailService', () => {
     });
 
     it('should test getting property', () => {
-        const slug = 'hello';  
+        const slug = 'hello';
         const responseObject = {
             success: true,
             message: 'successful'

@@ -9,7 +9,7 @@
     "src/test.ts",
     "src/**/*.spec.ts",
     "**/*.stories.ts",
-    "src/app/helpers/spies.ts",
+    "src/app/helpers/tests/spies.ts",
     "src/app/shared/utils/helpers/spies.ts",
     "**/*.spies.ts"
   ]
