@@ -24,7 +24,7 @@
         ></app-card>
       </div>
     </ng-template>
-  
+
     <div class="transaction-header">
       <h3 class="heading-tertiary">Transactions in progress</h3>
     </div>
@@ -36,7 +36,7 @@
         [message]="'Currently you don\'t have any transaction in progress'"
       ></app-empty-transaction>
     </div>
-  
+
     <ng-template #transactionInProgressNotEmpty>
       <div class="col-progress-transaction">
         <div
@@ -58,7 +58,7 @@
                 <div class="cardinp__back--rest__amount">
                   <p class="cardinp__back--rest__naira">Remaining amount</p>
                   <p class="cardinp__back--rest__value">
-                    &#8358;{{ transaction.price - transaction.total_amount_paid }}
+                    {{ transaction.price - transaction.total_amount_paid | currency:'&#8358;' }}
                   </p>
                 </div>
                 <a href="#" class="btn btn--white">Complete now</a>
@@ -69,4 +69,3 @@
       </div>
     </ng-template>
   </div>
-  

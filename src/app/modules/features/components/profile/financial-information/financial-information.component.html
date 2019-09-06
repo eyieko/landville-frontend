@@ -66,7 +66,7 @@
                 {{
                   deposits.error !== undefined
                     ? "No Purchase Yet"
-                    : deposits.price
+                    : deposits.price | currency:'&#8358;'
                 }}
               </h2>
             </div>
@@ -76,7 +76,7 @@
                 {{
                   deposits.error !== undefined
                     ? "No savings Yet"
-                    :deposits.total_amount_paid
+                    :deposits.total_amount_paid | currency:'&#8358;'
                 }}
               </h2>
             </div>

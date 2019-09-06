@@ -116,7 +116,7 @@
                 {{ property.address.City }}.
               </p>
               <p class="card-text">
-                <b aria-hidden="true">&#8358; </b> {{ property.price }}
+                <b aria-hidden="true"></b> {{ property.price | currency:'&#8358;' }}
               </p>
               <a
                 [routerLink]="['/properties', property.slug]"
