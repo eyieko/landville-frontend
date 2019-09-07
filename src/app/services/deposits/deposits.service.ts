@@ -10,9 +10,10 @@ import { environment } from 'src/environments/environment';
 export class DepositsService {
   DepositsUrl = '/transactions/my-deposit/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getDeposits(): Observable<any> {
-    return this.http.get<DepositsResponse>(`${environment.api_url}${this.DepositsUrl}`);
+    return this.http.get<DepositsResponse>(`${ environment.apiUrl }${ this.DepositsUrl }`);
   }
 }

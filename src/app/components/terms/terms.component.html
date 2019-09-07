@@ -1,0 +1,10 @@
+<div class="container" >
+  <div *ngIf="terms | async as term" >
+    <div [innerHTML]="term['details']" class="my-5" ></div >
+    <blockquote class="blockquote" >
+      <p class="mb-0" ></p >
+      <footer class="blockquote-footer" >Last Updated <cite title="Last Updated" >{{term['last_updated_at']}}</cite >
+      </footer >
+    </blockquote >
+  </div >
+</div >

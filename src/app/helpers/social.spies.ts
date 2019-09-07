@@ -9,7 +9,7 @@ const createSpyObj = (name: string, methods: string[]) => {
   return jasmine.createSpyObj(name, methods);
 };
 
-export const authServiceSpy = createSpyObj('AuthService', ['signIn']);
+export const authServiceSpy = createSpyObj('AuthService', [ 'signIn' ]);
 
 export const loginServiceSpy = createSpyObj('LoginService', [
   'createGoogleUser',

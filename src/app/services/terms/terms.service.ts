@@ -1,8 +1,9 @@
-import { Term } from './../../models/Term';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Term } from './../../models/Term';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,6 @@ export class TermsService {
   }
 
   getTerms(): Observable<Term> {
-    return this.http.get<Term>(environment.api_url + '/terms/');
+    return this.http.get<Term>(`${ environment.apiUrl }/terms/`);
   }
 }

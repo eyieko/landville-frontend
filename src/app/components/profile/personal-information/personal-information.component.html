@@ -1,0 +1,201 @@
+<div >
+  <form (ngSubmit)="saveProfile()" [formGroup]="profileForm" >
+    <div class="profile-form-group" >
+      <div >
+        <label for="firstName" >FIRST NAME</label >
+      </div >
+      <input
+        [ngClass]="{
+          'is-invalid':
+            profileForm.get('firstName').touched &&
+            profileForm.get('firstName').invalid
+        }"
+        class="form-control"
+        formControlName="firstName"
+        name="firstName"
+        placeholder="First Name"
+        type="text"
+      />
+    </div >
+    <div class="profile-form-group" >
+      <label for="lastName" >LAST NAME</label >
+      <input
+        [ngClass]="{
+          'is-invalid':
+            profileForm.get('lastName').touched &&
+            profileForm.get('lastName').invalid
+        }"
+        class="form-control"
+        formControlName="lastName"
+        name="lastName"
+        placeholder="Last Name"
+        type="text"
+      />
+    </div >
+    
+    <div class="profile-form-group" >
+      <label for="email" >EMAIL ADDRESS</label >
+      <input
+        [ngClass]="{
+          'is-invalid':
+            profileForm.get('emailAddress').touched &&
+            profileForm.get('emailAddress').invalid
+        }"
+        class="form-control"
+        formControlName="emailAddress"
+        name="email"
+        placeholder="Email"
+        type="email"
+      />
+    </div >
+    <div class="profile-form-group row" >
+      <label for="homeAddress" >HOME ADDRESS</label >
+      
+      <div class="address-form-group" >
+        <input
+          [ngClass]="{
+            'is-invalid':
+              profileForm.get('street').invalid &&
+              (profileForm.get('street').touched ||
+                profileForm.get('street').dirty ||
+                profileForm.get('street').pristine)
+          }"
+          class="form-control address-input"
+          formControlName="street"
+          name="street"
+          placeholder="Street"
+          type="text"
+        />
+        <input
+          [ngClass]="{
+            'is-invalid':
+              profileForm.get('city').invalid &&
+              (profileForm.get('city').touched ||
+                profileForm.get('city').dirty ||
+                profileForm.get('city').pristine)
+          }"
+          class="form-control address-input"
+          formControlName="city"
+          name="city"
+          placeholder="City"
+          type="text"
+        />
+        <input
+          [ngClass]="{
+            'is-invalid':
+              profileForm.get('state').invalid &&
+              (profileForm.get('state').touched ||
+                profileForm.get('state').dirty ||
+                profileForm.get('state').pristine)
+          }"
+          class="form-control address-input mr-0"
+          formControlName="state"
+          name="state"
+          placeholder="State"
+          type="text"
+        />
+      </div >
+    </div >
+    <div class="profile-form-group" >
+      <label for="phoneNumber" >PHONE NUMBER</label >
+      <input
+        [ngClass]="{
+          'is-invalid':
+            profileForm.get('phone').invalid &&
+            (profileForm.get('phone').touched ||
+              profileForm.get('phone').dirty ||
+              profileForm.get('phone').pristine)
+        }"
+        [ngStyle]="{
+          border: formErrors.errors.phone
+            ? '1px solid #dc3545'
+            : '1px solid #ced4da',
+          'box-shadow': formErrors.errors.phone
+            ? '0 0 0 0.2rem rgba(220,53,69,.25)'
+            : 'none'
+        }"
+        class="form-control"
+        formControlName="phone"
+        name="phoneNumber"
+        phone
+        placeholder="Phone Number"
+        type="text"
+      />
+    </div >
+    <div class="profile-form-group" >
+      <label for="employer" >EMPLOYER</label >
+      <input
+        class="form-control"
+        formControlName="employer"
+        name="employer"
+        placeholder="Employer"
+        type="text"
+      />
+    </div >
+    <div class="profile-form-group" >
+      <label for="designation" >DESIGNATION</label >
+      <input
+        class="form-control"
+        formControlName="designation"
+        name="designation"
+        placeholder="Designation"
+        type="text"
+      />
+    </div >
+    <div class="profile-form-group" >
+      <label for="nextKin" >NEXT OF KIN</label >
+      <input
+        class="form-control"
+        formControlName="next_of_kin"
+        name="nextKin"
+        placeholder="Next of Kin"
+        type="text"
+      />
+    </div >
+    <div class="form-group profile-form-group" >
+      <label for="nextKinContact" >NEXT OF KIN CONTACT</label >
+      <input
+        [ngClass]="{
+          'is-invalid':
+            profileForm.get('next_of_kin_contact').invalid &&
+            (profileForm.get('next_of_kin_contact').touched ||
+              profileForm.get('next_of_kin_contact').dirty)
+        }"
+        [ngStyle]="{
+          border: formErrors.errors.next_of_kin_contact
+            ? '1px solid #dc3545'
+            : '1px solid #ced4da',
+          'box-shadow': formErrors.errors.next_of_kin_contact
+            ? '0 0 0 0.2rem rgba(220,53,69,.25)'
+            : 'none'
+        }"
+        class="form-control"
+        formControlName="next_of_kin_contact"
+        name="nextKinContact"
+        placeholder="Next of Kin Contact"
+        type="text"
+      />
+    </div >
+    <div class="profile-form-group" >
+      <label for="bio" >SHORT BIO</label >
+      <textarea
+        class="form-control"
+        formControlName="bio"
+        name="bio"
+        id="bio"
+        placeholder="Short Bio"
+        rows="10"
+      ></textarea >
+    </div >
+    <div class="profile-submit" >
+      <button
+        [disabled]="!profileForm.valid"
+        class="btn-form-blue-profile"
+        type="submit"
+      >
+        Save
+      </button >
+    </div >
+  </form >
+  <ngx-spinner ></ngx-spinner >
+</div >

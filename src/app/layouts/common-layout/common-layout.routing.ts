@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import { CompanyComponent } from 'src/app/pages/company/company.component';
-import { HomeComponent } from 'src/app/pages/home/home.component';
-import { RegistersuccessComponent } from 'src/app/pages/registration/registersuccess/registersuccess.component';
-import { ProfileComponent } from 'src/app/pages/profile/profile.component';
-import { PropertiesComponent } from 'src/app/pages/properties/properties.component';
+import { ClientsComponent } from 'src/app/components/clients/clients.component';
+import { CompanyComponent } from 'src/app/components/company/company.component';
+import { DepositsComponent } from 'src/app/components/deposits/deposits.component';
+import { HomeComponent } from 'src/app/components/home/home.component';
+import { ProfileComponent } from 'src/app/components/profile/profile.component';
+import { NoPropertiesComponent } from 'src/app/components/properties/no-properties/no-properties.component';
+import { PropertiesComponent } from 'src/app/components/properties/properties.component';
+import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
+import { RegistersuccessComponent } from 'src/app/components/registration/registersuccess/registersuccess.component';
+import { TermsPageComponent } from 'src/app/components/terms/terms.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { NoPropertiesComponent } from 'src/app/pages/properties/no-properties/no-properties.component';
-import { TermsPageComponent } from 'src/app/pages/terms/terms.component';
-import { PropertyDetailsComponent } from 'src/app/pages/property-details/property-details.component';
-import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
-import { ClientsComponent } from 'src/app/pages/clients/clients.component';
 
 export const CommonLayoutRoutes: Routes = [
   {
@@ -40,11 +40,11 @@ export const CommonLayoutRoutes: Routes = [
     }
   },
   {
-    path: 'create-company',
+    path: 'company/add',
     component: CompanyComponent, data: {
       title: 'Create Partner Company'
     },
-    canActivate: [AuthGuard]
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'properties', component: PropertiesComponent, data: {
@@ -67,9 +67,17 @@ export const CommonLayoutRoutes: Routes = [
     },
   },
   { path: 'no-properties', component: NoPropertiesComponent },
-  { path: 'registersuccess', component: RegistersuccessComponent, data: { title: 'Registration successful', tags: [] } },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { title: 'User Profile' } },
-  { path: 'terms-and-conditions', component: TermsPageComponent, data: { title: 'LandVille Terms and Conditions of Use', tags: [] } },
+  {
+    path: 'registersuccess',
+    component: RegistersuccessComponent,
+    data: { title: 'Registration successful', tags: [] }
+  },
+  { path: 'profile', component: ProfileComponent, canActivate: [ AuthGuard ], data: { title: 'User Profile' } },
+  {
+    path: 'terms-and-conditions',
+    component: TermsPageComponent,
+    data: { title: 'LandVille Terms and Conditions of Use', tags: [] }
+  },
   {
     path: 'properties/:slug', component: PropertyDetailsComponent, data: {
       title: 'All Properties | Acquire your dream property with ease today', tags: [
@@ -93,12 +101,12 @@ export const CommonLayoutRoutes: Routes = [
   {
     path: 'user/deposits',
     component: DepositsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
     data: { title: 'My Deposits', tags: [] }
   },
   {
     path: 'clients', component: ClientsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [ AuthGuard ],
     data: { title: 'Client companies', tags: [] }
-  }
+  },
 ];

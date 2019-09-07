@@ -1,0 +1,29 @@
+<body >
+<div class="container" >
+  <div class="row" >
+    <div class="col-md-8" >
+      <app-property-detail [bathrooms]="bathrooms" [bedrooms]="bedrooms" [city]="city" [garages]="garages"
+                           [ifBuilding]="ifBuilding"
+                           [imageMain]="imageMain" [imageOthers]="imageOthers" [price]="price"
+                           [state]="state"
+                           [street]="street" [title]="title" ></app-property-detail >
+      
+      <div class="about" >
+        <app-property-description [createdAt]="createdAt" [description]="description" [ifVideo]="ifVideo"
+                                  [lotSize]="lotSize" [purchasePlan]="purchasePlan"
+                                  [video]="video" ></app-property-description >
+      </div >
+    
+    </div >
+    <div class="col-md-4" >
+      <div class="card mt-5 text-center" >
+        <app-client-admin [clientCity]="clientCity" [clientName]="clientName"
+                          [clientState]="clientState" [clientStreet]="clientStreet" [email]="email" [phone]="phone" >
+        </app-client-admin >
+      </div >
+      <img alt="Card image" class="card-img mt-5" src="assets/img/designs/Design.jpg" >
+    </div >
+  </div >
+  <ngx-spinner ></ngx-spinner >
+</div >
+</body >

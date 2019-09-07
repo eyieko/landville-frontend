@@ -1,6 +1,6 @@
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
 import { CompanyService } from 'src/app/services/company/company.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
 
 describe('CompanyService', () => {
@@ -29,10 +29,10 @@ describe('CompanyService', () => {
   });
 
   it('should should perform create company correctly', fakeAsync(
-    inject([CompanyService, HttpTestingController],
+    inject([ CompanyService, HttpTestingController ],
       (service: CompanyService, backend: HttpTestingController) => {
         // Set up
-        const url = `${environment.api_url}/auth/client/`;
+        const url = `${ environment.apiUrl }/auth/client/`;
         const responseObject = {
           success: true,
           message: 'created was successful'
@@ -53,10 +53,10 @@ describe('CompanyService', () => {
   ));
 
   it('should should perform get company details correctly', fakeAsync(
-    inject([CompanyService, HttpTestingController],
+    inject([ CompanyService, HttpTestingController ],
       (service: CompanyService, backend: HttpTestingController) => {
         // Set up
-        const url = `${environment.api_url}/auth/client/`;
+        const url = `${ environment.apiUrl }/auth/client/`;
         const responseObject = {
           success: true,
           message: 'here is your payload.'

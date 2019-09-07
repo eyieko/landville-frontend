@@ -1,27 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { ComponentsModule } from 'src/app/components/components.module';
+import { ClientsComponent } from 'src/app/components/clients/clients.component';
+import { CompanyComponent } from 'src/app/components/company/company.component';
+import { DepositsComponent } from 'src/app/components/deposits/deposits.component';
+import { HomeComponent } from 'src/app/components/home/home.component';
+import { PaymentModule } from 'src/app/components/payment/payment.module';
+import { ProfileModule } from 'src/app/components/profile/profile.module';
+import { NoPropertiesComponent } from 'src/app/components/properties/no-properties/no-properties.component';
+import { PropertiesComponent } from 'src/app/components/properties/properties.component';
+import { PropertyDetailsModule } from 'src/app/components/property-details/property-details.module';
+import { RegistersuccessComponent } from 'src/app/components/registration/registersuccess/registersuccess.component';
 import { CommonLayoutRoutes } from 'src/app/layouts/common-layout/common-layout.routing';
-import { CompanyComponent } from 'src/app/pages/company/company.component';
-import { HomeComponent } from 'src/app/pages/home/home.component';
-import { ProfileModule } from 'src/app/pages/profile/profile.module';
-import { NoPropertiesComponent } from 'src/app/pages/properties/no-properties/no-properties.component';
-import { RegistersuccessComponent } from 'src/app/pages/registration/registersuccess/registersuccess.component';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
-import { PropertiesComponent } from 'src/app/pages/properties/properties.component';
-import { CardComponent } from 'src/app/components/card/card.component';
-import { PaymentModule } from 'src/app/pages/payment/payment.module';
-
-import { PropertyDetailsModule } from 'src/app/pages/property-details/property-details.module';
-import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
-import { ClientsComponent } from 'src/app/pages/clients/clients.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -30,13 +27,12 @@ import { ClientsComponent } from 'src/app/pages/clients/clients.component';
     NgxPaginationModule,
     NgxSpinnerModule,
     RouterModule.forChild(CommonLayoutRoutes),
-    ComponentsModule,
+    SharedModule,
     ReactiveFormsModule,
     ProfileModule,
     HttpClientModule,
     PaymentModule,
-    PropertyDetailsModule,
-    PaymentModule
+    PropertyDetailsModule
   ],
   declarations: [
     HomeComponent,
@@ -44,10 +40,10 @@ import { ClientsComponent } from 'src/app/pages/clients/clients.component';
     CompanyComponent,
     PropertiesComponent,
     NoPropertiesComponent,
-    CardComponent,
     DepositsComponent,
     ClientsComponent
   ],
-  providers: [ProfileService, LocalStorageService, Title]
+  providers: [ ProfileService, Title ],
 })
-export class CommonLayoutModule {}
+export class CommonLayoutModule {
+}

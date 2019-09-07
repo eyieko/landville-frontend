@@ -1,0 +1,286 @@
+<div class="payment" >
+  <div class="container" >
+    <form (ngSubmit)="onSubmitPaymentDetails(form)" [formGroup]="form" [hidden]="!shouldHide" class="payment-form" >
+      <ngx-spinner ></ngx-spinner >
+      <div class="heading" >Pay with International Card</div >
+      <div class="container" >
+        <div class="row" >
+          <div class="col-md-6" >
+            <div >
+              Card Number:
+            </div >
+            
+            <input [ngClass]="{
+                'is-invalid':
+                  (form.get('cardNo').touched || form.get('cardNo').dirty) &&
+                  !form.get('cardNo').valid
+              }" class="form-control" formControlName="cardNo" />
+            <app-input-errors *ngIf="
+                (form.get('cardNo').touched || form.get('cardNo').dirty) &&
+                form.get('cardNo').errors?.required
+              " error="Your Card Number is required" >
+            </app-input-errors >
+            <app-input-errors *ngIf="
+                (form.get('cardNo').touched || form.get('cardNo').dirty) &&
+                form.get('cardNo').errors?.minlength
+              " error="Card number should not be less than 8 integers" >
+            </app-input-errors >
+            <app-input-errors *ngIf="
+                (form.get('cardNo').touched || form.get('cardNo').dirty) &&
+                form.get('cardNo').errors?.pattern
+              " error="Card number should be an integer" >
+            </app-input-errors >
+          </div >
+          
+          <div class="col-md-6" >
+            <div >
+              CVV Number:
+            </div >
+            <input [ngClass]="{
+                'is-invalid':
+                  (form.get('cvv').touched || form.get('cvv').dirty) &&
+                  !form.get('cvv').valid
+              }" class="form-control" formControlName="cvv" maxlength="4" />
+            <app-input-errors *ngIf="
+                (form.get('cvv').touched || form.get('cvv').dirty) &&
+                form.get('cvv').errors?.pattern
+              " error="CVV should be a number" >
+            </app-input-errors >
+            <app-input-errors *ngIf="
+                (form.get('cvv').touched || form.get('cvv').dirty) &&
+                form.get('cvv').errors?.required
+              " error="CVV is required" >
+            </app-input-errors >
+            <app-input-errors *ngIf="
+                (form.get('cvv').touched || form.get('cvv').dirty) &&
+                form.get('cvv').errors?.minlength
+              " error="CVV number should not be less than 3 integers" >
+            </app-input-errors >
+            <app-input-errors *ngIf="
+                (form.get('cvv').touched || form.get('cvv').dirty) &&
+                form.get('cvv').errors?.maxlength
+              " error="CVV number should not be more than 4 integers" >
+            </app-input-errors >
+          </div >
+        </div >
+        <div class="row" >
+          <div class="col-md-6" >
+            <div >
+              Card Expiry Month:
+            </div >
+            <select [ngClass]="{
+                'is-invalid':
+                  (form.get('expiryMonth').touched ||
+                    form.get('expiryMonth').dirty) &&
+                  !form.get('expiryMonth').valid
+              }" class="form-control" formControlName="expiryMonth" placeholder="month" >
+              <option [selected]="true" disabled="true" value="" value="null" >Month</option >
+              <option *ngFor="let month of expectedMonths" value="{{ month }}" >{{ month }}</option >
+            </select >
+            <app-input-errors *ngIf="
+                (form.get('expiryMonth').touched ||
+                  form.get('expiryMonth').dirty) &&
+                form.get('expiryMonth').errors?.required
+              " error="Expiry Month of your card is required" >
+            </app-input-errors >
+          </div >
+          <div class="col-md-6" >
+            <div >
+              Expiry Year:
+            </div >
+            <select [ngClass]="{
+                'is-invalid':
+                  (form.get('expiryYear').touched ||
+                    form.get('expiryYear').dirty) &&
+                  !form.get('expiryYear').valid
+              }" class="form-control" formControlName="expiryYear" placeholder="year" >
+              <option [selected]="true" value="" >Year</option >
+              <option *ngFor="let year of expectedYears" value="{{ year }}" >{{
+                  year
+                }}</option >
+            </select >
+            
+            <app-input-errors *ngIf="
+                (form.get('expiryYear').touched ||
+                  form.get('expiryYear').dirty) &&
+                form.get('expiryYear').errors?.required
+              " error="Expiry Year of your card is required" >
+            </app-input-errors >
+          </div >
+        </div >
+        <div class="row" >
+          <div class="col-md-6" >
+            <div >
+              Amount <strong >(NGN)</strong >:
+            </div >
+            <input [ngClass]="{
+                'is-invalid':
+                  (form.get('amount').touched || form.get('amount').dirty) &&
+                  !form.get('amount').valid
+              }" class="form-control" formControlName="amount" />
+            <app-input-errors *ngIf="
+                (form.get('amount').touched || form.get('amount').dirty) &&
+                form.get('amount').errors?.required
+              " error="Amount being paid for this transaction is required" >
+            </app-input-errors >
+            <app-input-errors *ngIf="
+                (form.get('amount').touched || form.get('amount').dirty) &&
+                form.get('amount').errors?.pattern
+              " error="Amount being paid for this transaction should be a number" >
+            </app-input-errors >
+          </div >
+          <div class="col-md-6" >
+            <div >
+              Billing zip:
+            </div >
+            <input [ngClass]="{
+                'is-invalid':
+                  (form.get('billingZip').touched ||
+                    form.get('billingZip').dirty) &&
+                  !form.get('billingZip').valid
+              }" class="form-control" formControlName="billingZip" />
+            <app-input-errors *ngIf="
+                (form.get('billingZip').touched ||
+                  form.get('billingZip').dirty) &&
+                form.get('billingZip').errors?.required
+              " error="Billing zip is required" >
+            </app-input-errors >
+            <app-input-errors *ngIf="
+                (form.get('billingZip').touched ||
+                  form.get('billingZip').dirty) &&
+                form.get('billingZip').errors?.pattern
+              " error="Billing zip should be a number" >
+            </app-input-errors >
+          </div >
+        </div >
+        <div class="row" >
+          <div class="col-md-6" >
+            <div >
+              Billing City:
+            </div >
+            <input [ngClass]="{
+                'is-invalid':
+                  (form.get('billingCity').touched ||
+                    form.get('billingCity').dirty) &&
+                  !form.get('billingCity').valid
+              }" class="form-control" formControlName="billingCity" />
+            <app-input-errors *ngIf="
+                (form.get('billingCity').touched ||
+                  form.get('billingCity').dirty) &&
+                form.get('billingCity').errors?.required
+              " error="Billing City is required" >
+            </app-input-errors >
+          </div >
+          <div class="col-md-6" >
+            <div >
+              Billing Address:
+            </div >
+            <div >
+              <input [ngClass]="{
+                  'is-invalid':
+                    (form.get('billingAddress').touched ||
+                      form.get('billingAddress').dirty) &&
+                    !form.get('billingAddress').valid
+                }" class="form-control" formControlName="billingAddress" />
+              <app-input-errors *ngIf="
+                  (form.get('billingAddress').touched ||
+                    form.get('billingAddress').dirty) &&
+                  form.get('billingAddress').errors?.required
+                " error="Billing address is required" >
+              </app-input-errors >
+            </div >
+          </div >
+        </div >
+        <div class="row" >
+          <div class="col-md-6" >
+            <div >
+              Billing State:
+            </div >
+            <input [ngClass]="{
+                'is-invalid':
+                  (form.get('billingState').touched ||
+                    form.get('billingState').dirty) &&
+                  !form.get('billingState').valid
+              }" class="form-control" formControlName="billingState" />
+            <app-input-errors *ngIf="
+                (form.get('billingState').touched ||
+                  form.get('billingState').dirty) &&
+                form.get('billingState').errors?.required
+              " error="Billing state is required" >
+            </app-input-errors >
+          </div >
+          <div class="col-md-6" >
+            <div >
+              Billing Country:
+            </div >
+            <input [ngClass]="{
+                'is-invalid':
+                  (form.get('billingCountry').touched ||
+                    form.get('billingCountry').dirty) &&
+                  !form.get('billingCountry').valid
+              }" class="form-control" formControlName="billingCountry" />
+            <app-input-errors *ngIf="
+                (form.get('billingCountry').touched ||
+                  form.get('billingCountry').dirty) &&
+                form.get('billingCountry').errors?.required
+              " error="Billing country is required" >
+            </app-input-errors >
+          </div >
+        </div >
+        
+        <div class="row" >
+          <div class="col-md-6" >
+            <div >
+              Purpose
+              <select [ngClass]="{
+                  'is-invalid':
+                    (form.get('purpose').touched ||
+                      form.get('purpose').dirty) &&
+                    !form.get('purpose').valid
+                }" class="custom-select" formControlName="purpose"
+                      placeholder="Select the purpose for this payment" >
+                <option [selected]="true" disabled="true" value="" >Purpose</option >
+                <option disabled value="Buying" >Buying</option >
+                <option value="Saving" >Saving</option >
+              </select >
+              <app-input-errors *ngIf="
+                  (form.get('purpose').touched || form.get('purpose').dirty) &&
+                  form.get('purpose').errors?.required
+                " error="Purpose of this transaction is required" >
+              </app-input-errors >
+            </div >
+            <div class="col-md-6" >
+              <label class="form-check-label" >Save Card</label >
+              <input class="form-check-input" formControlName="saveCard" type="checkbox" />
+            </div >
+          </div >
+        </div >
+        
+        <input (click)="backClicked()" class="btn btn-secondary" id="backButton" type="button" value="Back" />
+        <input [disabled]="!form.valid" [ngStyle]="
+            form.invalid && {
+              color: 'white',
+              backgroundcolor: '#171039'
+            }
+          " class="btn btn-primary" type="submit" value="Submit" />
+      </div >
+    </form >
+    <div [hidden]="shouldHide" class="container" >
+      <div class="row" >
+        <div class="col-md-3" ></div >
+        <div class="col-md-6 iframeContent" >
+          <iframe #confirmPayment [src]="iframeSrc" class="status" >
+          </iframe >
+          <div class="buttons" >
+            <div class="container" >
+              <input (click)="resubmit()" class="btn btn-secondary" id="resubmit" type="button" value="Resubmit" />
+              <a class="btn btn-primary" routerLink="/user/deposits" type="button" >Your Deposits</a >
+            </div >
+          </div >
+        </div >
+        <div class="col-md-3" ></div >
+      </div >
+    </div >
+    <ngx-spinner ></ngx-spinner >
+  </div >
+</div >

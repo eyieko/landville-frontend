@@ -1,0 +1,139 @@
+<div >
+  <div class="container overflow-auto ml-1" >
+    <div class="col-sm-8 m-0 float-left pt-4" >
+      <b style="color:grey"
+      >Page results : showing {{ properties.length }} of
+        {{ count }} results</b
+      >
+    </div >
+    <div class="view col-sm-4 m-0 ml-5 float-left" >
+      <i
+        (click)="toggleView()"
+        [ngClass]="{ 'list-active': listToggle, 'list-deactive': !listToggle }"
+        class="fas fa-list-ul"
+      ></i >
+      <i
+        (click)="toggleView()"
+        [ngClass]="{ 'list-active': gridToggle, 'list-deactive': !gridToggle }"
+        class="fas fa-th"
+      ></i >
+    </div >
+  </div >
+  
+  <div *ngIf="!toggle" >
+    <div class="row" >
+      <div class="col-md-8" >
+        <div *ngFor="let property of properties" class="col-md-12" >
+          <a (click)="setDocTitle(property.title)" [routerLink]="['/properties', property.slug]" class="custom-card"
+             routerLinkActive="active" >
+            <div class="card bg-light listview" >
+              <div class="row no-gutters" >
+                <div class="col-auto" >
+                  <img [src]="property.image_main" alt="" class="img-fluid2" />
+                </div >
+                <div class="col" >
+                  <div class="card-block px-2" >
+                    <h4 >
+                      <b
+                        class="card-title" >
+                        {{ property.title }}</b
+                      >
+                    </h4 >
+                    <p class="card-text list-card" >
+                      <img
+                        [style.width.px]="10"
+                        alt=""
+                        src="assets/img/marker.svg"
+                      />
+                      {{ property.address.Street }}, {{ property.address.City }}
+                    </p >
+                    <div class="priceL" >
+                      <b >&#8358; {{ property.price }}</b >
+                    </div >
+                  </div >
+                </div >
+              </div >
+            </div >
+          </a >
+        </div >
+        <div class="container" >
+          <div class="page-buttons" >
+            <button
+              (click)="fetchPrevious()"
+              [disabled]="disabledPrevious"
+              class="btn prev"
+            >
+              <img [style.width.px]="10" alt="" src="assets/img/arrowL.svg" />
+              Previous
+            </button >
+            <button
+              (click)="fetchNext()"
+              [disabled]="disabledNext"
+              class="btn next"
+            >
+              Next
+              <img [style.width.px]="7" alt="" src="assets/img/arrowR.svg" />
+            </button >
+          </div >
+        </div >
+      </div >
+      <div class="col-md-4" >
+        <img
+          alt="Card image"
+          class="card-img"
+          src="assets/img/designs/Design-min.jpg"
+        />
+      </div >
+    </div >
+  </div >
+  
+  <div *ngIf="toggle" >
+    <div class="row" >
+      <div class="col-md-8" >
+        <div class="row" >
+          <div *ngFor="let property of properties" class="col-md-4" >
+            <a (click)="setDocTitle(property.title)" [routerLink]="['/properties', property.slug]" class="custom-card"
+               routerLinkActive="active" >
+              <app-card
+                [city]="property.address.City"
+                [imageMain]="property.image_main"
+                [price]="property.price"
+                [street]="property.address.Street"
+                [title]="property.title"
+              ></app-card >
+            </a >
+          </div >
+        </div >
+        <div class="container" >
+          <div class="page-buttons" >
+            <button
+              (click)="fetchPrevious()"
+              [disabled]="disabledPrevious"
+              class="btn prev"
+            >
+              <img [style.width.px]="10" alt="" src="assets/img/arrowL.svg" />
+              Previous
+            </button >
+            <button
+              (click)="fetchNext()"
+              [disabled]="disabledNext"
+              class="btn next"
+            >
+              Next
+              <img [style.width.px]="7" alt="" src="assets/img/arrowR.svg" />
+            </button >
+          </div >
+        </div >
+      </div >
+      <div class="col-md-4" >
+        <img
+          alt="Card image"
+          class="card-img"
+          src="assets/img/designs/Design-min.jpg"
+        />
+      </div >
+    </div >
+  </div >
+  
+  <ngx-spinner ></ngx-spinner >
+</div >

@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from '../../pages/login/login.component';
-import { RegistrationComponent } from '../../pages/registration/registration.component';
+import { EnterResetPasswordComponent } from 'src/app/components/enter-reset-password/enter-reset-password.component';
+import { LoginComponent } from 'src/app/components/login/login.component';
+import { PasswordResetComponent } from 'src/app/components/password-reset/password-reset.component';
+import { RegistrationComponent } from 'src/app/components/registration/registration.component';
 
 
 export const AuthLayoutRoutes: Routes = [
@@ -24,5 +26,7 @@ export const AuthLayoutRoutes: Routes = [
 
         ]
     }
-  }
+  },
+  { path: 'reset-link', component: PasswordResetComponent },
+  { path: 'auth/password-reset', component: EnterResetPasswordComponent },
 ];

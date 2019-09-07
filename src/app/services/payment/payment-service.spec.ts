@@ -1,9 +1,9 @@
-import { PaymentService } from './payment-service';
-import { TestBed, fakeAsync, inject, tick } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { environment } from 'src/environments/environment';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { environment } from 'src/environments/environment';
+import { PaymentService } from './payment.service';
 
 describe('PaymentService', () => {
   let httpTestingController: HttpTestingController;
@@ -25,10 +25,10 @@ describe('PaymentService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-        providers: [
+      providers: [
         PaymentService,
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       imports: [ HttpClientTestingModule, ReactiveFormsModule, FormsModule ],
 
     });
@@ -42,40 +42,40 @@ describe('PaymentService', () => {
     expect(service).toBeTruthy();
   });
   it('should call initiatePinPay with the correct URL', () => {
-    service.initiatePinPay({cardno: 111}).subscribe();
-    const req = httpTestingController.expectOne(`${environment.api_url}/transactions/card-pin/`);
-    req.flush({message: 'success'});
+    service.initiatePinPay({ cardno: 111 }).subscribe();
+    const req = httpTestingController.expectOne(`${ environment.apiUrl }/transactions/card-pin/`);
+    req.flush({ message: 'success' });
   });
   it('should call validatePinPay with the correct URL', () => {
-    service.validatePinPay({otp: 111}).subscribe();
-    const req = httpTestingController.expectOne(`${environment.api_url}/transactions/validate-card/`);
-    req.flush({message: 'success'});
+    service.validatePinPay({ otp: 111 }).subscribe();
+    const req = httpTestingController.expectOne(`${ environment.apiUrl }/transactions/validate-card/`);
+    req.flush({ message: 'success' });
   });
 
   it('should call payWithTokenized with the correct URL', () => {
-    service.payWithTokenizedCard({otp: 111}).subscribe();
-    const req = httpTestingController.expectOne(`${environment.api_url}/transactions/tokenized-card/`);
-    req.flush({message: 'success'});
+    service.payWithTokenizedCard({ otp: 111 }).subscribe();
+    const req = httpTestingController.expectOne(`${ environment.apiUrl }/transactions/tokenized-card/`);
+    req.flush({ message: 'success' });
   });
 
   it('should throw an error if error is returned from the http call', () => {
     let response: any;
     let errResponse: any;
     const mockErrorResponse = { status: 400, statusText: 'Bad Request' };
-    service.validatePinPay({otp: 111}).subscribe(res => response = res, err => errResponse = err);
-    const req = httpTestingController.expectOne(`${environment.api_url}/transactions/validate-card/`);
-    req.flush({message: 'success'}, mockErrorResponse);
+    service.validatePinPay({ otp: 111 }).subscribe(res => response = res, err => errResponse = err);
+    const req = httpTestingController.expectOne(`${ environment.apiUrl }/transactions/validate-card/`);
+    req.flush({ message: 'success' }, mockErrorResponse);
   });
 
   it('should make international payment correctly', fakeAsync(
     inject(
-      [PaymentService, HttpTestingController],
+      [ PaymentService, HttpTestingController ],
       (
         service: PaymentService,
         backend: HttpTestingController
       ) => {
         // Set up
-        const url = `${environment.api_url}/transactions/card-foreign/`;
+        const url = `${ environment.apiUrl }/transactions/card-foreign/`;
         const responseObject = {
           success: true,
           message: 'created was successful'

@@ -1,0 +1,36 @@
+.card {
+  border: hidden;
+}
+
+.no-gutters > .col, .no-gutters > [class*=col-] {
+  padding-left: 4px !important;
+}
+
+.link {
+  color: #ee9619;
+}
+
+.plans {
+  margin-top: 1rem;
+}
+
+.amenities {
+  height: 2.5rem;
+  padding-top: 0.5rem;
+  background-color: #e9ecef;
+
+}
+
+.address {
+  color: #9a939c;
+  font-size: medium;
+}
+
+.buttons {
+  color: aliceblue;
+  background-color: #ee9619;
+  float: right;
+  border-style: hidden;
+  padding: inherit;
+  outline: none;
+}

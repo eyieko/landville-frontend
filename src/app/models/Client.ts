@@ -5,11 +5,13 @@ export interface Client {
   phone: string;
   email: string;
   address: Address;
-  id:Number;
+  id: Number;
 }
+
 export interface ClientCompany {
   data: ClientResponse;
 }
+
 export interface ClientResponse {
   client_companies: Client[];
   message: string;

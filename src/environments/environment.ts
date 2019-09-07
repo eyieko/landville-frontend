@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  profileUrl:
-    'https://landville-backend-web-api.herokuapp.com/api/v1/auth/profile/',
-  api_url: 'https://landville-backend-web-api.herokuapp.com/api/v1',
+  apiUrl: 'https://landville-backend-web-api.herokuapp.com/api/v1',
+  facebookId: '1782833315349267',
+  googleId: '315082406739-imasn7gsabthac3uaer84oqmp1g2780p.apps.googleusercontent.com',
 };
