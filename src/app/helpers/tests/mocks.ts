@@ -1,5 +1,5 @@
 import { UserProfileUpdatedResponse } from 'src/app/models/Profile';
-import {SocialUser} from 'angularx-social-login';
+import { SocialUser } from 'angularx-social-login';
 
 export const mockUpdatedProfileResponse: UserProfileUpdatedResponse = {
   data: {
@@ -189,8 +189,6 @@ export const mockProfileResponse3 = {
   }
 };
 
-
-
 export const mockProfileResponseNoAddress = {
   data: {
     profile: {
@@ -209,7 +207,7 @@ export const mockProfileResponseNoAddress = {
       designation: 'Waiter',
       next_of_kin: 'Masha',
       next_of_kin_contact: '235235423523452',
-      bio: 'I am simply amazing',
+      bio: 'I am simply amazing'
     },
     message: 'Profile retreived successfully'
   }
@@ -248,15 +246,14 @@ export const mockDepositsResponse = {
 
 export const passwordResetMock = {
   errors: {
-    email: [
-      'Enter a valid email address.'
-    ]
+    email: ['Enter a valid email address.']
   }
 };
 
 export const passwordResetResponse = {
   data: {
-    message: 'If you have an account with us we have sent an email to reset your password'
+    message:
+      'If you have an account with us we have sent an email to reset your password'
   }
 };
 
@@ -267,7 +264,8 @@ export const userData: SocialUser = {
   photoUrl: 'www.photo.com',
   firstName: 'Kelvin',
   authToken: 'a29',
-  idToken: 'eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0ZjI5NGM0NTE2MDA4OGQwNzlmZWU2ODEzOGY1MjEzM2QzZTIyOGMiLCJ0eXAiOiJKV1QifQ.',
+  idToken:
+    'eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg0ZjI5NGM0NTE2MDA4OGQwNzlmZWU2ODEzOGY1MjEzM2QzZTIyOGMiLCJ0eXAiOiJKV1QifQ.',
   lastName: 'Onkundi',
   provider: 'GOOGLE',
   authorizationCode: 'sjsksj'

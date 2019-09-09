@@ -14,6 +14,7 @@ import {
   InternationalPaymentStatusComponent
 } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
 import { ReviewComponent } from 'src/app/modules/features/components/client-review/review.component';
+import { ClientReviewsComponent } from '../../components/client-reviews/client-reviews.component';
 
 export const CommonLayoutRoutes: Routes = [
   {
@@ -82,5 +83,7 @@ export const CommonLayoutRoutes: Routes = [
       title: 'Review client',
       tags: []
     }
-  }
+  },
+  { path: 'auth/:clientId/reviews', component: ClientReviewsComponent },
+
 ];

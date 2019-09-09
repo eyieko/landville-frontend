@@ -1,11 +1,6 @@
-import { ClientReviewsComponent } from 'src/app/components/client-reviews/client-reviews.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  EnterResetPasswordComponent
-} from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
-import {
-  PasswordResetComponent
-} from 'src/app/modules/authentication/components/password-reset/password-reset.component';
+import { EnterResetPasswordComponent } from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
+import { PasswordResetComponent } from 'src/app/modules/authentication/components/password-reset/password-reset.component';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,24 +8,24 @@ import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppRoutingModule } from 'src/app/app.routing';
 import { EnterResetPasswordService } from 'src/app/services/password/enter-reset-password.service';
-import { resetPassordService, toastServiceSpy } from 'src/app/helpers/tests/spies';
+import {
+  resetPassordService,
+  toastServiceSpy
+} from 'src/app/helpers/tests/spies';
 import { of, throwError } from 'rxjs';
 import { AuthenticationComponent } from 'src/app/modules/authentication/authentication.component';
 import { FeaturesComponent } from 'src/app/modules/features/features.component';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import {
-  InternationalPaymentStatusComponent
-} from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
+import { InternationalPaymentStatusComponent } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
 import { TermsPageComponent } from 'src/app/components/terms/terms.component';
-import {
-  RegistersuccessComponent
-} from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
+import { RegistersuccessComponent } from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { PropertiesComponent } from 'src/app/components/properties/properties.component';
 import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
 import { NoPropertiesComponent } from 'src/app/components/properties/no-properties/no-properties.component';
+import { ClientReviewsComponent } from 'src/app/components/client-reviews/client-reviews.component';
 
 describe('EnterResetPasswordComponent', () => {
   let component: EnterResetPasswordComponent;
@@ -62,14 +57,13 @@ describe('EnterResetPasswordComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         SharedModule,
-        NgxSpinnerModule,
+        NgxSpinnerModule
       ],
       providers: [
         { provide: EnterResetPasswordService, useValue: resetPassordService },
         { provide: ToastrService, useValue: toastServiceSpy }
       ]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -89,7 +83,6 @@ describe('EnterResetPasswordComponent', () => {
     expect(component.onSubmit).toHaveBeenCalledTimes(0);
   }));
 
-
   it('should be invalid when password is not set', async(() => {
     component.enterPasswordForm.get('newPassword').setValue('');
     component.enterPasswordForm.get('confirmPassword').setValue('');
@@ -104,14 +97,17 @@ describe('EnterResetPasswordComponent', () => {
 
   it('should be valid when password is provided', async(() => {
     component.enterPasswordForm.get('newPassword').setValue('confirmPassword');
-    component.enterPasswordForm.get('confirmPassword').setValue('confirmPassword');
+    component.enterPasswordForm
+      .get('confirmPassword')
+      .setValue('confirmPassword');
     expect(component.enterPasswordForm.valid).toBeTruthy();
   }));
 
   it('Should get a backend response when password is provided', async(() => {
     const response = {
       data: {
-        message: 'If you have an account with us we have sent an email to reset your password'
+        message:
+          'If you have an account with us we have sent an email to reset your password'
       }
     };
     resetPassordService.changePassword.and.returnValue(of(response));
@@ -127,9 +123,9 @@ describe('EnterResetPasswordComponent', () => {
         email: ['Enter a valid email address.']
       }
     };
-    resetPassordService.changePassword.and.returnValue(throwError(
-      errorResponse
-    ));
+    resetPassordService.changePassword.and.returnValue(
+      throwError(errorResponse)
+    );
     component.onSubmit();
     expect(component.success).toEqual(false);
   }));

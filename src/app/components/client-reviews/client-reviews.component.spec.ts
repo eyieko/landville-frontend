@@ -1,8 +1,17 @@
-import { mockReviewsResponse, reviewResponse } from 'src/app/helpers/tests/mocks';
+import {
+  mockReviewsResponse,
+  reviewResponse
+} from 'src/app/helpers/tests/mocks';
 import { ClientReviewsService } from 'src/app/services/client-reviews/client-reviews.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { httpClientSpy, toastServiceSpy, reviewsSpy, resetSpies } from 'src/app/helpers/tests/spies';
+import {
+  httpClientSpy,
+  toastServiceSpy,
+  reviewsSpy,
+  resetSpies,
+  clientsServiceSpy
+} from 'src/app/helpers/tests/spies';
 import { of, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -12,12 +21,16 @@ import { By } from '@angular/platform-browser';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
 import { configureTestSuite } from 'ng-bullet';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('ClientReviewsComponent', () => {
   let component: ClientReviewsComponent;
   let fixture: ComponentFixture<ClientReviewsComponent>;
   let debugElement: DebugElement;
   const url = `${environment.api_url}/auth/1/reviews`;
+  const mockreviewService = ClientReviewsService;
+  const mockToastr = toastServiceSpy;
+  let reviewId;
 
   beforeAll(() => resetSpies([reviewsSpy]));
   afterEach(() => resetSpies([reviewsSpy]));
@@ -28,7 +41,11 @@ describe('ClientReviewsComponent', () => {
       imports: [
         HttpClientModule,
         NgxSpinnerModule,
-        RouterTestingModule.withRoutes([{ path: '**', component: ClientReviewsComponent }, ]),
+        ReactiveFormsModule,
+        FormsModule,
+        RouterTestingModule.withRoutes([
+          { path: '**', component: ClientReviewsComponent }
+        ])
       ],
       providers: [
         {
@@ -43,12 +60,11 @@ describe('ClientReviewsComponent', () => {
         {
           provide: ToastrService,
           useValue: toastServiceSpy
-        },
+        }
       ]
     })
       .compileComponents();
   });
-
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ClientReviewsComponent);
@@ -83,8 +99,27 @@ describe('ClientReviewsComponent', () => {
       throwError({ errors: { details: 'No reviews yet' } })
     );
     component.fetchReviews(url);
-    expect(toastServiceSpy.error).toHaveBeenCalledWith(
-      'No reviews yet'
+    expect(toastServiceSpy.error).toHaveBeenCalledWith('No reviews yet');
+  });
+  it('should have a reply field', () => {
+    expect(component.replyToReview).toBeTruthy();
+  });
+  it('should trigger onsubmit method', async(() => {
+    component.replyReview;
+    expect(component.replyReview).toBeTruthy();
+  }));
+  it('should throw a toast error when error occurs', () => {
+    reviewsSpy.replyToReviews.and.returnValue(
+      throwError({ errors: { details: 'error' } })
     );
+    component.replyReview();
+    expect(toastServiceSpy.error).toHaveBeenCalledWith(
+      Object({ details: 'error' })
+    );
+  });
+  it('should display a toast message containing reply message', () => {
+    reviewsSpy.replyToReviews.and.returnValue(of(true));
+    component.replyReview();
+    expect(toastServiceSpy.success).toHaveBeenCalled();
   });
 });

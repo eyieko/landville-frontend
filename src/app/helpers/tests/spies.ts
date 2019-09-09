@@ -73,7 +73,9 @@ export const transactionServiceSpy = createSpyObj(
 );
 export const reviewsSpy = jasmine.createSpyObj('ClientReviewsService', [
   'getReviews',
+  'replyToReviews'
 ]);
+
 export const activatedRoutespy = jasmine.createSpyObj('ActivatedRoute', [
   'snapshot',
   'paramMap'
