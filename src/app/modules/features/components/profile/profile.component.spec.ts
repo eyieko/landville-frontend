@@ -11,9 +11,10 @@ import {
 } from 'src/app/helpers/tests/spies';
 import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
-import { mockProfileResponse } from 'src/app/helpers/tests/mocks';
+import {mockDepositsResponse, mockProfileResponse} from 'src/app/helpers/tests/mocks';
+import { configureTestSuite } from 'ng-bullet';
 
-fdescribe('ProfileComponent', () => {
+describe('ProfileComponent', () => {
   let component: ProfileComponent;
   let fixture: ComponentFixture<ProfileComponent>;
 
@@ -21,7 +22,8 @@ fdescribe('ProfileComponent', () => {
     resetSpies([profileServiceSpy, toastServiceSpy]);
     profileServiceSpy.userProfile$ = of(mockProfileResponse);
   });
-  beforeEach(async(() => {
+
+  configureTestSuite(() => {
     TestBed.configureTestingModule({
       imports: [AppModule, FeaturesModule],
       declarations: [],
@@ -35,15 +37,15 @@ fdescribe('ProfileComponent', () => {
           useValue: toastServiceSpy
         }
       ]
-    }).compileComponents();
-  }));
+    }).compileComponents().then(r => {});
+  });
 
   beforeEach(() => {
     localStorage.clear();
     fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
     profileServiceSpy.getProfile.and.returnValue(of(mockProfileResponse));
-
+    profileServiceSpy.getDeposits.and.returnValue(of(mockDepositsResponse));
     fixture.detectChanges();
   });
 

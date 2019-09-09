@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import {of, Subscription} from 'rxjs';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 import { first } from 'rxjs/operators';
 import { removeSubscription } from 'src/app/helpers/unsubscribe';
@@ -26,7 +26,7 @@ export class FinancialInformationComponent implements OnInit, OnDestroy {
   getDeposits() {
     this.profileService
       .getDeposits()
-      // .pipe(first())
+      .pipe(first())
       .subscribe(
         response => {
           response.data.transactions.map(transaction => {
@@ -43,7 +43,9 @@ export class FinancialInformationComponent implements OnInit, OnDestroy {
   }
 
   getCardInfo() {
+    // console.log(this.profileService.userProfile$.subscribe())
     this.profileService.userProfile$.subscribe(response => {
+      console.log(response);
       const profile = response.data.profile;
       if (Object.keys(profile.card_info.card_info).length === 0) {
         this.cardInfo = null;

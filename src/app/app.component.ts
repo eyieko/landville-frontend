@@ -8,15 +8,15 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public hide;
-  constructor(private route: ActivatedRoute) {
-    route.url.subscribe((url) => url.map(u => {
-      console.log(u.path);
-      if (u.path === '/login') {
-        this.hide = true;
-      }
-      this.hide = false;
-    }));
-  }
+  // public hide;
+  // constructor(private route: ActivatedRoute) {
+  //   route.url.subscribe((url) => url.map(u => {
+  //     console.log(u.path);
+  //     if (u.path === '/login') {
+  //       this.hide = true;
+  //     }
+  //     this.hide = false;
+  //   }));
+  // }
 }
 

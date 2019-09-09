@@ -10,7 +10,9 @@ export class LocalStorageService {
   get(key: string, fallback: any) {
     if (isPlatformBrowser(this.platformId)) {
       const value = localStorage.getItem(key);
+      // console.log(value);
       return value ? value : fallback;
+      console.log(value);
     }
   }
   set(key: string, value: any) {

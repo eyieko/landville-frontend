@@ -58,7 +58,7 @@ const routes: Routes = [
       path: '',
       loadChildren: './modules/features/features.module#FeaturesModule',
     }],
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'home',

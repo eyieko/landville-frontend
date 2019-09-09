@@ -1,6 +1,4 @@
 import { environment } from 'src/environments/environment.prod';
-import { AuthenticationModule } from 'src/app/modules/authentication/authentication.module';
-import { CardComponent } from 'src/app/modules/shared/components/card/card.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PropertiesService } from 'src/app/services/properties/properties.service';
 import { AppModule } from 'src/app/app.module';

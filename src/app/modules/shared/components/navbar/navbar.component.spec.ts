@@ -8,19 +8,14 @@ import { resetSpies } from 'src/app/helpers/tests/social.spies';
 import { mockProfileResponse } from 'src/app/helpers/tests/mocks';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
+import { configureTestSuite } from 'ng-bullet';
 
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
 
-  beforeAll(() => {
-    resetSpies([profileServiceSpy]);
-    profileServiceSpy.userProfile$ = of(mockProfileResponse);
-  }
-
-  );
-  beforeEach(async(() => {
+  configureTestSuite(() => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
@@ -35,7 +30,7 @@ describe('NavbarComponent', () => {
       ]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NavbarComponent);
