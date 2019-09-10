@@ -1,9 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SocialLoginComponentt } from 'src/app/modules/authentication/components/SocialAuth/socialauth.component';
 import { AuthService } from 'angularx-social-login';
 import { authServiceSpy, loginServiceSpy, resetSpies } from 'src/app/helpers/tests/social.spies';
-
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -17,7 +15,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { RegistrationComponent } from 'src/app/modules/authentication/components/registration/registration.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { PasswordResetComponent } from 'src/app/modules/authentication/components/password-reset/password-reset.component';
-import { EnterResetPasswordComponent } from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
+import {
+  EnterResetPasswordComponent
+} from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { configureTestSuite } from 'ng-bullet';
 import { userData } from 'src/app/helpers/tests/mocks';

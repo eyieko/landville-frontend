@@ -1,7 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { EnterResetPasswordComponent } from './enter-reset-password.component';
-import { PasswordResetComponent } from '../password-reset/password-reset.component';
+import {
+  EnterResetPasswordComponent
+} from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
+import {
+  PasswordResetComponent
+} from 'src/app/modules/authentication/components/password-reset/password-reset.component';
 import { BrowserModule, By } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,12 +22,14 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import {
   InternationalPaymentStatusComponent
 } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
-import { TermsPageComponent } from '../../../../components/terms/terms.component';
-import { RegistersuccessComponent } from '../registration/registersuccess/registersuccess.component';
-import { HomeComponent } from '../../../../components/home/home.component';
-import { PropertiesComponent } from '../../../../components/properties/properties.component';
-import { PropertyDetailsComponent } from '../../../../components/property-details/property-details.component';
-import { NoPropertiesComponent } from '../../../../components/properties/no-properties/no-properties.component';
+import { TermsPageComponent } from 'src/app/components/terms/terms.component';
+import {
+  RegistersuccessComponent
+} from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
+import { HomeComponent } from 'src/app/components/home/home.component';
+import { PropertiesComponent } from 'src/app/components/properties/properties.component';
+import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
+import { NoPropertiesComponent } from 'src/app/components/properties/no-properties/no-properties.component';
 
 describe('EnterResetPasswordComponent', () => {
   let component: EnterResetPasswordComponent;

@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { PasswordResetComponent } from './components/password-reset/password-reset.component';
-import { NoAuthGuard } from '../../guards/no-auth.guard';
-import { EnterResetPasswordComponent } from "./components/enter-reset-password/enter-reset-password.component";
+import { LoginComponent } from 'src/app/modules/authentication/components/login/login.component';
+import { RegistrationComponent } from 'src/app/modules/authentication/components/registration/registration.component';
+import { PasswordResetComponent } from 'src/app/modules/authentication/components/password-reset/password-reset.component';
+import { NoAuthGuard } from 'src/app/guards/no-auth.guard';
+import {
+  EnterResetPasswordComponent
+} from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
 
 
 export const AuthLayoutRoutes: Routes = [

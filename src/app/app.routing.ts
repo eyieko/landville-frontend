@@ -2,21 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationComponent } from './modules/authentication/authentication.component';
-import { FeaturesComponent } from './modules/features/features.component';
-import { PasswordResetComponent } from './modules/authentication/components/password-reset/password-reset.component';
-import { EnterResetPasswordComponent } from './modules/authentication/components/enter-reset-password/enter-reset-password.component';
-import { NoAuthGuard } from './guards/no-auth.guard';
-import {
-  InternationalPaymentStatusComponent
-} from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
-import { PropertyDetailsComponent } from './components/property-details/property-details.component';
-import { NoPropertiesComponent } from './components/properties/no-properties/no-properties.component';
-import { TermsPageComponent } from './components/terms/terms.component';
-import { PropertiesComponent } from './components/properties/properties.component';
-import { RegistersuccessComponent } from './modules/authentication/components/registration/registersuccess/registersuccess.component';
-import { HomeComponent } from './components/home/home.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthenticationComponent } from 'src/app/modules/authentication/authentication.component';
+import { FeaturesComponent } from 'src/app/modules/features/features.component';
+import { NoAuthGuard } from 'src/app/guards/no-auth.guard';
+import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
+import { NoPropertiesComponent } from 'src/app/components/properties/no-properties/no-properties.component';
+import { TermsPageComponent } from 'src/app/components/terms/terms.component';
+import { PropertiesComponent } from 'src/app/components/properties/properties.component';
+import { RegistersuccessComponent } from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
+import { HomeComponent } from 'src/app/components/home/home.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {

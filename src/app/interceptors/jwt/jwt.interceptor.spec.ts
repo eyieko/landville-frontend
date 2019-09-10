@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { httpHandlerSpy, httpRequestSpy } from '../../helpers/tests/spies';
+import { httpHandlerSpy, httpRequestSpy } from 'src/app/helpers/tests/spies';
 import { HttpHandler, HttpRequest } from '@angular/common/http';
 import { of } from 'rxjs';
-import { JwtInterceptor } from './jwt.interceptor';
+import { JwtInterceptor } from 'src/app/interceptors/jwt/jwt.interceptor';
 
 const mockAuthService = jasmine.createSpyObj(['isLoggedIn']);
 

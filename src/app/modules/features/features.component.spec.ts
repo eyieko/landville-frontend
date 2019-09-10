@@ -5,11 +5,9 @@ import { TopbarComponent } from 'src/app/modules/shared/components/topbar/topbar
 import { localStorageSpy, profileServiceSpy } from 'src/app/helpers/tests/spies';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
-import { FooterComponent } from '../shared/components/footer/footer.component';
-import { NavbarComponent } from '../shared/components/navbar/navbar.component';
-
-import { FeaturesComponent } from './features.component';
-
+import { FooterComponent } from 'src/app/modules/shared/components/footer/footer.component';
+import { NavbarComponent } from 'src/app/modules/shared/components/navbar/navbar.component';
+import { FeaturesComponent } from 'src/app/modules/features/features.component';
 
 describe('CommonLayoutComponent', () => {
   beforeEach(async(() => {

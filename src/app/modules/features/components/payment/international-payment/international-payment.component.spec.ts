@@ -1,15 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { InternationalPaymentComponent } from './international-payment.component';
+import {
+  InternationalPaymentComponent
+} from 'src/app/modules/features/components/payment/international-payment/international-payment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ToastrService } from 'ngx-toastr';
 import { of, throwError } from 'rxjs';
 import { Location } from '@angular/common';
 
-import {
-  routerSpy,
-  toastServiceSpy,
-} from 'src/app/helpers/tests/spies';
+import { routerSpy, toastServiceSpy, } from 'src/app/helpers/tests/spies';
 import { By } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';

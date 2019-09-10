@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PasswordResetComponent } from './password-reset.component';
+import {
+  PasswordResetComponent
+} from 'src/app/modules/authentication/components/password-reset/password-reset.component';
 import { By } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +14,9 @@ import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { throwError, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { TermsPageComponent } from 'src/app/components/terms/terms.component';
-import { RegistersuccessComponent } from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
+import {
+  RegistersuccessComponent
+} from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { PropertiesComponent } from 'src/app/components/properties/properties.component';
 import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';

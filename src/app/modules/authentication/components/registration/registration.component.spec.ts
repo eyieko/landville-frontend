@@ -1,14 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RegistrationComponent } from './registration.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
-import { RegisterHeaderComponent } from './register-header/register-header.component';
+import { RegistrationComponent } from 'src/app/modules/authentication/components/registration/registration.component';
+import {
+  RegisterFormComponent
+} from 'src/app/modules/authentication/components/registration/register-form/register-form.component';
+import {
+  RegisterHeaderComponent
+} from 'src/app/modules/authentication/components/registration/register-header/register-header.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { RegisterServiceService } from 'src/app/services/register/register-service.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { RegistersuccessComponent } from './registersuccess/registersuccess.component';
+import {
+  RegistersuccessComponent
+} from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
 import {
   registerServiceSpy,
   resetSpies,

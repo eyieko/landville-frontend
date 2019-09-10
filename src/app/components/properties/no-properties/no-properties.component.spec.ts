@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { NoPropertiesComponent } from './no-properties.component';
+import { NoPropertiesComponent } from 'src/app/components/properties/no-properties/no-properties.component';
 
 describe('NoPropertiesComponent', () => {
   let component: NoPropertiesComponent;

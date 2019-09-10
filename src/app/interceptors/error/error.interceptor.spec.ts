@@ -1,9 +1,9 @@
-import {TestBed} from '@angular/core/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {ErrorInterceptor} from './error.interceptor';
-import {httpHandlerSpy, httpRequestSpy, localStorageSpy, routerSpy} from '../../helpers/tests/spies';
-import {HttpHandler, HttpRequest} from '@angular/common/http';
-import {throwError} from 'rxjs';
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ErrorInterceptor } from 'src/app/interceptors/error/error.interceptor';
+import { httpHandlerSpy, httpRequestSpy, localStorageSpy, routerSpy } from 'src/app/helpers/tests/spies';
+import { HttpHandler, HttpRequest } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 describe('ErrorInterceptor', () => {
   let errorInterceptor: ErrorInterceptor;

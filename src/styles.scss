@@ -5,11 +5,6 @@
 @import '~ngx-toastr/toastr';
 @import '../node_modules/ngx-toastr/toastr.css';
 
-//body {
-//  margin: 0 auto;
-//  width: 75%;
-//}
-
 @font-face {
   font-family: 'Airbnb Cereal App Light';
   font-style: normal;
@@ -26,11 +21,8 @@
 
 p {
   font-family: 'Airbnb Cereal App Light', Arial, sans-serif;
-  //font-weight:normal;
-  //font-style:normal;
 }
 
 h1, h2, h3 {
-  //AirbnbCerealBook.woff;
   font-family: 'Airbnb Cereal App Bold', Arial, sans-serif;
 }

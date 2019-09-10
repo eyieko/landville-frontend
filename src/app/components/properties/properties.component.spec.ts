@@ -39,7 +39,6 @@ describe('PropertiesComponent', () => {
         AppModule,
         HttpClientModule,
         NgxSpinnerModule,
-        // AuthenticationModule,
         RouterModule
       ],
       providers: [

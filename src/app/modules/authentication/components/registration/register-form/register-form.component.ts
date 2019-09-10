@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
-import { mustMatch } from '../../../../../helpers/validators/passwordvalidator';
+import { mustMatch } from 'src/app/helpers/validators/passwordvalidator';
+
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',

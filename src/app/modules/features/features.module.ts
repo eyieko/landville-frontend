@@ -11,26 +11,19 @@ import { CommonLayoutRoutes } from 'src/app/modules/features/features.routing';
 import { CompanyComponent } from 'src/app/modules/features/components/company/company.component';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { ProfileModule } from 'src/app/modules/features/components/profile/profile.module';
-import { NoPropertiesComponent } from 'src/app/components/properties/no-properties/no-properties.component';
-import { RegistersuccessComponent } from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProfileService } from 'src/app/services/profile/profile.service';
-import { PropertiesComponent } from 'src/app/components/properties/properties.component';
-import { CardComponent } from 'src/app/modules/shared/components/card/card.component';
 import { DepositsComponent } from 'src/app/modules/features/components/deposits/deposits.component';
 import { ClientsComponent } from 'src/app/modules/features/components/clients/clients.component';
-import { PropertyDetailsComponent } from '../../components/property-details/property-details.component';
-import { PropertyDetailComponent } from '../../components/property-details/property-detail/property-detail.component';
-import { ClientAdminComponent } from '../../components/property-details/client-admin/client-admin.component';
-import { PropertyDescriptionComponent } from '../../components/property-details/property-description/property-description.component';
-import { TokenizedCardComponent } from './components/payment/tokenized-card/tokenized-card.component';
-import { PinValidateComponent } from './components/payment/pin-validate/pin-validate.component';
-import { PinPaymentComponent } from './components/payment/pin-payment/pin-payment.component';
-import { InternationalPaymentComponent } from './components/payment/international-payment/international-payment.component';
-import { InputErrorsComponent } from '../shared/input-errors/input-errors.component';
+import { TokenizedCardComponent } from 'src/app/modules/features/components/payment/tokenized-card/tokenized-card.component';
+import { PinValidateComponent } from 'src/app/modules/features/components/payment/pin-validate/pin-validate.component';
+import { PinPaymentComponent } from 'src/app/modules/features/components/payment/pin-payment/pin-payment.component';
+import {
+  InternationalPaymentComponent
+} from 'src/app/modules/features/components/payment/international-payment/international-payment.component';
 import {
   InternationalPaymentStatusComponent
-} from "./components/payment/international-payment-status/international-payment-status.component";
+} from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
 
 @NgModule({
   imports: [

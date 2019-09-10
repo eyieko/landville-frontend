@@ -1,11 +1,9 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HomeComponent } from './home.component';
-import { SharedModule } from '../../modules/shared/shared.module';
+import { HomeComponent } from 'src/app/components/home/home.component';
+import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
-
 import { PropertiesService } from 'src/app/services/properties/properties.service';
 import {
   resetSpies,
@@ -19,6 +17,7 @@ const trendingProperties = {
     property: []
   }
 };
+
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;

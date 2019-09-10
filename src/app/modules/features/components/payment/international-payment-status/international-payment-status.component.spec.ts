@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { InternationalPaymentStatusComponent } from './international-payment-status.component';
+import {
+  InternationalPaymentStatusComponent
+} from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('InternationalPaymentStatusComponent', () => {

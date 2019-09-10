@@ -1,17 +1,12 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
 import { removeSubscription } from 'src/app/helpers/unsubscribe';
 import { PaymentService } from 'src/app/services/payment/payment-service';
-
 
 @Component({
   selector: 'app-payments',

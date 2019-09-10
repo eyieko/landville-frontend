@@ -7,9 +7,9 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { of, throwError } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { LoginService } from 'src/app/services/login/login.service';
-import { localStorageSpy, loginServiceSpy, resetSpies, toastServiceSpy } from '../../../../../helpers/tests/spies';
+import { localStorageSpy, loginServiceSpy, resetSpies, toastServiceSpy } from 'src/app/helpers/tests/spies';
 
-import { LoginFormComponent } from './login-form.component';
+import { LoginFormComponent } from 'src/app/modules/authentication/components/login/login-form/login-form.component';
 
 const loginError = {
   errors: {

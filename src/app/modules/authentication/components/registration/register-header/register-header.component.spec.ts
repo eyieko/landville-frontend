@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { RegisterHeaderComponent } from './register-header.component';
+import {
+  RegisterHeaderComponent
+} from 'src/app/modules/authentication/components/registration/register-header/register-header.component';
 
 describe('RegisterHeaderComponent', () => {
   let component: RegisterHeaderComponent;

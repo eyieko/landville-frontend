@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { InputErrorsComponent } from './input-errors.component';
+import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-errors.component';
 
 describe('InputErrorsComponent', () => {
   let component: InputErrorsComponent;

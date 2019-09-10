@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { PropertyDescriptionComponent } from './property-description.component';
+import {
+  PropertyDescriptionComponent
+} from 'src/app/components/property-details/property-description/property-description.component';
 
 describe('PropertyDescriptionComponent', () => {
   let component: PropertyDescriptionComponent;

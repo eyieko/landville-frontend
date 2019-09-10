@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RegistersuccessComponent } from './registersuccess.component';
-import {ActivatedRoute} from '@angular/router';
-
+import {
+  RegistersuccessComponent
+} from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
 
 describe('RegistersuccessComponent', () => {
   let component: RegistersuccessComponent;

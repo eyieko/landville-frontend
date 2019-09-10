@@ -16,12 +16,16 @@ import { APPCONFIG } from 'src/app/config';
 import { LoginFormComponent } from 'src/app/modules/authentication/components/login/login-form/login-form.component';
 import { LoginComponent } from 'src/app/modules/authentication/components/login/login.component';
 import { RegisterFormComponent } from 'src/app/modules/authentication/components/registration/register-form/register-form.component';
-import { RegisterHeaderComponent } from 'src/app/modules/authentication/components/registration/register-header/register-header.component';
+import {
+  RegisterHeaderComponent
+} from 'src/app/modules/authentication/components/registration/register-header/register-header.component';
 import { RegistrationComponent } from 'src/app/modules/authentication/components/registration/registration.component';
 import { SocialLoginComponentt } from 'src/app/modules/authentication/components/SocialAuth/socialauth.component';
-import { AuthLayoutRoutes } from './authentication.routing';
-import { PasswordResetComponent } from './components/password-reset/password-reset.component';
-import { RegistersuccessComponent } from './components/registration/registersuccess/registersuccess.component';
+import { AuthLayoutRoutes } from 'src/app/modules/authentication/authentication.routing';
+import { PasswordResetComponent } from 'src/app/modules/authentication/components/password-reset/password-reset.component';
+import {
+  RegistersuccessComponent
+} from 'src/app/modules/authentication/components/registration/registersuccess/registersuccess.component';
 
 // configs
 const config = new AuthServiceConfig([

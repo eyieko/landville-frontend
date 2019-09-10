@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { PropertyDetailComponent } from './property-detail.component';
+import {
+  PropertyDetailComponent
+} from 'src/app/components/property-details/property-detail/property-detail.component';
 
 describe('PropertyDetailComponent', () => {
   let component: PropertyDetailComponent;

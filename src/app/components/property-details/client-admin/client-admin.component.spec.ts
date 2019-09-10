@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ClientAdminComponent } from './client-admin.component';
+import { ClientAdminComponent } from 'src/app/components/property-details/client-admin/client-admin.component';
 
 describe('ClientAdminComponent', () => {
   let component: ClientAdminComponent;

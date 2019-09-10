@@ -7,7 +7,7 @@ import { of, throwError } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { TokenizedCardComponent } from './tokenized-card.component';
+import { TokenizedCardComponent } from 'src/app/modules/features/components/payment/tokenized-card/tokenized-card.component';
 import { routerSpy } from 'src/app/helpers/tests/spies';
 
 describe('TokenizedCardComponent', () => {

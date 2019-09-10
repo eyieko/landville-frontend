@@ -2,14 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { TopbarComponent } from './components/topbar/topbar.component';
+import { FooterComponent } from 'src/app/modules/shared/components/footer/footer.component';
+import { NavbarComponent } from 'src/app/modules/shared/components/navbar/navbar.component';
+import { TopbarComponent } from 'src/app/modules/shared/components/topbar/topbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { TermsPageComponent } from 'src/app/components/terms/terms.component';
-import {CardComponent} from './components/card/card.component';
-import {InputErrorsComponent} from './input-errors/input-errors.component';
+import { CardComponent } from 'src/app/modules/shared/components/card/card.component';
+import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-errors.component';
 
 @NgModule({
   imports: [

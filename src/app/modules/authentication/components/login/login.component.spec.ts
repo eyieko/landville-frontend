@@ -1,20 +1,21 @@
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { localStorageSpy, toastServiceSpy } from '../../../../helpers/tests/spies';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { LoginComponent } from './login.component';
+import { localStorageSpy, toastServiceSpy } from 'src/app/helpers/tests/spies';
+import { LoginFormComponent } from 'src/app/modules/authentication/components/login/login-form/login-form.component';
+import { LoginComponent } from 'src/app/modules/authentication/components/login/login.component';
+import {configureTestSuite} from 'ng-bullet';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(async(() => {
+  configureTestSuite(() => {
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
@@ -39,7 +40,7 @@ describe('LoginComponent', () => {
         },
       ]
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);

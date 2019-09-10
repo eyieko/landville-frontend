@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { EnterResetPasswordService } from 'src/app/services/password/enter-reset-password.service';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-enter-reset-password',
   templateUrl: './enter-reset-password.component.html',

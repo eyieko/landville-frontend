@@ -1,8 +1,8 @@
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Observable, throwError, Subscription} from 'rxjs';
-import {LoginService} from 'src/app/services/login/login.service';
-import {catchError} from 'rxjs/operators';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, throwError, Subscription } from 'rxjs';
+import { LoginService } from 'src/app/services/login/login.service';
+import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
