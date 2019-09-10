@@ -51,6 +51,14 @@
         <li *ngIf="authenticated" class="nav-item">
           <a
             class="nav-link waves-effect waves-light"
+            routerLink="/savings"
+            routerLinkActive="active"
+            >Savings</a
+          >
+        </li>
+        <li *ngIf="authenticated" class="nav-item">
+          <a
+            class="nav-link waves-effect waves-light"
             routerLink="/user/deposits"
             routerLinkActive="active"
             >My Deposits</a

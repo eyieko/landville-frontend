@@ -22,6 +22,11 @@ import { PaymentModule } from 'src/app/pages/payment/payment.module';
 import { PropertyDetailsModule } from 'src/app/pages/property-details/property-details.module';
 import { DepositsComponent } from 'src/app/pages/deposits/deposits.component';
 import { ClientsComponent } from 'src/app/pages/clients/clients.component';
+import { SavingsComponent } from '../../pages/savings/savings.component';
+// import { ChartsModule } from 'ng2-charts';
+import { AllSavingsComponent } from '../../pages/savings/all-savings/all-savings.component';
+import { SingleSavingComponent } from '../../pages/savings/single-saving/single-saving.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
@@ -36,7 +41,8 @@ import { ClientsComponent } from 'src/app/pages/clients/clients.component';
     HttpClientModule,
     PaymentModule,
     PropertyDetailsModule,
-    PaymentModule
+    PaymentModule,
+    ChartsModule
   ],
   declarations: [
     HomeComponent,
@@ -46,7 +52,10 @@ import { ClientsComponent } from 'src/app/pages/clients/clients.component';
     NoPropertiesComponent,
     CardComponent,
     DepositsComponent,
-    ClientsComponent
+    ClientsComponent,
+    SavingsComponent,
+    AllSavingsComponent,
+    SingleSavingComponent
   ],
   providers: [ProfileService, LocalStorageService, Title]
 })
