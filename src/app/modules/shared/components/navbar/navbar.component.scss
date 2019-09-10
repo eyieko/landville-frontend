@@ -2,16 +2,6 @@ a.nav-link.waves-effect.waves-light:hover {
   color: var(--color-primary-light);
 }
 
-.navbar {
-  width: 100% !important;
-  min-width: 100% !important;
-  height: 82px !important;
-  //position: fixed !important;
-  padding: 0 36px !important;
-  border-bottom: 1px solid #EBEBEB !important;
-  background-color: #ffffff !important;
-}
-
 a.nav-link.waves-effect.waves-light {
   padding: 0.3rem 0;;
   text-decoration: none;
@@ -129,55 +119,28 @@ ul.top-menu > li > a:hover .caret {
 
 
 .btn-auth {
-  //line-height: 18px !important;
-  //letter-spacing: normal !important;
+  line-height: 18px !important;
+  letter-spacing: normal !important;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
   cursor: pointer !important;
-  //display: inline-block !important;
-  //padding: 6px 12px !important;
-  //position: relative !important;
-  //text-align: center !important;
-  //width: auto !important;
+  display: inline-block !important;
+  padding: 6px 12px !important;
+  position: relative !important;
+  text-align: center !important;
+  width: auto !important;
   color: rgb(255, 255, 255) !important;
-  border-radius: 50px !important;
-  //text-decoration: none !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
   background: var(--color-primary-dark) !important;
-  //border-width: 1px !important;
-  //border-style: solid !important;
-  border: none;
-  //font-size: 14px !important;
-  //border-color: var(--color-primary-dark) !important;
-  //border-image: initial !important;
-  //font-weight: bold;
-  width: 100px !important;
-  height: 42px !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(--color-primary-dark) !important;
+  border-image: initial !important;
 
   &:hover {
     background: transparent !important;
-    color: var(--color-primary-dark) !important;
-    border: 1px solid var(--color-primary-dark) !important;
+    color: var(--color-secondary-dark) !important;
   }
-}
-
-.title-logo {
-  font-family: 'Alfa Slab One', cursive;
-}
-
-.flatone {
-  border: none !important;
-  border-radius: 50px !important;
-  background-color: var(--color-primary-dark) !important;
-  color: #fff !important;
-  width: 140px !important;
-  height: 45px !important;
-
-  padding: 6px 12px !important;
-  /* text-transform: uppercase; */
-  font-family: Ubuntu, serif !important;
-  //font-weight: bold;
-  font-size: 14px !important;
-  //text-shadow: 0.5px 0 #fff;
-  //letter-spacing: 0.7px;
 }
 
 
@@ -197,20 +160,20 @@ ul.top-menu > li > a:hover .caret {
   }
 }
 .profileDropDown {
-	float: left;
-	text-align: left;
-	width: 100%;
-	background: var(--color-primary-dark);
+  float: left;
+  text-align: left;
+  width: 100%;
+  background: var(--color-primary-dark);
 
-	&, &:hover {
-		color: #fff;
-		border-bottom: none !important;
-		text-transform: uppercase;
-		background-color: var(--color-primary-dark) !important;
-	}
+  &, &:hover {
+    color: #fff;
+    border-bottom: none !important;
+    text-transform: uppercase;
+    background-color: var(--color-primary-dark) !important;
+  }
 
-	&:hover > i {
-		color: #fff;
+  &:hover > i {
+    color: #fff;
   }
 }
 .dropbtn {

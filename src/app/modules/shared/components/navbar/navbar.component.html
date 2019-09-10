@@ -3,12 +3,12 @@
 >
   <div class="container">
     <a class="navbar-brand" routerLink="/">
-      <h5 class="title-logo"><img
+      <img
         alt="landville logo"
         height="30"
         src="https://res.cloudinary.com/landville/image/upload/v1564556647/FRONTEND_ASSETS/ICON/bwy9wvyy6riwrdu0576n.png"
         title=""
-      />   LANDVILLE</h5>
+      />
     </a>
     <button
       aria-controls="navbarSupportedContent-5"
@@ -28,7 +28,7 @@
             class="nav-link waves-effect waves-light"
             routerLink="/"
             routerLinkActive="active"
-            >Home
+          >Home
             <span class="sr-only">(current)</span>
           </a>
         </li>
@@ -37,7 +37,7 @@
             class="nav-link waves-effect waves-light"
             routerLink="/properties"
             routerLinkActive="active"
-            >Properties</a
+          >Properties</a
           >
         </li>
         <li *ngIf="authenticated" class="nav-item">
@@ -45,7 +45,7 @@
             class="nav-link waves-effect waves-light"
             routerLink="/clients"
             routerLinkActive="active"
-            >Partners</a
+          >Partners</a
           >
         </li>
         <li *ngIf="authenticated" class="nav-item">
@@ -53,26 +53,19 @@
             class="nav-link waves-effect waves-light"
             routerLink="/user/deposits"
             routerLinkActive="active"
-            >My Deposits</a
+          >My Deposits</a
           >
         </li>
-
         <li *ngIf="!authenticated" class="nav-item">
-          <a class="nav-link waves-effect waves-light" routerLink="/login" routerLinkActive="active"
-            >Log in
+          <a class="btn-auth" routerLink="/register" routerLinkActive="active"
+          >Sign up</a
+          >
+        </li>
+        <li *ngIf="!authenticated" class="nav-item">
+          <a class="btn-auth" routerLink="/login" routerLinkActive="active"
+          >Log in
           </a>
         </li>
-        <button
-          *ngIf="!authenticated"
-          class="btn-auth"
-          routerLink="/register"
-          routerLinkActive="active"
-        >
-          Sign up
-        </button>
-<!--        <button class="btn" type="submit">-->
-<!--          Log in-->
-<!--        </button>-->
         <li *ngIf="authenticated" class="nav-item avatar dropdown">
           <a
             aria-expanded="false"
@@ -98,12 +91,12 @@
             <a
               class="dropdown-item waves-effect waves-light"
               routerLink="/payment/international"
-              >International Card</a
+            >International Card</a
             >
             <a
               class="dropdown-item waves-effect waves-light"
               routerLink="/payment/saved-card"
-              >Saved Card</a
+            >Saved Card</a
             >
           </div>
         </li>
@@ -136,17 +129,17 @@
               class="dropdown-item waves-effect waves-light eborder-top"
               routerLink="/profile"
               routerLinkActive="active"
-              ><i class="fa fa-user"></i> My Profile</a
+            ><i class="fa fa-user"></i> My Profile</a
             >
             <a
               class="dropdown-item waves-effect waves-light"
               routerLink="/create-company"
-              ><i class="fa fa-plus"></i> Create Company</a
+            ><i class="fa fa-plus"></i> Create Company</a
             >
             <a
               class="dropdown-item waves-effect waves-light"
               routerLink="/reset-link"
-              ><i class="fa fa-plus"></i> Password Reset</a
+            ><i class="fa fa-plus"></i> Password Reset</a
             >
             <a
               (click)="handleLogout()"
