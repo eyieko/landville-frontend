@@ -37,6 +37,10 @@ button[type="submit"] {
 	float: right;
 }
 
+input.pin {
+	-webkit-text-security: disc;
+}	
+
 button {
 	background-color: #171039;
 	color: white;

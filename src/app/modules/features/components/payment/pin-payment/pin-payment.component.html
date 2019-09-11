@@ -8,7 +8,7 @@
 			<form [formGroup]='cardForm'>
 				<div class="form-group">
 					<label >Card Number:
-					<input type="number" formControlName="cardNumber" name="cardNo" 
+					<input type="number" digitOnly formControlName="cardNumber" name="cardNo" 
 					class="form-control form-control-sm" [ngClass]="isInvalid('cardNumber')"
 					/>
 					<span class="invalid-feedback">
@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-md-6 form-group">
 						<label>Security Number:
-						<input type="number" formControlName="securityNumber" 
+						<input type="number" digitOnly formControlName="securityNumber" 
 						class="form-control form-control-sm" [ngClass]="isInvalid('securityNumber')"
 						/>
 						<span class="invalid-feedback">
@@ -29,8 +29,8 @@
 					</div>
 					<div class="col-md-6 form-group">
 						<label>PIN:
-						<input type="number" formControlName="pin" class="form-control 
-						form-control-sm" [ngClass]="isInvalid('pin')"/>
+						<input type="number" digitOnly formControlName="pin" class="form-control 
+						form-control-sm pin" [ngClass]="isInvalid('pin')"/>
 						<span class="invalid-feedback">
 							Card PIN is required.
 						</span>
@@ -68,7 +68,7 @@
 
 					<div class="form-group">
 						<label>Amount <strong>(NGN)</strong>:
-						<input type="number" formControlName="amount" class="form-control"
+						<input type="number" digitOnly formControlName="amount" class="form-control"
 						[ngClass]="{'is-invalid':  (cardForm.controls['amount'].dirty || 
 						cardForm.controls['amount'].touched) 
 						&& cardForm.controls['amount'].invalid}"

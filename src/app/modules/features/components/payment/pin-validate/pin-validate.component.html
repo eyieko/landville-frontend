@@ -7,7 +7,7 @@
 			<form>
 				<div class="form-group">
 					<label >OTP:</label>
-					<input type="number" [formControl]="otp" name="otp" class="form-control"
+					<input type="number" digitOnly [formControl]="otp" name="otp" class="form-control"
 					[ngClass]="{'is-invalid':  (otp.dirty || otp.touched) && otp.invalid}"
 					/>
 					<span class="invalid-feedback">
