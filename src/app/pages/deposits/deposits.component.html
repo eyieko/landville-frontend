@@ -4,9 +4,9 @@
     <div class="col-md-8">
       <div *ngIf="transactions.length !== 0; else none" class="container">
         <div class="row filter pl-3">
-          <input type="datetime-local" placeholder="Select Start Date" class="form-control"
-            [(ngModel)]="startDateVal" />
-          <input type="datetime-local" placeholder="Select End Date" class="form-control" [(ngModel)]="endDateVal" />
+          <input type="date" placeholder="Select Start Date" class="form-control" [(ngModel)]="startDateVal" />
+
+          <input type="date" placeholder="Select End Date" class="form-control" [(ngModel)]="endDateVal" />
 
           <button color="primary" (click)="onFilter()" class="btn filter-btn">
             Search
