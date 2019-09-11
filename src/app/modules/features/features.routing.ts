@@ -13,6 +13,7 @@ import {
 import {
   InternationalPaymentStatusComponent
 } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
+import { ReviewComponent } from 'src/app/modules/features/components/client-review/review.component';
 
 export const CommonLayoutRoutes: Routes = [
   {
@@ -73,4 +74,13 @@ export const CommonLayoutRoutes: Routes = [
     path: 'payment/international/status',
     component: InternationalPaymentStatusComponent,
   },
+  {
+    path: 'client/:clientId/review',
+    component: ReviewComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Review client',
+      tags: []
+    }
+  }
 ];

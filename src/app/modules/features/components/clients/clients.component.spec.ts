@@ -1,9 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClientsComponent } from './clients.component';
-import { AppModule } from 'src/app/app.module';
-import { clientsServiceSpy, toastServiceSpy } from 'src/app/helpers/spies';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ClientsComponent } from 'src/app/modules/features/components/clients/clients.component';
+import { clientsServiceSpy, toastServiceSpy } from 'src/app/helpers/tests/spies';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ClientsService } from 'src/app/services/clients/clients.service';
@@ -24,16 +22,18 @@ describe('ClientsComponent', () => {
 
   configureTestSuite(() => {
     TestBed.configureTestingModule({
-      declarations: [ClientsComponent],
-      imports: [AppModule, NgxSpinnerModule, RouterTestingModule.withRoutes([])],
+      declarations: [
+        ClientsComponent
+      ],
+      imports: [
+        NgxSpinnerModule,
+        RouterTestingModule.withRoutes([])
+      ],
       providers: [
-        {
-          provide: ClientsService,
-          useValue: clientsServiceSpy
-        },
+        { provide: ClientsService, useValue: clientsServiceSpy },
         { provide: ToastrService, useValue: toastServiceSpy },
       ]
-    }).compileComponents().then(r => {});
+    }).compileComponents().then(r => { });
   });
 
   beforeEach(() => {

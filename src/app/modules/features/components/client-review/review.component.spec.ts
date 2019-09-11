@@ -6,9 +6,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { throwError, of } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
-import { routerSpy, toastServiceSpy, spinnerSpy, clientReviewService } from 'src/app/helpers/spies';
+import { routerSpy, toastServiceSpy, spinnerSpy, clientReviewService } from 'src/app/helpers/tests/spies';
 
-import { ReviewComponent } from 'src/app/pages/client-review/review.component';
+import { ReviewComponent } from 'src/app/modules/features/components/client-review/review.component';
 
 
 
