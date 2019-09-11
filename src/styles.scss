@@ -4,3 +4,25 @@
 @import '~ngx-toastr/toastr-bs4-alert';
 @import '~ngx-toastr/toastr';
 @import '../node_modules/ngx-toastr/toastr.css';
+
+@font-face {
+  font-family: 'Airbnb Cereal App Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('./assets/fonts/cereal-font/Airbnb Cereal App Light'), url('./assets/fonts/cereal-font/AirbnbCerealLight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Airbnb Cereal App Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('./assets/fonts/cereal-font/Airbnb Cereal App Bold'), url('./assets/fonts/cereal-font/AirbnbCerealBold.woff') format('woff');
+}
+
+p {
+  font-family: 'Airbnb Cereal App Light', Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Airbnb Cereal App Bold', Arial, sans-serif;
+}

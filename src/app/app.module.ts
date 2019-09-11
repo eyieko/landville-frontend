@@ -4,23 +4,35 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app.routing';
+import { AppComponent } from 'src/app/app.component';
+import { AppRoutingModule } from 'src/app/app.routing';
+
 import { RouterModule } from '@angular/router';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { CommonLayoutComponent } from './layouts/common-layout/common-layout.component';
-import { ComponentsModule } from './components/components.module';
+import { FeaturesComponent } from 'src/app/modules/features/features.component';
+import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { JwtInterceptor } from './helpers/jwt.interceptor';
-import { ErrorInterceptor } from './helpers/error.interceptor';
-import { LocalStorageService } from './services/local-storage.service';
-import { PasswordResetComponent } from './pages/password-reset/password-reset.component';
-import { EnterResetPasswordComponent } from './pages/enter-reset-password/enter-reset-password.component';
-import { AuthGuard } from './guards/auth.guard';
-import { NoAuthGuard } from './guards/no-auth.guard';
-import { TermsService } from './services/terms/terms.service';
-import { InternationalPaymentStatusComponent } from 'src/app/pages/payment/international-payment-status/international-payment-status.component';
+import { JwtInterceptor } from 'src/app/interceptors/jwt/jwt.interceptor';
+import { ErrorInterceptor } from 'src/app/interceptors/error/error.interceptor';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import {
+  EnterResetPasswordComponent
+} from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { NoAuthGuard } from 'src/app/guards/no-auth.guard';
+import { TermsService } from 'src/app/services/terms/terms.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { AuthenticationComponent } from 'src/app/modules/authentication/authentication.component';
+import { TermsPageComponent } from 'src/app/components/terms/terms.component';
+import { PropertiesComponent } from 'src/app/components/properties/properties.component';
+import { NoPropertiesComponent } from 'src/app/components/properties/no-properties/no-properties.component';
+import { FeaturesModule } from 'src/app/modules/features/features.module';
+import { AuthenticationModule } from 'src/app/modules/authentication/authentication.module';
+import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
+import { PropertyDetailComponent } from 'src/app/components/property-details/property-detail/property-detail.component';
+import { ClientAdminComponent } from 'src/app/components/property-details/client-admin/client-admin.component';
+import {
+  PropertyDescriptionComponent
+} from 'src/app/components/property-details/property-description/property-description.component';
 
 @NgModule({
   imports: [
@@ -31,7 +43,9 @@ import { BrowserModule } from '@angular/platform-browser';
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule,
-    ComponentsModule,
+    SharedModule,
+    AuthenticationModule,
+    FeaturesModule,
     HttpClientModule,
     NgxSpinnerModule,
     ToastrModule.forRoot(),
@@ -39,11 +53,16 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   declarations: [
     AppComponent,
-    AuthLayoutComponent,
-    CommonLayoutComponent,
-    PasswordResetComponent,
+    AuthenticationComponent,
+    FeaturesComponent,
     EnterResetPasswordComponent,
-    InternationalPaymentStatusComponent
+    TermsPageComponent,
+    PropertiesComponent,
+    NoPropertiesComponent,
+    PropertyDetailsComponent,
+    PropertyDetailComponent,
+    ClientAdminComponent,
+    PropertyDescriptionComponent,
   ],
   providers: [
     LocalStorageService,
@@ -53,6 +72,7 @@ import { BrowserModule } from '@angular/platform-browser';
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
-export class AppModule {}
+export class AppModule { }

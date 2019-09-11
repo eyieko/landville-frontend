@@ -1,0 +1,71 @@
+.left-section h4 {
+  color: grey;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.custom-select {
+  height: 3rem;
+}
+
+p a.sign-link {
+  color: #ffa500;
+  display: inline;
+  background: none;
+  padding: 0px;
+  font-size: 17px;
+}
+
+.right-details {
+  overflow: auto;
+  margin: 10px 0px 30px 0px;
+}
+
+.right-details img {
+  width: 50px;
+  float: left;
+}
+
+.more-info {
+  padding-left: 20px;
+  float: left;
+  width: 70%;
+}
+
+.more-info h4 {
+  margin: 0px;
+  font-size: 17px;
+}
+
+.more-info p {
+  color: grey;
+}
+
+.form-check-label {
+  color: grey;
+}
+
+@media (max-width: 641px) {
+  .first {
+    display: none;
+  }
+}
+
+button[type="submit"] {
+  color: white;
+  background: #171029;
+}
+
+.form-check-label {
+  color: grey !important;
+}
+
+.form-check-input {
+  margin: -12px -20px;
+}
+
+button[type="submit"] {
+  color: white;
+  background: #171029;
+}

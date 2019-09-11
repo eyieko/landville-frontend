@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { localStorageSpy } from '../helpers/spies';
+import { localStorageSpy } from '../helpers/tests/spies';
 
 describe('AuthService', () => {
   let service: AuthService;

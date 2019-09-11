@@ -5,12 +5,12 @@ export interface Client {
   phone: string;
   email: string;
   address: Address;
-  id:Number;
+  id: number;
 }
+
 export interface ClientCompany {
-  data: ClientResponse;
-}
-export interface ClientResponse {
-  client_companies: Client[];
-  message: string;
+  data: {
+    client_companies: Client[];
+    message: string;
+  };
 }

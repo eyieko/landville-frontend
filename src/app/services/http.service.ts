@@ -12,28 +12,27 @@ export class HttpService {
 
   base_url = APPCONFIG.base_url;
 
-  httpOptions = {
-    headers: new HttpHeaders({
-       'Content-Type': 'application/json'
-    })
-  };
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //      'Content-Type': 'application/json'
+  //   })
+  // };
 
   constructor(private http: HttpClient) { }
 
   // // use this when making get requests with params
-  getRequestWithParams(endpoint, params = {}) {
+  getRequestWithParams = (endpoint, params = {}) => {
     return this.http.get(this.base_url + endpoint, { params });
   }
 
   // use this for POST,PUT or PATCH.
-  makeRequestWithData<T>(
+  makeRequestWithData = (
     endpoint: any,
     data: any,
     method: any,
-    baseUrl = this.base_url,
-    params: any = this.httpOptions,
-  ): Observable<T> | any {
-    return this.http[method](`${baseUrl}${endpoint}`, data, params);
+    params?: any,
+  ) => {
+    return this.http[method](`${this.base_url}${endpoint}`, data, params);
   }
 
 }

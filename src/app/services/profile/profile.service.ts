@@ -17,6 +17,7 @@ export class ProfileService {
   userProfile$: Subject<any> = new Subject<any>();
   getDep$: Subject<any> = new Subject<any>();
   userToken = this.localStorageService.get('token', '');
+
   httpOptions = {
     headers: new HttpHeaders({
       Authorization: `Bearer ${this.userToken}`
