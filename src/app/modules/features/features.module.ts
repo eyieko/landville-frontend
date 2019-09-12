@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -24,6 +25,10 @@ import {
 import {
   InternationalPaymentStatusComponent
 } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
+import {
+  UpdatePropertyComponent
+} from 'src/app/modules/features/components/update-property/updateProperty.component';
+import { APPCONFIG } from 'src/app/config';
 
 @NgModule({
   imports: [
@@ -36,6 +41,9 @@ import {
     ReactiveFormsModule,
     ProfileModule,
     HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: APPCONFIG.google_api_key
+    })
   ],
   declarations: [
     HomeComponent,
@@ -47,6 +55,7 @@ import {
     PinValidateComponent,
     PinPaymentComponent,
     InternationalPaymentComponent,
+    UpdatePropertyComponent,
   ],
   providers: [ProfileService, LocalStorageService, Title]
 })

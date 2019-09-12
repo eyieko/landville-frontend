@@ -14,6 +14,7 @@ import { APPCONFIG } from 'src/app/config';
 export class ProfileService {
   profileUrl = '/auth/profile/';
   depositeUrl = '/transactions/';
+  clientUrl = '/auth/client';
   userProfile$: Subject<any> = new Subject<any>();
   getDep$: Subject<any> = new Subject<any>();
   userToken = this.localStorageService.get('token', '');
@@ -62,6 +63,13 @@ export class ProfileService {
   getDeposits(): Observable<any> {
     return this.http.get<any>(
       `${APPCONFIG.base_url}${this.depositeUrl}`,
+      this.httpOptions
+    );
+  }
+
+  getClients(): Observable<any> {
+    return this.http.get<any>(
+      `${APPCONFIG.base_url}${this.clientUrl}`,
       this.httpOptions
     );
   }

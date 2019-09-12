@@ -6,8 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
   providedIn: 'root'
 })
 export class NoAuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {
-  }
+  constructor(private authService: AuthService, private router: Router) {}
   canActivate() {
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['home']);
@@ -15,10 +14,5 @@ export class NoAuthGuard implements CanActivate {
     } else {
       return true;
     }
-
-
   }
-
-
-
 }

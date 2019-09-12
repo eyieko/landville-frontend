@@ -29,11 +29,11 @@ export class InternationalPaymentComponent implements OnInit, OnDestroy {
 
   constructor(
     private internationalPaymentService: PaymentService,
-    private toastrService: ToastrService,
     private location: Location,
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
     private sanitizer: DomSanitizer,
+    private toastrService: ToastrService,
   ) { }
 
   generateYears() {

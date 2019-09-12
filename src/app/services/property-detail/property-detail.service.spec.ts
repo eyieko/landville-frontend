@@ -41,4 +41,19 @@ describe('PropertyDetailService', () => {
             expect(res).toBe(responseObject);
         });
     });
+
+    it('should update the property', () => {
+        const slug = 'hello';
+        const response = {
+            title: 'new title'
+        };
+        const data = {
+            title: 'new title'
+        };
+
+        httpClientSpy.patch.and.returnValue(of(response));
+        propertyDetailService.updateProperty(slug, data).subscribe(res => {
+            expect(res).toBe(response);
+        })
+    })
 });

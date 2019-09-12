@@ -98,6 +98,8 @@
               [street]="property.address.Street"
               [city]="property.address.City" 
               [price]="property.price"
+              [slug]="property.slug"
+              [isMine]="property.id|CheckProperty: this.myProperties"
               ></app-card>
             </a>
           </div>

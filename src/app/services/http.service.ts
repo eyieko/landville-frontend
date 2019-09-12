@@ -12,12 +12,6 @@ export class HttpService {
 
   base_url = APPCONFIG.base_url;
 
-  // httpOptions = {
-  //   headers: new HttpHeaders({
-  //      'Content-Type': 'application/json'
-  //   })
-  // };
-
   constructor(private http: HttpClient) { }
 
   // // use this when making get requests with params

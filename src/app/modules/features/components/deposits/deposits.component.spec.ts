@@ -2,9 +2,10 @@ import { Router, RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { HttpClientModule } from '@angular/common/http';
 import { DepositsComponent } from 'src/app/modules/features/components/deposits/deposits.component';
 import { DepositsService } from 'src/app/services/deposits/deposits.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -65,7 +66,8 @@ describe('DepositsComponent', () => {
         NgxSpinnerModule,
         FormsModule,
         RouterTestingModule,
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
+        ReactiveFormsModule
       ],
       providers: [
         {

@@ -6,6 +6,8 @@ import { Property } from 'src/app/models/Property';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment.prod';
+import { first } from 'rxjs/operators';
+import { ProfileService } from 'src/app/services/profile/profile.service';
 
 @Component({
   selector: 'app-properties',
@@ -24,6 +26,9 @@ export class PropertiesComponent implements OnInit {
   listToggle = false;
   gridToggle = true;
   count = 0;
+  myProperties: any;
+  isMine = true;
+  client = 0;
 
   constructor(
     private propertiesServices: PropertiesService,
@@ -32,10 +37,12 @@ export class PropertiesComponent implements OnInit {
     private router: Router,
     private titleService: Title,
     private metaService: Meta,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private profileService: ProfileService
   ) { }
 
   ngOnInit(): void {
+    this.getClient();
     this.activatedRoute.data.subscribe(data => {
       this.titleService.setTitle(data.title);
       this.metaService.addTags(data.tags, true);
@@ -46,6 +53,21 @@ export class PropertiesComponent implements OnInit {
   setDocTitle(title: string) {
     this.titleService.setTitle(title);
   }
+
+  getClient() {
+    this.profileService
+      .getClients()
+      .pipe(first())
+      .subscribe(
+        response => {
+          this.client = response.data.data.client_company.id;
+        },
+        error => {
+        return this.isMine = false;
+        }
+      );
+  }
+
   setProperties(url: string) {
     this.spinner.show();
     this.propertiesServices.getProperties(url).subscribe(response => {
@@ -58,7 +80,7 @@ export class PropertiesComponent implements OnInit {
         );
       } else {
         this.properties = this.results;
-
+        this.myProperties = this.properties.filter(({client: {id}}) => id === this.client);
         if (response.data.properties.next) {
           this.next = response.data.properties.next;
         } else {
@@ -74,7 +96,6 @@ export class PropertiesComponent implements OnInit {
       this.spinner.hide();
     });
   }
-
   fetchNext() {
     this.disabledNext = false;
     this.disabledPrevious = false;

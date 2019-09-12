@@ -12,6 +12,7 @@ export class CardComponent implements OnInit {
   @Input() city: string;
   @Input() price: string;
   @Input() slug: string;
+  @Input() isMine: boolean;
 
   constructor() {}
 
