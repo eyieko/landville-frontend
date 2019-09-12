@@ -1,18 +1,29 @@
-<div class="card bg-light">
-  <img class="card-img-top img-fluid" [src]="imageMain" alt="Card image cap" />
+<div class="" [ngClass]="{ card: !isProfile, card2: isProfile }">
+  <img
+    [ngClass]="{ card2Picture: isProfile, imgFluid: !isProfile }"
+    class="card-img-top "
+    [src]="imageMain"
+    alt="Card image cap"
+  />
   <div class="card-body">
     <h4>
-      <b>
-        <a class="card-title">{{
-          title
-        }}</a></b>
-
+      <b
+        ><a
+          [ngClass]="{ card2Title: isProfile, cardTitle: !isProfile }"
+          routerLink="/#"
+          routerLinkActive="active"
+          >{{ title }}</a
+        ></b
+      >
     </h4>
-    <p class="card-text grid-card">
+    <p
+      [ngClass]="{ cardDetails: isProfile, gridCard: !isProfile }"
+      class="card-text"
+    >
       <img alt="" src="assets/img/marker.svg" [style.width.px]="10" />
       {{ street }}, {{ city }}
     </p>
-    <div class="price">
+    <div [ngClass]="{ cardPrice: isProfile, price: !isProfile }" class="price">
       <b>&#8358; {{ price }}</b>
     </div>
   </div>

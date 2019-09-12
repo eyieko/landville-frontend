@@ -24,7 +24,7 @@ export const profileServiceSpy = createSpyObj('ProfileService', [
   'getProfile',
   'updateProfile',
   'pushProfile',
-  'getDeposits',
+  'getDeposits'
 ]);
 
 export const registerServiceSpy = createSpyObj('RegisterServiceService', [
@@ -67,6 +67,10 @@ export const propertiesServiceSpy = createSpyObj('PropertiesService', [
 export const propertyDetailSpy = jasmine.createSpyObj('PropertyDetailService', [
   'getProperty'
 ]);
+export const transactionServiceSpy = createSpyObj(
+  'TransactionInformationService',
+  ['getTransactions']
+);
 export const activatedRoutespy = jasmine.createSpyObj('ActivatedRoute', [
   'snapshot',
   'paramMap'

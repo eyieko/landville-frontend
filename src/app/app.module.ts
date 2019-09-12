@@ -14,9 +14,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { JwtInterceptor } from 'src/app/interceptors/jwt/jwt.interceptor';
 import { ErrorInterceptor } from 'src/app/interceptors/error/error.interceptor';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import {
-  EnterResetPasswordComponent
-} from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
+import { EnterResetPasswordComponent } from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { NoAuthGuard } from 'src/app/guards/no-auth.guard';
 import { TermsService } from 'src/app/services/terms/terms.service';
@@ -30,9 +28,7 @@ import { AuthenticationModule } from 'src/app/modules/authentication/authenticat
 import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
 import { PropertyDetailComponent } from 'src/app/components/property-details/property-detail/property-detail.component';
 import { ClientAdminComponent } from 'src/app/components/property-details/client-admin/client-admin.component';
-import {
-  PropertyDescriptionComponent
-} from 'src/app/components/property-details/property-description/property-description.component';
+import { PropertyDescriptionComponent } from 'src/app/components/property-details/property-description/property-description.component';
 
 @NgModule({
   imports: [
@@ -62,7 +58,7 @@ import {
     PropertyDetailsComponent,
     PropertyDetailComponent,
     ClientAdminComponent,
-    PropertyDescriptionComponent,
+    PropertyDescriptionComponent
   ],
   providers: [
     LocalStorageService,
@@ -72,7 +68,6 @@ import {
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent],
-  exports: []
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

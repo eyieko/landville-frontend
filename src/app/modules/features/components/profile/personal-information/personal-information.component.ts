@@ -1,5 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -80,7 +85,9 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
         response => {
           const { profile } = response.data;
 
-          this.titleService.setTitle(`${profile.user.first_name} ${profile.user.last_name}`);
+          this.titleService.setTitle(
+            `${profile.user.first_name} ${profile.user.last_name}`
+          );
 
           // we use `patchValue` because the response from the server might not have prefilled address information
           this.profileForm.patchValue({
@@ -157,7 +164,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
           for (const [key, value] of Object.entries(this.formErrors.errors)) {
             this.toasterService.error(
               `Could not update your profile.
-              ${ key}: ${value}`
+              ${key}: ${value}`
             );
           }
         }

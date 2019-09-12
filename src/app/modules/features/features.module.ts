@@ -18,12 +18,8 @@ import { ClientsComponent } from 'src/app/modules/features/components/clients/cl
 import { TokenizedCardComponent } from 'src/app/modules/features/components/payment/tokenized-card/tokenized-card.component';
 import { PinValidateComponent } from 'src/app/modules/features/components/payment/pin-validate/pin-validate.component';
 import { PinPaymentComponent } from 'src/app/modules/features/components/payment/pin-payment/pin-payment.component';
-import {
-  InternationalPaymentComponent
-} from 'src/app/modules/features/components/payment/international-payment/international-payment.component';
-import {
-  InternationalPaymentStatusComponent
-} from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
+import { InternationalPaymentComponent } from 'src/app/modules/features/components/payment/international-payment/international-payment.component';
+import { InternationalPaymentStatusComponent } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
 
 @NgModule({
   imports: [
@@ -35,7 +31,7 @@ import {
     SharedModule,
     ReactiveFormsModule,
     ProfileModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   declarations: [
     HomeComponent,
@@ -46,8 +42,8 @@ import {
     TokenizedCardComponent,
     PinValidateComponent,
     PinPaymentComponent,
-    InternationalPaymentComponent,
+    InternationalPaymentComponent
   ],
   providers: [ProfileService, LocalStorageService, Title]
 })
-export class FeaturesModule { }
+export class FeaturesModule {}

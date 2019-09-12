@@ -11,8 +11,12 @@ import {
 } from 'src/app/helpers/tests/spies';
 import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
-import {mockDepositsResponse, mockProfileResponse} from 'src/app/helpers/tests/mocks';
+import {
+  mockDepositsResponse,
+  mockProfileResponse
+} from 'src/app/helpers/tests/mocks';
 import { configureTestSuite } from 'ng-bullet';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -25,7 +29,7 @@ describe('ProfileComponent', () => {
 
   configureTestSuite(() => {
     TestBed.configureTestingModule({
-      imports: [AppModule, FeaturesModule],
+      imports: [AppModule, FeaturesModule, RouterTestingModule],
       declarations: [],
       providers: [
         {
@@ -37,7 +41,9 @@ describe('ProfileComponent', () => {
           useValue: toastServiceSpy
         }
       ]
-    }).compileComponents().then(r => {});
+    })
+      .compileComponents()
+      .then(r => {});
   });
 
   beforeEach(() => {

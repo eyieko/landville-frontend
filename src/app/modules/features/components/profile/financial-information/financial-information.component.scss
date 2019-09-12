@@ -193,7 +193,7 @@ hr {
   position: relative;
 }
 .dropdown-btn::after {
-  content: "\25BE";
+  content: '\25BE';
   right: 8px;
   position: absolute;
 }
@@ -269,7 +269,7 @@ hr {
   float: left;
 }
 
-.savings-progress p{
+.savings-progress p {
   font-weight: 500;
   font-size: 12px;
 }
@@ -304,7 +304,6 @@ hr {
   color: #503fa7a3;
 }
 
-
 round-progress {
   margin-top: 1rem;
   width: inherit !important;
@@ -327,16 +326,16 @@ round-progress {
 
 @media (min-width: 991px) {
   round-progress {
-    height: 10rem !important;
+    height: 9rem !important;
   }
   .current-savings {
     height: 7rem;
-  } 
+  }
   .property-value {
     height: 7rem;
   }
 }
- 
+
 @media (min-width: 1190px) {
   .percentageValue {
     left: 10px;

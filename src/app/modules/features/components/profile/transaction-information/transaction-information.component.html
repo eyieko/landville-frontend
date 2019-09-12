@@ -1,0 +1,72 @@
+<div class="transaction__row">
+    <div class="transaction-header">
+      <h3 class="heading-tertiary">Successful transactions</h3>
+    </div>
+    <div
+      class="col-empty"
+      *ngIf="!sucessTransactions.length; else successTransactioNotEmpty"
+    >
+      <app-empty-transaction
+        [message]="'Currently you don\'t have any successful transaction'"
+      ></app-empty-transaction>
+    </div>
+    <ng-template #successTransactioNotEmpty>
+      <div class="col-success-transaction">
+        <app-card
+          class="here"
+          *ngFor="let transaction of sucessTransactions"
+          [isProfile]="true"
+          [imageMain]="transaction.image_main"
+          [title]="transaction.title"
+          [street]="transaction.address.Street"
+          [city]="transaction.address.City"
+          [price]="transaction.price"
+        ></app-card>
+      </div>
+    </ng-template>
+  
+    <div class="transaction-header">
+      <h3 class="heading-tertiary">Transactions in progress</h3>
+    </div>
+    <div
+      class="col-empty"
+      *ngIf="!inProgressTransactions.length; else transactionInProgressNotEmpty"
+    >
+      <app-empty-transaction
+        [message]="'Currently you don\'t have any transaction in progress'"
+      ></app-empty-transaction>
+    </div>
+  
+    <ng-template #transactionInProgressNotEmpty>
+      <div class="col-progress-transaction">
+        <div
+          class="col-progress-transaction"
+          *ngFor="let transaction of inProgressTransactions"
+        >
+          <div class="cardinp">
+            <app-card
+              class="cardinp__front cardinp__side"
+              [isProfile]="true"
+              [imageMain]="transaction.image_main"
+              [title]="transaction.title.slice(0, 26)"
+              [street]="transaction.address.Street"
+              [city]="transaction.address.City"
+              [price]="transaction.price"
+            ></app-card>
+            <div class="cardinp__back cardinp__side cardinp__back-1">
+              <div class="cardinp__back--rest">
+                <div class="cardinp__back--rest__amount">
+                  <p class="cardinp__back--rest__naira">Remaining amount</p>
+                  <p class="cardinp__back--rest__value">
+                    &#8358;{{ transaction.price - transaction.total_amount_paid }}
+                  </p>
+                </div>
+                <a href="#" class="btn btn--white">Complete now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  
