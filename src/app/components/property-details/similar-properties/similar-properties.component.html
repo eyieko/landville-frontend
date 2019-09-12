@@ -14,7 +14,7 @@
 <owl-carousel [options]="carouselOptions" [items]="similarProperties"
               [carouselClasses]="['owl-theme', 'row', 'sliding']" *ngIf="similarProperties.length > 0; else noSimilar">
   <div *ngFor="let property of similarProperties">
-    <a [routerLink]="['/properties', property.slug]" routerLinkActive="active" class="custom-card" (click)="scrollToTop()">
+    <a [routerLink]="['/properties', property.slug]" routerLinkActive="active" class="custom-card" id="custom-card" (click)="scrollToTop()">
       <app-card
         [imageMain]="property.image_main"
         [title]="property.title"

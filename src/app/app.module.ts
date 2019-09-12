@@ -14,7 +14,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { JwtInterceptor } from 'src/app/interceptors/jwt/jwt.interceptor';
 import { ErrorInterceptor } from 'src/app/interceptors/error/error.interceptor';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import { EnterResetPasswordComponent } from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
+import {
+  EnterResetPasswordComponent
+} from 'src/app/modules/authentication/components/enter-reset-password/enter-reset-password.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { NoAuthGuard } from 'src/app/guards/no-auth.guard';
 import { TermsService } from 'src/app/services/terms/terms.service';
@@ -26,9 +28,13 @@ import { NoPropertiesComponent } from 'src/app/components/properties/no-properti
 import { FeaturesModule } from 'src/app/modules/features/features.module';
 import { AuthenticationModule } from 'src/app/modules/authentication/authentication.module';
 import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
+import { SimilarPropertiesComponent } from './components/property-details/similar-properties/similar-properties.component';
 import { PropertyDetailComponent } from 'src/app/components/property-details/property-detail/property-detail.component';
 import { ClientAdminComponent } from 'src/app/components/property-details/client-admin/client-admin.component';
-import { PropertyDescriptionComponent } from 'src/app/components/property-details/property-description/property-description.component';
+import {
+  PropertyDescriptionComponent
+} from 'src/app/components/property-details/property-description/property-description.component';
+import {OwlModule} from 'ngx-owl-carousel';
 
 @NgModule({
   imports: [
@@ -44,6 +50,7 @@ import { PropertyDescriptionComponent } from 'src/app/components/property-detail
     FeaturesModule,
     HttpClientModule,
     NgxSpinnerModule,
+    OwlModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
@@ -58,7 +65,8 @@ import { PropertyDescriptionComponent } from 'src/app/components/property-detail
     PropertyDetailsComponent,
     PropertyDetailComponent,
     ClientAdminComponent,
-    PropertyDescriptionComponent
+    PropertyDescriptionComponent,
+    SimilarPropertiesComponent,
   ],
   providers: [
     LocalStorageService,

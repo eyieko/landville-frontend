@@ -1,5 +1,4 @@
 import { environment } from 'src/environments/environment.prod';
-import { AuthLayoutModule } from 'src/app/layouts/auth-layout/auth-layout.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PropertiesService } from 'src/app/services/properties/properties.service';
 import { AppModule } from 'src/app/app.module';
@@ -11,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import {ComponentsModule} from 'src/app/components/components.module';
 import {configureTestSuite} from 'ng-bullet';
 
 describe('PropertiesComponent', () => {
@@ -36,14 +34,12 @@ describe('PropertiesComponent', () => {
 
   configureTestSuite(() => {
     TestBed.configureTestingModule({
-      declarations: [PropertiesComponent],
+      declarations: [],
       imports: [
         AppModule,
         HttpClientModule,
         NgxSpinnerModule,
-        AuthLayoutModule,
-        RouterModule,
-        ComponentsModule
+        RouterModule
       ],
       providers: [
         {

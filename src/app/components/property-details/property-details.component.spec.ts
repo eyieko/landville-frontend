@@ -9,16 +9,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import {OwlCarousel} from 'ngx-owl-carousel';
 
-import { PropertyDetailsComponent } from 'src/app/pages/property-details/property-details.component';
-import { PropertyDetailComponent } from 'src/app/pages/property-details/property-detail/property-detail.component';
-import { PropertyDescriptionComponent } from 'src/app/pages/property-details/property-description/property-description.component';
-import { ClientAdminComponent } from 'src/app/pages/property-details/client-admin/client-admin.component';
+import {PropertyDetailsComponent} from 'src/app/components/property-details/property-details.component';
+import {PropertyDetailComponent} from 'src/app/components/property-details/property-detail/property-detail.component';
+import {PropertyDescriptionComponent} from 'src/app/components/property-details/property-description/property-description.component';
+import {ClientAdminComponent} from 'src/app/components/property-details/client-admin/client-admin.component';
 import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
 import {
     resetSpies, propertyDetailSpy, toastServiceSpy, routerSpy
-} from 'src/app/helpers/spies';
-import {SimilarPropertiesComponent} from 'src/app/pages/property-details/similar-properties/similar-properties.component';
-import {ComponentsModule} from 'src/app/components/components.module';
+} from 'src/app/helpers/tests/spies';
+import {SimilarPropertiesComponent} from 'src/app/components/property-details/similar-properties/similar-properties.component';
 
 
 describe('Property detail', () => {
@@ -99,7 +98,6 @@ describe('Property detail', () => {
                 RouterTestingModule.withRoutes([{ path: '**', component: PropertyDetailsComponent }, ]),
                 NgxSpinnerModule,
                 ReactiveFormsModule,
-                ComponentsModule,
             ],
             providers: [
 

@@ -11,7 +11,7 @@ import {SimilarPropertiesComponent} from './similar-properties.component';
 import {PropertyDetailsComponent} from '../property-details.component';
 import {environment} from 'src/environments/environment';
 import {ToastrService} from 'ngx-toastr';
-import {toastServiceSpy} from '../../../helpers/spies';
+import {toastServiceSpy} from 'src/app/helpers/tests/spies';
 
 describe('SimilarPropertiesComponent', () => {
   let component: SimilarPropertiesComponent;
@@ -112,5 +112,21 @@ describe('SimilarPropertiesComponent', () => {
   it('should show toaster message in case of errors', () => {
     mockReq.error(new ErrorEvent('fail'));
     expect(toastServiceSpy.error).toHaveBeenCalled();
+  });
+
+  it('should call calculatePriceRange if price is requested', () => {
+    const calculatePriceRangeSpy = spyOn(component, 'calculatePriceRange');
+    component.getSimilarProperties('price', component.propertyDetails);
+    expect(calculatePriceRangeSpy).toHaveBeenCalled();
+  });
+
+  it('should calculate the correct price range', () => {
+    const priceRangeCalculation = component.calculatePriceRange('1000');
+    const currentPrice = Number('1000');
+    const lowerRange = currentPrice - (currentPrice * 0.1); // 900
+    const upperRange = currentPrice + (currentPrice * 0.1); // 1100
+    const query = `price_min=${lowerRange}&price_max=${upperRange}`;
+    expect(priceRangeCalculation).toBe(query);
+    expect(query).toBe('price_min=900&price_max=1100');
   });
 });

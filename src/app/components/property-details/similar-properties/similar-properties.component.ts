@@ -1,8 +1,8 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, OnDestroy} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {NgxSpinnerService} from 'ngx-spinner';
-import { ToastrService } from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 
 import {PropertyDetail} from 'src/app/models/property-detail/Property-detail';
 import {SearchService} from 'src/app/services/search/search.service';
@@ -70,15 +70,19 @@ export class SimilarPropertiesComponent implements OnInit, OnChanges, OnDestroy 
     }
   };
 
+  calculatePriceRange(price): string {
+    // price range = + or - 10% of the current price
+    const currentPrice = Number(price);
+    const lowerRange = currentPrice - (currentPrice * 0.1);
+    const upperRange = currentPrice + (currentPrice * 0.1);
+    return `price_min=${lowerRange}&price_max=${upperRange}`;
+  }
+
   getSimilarProperties(option, value = this.propertyDetails) {
     this.spinner.show();
     let searchQuery = `${option}=${value[option]}`;
     if (option === 'price') {
-      // get price range: + or - 10% of the current price
-      const currentPrice = Number(`${value[option]}`);
-      const lowerRange = currentPrice - (currentPrice * 0.1);
-      const upperRange = currentPrice + (currentPrice * 0.1);
-      searchQuery = `price_min=${lowerRange}&price_max=${upperRange}`;
+      searchQuery = this.calculatePriceRange(`${value[option]}`);
     }
     this.subscription = this.search.searchProperties(searchQuery).subscribe(
       response => {
