@@ -24,7 +24,7 @@ export const profileServiceSpy = createSpyObj('ProfileService', [
   'getProfile',
   'updateProfile',
   'pushProfile',
-  'getDeposits'
+  'getDeposits',
 ]);
 
 export const registerServiceSpy = createSpyObj('RegisterServiceService', [
