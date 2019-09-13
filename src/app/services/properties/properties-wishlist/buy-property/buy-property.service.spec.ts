@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { BuyPropertyService } from 'src/app/services/properties/properties-wishlist/buy-property/buy-property.service';
-import { mockWishlistProperties } from 'src/app/shared/mocks';
+import { mockWishlistProperties } from 'src/app/helpers/tests/mocks';
 
 
 describe('BuyPropertyService', () => {

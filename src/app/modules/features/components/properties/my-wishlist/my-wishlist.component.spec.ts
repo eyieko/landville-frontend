@@ -1,24 +1,24 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-
-import { MyWishlistComponent } from 'src/app/pages/properties/my-wishlist/my-wishlist.component';
+import { MyWishlistComponent } from 'src/app/modules/features/components/properties/my-wishlist/my-wishlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PropertiesWishlistService } from 'src/app/services/properties/properties-wishlist/properties-wishlist.service';
-import { propertiesWishlistSpy, toastServiceSpy, routerSpy, buyPropertyServiceSpy} from 'src/app/helpers/spies';
+import { propertiesWishlistSpy, toastServiceSpy, routerSpy, buyPropertyServiceSpy} from 'src/app/helpers/tests/spies';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { By } from '@angular/platform-browser';
-import { CardComponent } from 'src/app/components/card/card.component';
-import { mockWishlistProperties } from 'src/app/shared/mocks'
+import { mockWishlistProperties } from 'src/app/helpers/tests/mocks'
 import { BuyPropertyService } from 'src/app/services/properties/properties-wishlist/buy-property/buy-property.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('MyWishlistComponent', () => {
   let component: MyWishlistComponent;
   let fixture: ComponentFixture<MyWishlistComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MyWishlistComponent, CardComponent],
+      declarations: [MyWishlistComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [
         HttpClientModule,
         RouterTestingModule, ],
@@ -35,7 +35,8 @@ describe('MyWishlistComponent', () => {
           provide: ToastrService,
           useValue: toastServiceSpy
         },
-        { provide: Router, useValue: routerSpy }]
+        { provide: Router, useValue: routerSpy },
+        ]
     })
     .compileComponents();
   }));
@@ -111,7 +112,7 @@ describe('MyWishlistComponent', () => {
     expect(routerSpy.navigate).toHaveBeenCalledWith(['/my-wishlist'])
   });
 
-  it('should navigate to payement with pin when click to buy property', ()=>{
+  it('should navigate to payment with pin when click to buy property', ()=>{
     const property = mockWishlistProperties.data.property[0]
     component.payProperty(property, 'Buying');
     expect(buyPropertyServiceSpy.changeProperty).toHaveBeenCalledWith(property, 'Buying');

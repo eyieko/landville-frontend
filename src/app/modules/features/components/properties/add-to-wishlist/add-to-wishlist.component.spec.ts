@@ -1,13 +1,14 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { AddToWishlistComponent } from 'src/app/pages/properties/add-to-wishlist/add-to-wishlist.component';
+import { AddToWishlistComponent } from 'src/app/modules/features/components/properties/add-to-wishlist/add-to-wishlist.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import {PropertiesWishlistService} from 'src/app/services/properties/properties-wishlist/properties-wishlist.service';
 import { HttpClientModule } from '@angular/common/http';
-import {  toastServiceSpy, propertiesWishlistSpy, routerSpy} from 'src/app/helpers/spies';
+import {  toastServiceSpy, propertiesWishlistSpy, routerSpy} from 'src/app/helpers/tests/spies';
 import { ToastrService } from 'ngx-toastr';
 import { By } from '@angular/platform-browser';
 import { of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AddToWishlistComponent', () => {
   let component: AddToWishlistComponent;

@@ -285,7 +285,8 @@ export const clientsMockresponse = {
         phone: '+256 123 3232234'
       }
     ],
-    message: 'You have retrieved all clients'
+    message: 'You have retrieved all clients'}}
+
 export const mockWishlistProperties = {
   data: {
     property: [
