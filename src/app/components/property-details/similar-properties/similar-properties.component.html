@@ -1,0 +1,35 @@
+<form [formGroup]="similarPropertiesForm">
+  <div class="form-group row">
+    <label for="filter-select" class="col-md-5 col-form-label">
+      <h3>See other properties:</h3>
+    </label>
+    <select class="col-md-4" (change)="getSimilarProperties($event.target.value); selectedOption=$event.target.value" id="filter-select">
+      <option *ngFor="let option of filterOptions" [value]="option.value">
+        {{option.text}}
+      </option>
+    </select>
+  </div>
+</form>
+
+<owl-carousel [options]="carouselOptions" [items]="similarProperties"
+              [carouselClasses]="['owl-theme', 'row', 'sliding']" *ngIf="similarProperties.length > 0; else noSimilar">
+  <div *ngFor="let property of similarProperties">
+    <a [routerLink]="['/properties', property.slug]" routerLinkActive="active" class="custom-card" id="custom-card" (click)="scrollToTop()">
+      <app-card
+        [imageMain]="property.image_main"
+        [title]="property.title"
+        [street]="property.address.Street"
+        [city]="property.address.City"
+        [price]="property.price"
+      ></app-card>
+    </a>
+  </div>
+</owl-carousel>
+
+<ng-template #noSimilar>
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mb-5" id="noSimilar">
+      No similar properties were found.
+    </div>
+  </div>
+</ng-template>

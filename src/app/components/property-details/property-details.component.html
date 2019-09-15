@@ -12,6 +12,17 @@
                                   [video]="video" [ifVideo]="ifVideo" [purchasePlan]="purchasePlan"></app-property-description>
       </div>
 
+      <app-similar-properties
+        *ngIf="property"
+        [propertyDetails]="{
+                    title: title,
+                    state: state,
+                    price: price,
+                    bedrooms: bedrooms || 0,
+                    bathrooms: bathrooms || 0
+                    }">
+      </app-similar-properties>
+
     </div>
     <div class="col-md-4">
       <div class="card mt-5 text-center">

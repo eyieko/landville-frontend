@@ -1,18 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
-import { PropertyDetailComponent } from 'src/app/components/property-details/property-detail/property-detail.component';
-import { PropertyDescriptionComponent } from 'src/app/components/property-details/property-description/property-description.component';
-import { ClientAdminComponent } from 'src/app/components/property-details/client-admin/client-admin.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
-import {
-    resetSpies, propertyDetailSpy, toastServiceSpy, routerSpy
-} from 'src/app/helpers/tests/spies';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
 import { of } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import {OwlCarousel} from 'ngx-owl-carousel';
+
+import {PropertyDetailsComponent} from 'src/app/components/property-details/property-details.component';
+import {PropertyDetailComponent} from 'src/app/components/property-details/property-detail/property-detail.component';
+import {PropertyDescriptionComponent} from 'src/app/components/property-details/property-description/property-description.component';
+import {ClientAdminComponent} from 'src/app/components/property-details/client-admin/client-admin.component';
+import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
+import {
+    resetSpies, propertyDetailSpy, toastServiceSpy, routerSpy
+} from 'src/app/helpers/tests/spies';
+import {SimilarPropertiesComponent} from 'src/app/components/property-details/similar-properties/similar-properties.component';
+
 
 describe('Property detail', () => {
     let component: PropertyDetailsComponent;
@@ -83,12 +89,15 @@ describe('Property detail', () => {
                 PropertyDetailsComponent,
                 PropertyDetailComponent,
                 PropertyDescriptionComponent,
-                ClientAdminComponent
+                ClientAdminComponent,
+                SimilarPropertiesComponent,
+                OwlCarousel
             ],
             imports: [
                 HttpClientTestingModule,
                 RouterTestingModule.withRoutes([{ path: '**', component: PropertyDetailsComponent }, ]),
-                NgxSpinnerModule
+                NgxSpinnerModule,
+                ReactiveFormsModule,
             ],
             providers: [
 
@@ -108,6 +117,9 @@ describe('Property detail', () => {
                     provide: ToastrService,
                     useValue: toastServiceSpy
                 },
+            ],
+            schemas: [
+              CUSTOM_ELEMENTS_SCHEMA,
             ]
         }).compileComponents();
     }));
