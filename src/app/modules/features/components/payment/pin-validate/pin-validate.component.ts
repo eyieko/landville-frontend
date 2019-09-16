@@ -51,11 +51,12 @@ export class PinValidateComponent implements OnInit {
     this.paymentService.validatePinPay(payload).subscribe(
       resp => {
         this.spinner.hide();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/user/deposits']);
         this.toastr.success(resp['message']);
       },
       error => {
         this.spinner.hide();
+        this.router.navigate(['/user/deposits']);
         this.toastr.error(error['error']['message']);
       }
     );

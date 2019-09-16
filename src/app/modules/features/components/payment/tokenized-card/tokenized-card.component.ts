@@ -42,7 +42,7 @@ export class TokenizedCardComponent implements OnInit {
     this.paymentService.payWithTokenizedCard(payload).subscribe(
       resp => {
         this.spinner.hide();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/user/deposits']);
         this.toastr.success(resp['message']);
       },
       error => {
@@ -53,6 +53,7 @@ export class TokenizedCardComponent implements OnInit {
         } else {
           toastMessage = typeof error.errors.detail === 'undefined' ? error.errors : error.errors.detail;
         }
+        this.router.navigate(['/user/deposits']);
         this.toastr.error(toastMessage);
       }
     );

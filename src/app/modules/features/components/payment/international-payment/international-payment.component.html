@@ -10,7 +10,7 @@
               Card Number:
             </div>
 
-            <input formControlName="cardNo" class="form-control" [ngClass]="{
+            <input formControlName="cardNo" class="form-control" digitOnly [ngClass]="{
                 'is-invalid':
                   (form.get('cardNo').touched || form.get('cardNo').dirty) &&
                   !form.get('cardNo').valid
@@ -36,7 +36,7 @@
             <div>
               CVV Number:
             </div>
-            <input maxlength="4" formControlName="cvv" class="form-control" [ngClass]="{
+            <input maxlength="4" minlength="3" digitOnly formControlName="cvv" class="form-control" [ngClass]="{
                 'is-invalid':
                   (form.get('cvv').touched || form.get('cvv').dirty) &&
                   !form.get('cvv').valid
@@ -113,7 +113,7 @@
             <div>
               Amount <strong>(NGN)</strong>:
             </div>
-            <input formControlName="amount" class="form-control" [ngClass]="{
+            <input formControlName="amount" class="form-control" digitOnly [ngClass]="{
                 'is-invalid':
                   (form.get('amount').touched || form.get('amount').dirty) &&
                   !form.get('amount').valid
@@ -133,7 +133,7 @@
             <div>
               Billing zip:
             </div>
-            <input formControlName="billingZip" class="form-control" [ngClass]="{
+            <input formControlName="billingZip" class="form-control" digitOnly [ngClass]="{
                 'is-invalid':
                   (form.get('billingZip').touched ||
                     form.get('billingZip').dirty) &&

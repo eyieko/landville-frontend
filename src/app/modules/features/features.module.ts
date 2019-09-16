@@ -18,8 +18,13 @@ import { ClientsComponent } from 'src/app/modules/features/components/clients/cl
 import { TokenizedCardComponent } from 'src/app/modules/features/components/payment/tokenized-card/tokenized-card.component';
 import { PinValidateComponent } from 'src/app/modules/features/components/payment/pin-validate/pin-validate.component';
 import { PinPaymentComponent } from 'src/app/modules/features/components/payment/pin-payment/pin-payment.component';
-import { InternationalPaymentComponent } from 'src/app/modules/features/components/payment/international-payment/international-payment.component';
-import { InternationalPaymentStatusComponent } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
+import {
+  InternationalPaymentComponent
+} from 'src/app/modules/features/components/payment/international-payment/international-payment.component';
+import {
+  InternationalPaymentStatusComponent
+} from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
+import { DigitOnlyModule } from '@uiowa/digit-only';
 
 @NgModule({
   imports: [
@@ -31,7 +36,8 @@ import { InternationalPaymentStatusComponent } from 'src/app/modules/features/co
     SharedModule,
     ReactiveFormsModule,
     ProfileModule,
-    HttpClientModule
+    HttpClientModule,
+    DigitOnlyModule
   ],
   declarations: [
     HomeComponent,
