@@ -43,8 +43,7 @@ export class FinancialInformationComponent implements OnInit, OnDestroy {
   }
 
   getCardInfo() {
-    this.profileService.userProfile$.subscribe(response => {
-      console.log(response);
+    this.profileService.getProfile().subscribe(response => {
       const profile = response.data.profile;
       if (Object.keys(profile.card_info.card_info).length === 0) {
         this.cardInfo = null;

@@ -2,6 +2,7 @@ import { User } from './User';
 import { Address } from './Address';
 
 export interface UserProfile {
+  card_info: any;
   user: User;
   address: Address;
   phone?: string;

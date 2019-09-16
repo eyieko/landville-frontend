@@ -23,7 +23,10 @@ export const mockUpdatedProfileResponse: UserProfileUpdatedResponse = {
       next_of_kin_contact: '32425435345',
       bio: 'I make it rain!',
       level: 'Level?',
-      image: ''
+      image: '',
+      card_info: {
+
+      },
     },
     message: 'Successfully updated your profile'
   }
@@ -179,12 +182,7 @@ export const mockProfileResponse3 = {
       next_of_kin_contact: '235235423523452',
       bio: 'I am simply amazing',
       card_info: {
-        card_info: {
-          card_brand: 'PAY PAL',
-          embedtoken: 'flw-t1nf-4490d819ca68842ceb24ba4707ea8233-m03k',
-          card_expiry: '10/22',
-          card_number: '*********8381'
-        }
+        card_info: {}
       }
     },
     message: 'Profile retreived successfully'

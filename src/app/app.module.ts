@@ -55,7 +55,6 @@ import { ClientReviewsComponent } from 'src/app/components/client-reviews/client
     AppComponent,
     AuthenticationComponent,
     FeaturesComponent,
-    EnterResetPasswordComponent,
     TermsPageComponent,
     PropertiesComponent,
     NoPropertiesComponent,
