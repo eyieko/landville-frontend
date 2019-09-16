@@ -6,15 +6,30 @@
     <title>LandVille</title>
     <meta content="" name="description" />
     <base href="/" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(window).on('scroll', function(){
+            if($(window).scrollTop()){
+                $('nav').addClass('black');
+            }
+            else{
+                $('nav').removeClass('black')
+            }
+        })
+    </script>
+
     <!-- Favicon -->
     <link href="favicon.ico" rel="icon" type="image/x-icon" />
     <!-- FontAwesome 5.10 -->
-    <script src="https://kit.fontawesome.com/25a4e66e03.js"></script>
-    <link
+    <!-- <script src="https://kit.fontawesome.com/25a4e66e03.js"></script> -->
+    <!-- <link
       href="https://fonts.googleapis.com/css?family=Mukta&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
   </head>
 
   <body>

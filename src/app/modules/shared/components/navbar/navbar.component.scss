@@ -1,16 +1,38 @@
-a.nav-link.waves-effect.waves-light:hover {
-  color: var(--color-primary-light);
+nav {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 100px;
+  box-sizing: border-box;
+  transition: .5s;
+  height: 80px !important;
+}
+
+nav.black {
+  background: #fff;
 }
 
 a.nav-link.waves-effect.waves-light {
   padding: 0.3rem 0;;
   text-decoration: none;
   display: inline-block;
-  color: #555;
-  font-family: "Raleway", sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
+  line-height: 40px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1rem !important;
   outline: none;
+}
+
+nav.black a.nav-link.waves-effect.waves-light {
+  color: #000;
+}
+
+a.nav-link.waves-effect.waves-light:hover,
+nav.black a.nav-link.waves-effect.waves-light:hover {
+  color: var(--color-primary-light);
 }
 
 .navbar-nav > li {
@@ -111,12 +133,6 @@ ul.top-menu > li > a:hover .caret {
   border: .2rem solid rgba(0, 112, 255, 0.4);
   display: inline-block;
 }
-
-.username {
-  font-size: 0.9rem;
-  padding: 0 0.3rem !important;
-}
-
 
 .btn-auth {
   line-height: 18px !important;
