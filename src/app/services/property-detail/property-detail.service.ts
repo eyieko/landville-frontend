@@ -11,7 +11,7 @@ export class PropertyDetailService {
         }
     getProperty(slug): Observable<any> {
 
-        const endpoint = `/properties/${slug}`;   
+        const endpoint = `/properties/${slug}`;
         return this.http.getRequestWithParams(endpoint);
     }
 }

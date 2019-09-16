@@ -28,7 +28,7 @@ describe('TermsService', () => {
       service.getTerms().subscribe();
       const req = httpTestingController.expectOne(url);
       req.flush({ details: 'hello', last_updated_at: '10102019' });
-      httpTestingController.verify()
+      httpTestingController.verify();
     }
     );
   });

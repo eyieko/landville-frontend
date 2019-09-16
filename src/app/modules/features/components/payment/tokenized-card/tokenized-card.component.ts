@@ -49,7 +49,7 @@ export class TokenizedCardComponent implements OnInit {
         this.spinner.hide();
         let toastMessage = '';
         if (error.message) {
-          toastMessage = error.message;
+          toastMessage = error['message'];
         } else {
           toastMessage = typeof error.errors.detail === 'undefined' ? error.errors : error.errors.detail;
         }

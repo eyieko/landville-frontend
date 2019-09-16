@@ -7,6 +7,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import { Title } from '@angular/platform-browser';
+import { Property } from 'src/app/models/Property';
+import { BuyPropertyService } from 'src/app/services/properties/properties-wishlist/buy-property/buy-property.service';
 
 @Component({
   selector: 'app-pin-payment',
@@ -14,6 +16,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['../payment.component.scss']
 })
 export class PinPaymentComponent implements OnInit {
+  private property: Property;
+  private purpose: string;
   validYears: number[];
   validMonths: string[] = [
     '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
@@ -42,13 +46,18 @@ export class PinPaymentComponent implements OnInit {
     private toastr: ToastrService,
     private location: Location,
     private titleService: Title,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private buyPropertyService: BuyPropertyService,
   ) { }
 
   ngOnInit(): void {
     this.generateValidYears();
     this.activatedRoute.data.subscribe(data => {
       this.titleService.setTitle(data.title);
+    });
+    this.buyPropertyService.currentProperty.subscribe(({ property, purpose }) => {
+      this.property = property;
+      this.purpose = purpose;
     });
   }
 
@@ -75,6 +84,9 @@ export class PinPaymentComponent implements OnInit {
       purpose: formValue.purpose,
       save_card: formValue.saveCard
     };
+    if (payload.purpose == 'Buying') {
+      payload['property_id'] = this.property.id;
+    }
     this.spinner.show();
     this.paymentService.initiatePinPay(payload).subscribe(
       resp => {
@@ -85,12 +97,11 @@ export class PinPaymentComponent implements OnInit {
       error => {
         this.spinner.hide();
         let toastMessage = '';
-        if (!(error.message || error.errors || error.detail)) { //Serialization errors
+        if (!(error.message || error.errors || error.detail)) { // Serialization errors
           for (const [key, message] of Object.entries(error)) {
             toastMessage += `${key}: ${message}\n`;
           }
-        }
-        else if (error.message) {
+        } else if (error.message) {
           toastMessage = error.message;
         } else {
           toastMessage = typeof error.errors.detail === 'undefined' ? error.errors : error.errors.detail;
@@ -102,7 +113,7 @@ export class PinPaymentComponent implements OnInit {
   isInvalid(controlName: string) {
     const ctrl = this.cardForm.controls[controlName] ?
       this.cardForm.controls[controlName] :
-      this.cardForm.controls['cardExpiry'].get(controlName);
+      this.cardForm.controls.cardExpiry.get(controlName);
     return { 'is-invalid': (ctrl.dirty || ctrl.touched) && ctrl.invalid };
   }
   onBack(): void {

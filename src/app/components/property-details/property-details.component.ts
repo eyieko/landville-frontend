@@ -47,7 +47,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
     private propertyservice: PropertyDetailService,
     private spinner: NgxSpinnerService,
     private toastrService: ToastrService
-    
+
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +64,7 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
         response => {
           const priceHolder = response.data.property.price;
           this.description = response.data.property.description;
+          this.slug = response.data.property.slug;
           this.title = response.data.property.title;
           this.city = response.data.property.address.City;
           this.state = response.data.property.address.State;
@@ -83,13 +84,13 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
           this.clientStreet = response.data.property.client.address.Street;
           this.clientCity = response.data.property.client.address.City;
           this.clientState = response.data.property.client.address.State;
-          this.purchasePlan = response.data.property.purchase_plan
+          this.purchasePlan = response.data.property.purchase_plan;
           this.spinner.hide();
         }, error => {
           this.toastrService.error(JSON.stringify(error.errors));
           this.router.navigate(['/properties']);
           this.spinner.hide();
-          
+
         }
       )
     );

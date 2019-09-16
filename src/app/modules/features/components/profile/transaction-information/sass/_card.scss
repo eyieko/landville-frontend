@@ -1,76 +1,80 @@
 .cardinp {
-    perspective: 150rem;
-    -moz-perspective: 150rem;
-    position: relative;
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 17rem;
+  width: 15rem;
+
+  @include respond(phone) {
+    width: 20rem;
     height: 17rem;
-    width: 15rem;
-    @include respond(phone) {
-      width: 20rem;
-      height: 17rem;
-      margin: auto;
-      margin-top: 1rem;
-    }
-    @include respond(tab-port) {
-      margin-right: 1rem;
-    }
-    @include respond(tab-land) {
-      margin-right: 1rem;
-    }
-  
-    &__side {
-      height: 17rem;
-      transition: all 0.8s ease;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      backface-visibility: hidden;
-      border-radius: 3px;
-      overflow: hidden;
-      box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
-    }
-  
-    &__back {
-      transform: rotateY(180deg);
-  
-      &-1 {
-        background-image: linear-gradient(
-          to right bottom,
+    margin: auto;
+    margin-top: 1rem;
+  }
+
+  @include respond(tab-port) {
+    margin-right: 1rem;
+  }
+
+  @include respond(tab-land) {
+    margin-right: 1rem;
+  }
+
+  &__side {
+    height: 17rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+  }
+
+  &__back {
+    transform: rotateY(180deg);
+
+    &-1 {
+      background-image: linear-gradient(to right bottom,
           $color-orange-light,
-          $color-orange-dark
-        );
-      }
+          $color-orange-dark);
     }
-    &:hover &__front {
-      transform: rotateY(-180deg);
-    }
-  
-    &:hover &__back {
-      transform: rotateY(0);
-    }
-  
-    &__back {
-      &--rest {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
+  }
+
+  &:hover &__front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__back {
+    transform: rotateY(0);
+  }
+
+  &__back {
+    &--rest {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      text-align: center;
+
+      &__amount {
         text-align: center;
-  
-        &__amount {
-          text-align: center;
-          margin-bottom: 4rem;
-          color: $default-white;
-        }
-        &__naira {
-          font-size: 0.6rem;
-          text-transform: uppercase;
-        }
-        &__value {
-          font-size: 1.6rem;
-          font-weight: 100;
-        }
+        margin-bottom: 4rem;
+        color: $default-white;
+      }
+
+      &__naira {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+      }
+
+      &__value {
+        font-size: 1.6rem;
+        font-weight: 100;
       }
     }
   }
+}

@@ -13,64 +13,69 @@ import {
 import {
   InternationalPaymentStatusComponent
 } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
+import { MyWishlistComponent } from './components/properties/my-wishlist/my-wishlist.component';
 
 export const CommonLayoutRoutes: Routes = [
-  {
-    path: 'create-company',
-    component: CompanyComponent,
-    data: {
-      title: 'Create Partner Company'
-    },
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    data: {
-      title: 'User Profile'
-    },
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'user/deposits',
-    component: DepositsComponent,
-    data: {
-      title: 'My Deposits',
-      tags: [],
-    },
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'clients',
-    component: ClientsComponent,
-    data: {
-      title: 'Client companies',
-      tags: [],
-    },
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'payment/pin',
-    component: PinPaymentComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'validate-pin/:flwRef/:purpose',
-    component: PinValidateComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'payment/saved-card',
-    component: TokenizedCardComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'payment/international',
-    component: InternationalPaymentComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'payment/international/status',
-    component: InternationalPaymentStatusComponent,
-  },
-];
+         {
+           path: "create-company",
+           component: CompanyComponent,
+           data: {
+             title: "Create Partner Company"
+           },
+           canActivate: [AuthGuard]
+         },
+         {
+           path: "profile",
+           component: ProfileComponent,
+           data: {
+             title: "User Profile"
+           },
+           canActivate: [AuthGuard]
+         },
+         {
+           path: "user/deposits",
+           component: DepositsComponent,
+           data: {
+             title: "My Deposits",
+             tags: []
+           },
+           canActivate: [AuthGuard]
+         },
+         {
+           path: "clients",
+           component: ClientsComponent,
+           data: {
+             title: "Client companies",
+             tags: []
+           },
+           canActivate: [AuthGuard]
+         },
+         {
+           path: "payment/pin",
+           component: PinPaymentComponent,
+           canActivate: [AuthGuard]
+         },
+         {
+           path: "validate-pin/:flwRef/:purpose",
+           component: PinValidateComponent,
+           canActivate: [AuthGuard]
+         },
+         {
+           path: "payment/saved-card",
+           component: TokenizedCardComponent,
+           canActivate: [AuthGuard]
+         },
+         {
+           path: "payment/international",
+           component: InternationalPaymentComponent,
+           canActivate: [AuthGuard]
+         },
+         {
+           path: "payment/international/status",
+           component: InternationalPaymentStatusComponent
+         },
+         { path: "my-wishlist" ,
+          component : MyWishlistComponent  
+        
+        }
+       ];

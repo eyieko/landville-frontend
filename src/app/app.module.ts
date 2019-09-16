@@ -51,7 +51,6 @@ import { PropertyDescriptionComponent } from 'src/app/components/property-detail
     AppComponent,
     AuthenticationComponent,
     FeaturesComponent,
-    EnterResetPasswordComponent,
     TermsPageComponent,
     PropertiesComponent,
     NoPropertiesComponent,

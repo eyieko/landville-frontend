@@ -83,8 +83,8 @@
 							<select formControlName="purpose" class="form-control"
 							[ngClass]="isInvalid('purpose')">
 								<option value="Purpose">Purpose</option>
-								<option value="Saving">Saving</option>
-								<option value="Buying" disabled>Buying</option>  
+								<option value="Saving"  [disabled]="purpose == 'Buying'">Saving</option>
+								<option value="Buying" [disabled]="purpose == 'Saving'">Buying</option>  
 							</select>
 							<span class="invalid-feedback">
 								Select a valid purpose of payment.
