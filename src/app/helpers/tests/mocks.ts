@@ -288,3 +288,46 @@ export const clientsMockresponse = {
     message: 'You have retrieved all clients'
   }
 };
+export const mockReviewsResponse = {
+  count: 11,
+  next: 'http://127.0.0.1:8000/api/v1/auth/1/reviews/?limit=10&offset=10',
+  previous: null,
+  results: [
+    {
+      id: 11,
+      created_at: '2019-08-29T07:10:20.158541Z',
+      updated_at: '2019-08-29T07:10:20.158570Z',
+      review: 'Malesuada bibendum arcu vitae elementum curabitur vitae nunc',
+      reviewer: {
+        email: 'buyer@testing.com',
+        first_name: 'buyer',
+        last_name: 'dorothy',
+        role: 'BY',
+        image: 'http://res.cloudinary.com/landville/image/upload/v1567094295/yhhaucrvkdgjqiizef6n.png'
+      },
+      client: 1,
+      replies: []
+    },
+    {
+      id: 10,
+      created_at: '2019-08-29T07:10:18.558848Z',
+      updated_at: '2019-08-29T07:10:18.558884Z',
+      review: 'Malesuada bibendum arcu vitae elementum curabitur vitae nunc sed.',
+      reviewer: {
+        email: 'buyer@testing.com',
+        first_name: 'buyer',
+        last_name: 'dorothy',
+        role: 'BY',
+        image: 'http://res.cloudinary.com/landville/image/upload/v1567094295/yhhaucrvkdgjqiizef6n.png'
+      },
+      client: 1,
+      replies: []
+    }
+  ]
+};
+export const reviewResponse = {
+  count: 0,
+  next: 'http://127.0.0.1:8000/api/v1/auth/1/reviews/?limit=10&offset=10',
+  previous: 'http://127.0.0.1:8000/api/v1/auth/1/reviews/?limit=10&offset=10',
+  results: []
+};

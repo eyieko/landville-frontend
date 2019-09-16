@@ -1,0 +1,43 @@
+.title {
+    font-size: x-large;
+}
+.text {
+    padding-top: 20px;
+    font-weight: 300;
+}
+small, .small{
+    font-weight: 100;
+}
+.body {
+    font-weight: 10;
+    padding: 0.25em;
+    margin-left: 4rem;
+    
+}
+.profilepic{
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    float: left;
+}
+h6 {
+    margin-bottom: auto;
+}
+.next {
+    float: right;
+}
+.prev {
+    float: left;;
+}
+
+.company {
+    float: left;
+}
+
+.example-container {
+  max-width: 30rem;
+  max-height: 600px;
+  overflow: auto;
+  margin: 0 0 100px 0;
+  padding: 0 15px;
+}

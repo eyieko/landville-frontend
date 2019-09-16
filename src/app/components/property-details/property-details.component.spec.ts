@@ -1,3 +1,4 @@
+import { ReviewsComponent } from 'src/app/components/property-details/reviews/reviews.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
@@ -83,7 +84,8 @@ describe('Property detail', () => {
                 PropertyDetailsComponent,
                 PropertyDetailComponent,
                 PropertyDescriptionComponent,
-                ClientAdminComponent
+                ClientAdminComponent,
+                ReviewsComponent
             ],
             imports: [
                 HttpClientTestingModule,
