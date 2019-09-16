@@ -4,7 +4,7 @@ import { ClientReviewService } from 'src/app/services/client-review.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
-import { noWhitespaceValidator } from 'src/app/helpers/no-whitespace-validator'
+import { noWhitespaceValidator } from 'src/app/helpers/validators/no-whitespace-validator'
 
 @Component({
   selector: 'app-review',
@@ -42,7 +42,7 @@ export class ReviewComponent implements OnInit {
       response => {
         this.spinner.hide();
         this.toastrService.success('Review added.', '', { timeOut: 3000 });
-        this.router.navigate(['/auth', this.clientID, '/reviews']);
+        this.router.navigate(['/auth', this.clientID, 'reviews']);
       },
       error => {
         this.spinner.hide();
@@ -50,7 +50,7 @@ export class ReviewComponent implements OnInit {
         if (!error.errors) {
           toastMessage = 'Server or network error happened!';
         } else {
-          toastMessage = error.errors.detail ? error.errors.detail : error.errors;
+          toastMessage = error.errors.detail ? error.errors : error.errors.detail;
         }
         this.toastrService.error(toastMessage);
       }

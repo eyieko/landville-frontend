@@ -10,7 +10,7 @@ import { routerSpy, toastServiceSpy, spinnerSpy, clientReviewService } from 'src
 
 import { ReviewComponent } from 'src/app/modules/features/components/client-review/review.component';
 
-
+import { configureTestSuite } from 'ng-bullet';
 
 describe('ReviewComponent', () => {
   let component: ReviewComponent;
@@ -21,20 +21,30 @@ describe('ReviewComponent', () => {
   const mockreviewService = clientReviewService;
   const mockactivatedRoute = routerSpy;
 
-  beforeEach(async(() => {
+  configureTestSuite(() => {
     TestBed.configureTestingModule({
       declarations: [ReviewComponent],
       imports: [
-        NgxSpinnerModule, ReactiveFormsModule, FormsModule,
-        HttpClientTestingModule, ToastrModule.forRoot(), BrowserAnimationsModule
+        NgxSpinnerModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientTestingModule,
+        ToastrModule.forRoot(),
+        BrowserAnimationsModule
       ],
       providers: [
-        { provide: Router, useValue: routerSpy },
-        { provide: ActivatedRoute, useValue: routerSpy },
+        {
+          provide: Router,
+          useValue: routerSpy
+        },
+        {
+          provide: ActivatedRoute,
+          useValue: mockactivatedRoute
+        },
       ]
     })
       .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ReviewComponent);
@@ -63,5 +73,10 @@ describe('ReviewComponent', () => {
     mockreviewService.createClientReview.and.returnValue(throwError({ status: 404, message: 'client not found' }));
     component.submitReview();
     expect(mockToastr.error).toHaveBeenCalled();
+  });
+  it('should toast error if ReviewComponent returns an error with detail', () => {
+    component = new ReviewComponent(mockreviewService, mockSpinner, mockToastr, mockRouter, mockactivatedRoute);
+    mockreviewService.createClientReview.and.returnValue(throwError({ status: 404, errors: { detail: undefined } }));
+    component.submitReview();
   });
 });
