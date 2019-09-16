@@ -1,3 +1,4 @@
+import { ButtonComponent } from './components/button/button.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -9,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from 'src/app/modules/shared/components/card/card.component';
 import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-errors.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   imports: [
@@ -27,6 +29,8 @@ import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-
     TopbarComponent,
     CardComponent,
     InputErrorsComponent,
+    SearchComponent,
+    ButtonComponent
   ],
   exports: [
     FooterComponent,
@@ -34,6 +38,8 @@ import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-
     TopbarComponent,
     CardComponent,
     InputErrorsComponent,
+    SearchComponent,
+    ButtonComponent
   ],
 })
 export class SharedModule {

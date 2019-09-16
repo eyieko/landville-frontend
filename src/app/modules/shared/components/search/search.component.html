@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-12 mr-auto ml-auto">
+    <form class="search-form" [formGroup]="searchForm" (ngSubmit)="search(searchForm)">
+      <div class="row">
+        <div class="col-md-4">
+          <label class="sr-only">search</label>
+          <input class="form-control" formControlName="search" id="search" placeholder="Keyword (Location, ...)"
+            type="text" />
+        </div>
+        <div class="col-md-4">
+          <label class="sr-only">city</label>
+          <input class="form-control" formControlName="city" id="city" placeholder="City" type="text" />
+        </div>
+        <div class="col-md-4">
+          <label class="sr-only">state</label>
+          <input class="form-control" formControlName="state" id="state" placeholder="State" type="text" />
+        </div>
+        <div class="col-md-4">
+          <label class="sr-only">price_min</label>
+          <input class="form-control" formControlName="price_min" id="price_min" placeholder="Minimum Price" type="text"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+        </div>
+        <div class="col-md-4">
+          <label class="sr-only">price_max</label>
+          <input class="form-control" formControlName="price_max" id="price_max" placeholder="Maximum Price" type="text"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+        </div>
+        <div class="col-md-4">
+          <label class="sr-only">property_type</label>
+          <select class="form-control" formControlName="property_type" id="property_type">
+            <option disabled="true" value="null">Property Type</option>
+            <option value="B">Building</option>
+            <option value="L">Land</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="sr-only">bedrooms</label>
+          <input class="form-control" formControlName="bedrooms" id="bedrooms" placeholder="Number of Bedrooms"
+            type="text" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+        </div>
+        <div class="col-md-4">
+          <app-button type="submit">Search</app-button>
+        </div>
+      </div>
+    </form>
+    <br />
+  </div>
+</div>

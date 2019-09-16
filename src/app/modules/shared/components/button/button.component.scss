@@ -1,0 +1,24 @@
+.btn-btn {
+  line-height: 18px !important;
+  letter-spacing: normal !important;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  padding: 6px 12px !important;
+  position: relative !important;
+  text-align: center !important;
+  width: auto !important;
+  color: rgb(255, 255, 255) !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  background: var(--color-primary-dark) !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(--color-primary-dark) !important;
+  border-image: initial !important;
+
+  &:hover {
+    background: transparent !important;
+    color: var(--color-secondary-dark) !important;
+  }
+}
