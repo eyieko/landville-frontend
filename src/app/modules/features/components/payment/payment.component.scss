@@ -1,40 +1,41 @@
 span.error {
-	width: 100%;
-	margin-top: 0.25rem;
-	font-size: 80%;
-	color: #dc3545;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
 }
-label, .form-control{
-	font-size: 15px;
-	height: 35px !important;
-	width: 100%;
+label,
+.form-control {
+  font-size: 15px;
+  height: 35px !important;
+  width: 100%;
 }
 label {
-	margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 .card {
-	width: 400px;
-	margin-bottom: 40px;
-	margin-top: 40px;
-	padding-bottom: 20px;
+  width: 400px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  padding-bottom: 20px;
 }
 .card-header {
-	background-color: #f8c302;
-	margin-bottom: 20px;
+  background-color: #f8c302;
+  margin-bottom: 20px;
 }
 .card-holder {
-	padding-top: 20px;
-	padding-bottom: 20px;
-	background-image: url('src/assets/img/HouseBG.jpg');
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-image: url('src/assets/img/HouseBG.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-input[type="checkbox"] {
-	margin-left: 5px;
+input[type='checkbox'] {
+  margin-left: 5px;
 }
-button[type="submit"] {
-	float: right;
+button[type='submit'] {
+  float: right;
 }
 
 input.pin {
@@ -42,27 +43,31 @@ input.pin {
 }	
 
 button {
-	background-color: #171039;
-	color: white;
-	border-radius: 40rem;
-	&:hover{
-		color: white;
-		transform: scale(1.05);
-	}
+  background-color: #171039;
+  color: white;
+  border-radius: 40rem;
+  &:hover {
+    color: white;
+    transform: scale(1.05);
+  }
 }
-
+.row {
+  padding-bottom: 20px;
+}
 @media screen and (max-width: 600px) {
-  .col-md-6, button, .card {
-		width: 100%;
-		margin-top: 10px;
-		margin-left: auto;
-	}
-	.card {
-		margin: 10px;
-	}
+  .col-md-6,
+  button,
+  .card {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: auto;
+  }
+  .card {
+    margin: 10px;
+  }
 }
 @media screen and (max-width: 900px) {
   .card {
-		width: 70%;
-	}
+    width: 70%;
+  }
 }

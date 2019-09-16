@@ -170,19 +170,6 @@ hr {
   padding: 0;
 }
 
-.credit-info {
-  height: 100%;
-  color: black;
-  justify-content: center;
-  font-size: 14px;
-  display: flex;
-  box-sizing: border-box;
-  padding-left: 25px;
-  padding-right: 25px;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  position: relative;
-}
 .dropdown-btn {
   background: rgba(255, 255, 255, 0.1);
   width: 100%;
@@ -202,32 +189,6 @@ hr {
 }
 .dropdown-select {
   display: none;
-}
-.credit-card-image {
-  display: block;
-  max-height: 80px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 170px;
-  margin-top: 35px;
-  margin-bottom: 35px;
-}
-.credit-info-content {
-  margin-top: 25px;
-  flex-flow: column;
-  display: flex;
-  width: 100%;
-}
-
-.card-content-title {
-  display: flex;
-  // justify-content: center;
-}
-
-.card-content-title h5 {
-  font-weight: 500;
-  font-size: 16px;
-  margin-top: 0.2rem;
 }
 .select-option {
   float: left;
@@ -322,6 +283,18 @@ round-progress {
 
 .hidden {
   display: none;
+}
+
+.credit-info{
+  width: 100%;
+}
+
+.table{
+  font-size: 14px !important;
+}
+
+.pointer{
+  cursor: pointer;
 }
 
 @media (min-width: 991px) {
