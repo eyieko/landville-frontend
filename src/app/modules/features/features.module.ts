@@ -20,6 +20,7 @@ import { PinValidateComponent } from 'src/app/modules/features/components/paymen
 import { PinPaymentComponent } from 'src/app/modules/features/components/payment/pin-payment/pin-payment.component';
 import { InternationalPaymentComponent } from 'src/app/modules/features/components/payment/international-payment/international-payment.component';
 import { InternationalPaymentStatusComponent } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
+import { MyWishlistComponent } from './components/properties/my-wishlist/my-wishlist.component';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { InternationalPaymentStatusComponent } from 'src/app/modules/features/co
     TokenizedCardComponent,
     PinValidateComponent,
     PinPaymentComponent,
+    MyWishlistComponent,
     InternationalPaymentComponent
   ],
   providers: [ProfileService, LocalStorageService, Title]
