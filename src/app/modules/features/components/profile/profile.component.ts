@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
+    this.profileService.pushProfile();
     this.getUserProfile();
   }
 
