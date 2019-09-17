@@ -13,6 +13,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { resetSpies } from 'src/app/helpers/tests/social.spies';
 
 describe('ClientsComponent', () => {
+
   let component: ClientsComponent;
   let fixture: ComponentFixture<ClientsComponent>;
 
@@ -22,17 +23,17 @@ describe('ClientsComponent', () => {
   configureTestSuite(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ClientsComponent,
+        ClientsComponent
       ],
       imports: [
-        RouterTestingModule,
-        NgxSpinnerModule
+        NgxSpinnerModule,
+        RouterTestingModule.withRoutes([])
       ],
       providers: [
         { provide: ClientsService, useValue: clientsServiceSpy },
-        { provide: ToastrService, useValue: toastServiceSpy }
+        { provide: ToastrService, useValue: toastServiceSpy },
       ]
-    }).compileComponents().then(r => {});
+    }).compileComponents().then(r => { });
   });
 
   beforeEach(() => {

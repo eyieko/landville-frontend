@@ -1,0 +1,35 @@
+<div class="card-holder">
+  <div class="card shadow-lg mx-auto">
+    <ngx-spinner></ngx-spinner>
+    <div class="card-header">
+      <h4>Submit a review</h4>
+    </div>
+    <div class="card-body container">
+      <form [formGroup]="reviewForm">
+        <div class="form-group required">
+          <label for="review" class="control-label">Comment</label>
+          <textarea
+            formControlName="review"
+            id="review"
+            rows="5"
+            class="form-control"
+          ></textarea>
+          <div
+            *ngIf="review.touched && review.invalid"
+            class="alert alert-danger"
+          >
+            A review is required.
+          </div>
+        </div>
+        <button
+          class="btn"
+          type="submit"
+          [disabled]="!reviewForm.valid"
+          (click)="submitReview()"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

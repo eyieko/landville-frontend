@@ -1,0 +1,54 @@
+.card-holder {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-image: url('src/assets/img/HouseBG.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: gray;
+}
+.card {
+  width: 600px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+.card-header {
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #f8c302;
+  color: white;
+  border-radius: 40rem;
+  width: 20%;
+  float: right;
+  &:hover {
+    color: white;
+    transform: scale(1.05);
+  }
+}
+.form-group.required {
+  .control-label:after {
+    content: '*';
+    color: red;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .col-md-6,
+  button,
+  .card {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: auto;
+  }
+  .card {
+    margin: 10px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .card {
+    width: 70%;
+  }
+}

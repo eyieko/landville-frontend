@@ -41,7 +41,9 @@
                 <b class="client-reviews">Reviews</b>
 
                 <span class="row">
-                  <a href="/client/:clientId/review" class="card-link col"
+                  <a
+                    [routerLink]="['/client', client.id, 'review']"
+                    class="card-link col"
                     >Write a review</a
                   >
                   <a [routerLink]="['/auth', client.id, 'reviews']" routerLinkActive="active" class="card-link col"

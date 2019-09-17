@@ -25,6 +25,7 @@ import {
   InternationalPaymentStatusComponent
 } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
 import { DigitOnlyModule } from '@uiowa/digit-only';
+import { ReviewComponent } from 'src/app/modules/features/components/client-review/review.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { DigitOnlyModule } from '@uiowa/digit-only';
     TokenizedCardComponent,
     PinValidateComponent,
     PinPaymentComponent,
-    InternationalPaymentComponent
+    InternationalPaymentComponent,
+    ReviewComponent
   ],
   providers: [ProfileService, LocalStorageService, Title]
 })
