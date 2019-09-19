@@ -1,31 +1,83 @@
+@import '../../../assets/scss/abstracts/mixins';
 .card {
-    border: hidden;
+  border: hidden;
 }
-.no-gutters>.col, .no-gutters>[class*=col-] {
-    padding-left: 4px !important;
+.no-gutters > .col,
+.no-gutters > [class*='col-'] {
+  padding-left: 4px !important;
 }
-.link{
-    color:#ee9619;
+.link {
+  color: #ee9619;
 }
 .plans {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
-.amenities{
-    height: 2.5rem;
-    padding-top: 0.5rem;
-    background-color: #e9ecef;
-     
+.amenities {
+  height: 2.5rem;
+  padding-top: 0.5rem;
+  background-color: #e9ecef;
 }
 .address {
-    color: #9a939c;
-    font-size: medium;
+  color: #9a939c;
+  font-size: medium;
 }
 .buttons {
-    color: aliceblue;
-    background-color:#ee9619; 
-    float: right;
-    border-style: hidden;
-    padding: inherit;
-    outline:none;
+  color: aliceblue;
+  background-color: #ee9619;
+  float: right;
+  border-style: hidden;
+  padding: inherit;
+  outline: none;
+}
+
+$danger: #d64c4c;
+$delete_hover: #e08b8b;
+
+.btn-delete {
+  font-size: small;
+  color: #fff !important;
+  background-color: $danger !important;
+  border-radius: 45px;
+  border-color: $danger !important;
+  @include respond(tab-land) {
+    font-size: 52.25%;
+  }
+  @include respond(tab-port) {
+    font-size: 46%;
+  }
+  @include respond(phone) {
+    font-size: 8px;
+  }
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+}
+.btn-delete:focus,
+.btn-delete:hover {
+  outline: none;
+  background-color: $delete_hover !important;
+  border-color: $delete_hover !important;
+}
+.btn-primary {
+  font-size: small;
+  color: #fff !important;
+  background-color: #ee9619 !important;
+  border-radius: 45px;
+  border-color: #ee9619 !important;
+  @include respond(tab-land) {
+    font-size: 54.25%;
+  }
+  @include respond(tab-port) {
+    font-size: 48%;
+  }
+  @include respond(phone) {
+    font-size: 8px;
+  }
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+}
+.buttonsDiv {
+  margin: -2rem 20px 20px 20px;
 }

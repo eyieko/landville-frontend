@@ -65,7 +65,9 @@ export const propertiesServiceSpy = createSpyObj('PropertiesService', [
 ]);
 
 export const propertyDetailSpy = jasmine.createSpyObj('PropertyDetailService', [
-  'getProperty'
+  'getProperty',
+  'deletePropertyService',
+  'displayModalService'
 ]);
 export const transactionServiceSpy = createSpyObj(
   'TransactionInformationService',

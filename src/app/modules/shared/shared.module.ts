@@ -1,3 +1,4 @@
+import { ConfirmationModalComponent } from 'src/app/modules/shared/components/confirmation-modal/confirmation-modal.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -9,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from 'src/app/modules/shared/components/card/card.component';
 import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-errors.component';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -18,15 +18,14 @@ import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-
     FormsModule,
     HttpClientModule
   ],
-  providers: [
-    LocalStorageService,
-  ],
+  providers: [LocalStorageService],
   declarations: [
     FooterComponent,
     NavbarComponent,
     TopbarComponent,
     CardComponent,
     InputErrorsComponent,
+    ConfirmationModalComponent
   ],
   exports: [
     FooterComponent,
@@ -34,7 +33,7 @@ import { InputErrorsComponent } from 'src/app/modules/shared/input-errors/input-
     TopbarComponent,
     CardComponent,
     InputErrorsComponent,
-  ],
+    ConfirmationModalComponent
+  ]
 })
-export class SharedModule {
-}
+export class SharedModule {}

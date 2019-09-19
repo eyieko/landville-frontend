@@ -3,15 +3,24 @@ import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class PropertyDetailService {
-    constructor(
-        private http: HttpService) {
-        }
-    getProperty(slug): Observable<any> {
+  isDisplayedModal = false;
+  constructor(private http: HttpService) {}
 
-        const endpoint = `/properties/${slug}`;   
-        return this.http.getRequestWithParams(endpoint);
-    }
+  getProperty(slug): Observable<any> {
+    const endpoint = `/properties/${slug}`;
+    return this.http.getRequestWithParams(endpoint);
+  }
+
+  displayModalService() {
+    this.isDisplayedModal = this.isDisplayedModal ? false : true;
+    return this.isDisplayedModal;
+  }
+  deletePropertyService(slug): Observable<any> {
+    const url = `/properties/${slug}`;
+    const response = this.http.deleteRequestWithParams(url);
+    return response;
+  }
 }

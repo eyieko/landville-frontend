@@ -1,3 +1,5 @@
+import { ProfileService } from 'src/app/services/profile/profile.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PropertyDetailService } from 'src/app/services/property-detail/property-detail.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,7 +14,6 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './property-details.component.html',
   styleUrls: ['./property-details.component.scss']
 })
-
 export class PropertyDetailsComponent implements OnInit, OnDestroy {
   property: PropertyDetail;
   slug: string;
@@ -39,22 +40,29 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
   clientState: string;
   clientCity: string;
   purchasePlan: string;
-  clientId: number
+  clientId: number;
+  deletePropertyMsg: string;
   subscribe: Subscription[] = [];
+  displayedModal = false;
+  isMine = false;
+  loggedin_user: number;
+  admin_email: number;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private propertyservice: PropertyDetailService,
     private spinner: NgxSpinnerService,
-    private toastrService: ToastrService
-    
-  ) { }
+    private toastrService: ToastrService,
+    private localStorageService: LocalStorageService,
+    private profileService: ProfileService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(result => {
-      const slug = result.get('slug');
-      this.viewProperty(slug);
+      this.slug = result.get('slug');
+      this.viewProperty(this.slug);
+      this.getClient(this.slug);
     });
   }
 
@@ -75,7 +83,10 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
           this.lotSize = response.data.property.lot_size;
           this.video = response.data.property.video;
           this.property = response.data.property;
-          this.checkIfBuilding(response.data.property.property_type, response.data.property);
+          this.checkIfBuilding(
+            response.data.property.property_type,
+            response.data.property
+          );
           this.checkIfVideo(this.video);
           this.clientName = response.data.property.client.client_name;
           this.createdAt = response.data.property.created_at;
@@ -87,14 +98,23 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
           this.purchasePlan = response.data.property.purchase_plan;
           this.clientId = response.data.property.client.id;
           this.spinner.hide();
-        }, error => {
+        },
+        error => {
           this.toastrService.error(JSON.stringify(error.errors));
           this.router.navigate(['/properties']);
           this.spinner.hide();
-          
         }
       )
     );
+  }
+
+  getClient(slug) {
+    this.profileService.getProfile().subscribe(response => {
+      this.loggedin_user = response.data.profile.user.id;
+    });
+    this.propertyservice.getProperty(slug).subscribe(response => {
+      this.admin_email = response.data.property.client.admin_id;
+    });
   }
   checkIfBuilding(property, data) {
     if (property === 'Building') {
@@ -109,8 +129,15 @@ export class PropertyDetailsComponent implements OnInit, OnDestroy {
       this.ifVideo = true;
     }
   }
+  displayModal() {
+    this.displayedModal = this.propertyservice.displayModalService();
+    this.deletePropertyMsg = 'Are you sure you want to delete this property?';
+  }
+  closeModal($event) {
+    this.displayedModal = $event;
+  }
+
   ngOnDestroy(): void {
     removeSubscription(this.subscribe);
   }
-
 }
