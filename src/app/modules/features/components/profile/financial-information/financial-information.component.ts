@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {of, Subscription} from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { ProfileService } from 'src/app/services/profile/profile.service';
 import { first } from 'rxjs/operators';
 import { removeSubscription } from 'src/app/helpers/unsubscribe';
-import { APPCONFIG } from 'src/app/config';
+import { SavedCard } from 'src/app/models/SavedCard';
+import { PaymentService } from 'src/app/services/payment/payment-service';
 
 @Component({
   selector: 'app-financial-information',
@@ -12,15 +13,17 @@ import { APPCONFIG } from 'src/app/config';
 })
 export class FinancialInformationComponent implements OnInit, OnDestroy {
   deposits: any;
-  cardInfo: any;
+  cards: SavedCard[] = [];
+  displayedModal = false;
   constructor(
     private profileService: ProfileService,
-  ) {}
+    private paymentService: PaymentService
+  ) { }
   subscribe: Subscription[] = [];
 
   ngOnInit() {
     this.getDeposits();
-    this.getCardInfo();
+    this.getSavedCards();
   }
 
   getDeposits() {
@@ -30,45 +33,31 @@ export class FinancialInformationComponent implements OnInit, OnDestroy {
       .subscribe(
         response => {
           response.data.transactions.map(transaction => {
-            if ( transaction.percentage_completion !== '100' ) {
+            if (transaction.percentage_completion !== '100') {
               this.deposits = transaction;
             }
             return this.deposits;
           });
         },
         error => {
-          this.deposits = {error: 'deposits couldn\'t be found'};
+          this.deposits = { error: 'deposits couldn\'t be found' };
         }
       );
   }
 
-  getCardInfo() {
-    this.profileService.getProfile().subscribe(response => {
-      const profile = response.data.profile;
-      if (Object.keys(profile.card_info.card_info).length === 0) {
-        this.cardInfo = null;
-      } else {
-        const cardNumberFull = [...profile.card_info.card_info.card_number];
-        this.cardInfo = {
-          cardOwner : `${profile.user.first_name} ${profile.user.last_name}`,
-          cardNumber: `${cardNumberFull[9]} ${cardNumberFull[10]} ${cardNumberFull[11]} ${cardNumberFull[12]}`,
-          cardExpiry: profile.card_info.card_info.card_expiry,
-        };
-        this.getCardBrand(profile.card_info.card_info.card_brand);
-      }
+  getSavedCards(): void {
+    this.paymentService.getSavedCard().subscribe(response => {
+      this.cards = response.data.saved_cards;
     });
   }
 
-  getCardBrand(brand) {
-    const cardUrls = {
-      VISA: APPCONFIG.visa_card_url,
-      'MASTER CARD': APPCONFIG.master_card_url,
-      'AMERICAN EXPRESS': APPCONFIG.american_express_card,
-      'PAY PAL': APPCONFIG.paypal_card
-    };
-    this.cardInfo.cardBrand = cardUrls[brand];
-    return;
-}
+  displayModal() {
+    console.log('Display model clicked !');
+    this.displayedModal = this.paymentService.displayModalService();
+  }
+  closeModal($event) {
+    this.displayedModal = $event;
+  }
 
   ngOnDestroy(): void {
     removeSubscription(this.subscribe);

@@ -14,7 +14,6 @@ import {
   InternationalPaymentStatusComponent
 } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
 import { ReviewComponent } from 'src/app/modules/features/components/client-review/review.component';
-
 export const CommonLayoutRoutes: Routes = [
   {
     path: 'create-company',
