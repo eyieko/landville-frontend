@@ -24,12 +24,14 @@ export const profileServiceSpy = createSpyObj('ProfileService', [
   'getProfile',
   'updateProfile',
   'pushProfile',
-  'getDeposits',
+  'getDeposits'
 ]);
 
 export const registerServiceSpy = createSpyObj('RegisterServiceService', [
   'registerUser'
 ]);
+
+export const authServiceSpy = createSpyObj('AuthService', ['isLoggedIn']);
 
 export const routerSpy = jasmine.createSpyObj('Router', [
   'navigateByUrl',
@@ -77,6 +79,10 @@ export const reviewsSpy = jasmine.createSpyObj('ClientReviewsService', [
 export const activatedRoutespy = jasmine.createSpyObj('ActivatedRoute', [
   'snapshot',
   'paramMap'
+]);
+
+export const PropertyServiceSpy = createSpyObj('PropertyService', [
+  'addNewProperty'
 ]);
 
 export const DepositsSpy = createSpyObj('DepositsService', ['getDeposits']);

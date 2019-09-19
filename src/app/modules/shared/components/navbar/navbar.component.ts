@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   lastName: string;
   profileImage: string;
   subscription = new Subscription();
-
+  userRole: string = 'BY';
 
   constructor(
     private profileService: ProfileService,
@@ -48,6 +48,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         }
         this.firstName = profileData.user.first_name;
         this.lastName = profileData.user.last_name;
+        this.userRole = profileData.user.role;
       })
     );
   }
