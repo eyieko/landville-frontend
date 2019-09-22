@@ -1,37 +1,37 @@
 .title {
-    font-size: x-large;
+  font-size: x-large;
 }
 .text {
-    padding-top: 20px;
-    font-weight: 300;
+  padding-top: 20px;
+  font-weight: 300;
 }
-small, .small{
-    font-weight: 100;
+small,
+.small {
+  font-weight: 100;
 }
 .body {
-    font-weight: 10;
-    padding: 0.25em;
-    margin-left: 4rem;
-    
+  font-weight: 10;
+  padding: 0.25em;
+  margin-left: 4rem;
 }
-.profilepic{
-    height: 55px;
-    width: 55px;
-    border-radius: 50%;
-    float: left;
+.profilepic {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  float: left;
 }
 h6 {
-    margin-bottom: auto;
+  margin-bottom: auto;
 }
 .next {
-    float: right;
+  float: right;
 }
 .prev {
-    float: left;;
+  float: left;
 }
 
 .company {
-    float: left;
+  float: left;
 }
 
 .example-container {
@@ -40,4 +40,9 @@ h6 {
   overflow: auto;
   margin: 0 0 100px 0;
   padding: 0 15px;
+}
+#clear-reply{
+  margin-left: 4px !important;
+  color:rgba(245, 245, 245, 0.89);
+  background-color:#FE612C;
 }

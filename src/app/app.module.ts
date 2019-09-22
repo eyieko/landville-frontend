@@ -1,4 +1,3 @@
-import { ReviewsComponent } from 'src/app/components/property-details/reviews/reviews.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -29,11 +28,9 @@ import { AuthenticationModule } from 'src/app/modules/authentication/authenticat
 import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
 import { PropertyDetailComponent } from 'src/app/components/property-details/property-detail/property-detail.component';
 import { ClientAdminComponent } from 'src/app/components/property-details/client-admin/client-admin.component';
-import {
-  PropertyDescriptionComponent
-} from 'src/app/components/property-details/property-description/property-description.component';
-import { ClientReviewsComponent } from 'src/app/components/client-reviews/client-reviews.component';
-
+import { PropertyDescriptionComponent } from 'src/app/components/property-details/property-description/property-description.component';
+import { ReviewsComponent } from './components/property-details/reviews/reviews.component';
+import { ClientReviewsComponent } from './components/client-reviews/client-reviews.component';
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -64,7 +61,6 @@ import { ClientReviewsComponent } from 'src/app/components/client-reviews/client
     PropertyDescriptionComponent,
     ReviewsComponent,
     ClientReviewsComponent
-
   ],
   providers: [
     LocalStorageService,

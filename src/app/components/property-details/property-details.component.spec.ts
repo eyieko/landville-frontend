@@ -1,4 +1,3 @@
-import { ReviewsComponent } from 'src/app/components/property-details/reviews/reviews.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PropertyDetailsComponent } from 'src/app/components/property-details/property-details.component';
@@ -14,6 +13,7 @@ import { of } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 describe('Property detail', () => {
     let component: PropertyDetailsComponent;
