@@ -5,7 +5,7 @@
             <b><i class="fa fa-map-marker"></i></b>
             {{state}}, {{city}}
         </div>
-        <h5 class="price"><b>&#8358; {{price}}</b></h5>
+        <h5 class="price"><b>{{price | currency:'&#8358;'}}</b></h5>
     </div>
     <div class="card-body">
         <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
@@ -51,5 +51,5 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </div>

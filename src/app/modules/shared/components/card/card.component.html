@@ -23,8 +23,8 @@
       <img alt="" src="assets/img/marker.svg" [style.width.px]="10" />
       {{ street }}, {{ city }}
     </p>
-    <div [ngClass]="{ cardPrice: isProfile, price: !isProfile }" class="price">
-      <b>&#8358; {{ price }}</b>
+    <div class="price">
+      <b>{{ price  | currency:'&#8358;' }}</b>
     </div>
   </div>
 </div>

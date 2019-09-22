@@ -7,13 +7,13 @@
         >
     </div>
     <div class="view col-sm-4 m-0 ml-5 float-left">
-      <i 
-      class="fas fa-list-ul" 
+      <i
+      class="fas fa-list-ul"
       (click)="toggleView()"
       [ngClass]="{ 'list-active': listToggle, 'list-deactive': !listToggle }"
       ></i>
-      <i 
-      class="fas fa-th" 
+      <i
+      class="fas fa-th"
       (click)="toggleView()"
         [ngClass]="{ 'list-active': gridToggle, 'list-deactive': !gridToggle }"
         ></i>
@@ -39,15 +39,15 @@
                         >
                     </h4>
                     <p class="card-text list-card">
-                      <img 
-                        alt="" 
-                        src="assets/img/marker.svg" 
-                        [style.width.px]="10" 
+                      <img
+                        alt=""
+                        src="assets/img/marker.svg"
+                        [style.width.px]="10"
                         />
                       {{ property.address.Street }}, {{ property.address.City }}
                     </p>
                     <div class="priceL">
-                      <b>&#8358; {{ property.price }}</b>
+                      <b>{{ property.price  | currency:'&#8358;' }}</b>
                     </div>
                   </div>
                 </div>
@@ -57,17 +57,17 @@
         </div>
         <div class="container">
           <div class="page-buttons">
-            <button 
-            class="btn prev" 
-            (click)="fetchPrevious()" 
+            <button
+            class="btn prev"
+            (click)="fetchPrevious()"
             [disabled]="disabledPrevious"
             >
               <img alt="" src="assets/img/arrowL.svg" [style.width.px]="10" />
               Previous
             </button>
-            <button 
-            class="btn next" 
-            (click)="fetchNext()" 
+            <button
+            class="btn next"
+            (click)="fetchNext()"
             [disabled]="disabledNext"
             >
               Next
@@ -77,10 +77,10 @@
         </div>
       </div>
       <div class="col-md-4">
-        <img 
-          alt="Card image" 
-          class="card-img" 
-          src="assets/img/designs/Design-min.jpg" 
+        <img
+          alt="Card image"
+          class="card-img"
+          src="assets/img/designs/Design-min.jpg"
           />
       </div>
     </div>
@@ -92,11 +92,11 @@
         <div class="row">
           <div class="col-md-4" *ngFor="let property of properties">
             <a [routerLink]="['/properties', property.slug]" routerLinkActive="active" class="custom-card" (click)="setDocTitle(property.title)">
-              <app-card 
-              [imageMain]="property.image_main" 
-              [title]="property.title" 
+              <app-card
+              [imageMain]="property.image_main"
+              [title]="property.title"
               [street]="property.address.Street"
-              [city]="property.address.City" 
+              [city]="property.address.City"
               [price]="property.price"
               ></app-card>
             </a>
@@ -104,17 +104,17 @@
         </div>
         <div class="container">
           <div class="page-buttons">
-            <button 
-            class="btn prev" 
-            (click)="fetchPrevious()" 
+            <button
+            class="btn prev"
+            (click)="fetchPrevious()"
             [disabled]="disabledPrevious"
             >
               <img alt="" src="assets/img/arrowL.svg" [style.width.px]="10" />
               Previous
             </button>
-            <button 
-            class="btn next" 
-            (click)="fetchNext()" 
+            <button
+            class="btn next"
+            (click)="fetchNext()"
             [disabled]="disabledNext"
             >
               Next
@@ -124,10 +124,10 @@
         </div>
       </div>
       <div class="col-md-4">
-        <img 
-        alt="Card image" 
-        class="card-img" 
-        src="assets/img/designs/Design-min.jpg" 
+        <img
+        alt="Card image"
+        class="card-img"
+        src="assets/img/designs/Design-min.jpg"
         />
       </div>
     </div>
