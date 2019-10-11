@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ChartsModule } from 'ng2-charts';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { CommonLayoutRoutes } from 'src/app/modules/features/features.routing';
@@ -20,6 +21,7 @@ import { PinValidateComponent } from 'src/app/modules/features/components/paymen
 import { PinPaymentComponent } from 'src/app/modules/features/components/payment/pin-payment/pin-payment.component';
 import { InternationalPaymentComponent } from 'src/app/modules/features/components/payment/international-payment/international-payment.component';
 import { InternationalPaymentStatusComponent } from 'src/app/modules/features/components/payment/international-payment-status/international-payment-status.component';
+import { SavingsComponent } from './components/savings/savings.component';
 
 @NgModule({
   imports: [
@@ -31,7 +33,8 @@ import { InternationalPaymentStatusComponent } from 'src/app/modules/features/co
     SharedModule,
     ReactiveFormsModule,
     ProfileModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   declarations: [
     HomeComponent,
@@ -42,7 +45,8 @@ import { InternationalPaymentStatusComponent } from 'src/app/modules/features/co
     TokenizedCardComponent,
     PinValidateComponent,
     PinPaymentComponent,
-    InternationalPaymentComponent
+    InternationalPaymentComponent,
+    SavingsComponent
   ],
   providers: [ProfileService, LocalStorageService, Title]
 })

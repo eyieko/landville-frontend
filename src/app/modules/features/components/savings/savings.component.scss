@@ -1,0 +1,57 @@
+.all-savings {
+    grid-area: savings;
+  }
+  .buyers-list {
+    grid-area: buyers;
+  }
+  .single-savings {
+    grid-area: saving;
+  }
+  .all-savings--legend {
+    grid-area: legend;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-areas:
+      'savings legend'
+      'buyers saving';
+    grid-gap: 1rem;
+    padding: 2rem;
+    .all-savings {
+      width: 50rem;
+      &__select-years {
+        width: 11rem;
+      }
+      &__graph {
+        padding-top: 1.5rem;
+      }
+  
+      border-bottom: solid 1px rgba(0, 0, 0, 0.116);
+    }
+    .all-savings--legend {
+      font-size: 0.7rem;
+      width: 15rem;
+      .badge {
+        float: right;
+      }
+    }
+    .buyers-list {
+      font-size: 0.7rem;
+      width: 20rem;
+      padding-top: 3rem;
+      ul {
+        a{
+          color : black;
+        }
+        li:hover{
+          background-color: rgba(0, 0, 0, 0.041);
+        }
+      }
+    }
+    .single-savings {
+      padding-top: 3rem;
+      width: 46rem;
+      margin-left: -29rem;
+    }
+  }

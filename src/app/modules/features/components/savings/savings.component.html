@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="all-savings">
+    <h4>ALL SAVINGS</h4>
+    <div class="all-savings__select-years">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Year</label>
+        </div>
+        <select
+          [(ngModel)]="yearIsSelected"
+          (ngModelChange)="onYearSelected($event)"
+          class="custom-select"
+          id="inputGroupSelect01"
+        >
+          <option
+            *ngFor="let year of selectedYears"
+            [value]="year.selectedYear"
+          >
+            {{ year.selectedYear }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="all-savings__graph">
+      <div>
+        <div style="display: block">
+          <canvas
+            baseChart
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+          ></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="all-savings--legend">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        Legend <span class="badge badge-primary badge-pill"></span>
+      </li>
+      <li class="list-group-item">
+        January
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInJan
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        February
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInFeb
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        March
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInMarch
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        April
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInApp
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        Mai
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInMai
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        Jun
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInJun
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        July
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInJuly
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        August
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInAug
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        September
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInSept
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        October
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInOct
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        November
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInNov
+        }}</span>
+      </li>
+      <li class="list-group-item">
+        December
+        <span class="badge badge-primary badge-pill">{{
+          sumSavingsInDec
+        }}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="buyers-list">
+    <h4>Buyers</h4>
+    <ul
+      class="list-group list-group-flush"
+      *ngFor="let buyerName of buyersName; let i = index"
+    >
+      <a 
+        ><li
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          {{ buyerName }}
+          <span class="badge badge-primary badge-pill">{{ i + 1 }}</span>
+        </li>
+      </a>
+    </ul>
+  </div>
+  <div class="single-savings">
+    <h4>Single savings for <i class="buyer-name">Ema Bush</i></h4>
+    <div style="display: block">
+      <canvas
+        baseChart
+        [data]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+      ></canvas>
+    </div>
+  </div>
+</div>
