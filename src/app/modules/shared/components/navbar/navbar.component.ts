@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { LoginService } from 'src/app/services/login/login.service';
@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+  @ViewChild('navbar', null) navbar;
+
   // Properties
+  sticky;
   authenticated: boolean;
   firstName: string;
   lastName: string;
@@ -35,6 +38,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.sticky = this.navbar.nativeElement.offsetTop
     this.profileDetails();
     this.setIsAuthenticated();
   }
@@ -51,6 +55,22 @@ export class NavbarComponent implements OnInit, OnDestroy {
       })
     );
   }
+
+  stickNavbar() {
+
+    if (window.pageYOffset >= this.sticky) {
+      this.navbar.nativeElement.classList.add("sticky")
+
+    } else {
+      this.navbar.nativeElement.classList.remove("sticky");
+    }
+  }
+
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    this.stickNavbar()
+  }
+
 
   handleLogout() {
     this.subscription.add(

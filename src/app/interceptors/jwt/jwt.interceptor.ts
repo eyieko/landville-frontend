@@ -9,14 +9,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class JwtInterceptor implements HttpInterceptor {
 
+  constructor(private authService: AuthService) { }
 
-  constructor(private authService: AuthService) {
-
-  }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (this.authService.isLoggedIn()) {
-      // add authorization header with jwt token if available
+    const loggedIn = this.authService.isLoggedIn();
+
+    if (loggedIn) {
       const currentUser = localStorage.getItem('token');
       request = request.clone({
         setHeaders: {

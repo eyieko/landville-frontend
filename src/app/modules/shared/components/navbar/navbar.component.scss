@@ -13,6 +13,18 @@ a.nav-link.waves-effect.waves-light {
   outline: none;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+  background-color: #fff;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+
 .navbar-nav > li {
   margin-left: 1.0rem;
 }
